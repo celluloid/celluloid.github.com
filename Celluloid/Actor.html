@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Module: Celluloid::Actor</title>
+
+	<link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="module">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../lib/celluloid/actor_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/celluloid/actor.rb">lib/celluloid/actor.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+
+			<!-- Namespace Contents -->
+			
+			<div id="namespace-list-section" class="section">
+				<h3 class="section-header">Namespace</h3>
+				<ul class="link-list">
+					
+					<li><span class="type">MODULE</span> <a href="Actor/ClassMethods.html">Celluloid::Actor::ClassMethods</a></li>
+					
+					<li><span class="type">MODULE</span> <a href="Actor/InstanceMethods.html">Celluloid::Actor::InstanceMethods</a></li>
+					
+					<li><span class="type">MODULE</span> <a href="Actor/InternalMethods.html">Celluloid::Actor::InternalMethods</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-c-included">::included</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../Celluloid.html">Celluloid</a></li>
+				
+					<li><a href="../Celluloid/AbortError.html">Celluloid::AbortError</a></li>
+				
+					<li><a href="../Celluloid/Actor.html">Celluloid::Actor</a></li>
+				
+					<li><a href="../Celluloid/Actor/ClassMethods.html">Celluloid::Actor::ClassMethods</a></li>
+				
+					<li><a href="../Celluloid/Actor/InstanceMethods.html">Celluloid::Actor::InstanceMethods</a></li>
+				
+					<li><a href="../Celluloid/Actor/InternalMethods.html">Celluloid::Actor::InternalMethods</a></li>
+				
+					<li><a href="../Celluloid/ActorProxy.html">Celluloid::ActorProxy</a></li>
+				
+					<li><a href="../Celluloid/AsyncCall.html">Celluloid::AsyncCall</a></li>
+				
+					<li><a href="../Celluloid/Call.html">Celluloid::Call</a></li>
+				
+					<li><a href="../Celluloid/DeadActorError.html">Celluloid::DeadActorError</a></li>
+				
+					<li><a href="../Celluloid/ErrorResponse.html">Celluloid::ErrorResponse</a></li>
+				
+					<li><a href="../Celluloid/ExitEvent.html">Celluloid::ExitEvent</a></li>
+				
+					<li><a href="../Celluloid/Future.html">Celluloid::Future</a></li>
+				
+					<li><a href="../Celluloid/Linking.html">Celluloid::Linking</a></li>
+				
+					<li><a href="../Celluloid/Links.html">Celluloid::Links</a></li>
+				
+					<li><a href="../Celluloid/Mailbox.html">Celluloid::Mailbox</a></li>
+				
+					<li><a href="../Celluloid/MailboxError.html">Celluloid::MailboxError</a></li>
+				
+					<li><a href="../Celluloid/NotActorError.html">Celluloid::NotActorError</a></li>
+				
+					<li><a href="../Celluloid/Registry.html">Celluloid::Registry</a></li>
+				
+					<li><a href="../Celluloid/Response.html">Celluloid::Response</a></li>
+				
+					<li><a href="../Celluloid/SuccessResponse.html">Celluloid::SuccessResponse</a></li>
+				
+					<li><a href="../Celluloid/Supervisor.html">Celluloid::Supervisor</a></li>
+				
+					<li><a href="../Celluloid/SyncCall.html">Celluloid::SyncCall</a></li>
+				
+					<li><a href="../Celluloid/SystemEvent.html">Celluloid::SystemEvent</a></li>
+				
+					<li><a href="../Celluloid/Waker.html">Celluloid::Waker</a></li>
+				
+					<li><a href="../Celluloid/WakerError.html">Celluloid::WakerError</a></li>
+				
+					<li><a href="../Actor.html">Actor</a></li>
+				
+					<li><a href="../Thread.html">Thread</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="module">Celluloid::Actor</h1>
+
+		<div id="description">
+			<p>
+Actors are Celluloid&#8217;s concurrency primitive. They&#8217;re
+implemented as normal Ruby objects wrapped in threads which communicate
+with asynchronous messages. The implementation is inspired by
+Erlang&#8217;s gen_server
+</p>
+
+		</div>
+
+		<!-- Constants -->
+		
+
+		<!-- Attributes -->
+		
+		<div id="attribute-method-details" class="method-section section">
+			<h3 class="section-header">Attributes</h3>
+
+			
+			<div id="mailbox-attribute-method" class="method-detail">
+				<a name="mailbox"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">mailbox</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+		</div>
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="included-method" class="method-detail ">
+				<a name="method-c-included"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">included</span><span
+						class="method-args">(klass)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="included-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/celluloid/actor.rb, line 172</span>
+172:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">included</span>(<span class="ruby-identifier">klass</span>)
+173:       <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">extend</span> <span class="ruby-constant">ClassMethods</span>
+174:       <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">send</span> <span class="ruby-value">:include</span>, <span class="ruby-constant">InstanceMethods</span>
+175:       <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">send</span> <span class="ruby-value">:include</span>, <span class="ruby-constant">InternalMethods</span>
+176:       <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">send</span> <span class="ruby-value">:include</span>, <span class="ruby-constant">Linking</span>
+177:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

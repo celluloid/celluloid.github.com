@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Module: Celluloid::Actor::InternalMethods</title>
+
+	<link rel="stylesheet" href="../../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="module">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../../index.html">Home</a>
+          <a href="../../index.html#classes">Classes</a>
+          <a href="../../index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../../lib/celluloid/actor_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/celluloid/actor.rb">lib/celluloid/actor.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-i-__handle_crash">#__handle_crash</a></li>
+					
+					<li><a href="#method-i-__handle_exit">#__handle_exit</a></li>
+					
+					<li><a href="#method-i-__log_error">#__log_error</a></li>
+					
+					<li><a href="#method-i-__process_messages">#__process_messages</a></li>
+					
+					<li><a href="#method-i-__run_actor">#__run_actor</a></li>
+					
+					<li><a href="#method-i-__start_actor">#__start_actor</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../../Celluloid.html">Celluloid</a></li>
+				
+					<li><a href="../../Celluloid/AbortError.html">Celluloid::AbortError</a></li>
+				
+					<li><a href="../../Celluloid/Actor.html">Celluloid::Actor</a></li>
+				
+					<li><a href="../../Celluloid/Actor/ClassMethods.html">Celluloid::Actor::ClassMethods</a></li>
+				
+					<li><a href="../../Celluloid/Actor/InstanceMethods.html">Celluloid::Actor::InstanceMethods</a></li>
+				
+					<li><a href="../../Celluloid/Actor/InternalMethods.html">Celluloid::Actor::InternalMethods</a></li>
+				
+					<li><a href="../../Celluloid/ActorProxy.html">Celluloid::ActorProxy</a></li>
+				
+					<li><a href="../../Celluloid/AsyncCall.html">Celluloid::AsyncCall</a></li>
+				
+					<li><a href="../../Celluloid/Call.html">Celluloid::Call</a></li>
+				
+					<li><a href="../../Celluloid/DeadActorError.html">Celluloid::DeadActorError</a></li>
+				
+					<li><a href="../../Celluloid/ErrorResponse.html">Celluloid::ErrorResponse</a></li>
+				
+					<li><a href="../../Celluloid/ExitEvent.html">Celluloid::ExitEvent</a></li>
+				
+					<li><a href="../../Celluloid/Future.html">Celluloid::Future</a></li>
+				
+					<li><a href="../../Celluloid/Linking.html">Celluloid::Linking</a></li>
+				
+					<li><a href="../../Celluloid/Links.html">Celluloid::Links</a></li>
+				
+					<li><a href="../../Celluloid/Mailbox.html">Celluloid::Mailbox</a></li>
+				
+					<li><a href="../../Celluloid/MailboxError.html">Celluloid::MailboxError</a></li>
+				
+					<li><a href="../../Celluloid/NotActorError.html">Celluloid::NotActorError</a></li>
+				
+					<li><a href="../../Celluloid/Registry.html">Celluloid::Registry</a></li>
+				
+					<li><a href="../../Celluloid/Response.html">Celluloid::Response</a></li>
+				
+					<li><a href="../../Celluloid/SuccessResponse.html">Celluloid::SuccessResponse</a></li>
+				
+					<li><a href="../../Celluloid/Supervisor.html">Celluloid::Supervisor</a></li>
+				
+					<li><a href="../../Celluloid/SyncCall.html">Celluloid::SyncCall</a></li>
+				
+					<li><a href="../../Celluloid/SystemEvent.html">Celluloid::SystemEvent</a></li>
+				
+					<li><a href="../../Celluloid/Waker.html">Celluloid::Waker</a></li>
+				
+					<li><a href="../../Celluloid/WakerError.html">Celluloid::WakerError</a></li>
+				
+					<li><a href="../../Actor.html">Actor</a></li>
+				
+					<li><a href="../../Thread.html">Thread</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="module">Celluloid::Actor::InternalMethods</h1>
+
+		<div id="description">
+			<p>
+Internal methods not intended as part of the public API
+</p>
+
+		</div>
+
+		<!-- Constants -->
+		
+
+		<!-- Attributes -->
+		
+
+		<!-- Methods -->
+		
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="-handle-crash-method" class="method-detail ">
+				<a name="method-i-__handle_crash"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">__handle_crash</span><span
+						class="method-args">(exception)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Handle any exceptions that occur within a running actor
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="-handle-crash-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/celluloid/actor.rb, line 148</span>
+148:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">__handle_crash</span>(<span class="ruby-identifier">exception</span>)
+149:         <span class="ruby-identifier">__log_error</span>(<span class="ruby-identifier">exception</span>)
+150:         <span class="ruby-ivar">@mailbox</span>.<span class="ruby-identifier">cleanup</span>
+151:         
+152:         <span class="ruby-comment cmt"># Report the exit event to all actors we're linked to</span>
+153:         <span class="ruby-identifier">exit_event</span> = <span class="ruby-constant">ExitEvent</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@proxy</span>, <span class="ruby-identifier">exception</span>)
+154:         
+155:         <span class="ruby-comment cmt"># Propagate the error to all linked actors</span>
+156:         <span class="ruby-ivar">@links</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">actor</span><span class="ruby-operator">|</span>
+157:           <span class="ruby-identifier">actor</span>.<span class="ruby-identifier">mailbox</span>.<span class="ruby-identifier">system_event</span> <span class="ruby-identifier">exit_event</span>
+158:         <span class="ruby-keyword kw">end</span>
+159:       <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">handler_exception</span>
+160:         <span class="ruby-identifier">__log_error</span>(<span class="ruby-identifier">handler_exception</span>, <span class="ruby-value str">&quot;/!\\ EXCEPTION IN ERROR HANDLER /!\\&quot;</span>)
+161:       <span class="ruby-keyword kw">ensure</span>
+162:         <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">current</span>.<span class="ruby-identifier">exit</span>
+163:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="-handle-exit-method" class="method-detail ">
+				<a name="method-i-__handle_exit"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">__handle_exit</span><span
+						class="method-args">(exit_event)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Handle exit events received by this actor
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="-handle-exit-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/celluloid/actor.rb, line 140</span>
+140:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">__handle_exit</span>(<span class="ruby-identifier">exit_event</span>)
+141:         <span class="ruby-identifier">exit_handler</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">exit_handler</span>
+142:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">exit_event</span>.<span class="ruby-identifier">reason</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">exit_handler</span>
+143:         
+144:         <span class="ruby-identifier">send</span> <span class="ruby-identifier">exit_handler</span>, <span class="ruby-identifier">exit_event</span>.<span class="ruby-identifier">actor</span>, <span class="ruby-identifier">exit_event</span>.<span class="ruby-identifier">reason</span>
+145:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="-log-error-method" class="method-detail ">
+				<a name="method-i-__log_error"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">__log_error</span><span
+						class="method-args">(ex, prefix = "!!! CRASH")</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Log errors when an actor crashes FIXME: This should probably thunk to a
+real logger
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="-log-error-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/celluloid/actor.rb, line 167</span>
+167:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">__log_error</span>(<span class="ruby-identifier">ex</span>, <span class="ruby-identifier">prefix</span> = <span class="ruby-value str">&quot;!!! CRASH&quot;</span>)
+168:         <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{prefix} #{self.class}: #{ex.class}: #{ex.to_s}\n#{ex.backtrace.join(&quot;\n&quot;)}&quot;</span>
+169:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="-process-messages-method" class="method-detail ">
+				<a name="method-i-__process_messages"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">__process_messages</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Process incoming messages
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="-process-messages-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/celluloid/actor.rb, line 126</span>
+126:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">__process_messages</span>
+127:         <span class="ruby-keyword kw">while</span> <span class="ruby-keyword kw">true</span> <span class="ruby-comment cmt"># instead of loop, for speed!</span>
+128:           <span class="ruby-keyword kw">begin</span>
+129:             <span class="ruby-identifier">call</span> = <span class="ruby-ivar">@mailbox</span>.<span class="ruby-identifier">receive</span>
+130:           <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">ExitEvent</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">event</span>
+131:             <span class="ruby-identifier">__handle_exit</span>(<span class="ruby-identifier">event</span>)
+132:             <span class="ruby-keyword kw">retry</span>
+133:           <span class="ruby-keyword kw">end</span>
+134:             
+135:           <span class="ruby-identifier">call</span>.<span class="ruby-identifier">dispatch</span>(<span class="ruby-keyword kw">self</span>)
+136:         <span class="ruby-keyword kw">end</span>
+137:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="-run-actor-method" class="method-detail ">
+				<a name="method-i-__run_actor"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">__run_actor</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Run the actor
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="-run-actor-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/celluloid/actor.rb, line 119</span>
+119:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">__run_actor</span>
+120:         <span class="ruby-identifier">__process_messages</span>
+121:       <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ex</span>
+122:         <span class="ruby-identifier">__handle_crash</span>(<span class="ruby-identifier">ex</span>)
+123:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="-start-actor-method" class="method-detail ">
+				<a name="method-i-__start_actor"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">__start_actor</span><span
+						class="method-args">(*args, &block)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Actor-specific initialization and startup
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="-start-actor-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/celluloid/actor.rb, line 104</span>
+104:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">__start_actor</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
+105:         <span class="ruby-ivar">@mailbox</span> = <span class="ruby-constant">Mailbox</span>.<span class="ruby-identifier">new</span>
+106:         <span class="ruby-ivar">@links</span>   = <span class="ruby-constant">Links</span>.<span class="ruby-identifier">new</span>
+107:         <span class="ruby-ivar">@proxy</span>   = <span class="ruby-constant">ActorProxy</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-ivar">@mailbox</span>)
+108:         
+109:         <span class="ruby-ivar">@thread</span>  = <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span>
+110:           <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">current</span>[<span class="ruby-value">:actor</span>]   = <span class="ruby-keyword kw">self</span>
+111:           <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">current</span>[<span class="ruby-value">:mailbox</span>] = <span class="ruby-ivar">@mailbox</span>
+112:           <span class="ruby-identifier">__run_actor</span>
+113:         <span class="ruby-keyword kw">end</span>
+114:         
+115:         <span class="ruby-ivar">@proxy</span>
+116:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+
