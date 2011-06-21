@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang='en'>
+  <head>
+    <title>: Celluloid::Mailbox [RDoc Documentation]</title>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+    <link href='../../rdoc-style.css' media='screen' rel='stylesheet' type='text/css'>
+    <script type='text/javascript'>
+      //<![CDATA[
+        function popupCode(url) {
+          window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+        }
+        
+        function toggleCode(id) {
+          var code = document.getElementById(id)
+        
+          code.style.display = code.style.display != 'block' ? 'block' : 'none'
+          return true
+        }
+        
+        // Make codeblocks hidden by default
+        document.writeln('<' + 'style type="text/css">.method .source pre { display: none }<\/style>')
+      //]]>
+    </script>
+  </head>
+  <body class='page'>
+    <div class='class' id='wrapper'>
+      <div class='header'>
+        <h1 class='name'>
+          <span class='type'>Class</span>
+          Celluloid::Mailbox
+        </h1>
+        <ol class='paths'>
+          <li>
+            <a href="../../files/lib/celluloid/mailbox_rb.html">lib/celluloid/mailbox.rb</a>
+          </li>
+        </ol>
+        <div class='parent'>
+          Parent:
+          <strong>Object</strong>
+        </div>
+      </div>
+      <div id='content'>
+        <div id='text'>
+          <div id='description'>
+            <p>
+            Actors communicate with asynchronous messages. Messages are buffered in
+            Mailboxes until Actors can act upon them.
+            </p>
+          </div>
+          <div id='method-list'>
+            <h2>Methods</h2>
+            <h3>public class</h3>
+            <ol>
+              <li><a href="#M000059">new</a></li>
+            </ol>
+            <h3>public instance</h3>
+            <ol>
+              <li><a href="#M000060">&lt;&lt;</a></li>
+              <li><a href="#M000065">each</a></li>
+              <li><a href="#M000066">inspect</a></li>
+              <li><a href="#M000062">receive</a></li>
+              <li><a href="#M000063">shutdown</a></li>
+              <li><a href="#M000061">system_event</a></li>
+              <li><a href="#M000064">to_a</a></li>
+            </ol>
+          </div>
+          <div id='context'>
+            <div id='includes'>
+              <h2>Included modules</h2>
+              <ol>
+                <li>Enumerable</li>
+              </ol>
+            </div>
+          </div>
+          <div id='section'>
+            <div id='methods'>
+              <h2>Public class methods</h2>
+              <div class='method public-class' id='method-M000059'>
+                <a name='M000059'></a>
+                <div class='synopsis'>
+                  <span class='name'>new</span>
+                  <span class='arguments'>()</span>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000059-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000059-source'><span class="ruby-comment cmt"># File lib/celluloid/mailbox.rb, line 11</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>&#x000A;      <span class="ruby-ivar">@messages</span> = []&#x000A;      <span class="ruby-ivar">@lock</span>  = <span class="ruby-constant">Mutex</span>.<span class="ruby-identifier">new</span>&#x000A;      <span class="ruby-ivar">@condition</span> = <span class="ruby-constant">ConditionVariable</span>.<span class="ruby-identifier">new</span>&#x000A;      <span class="ruby-ivar">@dead</span> = <span class="ruby-keyword kw">false</span>&#x000A;    <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <h2>Public instance methods</h2>
+              <div class='method public-instance' id='method-M000060'>
+                <a name='M000060'></a>
+                <div class='synopsis'>
+                  <span class='name'>&lt;&lt;</span>
+                  <span class='arguments'>(message)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Add a message to the <a href="Mailbox.html">Mailbox</a>
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000060-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000060-source'><span class="ruby-comment cmt"># File lib/celluloid/mailbox.rb, line 19</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-operator">&lt;&lt;</span>(<span class="ruby-identifier">message</span>)&#x000A;      <span class="ruby-ivar">@lock</span>.<span class="ruby-identifier">synchronize</span> <span class="ruby-keyword kw">do</span>&#x000A;        <span class="ruby-identifier">raise</span> <span class="ruby-constant">MailboxError</span>, <span class="ruby-value str">&quot;dead recipient&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@dead</span>&#x000A;        &#x000A;        <span class="ruby-ivar">@messages</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">message</span>&#x000A;        <span class="ruby-ivar">@condition</span>.<span class="ruby-identifier">signal</span>&#x000A;      <span class="ruby-keyword kw">end</span>&#x000A;      <span class="ruby-keyword kw">nil</span>&#x000A;    <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000065'>
+                <a name='M000065'></a>
+                <div class='synopsis'>
+                  <span class='name'>each</span>
+                  <span class='arguments'>(&amp;block)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Iterate through the mailbox
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000065-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000065-source'><span class="ruby-comment cmt"># File lib/celluloid/mailbox.rb, line 82</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;      <span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">each</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;    <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000066'>
+                <a name='M000066'></a>
+                <div class='synopsis'>
+                  <span class='name'>inspect</span>
+                  <span class='arguments'>()</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Inspect the contents of the <a href="Mailbox.html">Mailbox</a>
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000066-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000066-source'><span class="ruby-comment cmt"># File lib/celluloid/mailbox.rb, line 87</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inspect</span>&#x000A;      <span class="ruby-node">&quot;#&lt;Celluloid::Mailbox:#{object_id} [#{map { |m| m.inspect }.join(', ')}]&gt;&quot;</span>&#x000A;    <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000062'>
+                <a name='M000062'></a>
+                <div class='synopsis'>
+                  <span class='name'>receive</span>
+                  <span class='arguments'>() {|msg| ...}</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Receive a message from the <a href="Mailbox.html">Mailbox</a>
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000062-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000062-source'><span class="ruby-comment cmt"># File lib/celluloid/mailbox.rb, line 41</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">receive</span>&#x000A;      <span class="ruby-identifier">message</span> = <span class="ruby-keyword kw">nil</span>&#x000A;      &#x000A;      <span class="ruby-ivar">@lock</span>.<span class="ruby-identifier">synchronize</span> <span class="ruby-keyword kw">do</span>&#x000A;        <span class="ruby-identifier">raise</span> <span class="ruby-constant">MailboxError</span>, <span class="ruby-value str">&quot;attempted to receive from a dead mailbox&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@dead</span>&#x000A;        &#x000A;        <span class="ruby-keyword kw">begin</span>&#x000A;          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>&#x000A;            <span class="ruby-identifier">index</span> = <span class="ruby-ivar">@messages</span>.<span class="ruby-identifier">index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">msg</span><span class="ruby-operator">|</span>&#x000A;              <span class="ruby-keyword kw">yield</span>(<span class="ruby-identifier">msg</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Celluloid</span><span class="ruby-operator">::</span><span class="ruby-constant">SystemEvent</span>)&#x000A;            <span class="ruby-keyword kw">end</span>&#x000A;&#x000A;            <span class="ruby-identifier">message</span> = <span class="ruby-ivar">@messages</span>.<span class="ruby-identifier">slice!</span>(<span class="ruby-identifier">index</span>, <span class="ruby-value">1</span>).<span class="ruby-identifier">first</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">index</span>&#x000A;          <span class="ruby-keyword kw">else</span>&#x000A;            <span class="ruby-identifier">message</span> = <span class="ruby-ivar">@messages</span>.<span class="ruby-identifier">shift</span>&#x000A;          <span class="ruby-keyword kw">end</span>&#x000A;          &#x000A;          <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">message</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Celluloid</span><span class="ruby-operator">::</span><span class="ruby-constant">SystemEvent</span>)&#x000A;          &#x000A;          <span class="ruby-ivar">@condition</span>.<span class="ruby-identifier">wait</span>(<span class="ruby-ivar">@lock</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">message</span>&#x000A;        <span class="ruby-keyword kw">end</span> <span class="ruby-keyword kw">until</span> <span class="ruby-identifier">message</span>&#x000A;      <span class="ruby-keyword kw">end</span>&#x000A;        &#x000A;      <span class="ruby-identifier">message</span>&#x000A;    <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000063'>
+                <a name='M000063'></a>
+                <div class='synopsis'>
+                  <span class='name'>shutdown</span>
+                  <span class='arguments'>()</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Shut down this mailbox and clean up its contents
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000063-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000063-source'><span class="ruby-comment cmt"># File lib/celluloid/mailbox.rb, line 68</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shutdown</span>&#x000A;      <span class="ruby-ivar">@lock</span>.<span class="ruby-identifier">synchronize</span> <span class="ruby-keyword kw">do</span>&#x000A;        <span class="ruby-ivar">@messages</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">msg</span><span class="ruby-operator">|</span> <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">cleanup</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-identifier">:cleanup</span> }&#x000A;        <span class="ruby-ivar">@messages</span>.<span class="ruby-identifier">clear</span>&#x000A;        <span class="ruby-ivar">@dead</span> = <span class="ruby-keyword kw">true</span>&#x000A;      <span class="ruby-keyword kw">end</span>&#x000A;    <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000061'>
+                <a name='M000061'></a>
+                <div class='synopsis'>
+                  <span class='name'>system_event</span>
+                  <span class='arguments'>(event)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Add a high-priority system event to the <a href="Mailbox.html">Mailbox</a>
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000061-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000061-source'><span class="ruby-comment cmt"># File lib/celluloid/mailbox.rb, line 30</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">system_event</span>(<span class="ruby-identifier">event</span>)&#x000A;      <span class="ruby-ivar">@lock</span>.<span class="ruby-identifier">synchronize</span> <span class="ruby-keyword kw">do</span>&#x000A;        <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@dead</span> <span class="ruby-comment cmt"># Silently fail if messages are sent to dead actors</span>&#x000A;          <span class="ruby-ivar">@messages</span>.<span class="ruby-identifier">unshift</span> <span class="ruby-identifier">event</span>&#x000A;          <span class="ruby-ivar">@condition</span>.<span class="ruby-identifier">signal</span>&#x000A;        <span class="ruby-keyword kw">end</span>&#x000A;      <span class="ruby-keyword kw">end</span>&#x000A;      <span class="ruby-keyword kw">nil</span>&#x000A;    <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000064'>
+                <a name='M000064'></a>
+                <div class='synopsis'>
+                  <span class='name'>to_a</span>
+                  <span class='arguments'>()</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Cast to an array
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000064-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000064-source'><span class="ruby-comment cmt"># File lib/celluloid/mailbox.rb, line 77</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_a</span>&#x000A;      <span class="ruby-ivar">@lock</span>.<span class="ruby-identifier">synchronize</span> { <span class="ruby-ivar">@messages</span>.<span class="ruby-identifier">dup</span> }&#x000A;    <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id='footer-push'></div>
+    </div>
+    <div id='footer'>
+      <a href="http://github.com/mislav/hanna/tree/master"><strong>Hanna</strong> RDoc template</a>
+    </div>
+  </body>
+</html>

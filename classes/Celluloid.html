@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang='en'>
+  <head>
+    <title>: Celluloid [RDoc Documentation]</title>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+    <link href='../rdoc-style.css' media='screen' rel='stylesheet' type='text/css'>
+    <script type='text/javascript'>
+      //<![CDATA[
+        function popupCode(url) {
+          window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+        }
+        
+        function toggleCode(id) {
+          var code = document.getElementById(id)
+        
+          code.style.display = code.style.display != 'block' ? 'block' : 'none'
+          return true
+        }
+        
+        // Make codeblocks hidden by default
+        document.writeln('<' + 'style type="text/css">.method .source pre { display: none }<\/style>')
+      //]]>
+    </script>
+  </head>
+  <body class='page'>
+    <div class='class' id='wrapper'>
+      <div class='header'>
+        <h1 class='name'>
+          <span class='type'>Module</span>
+          Celluloid
+        </h1>
+        <ol class='paths'>
+          <li>
+            <a href="../files/lib/celluloid/actor_rb.html">lib/celluloid/actor.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../files/lib/celluloid/actor_proxy_rb.html">lib/celluloid/actor_proxy.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../files/lib/celluloid/calls_rb.html">lib/celluloid/calls.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../files/lib/celluloid/events_rb.html">lib/celluloid/events.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../files/lib/celluloid/future_rb.html">lib/celluloid/future.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../files/lib/celluloid/linking_rb.html">lib/celluloid/linking.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../files/lib/celluloid/mailbox_rb.html">lib/celluloid/mailbox.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../files/lib/celluloid/registry_rb.html">lib/celluloid/registry.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../files/lib/celluloid/responses_rb.html">lib/celluloid/responses.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../files/lib/celluloid/supervisor_rb.html">lib/celluloid/supervisor.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../files/lib/celluloid/version_rb.html">lib/celluloid/version.rb</a>
+          </li>
+          <li>
+            <a class='show' href='#' onclick='this.parentNode.parentNode.className += " expanded"; this.parentNode.removeChild(this); return false'>show all</a>
+          </li>
+        </ol>
+      </div>
+      <div id='content'>
+        <div id='text'>
+          <div id='method-list'>
+            <h2>Methods</h2>
+            <h3>public class</h3>
+            <ol>
+              <li><a href="#M000004">Future</a></li>
+              <li><a href="#M000002">actor?</a></li>
+              <li><a href="#M000003">current_actor</a></li>
+              <li><a href="#M000005">version</a></li>
+            </ol>
+          </div>
+          <div id='section'>
+            <div id='class-list'>
+              <h2>Classes and Modules</h2>
+              Module <a href="Celluloid/Actor.html" class="link">Celluloid::Actor</a><br />
+              Module <a href="Celluloid/Linking.html" class="link">Celluloid::Linking</a><br />
+              Module <a href="Celluloid/Registry.html" class="link">Celluloid::Registry</a><br />
+              Class <a href="Celluloid/AbortError.html" class="link">Celluloid::AbortError</a><br />
+              Class <a href="Celluloid/ActorProxy.html" class="link">Celluloid::ActorProxy</a><br />
+              Class <a href="Celluloid/AsyncCall.html" class="link">Celluloid::AsyncCall</a><br />
+              Class <a href="Celluloid/Call.html" class="link">Celluloid::Call</a><br />
+              Class <a href="Celluloid/DeadActorError.html" class="link">Celluloid::DeadActorError</a><br />
+              Class <a href="Celluloid/ErrorResponse.html" class="link">Celluloid::ErrorResponse</a><br />
+              Class <a href="Celluloid/ExitEvent.html" class="link">Celluloid::ExitEvent</a><br />
+              Class <a href="Celluloid/Future.html" class="link">Celluloid::Future</a><br />
+              Class <a href="Celluloid/Links.html" class="link">Celluloid::Links</a><br />
+              Class <a href="Celluloid/Mailbox.html" class="link">Celluloid::Mailbox</a><br />
+              Class <a href="Celluloid/MailboxError.html" class="link">Celluloid::MailboxError</a><br />
+              Class <a href="Celluloid/NotActorError.html" class="link">Celluloid::NotActorError</a><br />
+              Class <a href="Celluloid/Response.html" class="link">Celluloid::Response</a><br />
+              Class <a href="Celluloid/SuccessResponse.html" class="link">Celluloid::SuccessResponse</a><br />
+              Class <a href="Celluloid/Supervisor.html" class="link">Celluloid::Supervisor</a><br />
+              Class <a href="Celluloid/SyncCall.html" class="link">Celluloid::SyncCall</a><br />
+              Class <a href="Celluloid/SystemEvent.html" class="link">Celluloid::SystemEvent</a><br />
+            </div>
+            <div id='constants-list'>
+              <h2>Constants</h2>
+              <div class='name-list'>
+                <table summary='Constants'>
+                  <tr class='top-aligned-row context-row'>
+                    <td class='context-item-name'>VERSION</td>
+                    <td>=</td>
+                    <td class='context-item-value'>'0.1.1'</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div id='methods'>
+              <h2>Public class methods</h2>
+              <div class='method public-class' id='method-M000004'>
+                <a name='M000004'></a>
+                <div class='synopsis'>
+                  <span class='name'>Future</span>
+                  <span class='arguments'>(*args, &amp;block)</span>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000004-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000004-source'><span class="ruby-comment cmt"># File lib/celluloid/future.rb, line 2</span>&#x000A;  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-constant">Future</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;    <span class="ruby-identifier">future</span> = <span class="ruby-constant">Celluloid</span><span class="ruby-operator">::</span><span class="ruby-constant">Future</span>.<span class="ruby-identifier">spawn</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;    <span class="ruby-identifier">future</span>.<span class="ruby-identifier">run!</span>&#x000A;    <span class="ruby-identifier">future</span>&#x000A;  <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-class' id='method-M000002'>
+                <a name='M000002'></a>
+                <div class='synopsis'>
+                  <span class='name'>actor?</span>
+                  <span class='arguments'>()</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Are we currently inside of an actor?
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000002-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000002-source'><span class="ruby-comment cmt"># File lib/celluloid/actor.rb, line 32</span>&#x000A;  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">actor?</span>&#x000A;    <span class="ruby-operator">!</span><span class="ruby-operator">!</span><span class="ruby-constant">Thread</span>.<span class="ruby-identifier">current</span>[<span class="ruby-identifier">:actor</span>]&#x000A;  <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-class' id='method-M000003'>
+                <a name='M000003'></a>
+                <div class='synopsis'>
+                  <span class='name'>current_actor</span>
+                  <span class='arguments'>()</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Obtain the currently running actor (if one exists)
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000003-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000003-source'><span class="ruby-comment cmt"># File lib/celluloid/actor.rb, line 37</span>&#x000A;  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">current_actor</span>&#x000A;    <span class="ruby-identifier">actor</span> = <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">current</span>[<span class="ruby-identifier">:actor_proxy</span>]&#x000A;    <span class="ruby-identifier">raise</span> <span class="ruby-constant">NotActorError</span>, <span class="ruby-value str">&quot;not in actor scope&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">actor</span>&#x000A;    &#x000A;    <span class="ruby-identifier">actor</span>&#x000A;  <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-class' id='method-M000005'>
+                <a name='M000005'></a>
+                <div class='synopsis'>
+                  <span class='name'>version</span>
+                  <span class='arguments'>()</span>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000005-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000005-source'><span class="ruby-comment cmt"># File lib/celluloid/version.rb, line 3</span>&#x000A;  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">version</span>; <span class="ruby-constant">VERSION</span>; <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id='footer-push'></div>
+    </div>
+    <div id='footer'>
+      <a href="http://github.com/mislav/hanna/tree/master"><strong>Hanna</strong> RDoc template</a>
+    </div>
+  </body>
+</html>
