@@ -506,21 +506,20 @@ Wrap the given subject object with an Actor
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 46</span>
 
-<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='subject identifier id'>subject</span><span class='rparen token'>)</span>
-  <span class='@subject ivar id'>@subject</span>  <span class='assign token'>=</span> <span class='subject identifier id'>subject</span>
-  <span class='@mailbox ivar id'>@mailbox</span> <span class='assign token'>=</span> <span class='initialize_mailbox identifier id'>initialize_mailbox</span>
-  <span class='@links ivar id'>@links</span>   <span class='assign token'>=</span> <span class='Links constant id'>Links</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
-  <span class='@signals ivar id'>@signals</span> <span class='assign token'>=</span> <span class='Signals constant id'>Signals</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
-  <span class='@proxy ivar id'>@proxy</span>   <span class='assign token'>=</span> <span class='ActorProxy constant id'>ActorProxy</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='@mailbox ivar id'>@mailbox</span><span class='rparen token'>)</span>
-  <span class='@running ivar id'>@running</span> <span class='assign token'>=</span> <span class='true true kw'>true</span>
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id subject'>subject</span><span class='rparen'>)</span>
+  <span class='ivar'>@subject</span>  <span class='op'>=</span> <span class='id subject'>subject</span>
+  <span class='ivar'>@mailbox</span> <span class='op'>=</span> <span class='id initialize_mailbox'>initialize_mailbox</span>
+  <span class='ivar'>@links</span>   <span class='op'>=</span> <span class='const'>Links</span><span class='period'>.</span><span class='id new'>new</span>
+  <span class='ivar'>@signals</span> <span class='op'>=</span> <span class='const'>Signals</span><span class='period'>.</span><span class='id new'>new</span>
+  <span class='ivar'>@proxy</span>   <span class='op'>=</span> <span class='const'>ActorProxy</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='ivar'>@mailbox</span><span class='rparen'>)</span>
+  <span class='ivar'>@running</span> <span class='op'>=</span> <span class='kw'>true</span>
 
-  <span class='@thread ivar id'>@thread</span> <span class='assign token'>=</span> <span class='Pool constant id'>Pool</span><span class='dot token'>.</span><span class='get identifier id'>get</span>
-  <span class='@thread ivar id'>@thread</span><span class='lbrack token'>[</span><span class='symbol val'>:queue</span><span class='rbrack token'>]</span> <span class='lshft op'>&lt;&lt;</span> <span class='proc identifier id'>proc</span> <span class='do do kw'>do</span>
-    <span class='initialize_thread_locals identifier id'>initialize_thread_locals</span>
-    <span class='run identifier id'>run</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='ivar'>@thread</span> <span class='op'>=</span> <span class='const'>Pool</span><span class='period'>.</span><span class='id get'>get</span>
+  <span class='ivar'>@thread</span><span class='lbracket'>[</span><span class='symbol'>:queue</span><span class='rbracket'>]</span> <span class='op'>&lt;&lt;</span> <span class='id proc'>proc</span> <span class='kw'>do</span>
+    <span class='id initialize_thread_locals'>initialize_thread_locals</span>
+    <span class='id run'>run</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -566,10 +565,9 @@ Returns the value of attribute links
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 41</span>
 
-<span class='def def kw'>def</span> <span class='links identifier id'>links</span>
-  <span class='@links ivar id'>@links</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id links'>links</span>
+  <span class='ivar'>@links</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -610,10 +608,9 @@ Returns the value of attribute mailbox
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 42</span>
 
-<span class='def def kw'>def</span> <span class='mailbox identifier id'>mailbox</span>
-  <span class='@mailbox ivar id'>@mailbox</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id mailbox'>mailbox</span>
+  <span class='ivar'>@mailbox</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -654,10 +651,9 @@ Returns the value of attribute proxy
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 40</span>
 
-<span class='def def kw'>def</span> <span class='proxy identifier id'>proxy</span>
-  <span class='@proxy ivar id'>@proxy</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id proxy'>proxy</span>
+  <span class='ivar'>@proxy</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -715,10 +711,9 @@ Is this actor alive?
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 88</span>
 
-<span class='def def kw'>def</span> <span class='alive? fid id'>alive?</span>
-  <span class='@running ivar id'>@running</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id alive?'>alive?</span>
+  <span class='ivar'>@running</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -760,10 +755,9 @@ subclasses of Celluloid::Actor which use a custom mailbox
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 65</span>
 
-<span class='def def kw'>def</span> <span class='initialize_mailbox identifier id'>initialize_mailbox</span>
-  <span class='Mailbox constant id'>Mailbox</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id initialize_mailbox'>initialize_mailbox</span>
+  <span class='const'>Mailbox</span><span class='period'>.</span><span class='id new'>new</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -803,12 +797,11 @@ Configure thread locals for the running thread
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 70</span>
 
-<span class='def def kw'>def</span> <span class='initialize_thread_locals identifier id'>initialize_thread_locals</span>
-  <span class='Thread constant id'>Thread</span><span class='dot token'>.</span><span class='current identifier id'>current</span><span class='lbrack token'>[</span><span class='symbol val'>:actor</span><span class='rbrack token'>]</span>       <span class='assign token'>=</span> <span class='self self kw'>self</span>
-  <span class='Thread constant id'>Thread</span><span class='dot token'>.</span><span class='current identifier id'>current</span><span class='lbrack token'>[</span><span class='symbol val'>:actor_proxy</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='@proxy ivar id'>@proxy</span>
-  <span class='Thread constant id'>Thread</span><span class='dot token'>.</span><span class='current identifier id'>current</span><span class='lbrack token'>[</span><span class='symbol val'>:mailbox</span><span class='rbrack token'>]</span>     <span class='assign token'>=</span> <span class='@mailbox ivar id'>@mailbox</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id initialize_thread_locals'>initialize_thread_locals</span>
+  <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:actor</span><span class='rbracket'>]</span>       <span class='op'>=</span> <span class='kw'>self</span>
+  <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:actor_proxy</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@proxy</span>
+  <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:mailbox</span><span class='rbracket'>]</span>     <span class='op'>=</span> <span class='ivar'>@mailbox</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -852,16 +845,15 @@ Run the actor loop
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 77</span>
 
-<span class='def def kw'>def</span> <span class='run identifier id'>run</span>
-  <span class='process_messages identifier id'>process_messages</span>
-  <span class='cleanup identifier id'>cleanup</span> <span class='ExitEvent constant id'>ExitEvent</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='@proxy ivar id'>@proxy</span><span class='rparen token'>)</span>
-<span class='rescue rescue kw'>rescue</span> <span class='Exception constant id'>Exception</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='ex identifier id'>ex</span>
-  <span class='@running ivar id'>@running</span> <span class='assign token'>=</span> <span class='false false kw'>false</span>
-  <span class='handle_crash identifier id'>handle_crash</span><span class='lparen token'>(</span><span class='ex identifier id'>ex</span><span class='rparen token'>)</span>
-<span class='ensure ensure kw'>ensure</span>
-  <span class='Pool constant id'>Pool</span><span class='dot token'>.</span><span class='put identifier id'>put</span> <span class='@thread ivar id'>@thread</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id run'>run</span>
+  <span class='id process_messages'>process_messages</span>
+  <span class='id cleanup'>cleanup</span> <span class='const'>ExitEvent</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='ivar'>@proxy</span><span class='rparen'>)</span>
+<span class='kw'>rescue</span> <span class='const'>Exception</span> <span class='op'>=&gt;</span> <span class='id ex'>ex</span>
+  <span class='ivar'>@running</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='id handle_crash'>handle_crash</span><span class='lparen'>(</span><span class='id ex'>ex</span><span class='rparen'>)</span>
+<span class='kw'>ensure</span>
+  <span class='const'>Pool</span><span class='period'>.</span><span class='id put'>put</span> <span class='ivar'>@thread</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -899,10 +891,9 @@ Send a signal with the given name to all waiting methods
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 99</span>
 
-<span class='def def kw'>def</span> <span class='signal identifier id'>signal</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='comma token'>,</span> <span class='value identifier id'>value</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
-  <span class='@signals ivar id'>@signals</span><span class='dot token'>.</span><span class='send identifier id'>send</span> <span class='name identifier id'>name</span><span class='comma token'>,</span> <span class='value identifier id'>value</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id signal'>signal</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span> <span class='id value'>value</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='ivar'>@signals</span><span class='period'>.</span><span class='id send'>send</span> <span class='id name'>name</span><span class='comma'>,</span> <span class='id value'>value</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -941,11 +932,10 @@ Terminate this actor
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 93</span>
 
-<span class='def def kw'>def</span> <span class='terminate identifier id'>terminate</span>
-  <span class='@running ivar id'>@running</span> <span class='assign token'>=</span> <span class='false false kw'>false</span>
-  <span class='nil nil kw'>nil</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id terminate'>terminate</span>
+  <span class='ivar'>@running</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -983,10 +973,9 @@ Wait for the given signal
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 104</span>
 
-<span class='def def kw'>def</span> <span class='wait identifier id'>wait</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
-  <span class='@signals ivar id'>@signals</span><span class='dot token'>.</span><span class='wait identifier id'>wait</span> <span class='name identifier id'>name</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id wait'>wait</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+  <span class='ivar'>@signals</span><span class='period'>.</span><span class='id wait'>wait</span> <span class='id name'>name</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -997,9 +986,9 @@ Wait for the given signal
 </div>
     
     <div id="footer">
-  Generated on Tue Oct 25 00:09:12 2011 by 
+  Generated on Tue Oct 25 00:23:44 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.3 (ruby-1.8.7).
+  0.7.3 (ruby-1.9.2).
 </div>
 
   </body>

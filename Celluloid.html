@@ -77,7 +77,7 @@
   
     <dt class="r2 last">Defined in:</dt>
     <dd class="r2 last">lib/celluloid.rb<span class="defines">,<br />
-  lib/celluloid/io.rb,<br /> lib/celluloid/actor.rb,<br /> lib/celluloid/calls.rb,<br /> lib/celluloid/events.rb,<br /> lib/celluloid/future.rb,<br /> lib/celluloid/linking.rb,<br /> lib/celluloid/mailbox.rb,<br /> lib/celluloid/signals.rb,<br /> lib/celluloid/version.rb,<br /> lib/celluloid/registry.rb,<br /> lib/celluloid/io/actor.rb,<br /> lib/celluloid/io/waker.rb,<br /> lib/celluloid/responses.rb,<br /> lib/celluloid/actor_pool.rb,<br /> lib/celluloid/supervisor.rb,<br /> lib/celluloid/tcp_server.rb,<br /> lib/celluloid/io/mailbox.rb,<br /> lib/celluloid/io/reactor.rb,<br /> lib/celluloid/actor_proxy.rb</span>
+  lib/celluloid/io.rb,<br /> lib/celluloid/actor.rb,<br /> lib/celluloid/calls.rb,<br /> lib/celluloid/events.rb,<br /> lib/celluloid/future.rb,<br /> lib/celluloid/signals.rb,<br /> lib/celluloid/version.rb,<br /> lib/celluloid/mailbox.rb,<br /> lib/celluloid/linking.rb,<br /> lib/celluloid/io/waker.rb,<br /> lib/celluloid/registry.rb,<br /> lib/celluloid/io/actor.rb,<br /> lib/celluloid/responses.rb,<br /> lib/celluloid/actor_pool.rb,<br /> lib/celluloid/io/reactor.rb,<br /> lib/celluloid/supervisor.rb,<br /> lib/celluloid/tcp_server.rb,<br /> lib/celluloid/io/mailbox.rb,<br /> lib/celluloid/actor_proxy.rb</span>
 </dd>
   
 </dl>
@@ -103,8 +103,7 @@
         <dt id="VERSION-constant" class="">VERSION =
           
         </dt>
-        <dd><pre class="code"><span class='string val'>'0.5.0'</span>
-</pre></dd>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>0.5.0</span><span class='tstring_end'>'</span></span></pre></dd>
       
     </dl>
   
@@ -551,27 +550,26 @@ Process async calls via method_missing
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 125</span>
 
-<span class='def def kw'>def</span> <span class='method_missing identifier id'>method_missing</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='comment val'># bang methods are async calls</span>
-  <span class='if if kw'>if</span> <span class='meth identifier id'>meth</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='dot token'>.</span><span class='match identifier id'>match</span><span class='lparen token'>(</span><span class='regexp val'>/!$/</span><span class='rparen token'>)</span>
-    <span class='unbanged_meth identifier id'>unbanged_meth</span> <span class='assign token'>=</span> <span class='meth identifier id'>meth</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='dot token'>.</span><span class='sub identifier id'>sub</span><span class='lparen token'>(</span><span class='regexp val'>/!$/</span><span class='comma token'>,</span> <span class='string val'>''</span><span class='rparen token'>)</span>
-    <span class='call identifier id'>call</span> <span class='assign token'>=</span> <span class='AsyncCall constant id'>AsyncCall</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='@mailbox ivar id'>@mailbox</span><span class='comma token'>,</span> <span class='unbanged_meth identifier id'>unbanged_meth</span><span class='comma token'>,</span> <span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='block identifier id'>block</span><span class='rparen token'>)</span>
+<span class='kw'>def</span> <span class='id method_missing'>method_missing</span><span class='lparen'>(</span><span class='id meth'>meth</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='comment'># bang methods are async calls
+</span>  <span class='kw'>if</span> <span class='id meth'>meth</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='period'>.</span><span class='id match'>match</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>!$</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>
+    <span class='id unbanged_meth'>unbanged_meth</span> <span class='op'>=</span> <span class='id meth'>meth</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='period'>.</span><span class='id sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>!$</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+    <span class='id call'>call</span> <span class='op'>=</span> <span class='const'>AsyncCall</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='ivar'>@mailbox</span><span class='comma'>,</span> <span class='id unbanged_meth'>unbanged_meth</span><span class='comma'>,</span> <span class='id args'>args</span><span class='comma'>,</span> <span class='id block'>block</span><span class='rparen'>)</span>
 
-    <span class='begin begin kw'>begin</span>
-      <span class='Thread constant id'>Thread</span><span class='dot token'>.</span><span class='current identifier id'>current</span><span class='lbrack token'>[</span><span class='symbol val'>:actor</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='mailbox identifier id'>mailbox</span> <span class='lshft op'>&lt;&lt;</span> <span class='call identifier id'>call</span>
-    <span class='rescue rescue kw'>rescue</span> <span class='MailboxError constant id'>MailboxError</span>
-      <span class='comment val'># Silently swallow asynchronous calls to dead actors. There's no way</span>
-      <span class='comment val'># to reliably generate DeadActorErrors for async calls, so users of</span>
-      <span class='comment val'># async calls should find other ways to deal with actors dying</span>
-      <span class='comment val'># during an async call (i.e. linking/supervisors)</span>
-    <span class='end end kw'>end</span>
+    <span class='kw'>begin</span>
+      <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:actor</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id mailbox'>mailbox</span> <span class='op'>&lt;&lt;</span> <span class='id call'>call</span>
+    <span class='kw'>rescue</span> <span class='const'>MailboxError</span>
+      <span class='comment'># Silently swallow asynchronous calls to dead actors. There's no way
+</span>      <span class='comment'># to reliably generate DeadActorErrors for async calls, so users of
+</span>      <span class='comment'># async calls should find other ways to deal with actors dying
+</span>      <span class='comment'># during an async call (i.e. linking/supervisors)
+</span>    <span class='kw'>end</span>
 
-    <span class='return return kw'>return</span> <span class='comment val'># casts are async and return immediately</span>
-  <span class='end end kw'>end</span>
+    <span class='kw'>return</span> <span class='comment'># casts are async and return immediately
+</span>  <span class='kw'>end</span>
 
-  <span class='super super kw'>super</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>super</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -617,10 +615,9 @@ Thread-safe logger class
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 7</span>
 
-<span class='def def kw'>def</span> <span class='logger identifier id'>logger</span>
-  <span class='@logger ivar id'>@logger</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id logger'>logger</span>
+  <span class='ivar'>@logger</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -678,10 +675,9 @@ Are we currently inside of an actor?
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 15</span>
 
-<span class='def def kw'>def</span> <span class='actor? fid id'>actor?</span>
-  <span class='notop op'>!</span><span class='notop op'>!</span><span class='Thread constant id'>Thread</span><span class='dot token'>.</span><span class='current identifier id'>current</span><span class='lbrack token'>[</span><span class='symbol val'>:actor</span><span class='rbrack token'>]</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id actor?'>actor?</span>
+  <span class='op'>!</span><span class='op'>!</span><span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:actor</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -735,13 +731,12 @@ Obtain the currently running actor (if one exists)
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 20</span>
 
-<span class='def def kw'>def</span> <span class='current_actor identifier id'>current_actor</span>
-  <span class='actor identifier id'>actor</span> <span class='assign token'>=</span> <span class='Thread constant id'>Thread</span><span class='dot token'>.</span><span class='current identifier id'>current</span><span class='lbrack token'>[</span><span class='symbol val'>:actor_proxy</span><span class='rbrack token'>]</span>
-  <span class='raise identifier id'>raise</span> <span class='NotActorError constant id'>NotActorError</span><span class='comma token'>,</span> <span class='string val'>&quot;not in actor scope&quot;</span> <span class='unless unless_mod kw'>unless</span> <span class='actor identifier id'>actor</span>
+<span class='kw'>def</span> <span class='id current_actor'>current_actor</span>
+  <span class='id actor'>actor</span> <span class='op'>=</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:actor_proxy</span><span class='rbracket'>]</span>
+  <span class='id raise'>raise</span> <span class='const'>NotActorError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>not in actor scope</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id actor'>actor</span>
 
-  <span class='actor identifier id'>actor</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='id actor'>actor</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -780,10 +775,9 @@ the background and its return value obtained later
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/future.rb', line 6</span>
 
-<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='Future constant id'>Future</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='Celluloid constant id'>Celluloid</span><span class='colon2 op'>::</span><span class='Future constant id'>Future</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='const'>Future</span><span class='lparen'>(</span><span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='const'>Celluloid</span><span class='op'>::</span><span class='const'>Future</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -810,11 +804,10 @@ the background and its return value obtained later
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 9</span>
 
-<span class='def def kw'>def</span> <span class='included identifier id'>included</span><span class='lparen token'>(</span><span class='klass identifier id'>klass</span><span class='rparen token'>)</span>
-  <span class='klass identifier id'>klass</span><span class='dot token'>.</span><span class='send identifier id'>send</span> <span class='symbol val'>:extend</span><span class='comma token'>,</span>  <span class='ClassMethods constant id'>ClassMethods</span>
-  <span class='klass identifier id'>klass</span><span class='dot token'>.</span><span class='send identifier id'>send</span> <span class='symbol val'>:include</span><span class='comma token'>,</span> <span class='Linking constant id'>Linking</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id included'>included</span><span class='lparen'>(</span><span class='id klass'>klass</span><span class='rparen'>)</span>
+  <span class='id klass'>klass</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:extend</span><span class='comma'>,</span>  <span class='const'>ClassMethods</span>
+  <span class='id klass'>klass</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:include</span><span class='comma'>,</span> <span class='const'>Linking</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -838,8 +831,7 @@ the background and its return value obtained later
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/version.rb', line 3</span>
 
-<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='version identifier id'>version</span><span class='semicolon token'>;</span> <span class='VERSION constant id'>VERSION</span> <span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id version'>version</span><span class='semicolon'>;</span> <span class='const'>VERSION</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -896,10 +888,9 @@ Raise an exception in caller context, but stay running
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 81</span>
 
-<span class='def def kw'>def</span> <span class='abort identifier id'>abort</span><span class='lparen token'>(</span><span class='cause identifier id'>cause</span><span class='rparen token'>)</span>
-  <span class='raise identifier id'>raise</span> <span class='AbortError constant id'>AbortError</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='cause identifier id'>cause</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id abort'>abort</span><span class='lparen'>(</span><span class='id cause'>cause</span><span class='rparen'>)</span>
+  <span class='id raise'>raise</span> <span class='const'>AbortError</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id cause'>cause</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -950,10 +941,9 @@ Is this actor alive?
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 76</span>
 
-<span class='def def kw'>def</span> <span class='alive? fid id'>alive?</span>
-  <span class='Thread constant id'>Thread</span><span class='dot token'>.</span><span class='current identifier id'>current</span><span class='lbrack token'>[</span><span class='symbol val'>:actor</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='alive? fid id'>alive?</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id alive?'>alive?</span>
+  <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:actor</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id alive?'>alive?</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -995,12 +985,11 @@ messages in its mailbox in the meantime
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 118</span>
 
-<span class='def def kw'>def</span> <span class='async identifier id'>async</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='comment val'># This implementation relies on the present implementation of</span>
-  <span class='comment val'># Celluloid::Future, which uses a Celluloid::Actor to run the block</span>
-  <span class='Celluloid constant id'>Celluloid</span><span class='colon2 op'>::</span><span class='Future constant id'>Future</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='value identifier id'>value</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id async'>async</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='comment'># This implementation relies on the present implementation of
+</span>  <span class='comment'># Celluloid::Future, which uses a Celluloid::Actor to run the block
+</span>  <span class='const'>Celluloid</span><span class='op'>::</span><span class='const'>Future</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span><span class='period'>.</span><span class='id value'>value</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1038,10 +1027,9 @@ Obtain the current_actor
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 111</span>
 
-<span class='def def kw'>def</span> <span class='current_actor identifier id'>current_actor</span>
-  <span class='Celluloid constant id'>Celluloid</span><span class='dot token'>.</span><span class='current_actor identifier id'>current_actor</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id current_actor'>current_actor</span>
+  <span class='const'>Celluloid</span><span class='period'>.</span><span class='id current_actor'>current_actor</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1073,16 +1061,15 @@ Obtain the current_actor
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 90</span>
 
-<span class='def def kw'>def</span> <span class='inspect identifier id'>inspect</span>
-  <span class='str identifier id'>str</span> <span class='assign token'>=</span> <span class='dstring node'>&quot;#&lt;Celluloid::Actor(#{self.class}:0x#{object_id.to_s(16)})&quot;</span>
-  <span class='ivars identifier id'>ivars</span> <span class='assign token'>=</span> <span class='instance_variables identifier id'>instance_variables</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='ivar identifier id'>ivar</span><span class='bitor op'>|</span>
-    <span class='dstring node'>&quot;#{ivar}=#{instance_variable_get(ivar).inspect}&quot;</span>
-  <span class='end end kw'>end</span>
+<span class='kw'>def</span> <span class='id inspect'>inspect</span>
+  <span class='id str'>str</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;Celluloid::Actor(</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='rbrace'>}</span><span class='tstring_content'>:0x</span><span class='embexpr_beg'>#{</span><span class='id object_id'>object_id</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='lparen'>(</span><span class='int'>16</span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id ivars'>ivars</span> <span class='op'>=</span> <span class='id instance_variables'>instance_variables</span><span class='period'>.</span><span class='id map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id ivar'>ivar</span><span class='op'>|</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id ivar'>ivar</span><span class='rbrace'>}</span><span class='tstring_content'>=</span><span class='embexpr_beg'>#{</span><span class='id instance_variable_get'>instance_variable_get</span><span class='lparen'>(</span><span class='id ivar'>ivar</span><span class='rparen'>)</span><span class='period'>.</span><span class='id inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
 
-  <span class='str identifier id'>str</span> <span class='lshft op'>&lt;&lt;</span> <span class='string val'>&quot; &quot;</span> <span class='lshft op'>&lt;&lt;</span> <span class='ivars identifier id'>ivars</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>' '</span><span class='rparen token'>)</span> <span class='unless unless_mod kw'>unless</span> <span class='ivars identifier id'>ivars</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span>
-  <span class='str identifier id'>str</span> <span class='lshft op'>&lt;&lt;</span> <span class='string val'>&quot;&gt;&quot;</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='id str'>str</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span> <span class='op'>&lt;&lt;</span> <span class='id ivars'>ivars</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'> </span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id ivars'>ivars</span><span class='period'>.</span><span class='id empty?'>empty?</span>
+  <span class='id str'>str</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&gt;</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1120,10 +1107,9 @@ Send a signal with the given name to all waiting methods
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 101</span>
 
-<span class='def def kw'>def</span> <span class='signal identifier id'>signal</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='comma token'>,</span> <span class='value identifier id'>value</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
-  <span class='Thread constant id'>Thread</span><span class='dot token'>.</span><span class='current identifier id'>current</span><span class='lbrack token'>[</span><span class='symbol val'>:actor</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='signal identifier id'>signal</span> <span class='name identifier id'>name</span><span class='comma token'>,</span> <span class='value identifier id'>value</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id signal'>signal</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span> <span class='id value'>value</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:actor</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id signal'>signal</span> <span class='id name'>name</span><span class='comma'>,</span> <span class='id value'>value</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1161,10 +1147,9 @@ Terminate this actor
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 86</span>
 
-<span class='def def kw'>def</span> <span class='terminate identifier id'>terminate</span>
-  <span class='Thread constant id'>Thread</span><span class='dot token'>.</span><span class='current identifier id'>current</span><span class='lbrack token'>[</span><span class='symbol val'>:actor</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='terminate identifier id'>terminate</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id terminate'>terminate</span>
+  <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:actor</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id terminate'>terminate</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1202,10 +1187,9 @@ Wait for the given signal
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 106</span>
 
-<span class='def def kw'>def</span> <span class='wait identifier id'>wait</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
-  <span class='Thread constant id'>Thread</span><span class='dot token'>.</span><span class='current identifier id'>current</span><span class='lbrack token'>[</span><span class='symbol val'>:actor</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='wait identifier id'>wait</span> <span class='name identifier id'>name</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id wait'>wait</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+  <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:actor</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id wait'>wait</span> <span class='id name'>name</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1216,9 +1200,9 @@ Wait for the given signal
 </div>
     
     <div id="footer">
-  Generated on Tue Oct 25 00:09:10 2011 by 
+  Generated on Tue Oct 25 00:23:44 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.3 (ruby-1.8.7).
+  0.7.3 (ruby-1.9.2).
 </div>
 
   </body>

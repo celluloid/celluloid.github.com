@@ -291,8 +291,7 @@ Obtain the exit handler method for this class
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 68</span>
 
-<span class='def def kw'>def</span> <span class='exit_handler identifier id'>exit_handler</span><span class='semicolon token'>;</span> <span class='@exit_handler ivar id'>@exit_handler</span> <span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id exit_handler'>exit_handler</span><span class='semicolon'>;</span> <span class='ivar'>@exit_handler</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -336,12 +335,11 @@ Create a new actor
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 31</span>
 
-<span class='def def kw'>def</span> <span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='proxy identifier id'>proxy</span> <span class='assign token'>=</span> <span class='Celluloid constant id'>Celluloid</span><span class='colon2 op'>::</span><span class='Actor constant id'>Actor</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='allocate identifier id'>allocate</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='proxy identifier id'>proxy</span>
-  <span class='proxy identifier id'>proxy</span><span class='dot token'>.</span><span class='send identifier id'>send</span><span class='lparen token'>(</span><span class='symbol val'>:initialize</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='proxy identifier id'>proxy</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id proxy'>proxy</span> <span class='op'>=</span> <span class='const'>Celluloid</span><span class='op'>::</span><span class='const'>Actor</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id allocate'>allocate</span><span class='rparen'>)</span><span class='period'>.</span><span class='id proxy'>proxy</span>
+  <span class='id proxy'>proxy</span><span class='period'>.</span><span class='id send'>send</span><span class='lparen'>(</span><span class='symbol'>:initialize</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id proxy'>proxy</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -402,16 +400,15 @@ Create a new actor and link to the current one
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 39</span>
 
-<span class='def def kw'>def</span> <span class='new_link identifier id'>new_link</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='current_actor identifier id'>current_actor</span> <span class='assign token'>=</span> <span class='Thread constant id'>Thread</span><span class='dot token'>.</span><span class='current identifier id'>current</span><span class='lbrack token'>[</span><span class='symbol val'>:actor</span><span class='rbrack token'>]</span>
-  <span class='raise identifier id'>raise</span> <span class='NotActorError constant id'>NotActorError</span><span class='comma token'>,</span> <span class='string val'>&quot;can't link outside actor context&quot;</span> <span class='unless unless_mod kw'>unless</span> <span class='current_actor identifier id'>current_actor</span>
+<span class='kw'>def</span> <span class='id new_link'>new_link</span><span class='lparen'>(</span><span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id current_actor'>current_actor</span> <span class='op'>=</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:actor</span><span class='rbracket'>]</span>
+  <span class='id raise'>raise</span> <span class='const'>NotActorError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>can't link outside actor context</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id current_actor'>current_actor</span>
 
-  <span class='proxy identifier id'>proxy</span> <span class='assign token'>=</span> <span class='Celluloid constant id'>Celluloid</span><span class='colon2 op'>::</span><span class='Actor constant id'>Actor</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='allocate identifier id'>allocate</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='proxy identifier id'>proxy</span>
-  <span class='current_actor identifier id'>current_actor</span><span class='dot token'>.</span><span class='link identifier id'>link</span> <span class='proxy identifier id'>proxy</span>
-  <span class='proxy identifier id'>proxy</span><span class='dot token'>.</span><span class='send identifier id'>send</span><span class='lparen token'>(</span><span class='symbol val'>:initialize</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='proxy identifier id'>proxy</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='id proxy'>proxy</span> <span class='op'>=</span> <span class='const'>Celluloid</span><span class='op'>::</span><span class='const'>Actor</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id allocate'>allocate</span><span class='rparen'>)</span><span class='period'>.</span><span class='id proxy'>proxy</span>
+  <span class='id current_actor'>current_actor</span><span class='period'>.</span><span class='id link'>link</span> <span class='id proxy'>proxy</span>
+  <span class='id proxy'>proxy</span><span class='period'>.</span><span class='id send'>send</span><span class='lparen'>(</span><span class='symbol'>:initialize</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id proxy'>proxy</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -450,10 +447,9 @@ actor if it fails
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 52</span>
 
-<span class='def def kw'>def</span> <span class='supervise identifier id'>supervise</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='Celluloid constant id'>Celluloid</span><span class='colon2 op'>::</span><span class='Supervisor constant id'>Supervisor</span><span class='dot token'>.</span><span class='supervise identifier id'>supervise</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id supervise'>supervise</span><span class='lparen'>(</span><span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='const'>Celluloid</span><span class='op'>::</span><span class='const'>Supervisor</span><span class='period'>.</span><span class='id supervise'>supervise</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -492,10 +488,9 @@ actor if it fails, and keep the actor registered under a given name
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 58</span>
 
-<span class='def def kw'>def</span> <span class='supervise_as identifier id'>supervise_as</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='Celluloid constant id'>Celluloid</span><span class='colon2 op'>::</span><span class='Supervisor constant id'>Supervisor</span><span class='dot token'>.</span><span class='supervise_as identifier id'>supervise_as</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='comma token'>,</span> <span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id supervise_as'>supervise_as</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='const'>Celluloid</span><span class='op'>::</span><span class='const'>Supervisor</span><span class='period'>.</span><span class='id supervise_as'>supervise_as</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span> <span class='kw'>self</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -533,10 +528,9 @@ Trap errors from actors we&#8217;re linked to when they exit
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 63</span>
 
-<span class='def def kw'>def</span> <span class='trap_exit identifier id'>trap_exit</span><span class='lparen token'>(</span><span class='callback identifier id'>callback</span><span class='rparen token'>)</span>
-  <span class='@exit_handler ivar id'>@exit_handler</span> <span class='assign token'>=</span> <span class='callback identifier id'>callback</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id trap_exit'>trap_exit</span><span class='lparen'>(</span><span class='id callback'>callback</span><span class='rparen'>)</span>
+  <span class='ivar'>@exit_handler</span> <span class='op'>=</span> <span class='id callback'>callback</span><span class='period'>.</span><span class='id to_sym'>to_sym</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -547,9 +541,9 @@ Trap errors from actors we&#8217;re linked to when they exit
 </div>
     
     <div id="footer">
-  Generated on Tue Oct 25 00:09:10 2011 by 
+  Generated on Tue Oct 25 00:23:44 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.3 (ruby-1.8.7).
+  0.7.3 (ruby-1.9.2).
 </div>
 
   </body>

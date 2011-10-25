@@ -264,13 +264,12 @@ Link this actor to another, allowing it to crash or react to errors
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/linking.rb', line 61</span>
 
-<span class='def def kw'>def</span> <span class='link identifier id'>link</span><span class='lparen token'>(</span><span class='actor identifier id'>actor</span><span class='rparen token'>)</span>
-  <span class='current_actor identifier id'>current_actor</span> <span class='assign token'>=</span> <span class='Thread constant id'>Thread</span><span class='dot token'>.</span><span class='current identifier id'>current</span><span class='lbrack token'>[</span><span class='symbol val'>:actor</span><span class='rbrack token'>]</span>
+<span class='kw'>def</span> <span class='id link'>link</span><span class='lparen'>(</span><span class='id actor'>actor</span><span class='rparen'>)</span>
+  <span class='id current_actor'>current_actor</span> <span class='op'>=</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:actor</span><span class='rbracket'>]</span>
 
-  <span class='actor identifier id'>actor</span><span class='dot token'>.</span><span class='notify_link identifier id'>notify_link</span><span class='lparen token'>(</span><span class='current_actor identifier id'>current_actor</span><span class='dot token'>.</span><span class='proxy identifier id'>proxy</span><span class='rparen token'>)</span>
-  <span class='current_actor identifier id'>current_actor</span><span class='dot token'>.</span><span class='notify_link identifier id'>notify_link</span><span class='lparen token'>(</span><span class='actor identifier id'>actor</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='id actor'>actor</span><span class='period'>.</span><span class='id notify_link'>notify_link</span><span class='lparen'>(</span><span class='id current_actor'>current_actor</span><span class='period'>.</span><span class='id proxy'>proxy</span><span class='rparen'>)</span>
+  <span class='id current_actor'>current_actor</span><span class='period'>.</span><span class='id notify_link'>notify_link</span><span class='lparen'>(</span><span class='id actor'>actor</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -321,10 +320,9 @@ Is this actor linked to another?
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/linking.rb', line 85</span>
 
-<span class='def def kw'>def</span> <span class='linked_to? fid id'>linked_to?</span><span class='lparen token'>(</span><span class='actor identifier id'>actor</span><span class='rparen token'>)</span>
-  <span class='Thread constant id'>Thread</span><span class='dot token'>.</span><span class='current identifier id'>current</span><span class='lbrack token'>[</span><span class='symbol val'>:actor</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='links identifier id'>links</span><span class='dot token'>.</span><span class='include? fid id'>include?</span> <span class='actor identifier id'>actor</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id linked_to?'>linked_to?</span><span class='lparen'>(</span><span class='id actor'>actor</span><span class='rparen'>)</span>
+  <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:actor</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id links'>links</span><span class='period'>.</span><span class='id include?'>include?</span> <span class='id actor'>actor</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -350,10 +348,9 @@ Is this actor linked to another?
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/linking.rb', line 76</span>
 
-<span class='def def kw'>def</span> <span class='notify_link identifier id'>notify_link</span><span class='lparen token'>(</span><span class='actor identifier id'>actor</span><span class='rparen token'>)</span>
-  <span class='Thread constant id'>Thread</span><span class='dot token'>.</span><span class='current identifier id'>current</span><span class='lbrack token'>[</span><span class='symbol val'>:actor</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='links identifier id'>links</span> <span class='lshft op'>&lt;&lt;</span> <span class='actor identifier id'>actor</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id notify_link'>notify_link</span><span class='lparen'>(</span><span class='id actor'>actor</span><span class='rparen'>)</span>
+  <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:actor</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id links'>links</span> <span class='op'>&lt;&lt;</span> <span class='id actor'>actor</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -379,10 +376,9 @@ Is this actor linked to another?
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/linking.rb', line 80</span>
 
-<span class='def def kw'>def</span> <span class='notify_unlink identifier id'>notify_unlink</span><span class='lparen token'>(</span><span class='actor identifier id'>actor</span><span class='rparen token'>)</span>
-  <span class='Thread constant id'>Thread</span><span class='dot token'>.</span><span class='current identifier id'>current</span><span class='lbrack token'>[</span><span class='symbol val'>:actor</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='links identifier id'>links</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span> <span class='actor identifier id'>actor</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id notify_unlink'>notify_unlink</span><span class='lparen'>(</span><span class='id actor'>actor</span><span class='rparen'>)</span>
+  <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:actor</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id links'>links</span><span class='period'>.</span><span class='id delete'>delete</span> <span class='id actor'>actor</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -423,13 +419,12 @@ Remove links to another actor
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/linking.rb', line 69</span>
 
-<span class='def def kw'>def</span> <span class='unlink identifier id'>unlink</span><span class='lparen token'>(</span><span class='actor identifier id'>actor</span><span class='rparen token'>)</span>
-  <span class='current_actor identifier id'>current_actor</span> <span class='assign token'>=</span> <span class='Thread constant id'>Thread</span><span class='dot token'>.</span><span class='current identifier id'>current</span><span class='lbrack token'>[</span><span class='symbol val'>:actor</span><span class='rbrack token'>]</span>
+<span class='kw'>def</span> <span class='id unlink'>unlink</span><span class='lparen'>(</span><span class='id actor'>actor</span><span class='rparen'>)</span>
+  <span class='id current_actor'>current_actor</span> <span class='op'>=</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:actor</span><span class='rbracket'>]</span>
 
-  <span class='actor identifier id'>actor</span><span class='dot token'>.</span><span class='notify_unlink identifier id'>notify_unlink</span><span class='lparen token'>(</span><span class='current_actor identifier id'>current_actor</span><span class='dot token'>.</span><span class='proxy identifier id'>proxy</span><span class='rparen token'>)</span>
-  <span class='current_actor identifier id'>current_actor</span><span class='dot token'>.</span><span class='notify_unlink identifier id'>notify_unlink</span><span class='lparen token'>(</span><span class='actor identifier id'>actor</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='id actor'>actor</span><span class='period'>.</span><span class='id notify_unlink'>notify_unlink</span><span class='lparen'>(</span><span class='id current_actor'>current_actor</span><span class='period'>.</span><span class='id proxy'>proxy</span><span class='rparen'>)</span>
+  <span class='id current_actor'>current_actor</span><span class='period'>.</span><span class='id notify_unlink'>notify_unlink</span><span class='lparen'>(</span><span class='id actor'>actor</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -440,9 +435,9 @@ Remove links to another actor
 </div>
     
     <div id="footer">
-  Generated on Tue Oct 25 00:09:13 2011 by 
+  Generated on Tue Oct 25 00:23:45 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.3 (ruby-1.8.7).
+  0.7.3 (ruby-1.9.2).
 </div>
 
   </body>

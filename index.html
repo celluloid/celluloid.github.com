@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>
   File: README
   
@@ -97,36 +97,36 @@ to the JRuby executable, or set the "JRUBY_OPTS=--1.9" environment variable.</p>
 
 <p>To use Celluloid, define a normal Ruby class that includes Celluloid:</p>
 
-<pre class="code"><span class='class class kw'>class</span> <span class='Sheen constant id'>Sheen</span>
-  <span class='include identifier id'>include</span> <span class='Celluloid constant id'>Celluloid</span>
+<pre class="code"><span class='kw'>class</span> <span class='const'>Sheen</span>
+  <span class='id include'>include</span> <span class='const'>Celluloid</span>
 
-  <span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
-    <span class='@name ivar id'>@name</span> <span class='assign token'>=</span> <span class='name identifier id'>name</span>
-  <span class='end end kw'>end</span>
+  <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+    <span class='ivar'>@name</span> <span class='op'>=</span> <span class='id name'>name</span>
+  <span class='kw'>end</span>
 
-  <span class='def def kw'>def</span> <span class='set_status identifier id'>set_status</span><span class='lparen token'>(</span><span class='status identifier id'>status</span><span class='rparen token'>)</span>
-    <span class='@status ivar id'>@status</span> <span class='assign token'>=</span> <span class='status identifier id'>status</span>
-  <span class='end end kw'>end</span>
+  <span class='kw'>def</span> <span class='id set_status'>set_status</span><span class='lparen'>(</span><span class='id status'>status</span><span class='rparen'>)</span>
+    <span class='ivar'>@status</span> <span class='op'>=</span> <span class='id status'>status</span>
+  <span class='kw'>end</span>
 
-  <span class='def def kw'>def</span> <span class='report identifier id'>report</span>
-    <span class='dstring node'>&quot;#{@name} is #{@status}&quot;</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
+  <span class='kw'>def</span> <span class='id report'>report</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@name</span><span class='rbrace'>}</span><span class='tstring_content'> is </span><span class='embexpr_beg'>#{</span><span class='ivar'>@status</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
 </pre>
 
 <p>Now when you create new instances of this class, they're actually concurrent
 objects, each running in their own thread:</p>
 
-<pre class="code"><span class='rshft op'>&gt;&gt;</span> <span class='charlie identifier id'>charlie</span> <span class='assign token'>=</span> <span class='Sheen constant id'>Sheen</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='string val'>&quot;Charlie Sheen&quot;</span>
- <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='comment val'>#&lt;Celluloid::Actor(Sheen:0x00000100a312d0) @name=&quot;Charlie Sheen&quot;&gt;</span>
-<span class='rshft op'>&gt;&gt;</span> <span class='charlie identifier id'>charlie</span><span class='dot token'>.</span><span class='set_status identifier id'>set_status</span> <span class='string val'>&quot;winning!&quot;</span>
- <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;winning!&quot;</span>
-<span class='rshft op'>&gt;&gt;</span> <span class='charlie identifier id'>charlie</span><span class='dot token'>.</span><span class='report identifier id'>report</span>
- <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Charlie Sheen is winning!&quot;</span>
-<span class='rshft op'>&gt;&gt;</span> <span class='charlie identifier id'>charlie</span><span class='dot token'>.</span><span class='set_status! fid id'>set_status!</span> <span class='string val'>&quot;asynchronously winning!&quot;</span>
- <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='nil nil kw'>nil</span>
-<span class='rshft op'>&gt;&gt;</span> <span class='charlie identifier id'>charlie</span><span class='dot token'>.</span><span class='report identifier id'>report</span>
- <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Charlie Sheen is asynchronously winning!&quot;</span>
+<pre class="code">&gt;&gt; charlie = Sheen.new &quot;Charlie Sheen&quot;
+ =&gt; #&lt;Celluloid::Actor(Sheen:0x00000100a312d0) @name=&quot;Charlie Sheen&quot;&gt;
+&gt;&gt; charlie.set_status &quot;winning!&quot;
+ =&gt; &quot;winning!&quot;
+&gt;&gt; charlie.report
+ =&gt; &quot;Charlie Sheen is winning!&quot;
+&gt;&gt; charlie.set_status! &quot;asynchronously winning!&quot;
+ =&gt; nil
+&gt;&gt; charlie.report
+ =&gt; &quot;Charlie Sheen is asynchronously winning!&quot;
 </pre>
 
 <p>You can call methods on this concurrent object just like you would any other
@@ -168,10 +168,10 @@ is analogous to the typical <em>send</em> method in that it takes a method name,
 followed by an arbitrary number of arguments, and a block. Let's invoke the
 report method from the charlie object used in the above example using a future:</p>
 
-<pre class="code"><span class='rshft op'>&gt;&gt;</span> <span class='future identifier id'>future</span> <span class='assign token'>=</span> <span class='charlie identifier id'>charlie</span><span class='dot token'>.</span><span class='future identifier id'>future</span> <span class='symbol val'>:report</span>
- <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='comment val'>#&lt;Celluloid::Future:0x000001009759b8&gt;</span>
-<span class='rshft op'>&gt;&gt;</span> <span class='future identifier id'>future</span><span class='dot token'>.</span><span class='value identifier id'>value</span>
- <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Charlie Sheen is winning!&quot;</span>
+<pre class="code">&gt;&gt; future = charlie.future :report
+ =&gt; #&lt;Celluloid::Future:0x000001009759b8&gt;
+&gt;&gt; future.value
+ =&gt; &quot;Charlie Sheen is winning!&quot;
 </pre>
 
 <p>The call to charlie.future immediately returns a Celluloid::Future object,
@@ -184,10 +184,10 @@ same exception.</p>
 
 <p>Futures also allow you to background the computation of any block:</p>
 
-<pre class="code"><span class='rshft op'>&gt;&gt;</span> <span class='future identifier id'>future</span> <span class='assign token'>=</span> <span class='Celluloid constant id'>Celluloid</span><span class='colon2 op'>::</span><span class='Future constant id'>Future</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='lbrace token'>{</span> <span class='integer val'>2</span> <span class='plus op'>+</span> <span class='integer val'>2</span> <span class='rbrace token'>}</span>
- <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='comment val'>#&lt;Celluloid::Future:0x000001008425f0&gt;</span>
-<span class='rshft op'>&gt;&gt;</span> <span class='future identifier id'>future</span><span class='dot token'>.</span><span class='value identifier id'>value</span>
- <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='integer val'>4</span>
+<pre class="code">&gt;&gt; future = Celluloid::Future.new { 2 + 2 }
+ =&gt; #&lt;Celluloid::Future:0x000001008425f0&gt;
+&gt;&gt; future.value
+ =&gt; 4
 </pre>
 
 <p>One thing to be aware of when using futures: always make sure to obtain the
@@ -206,8 +206,8 @@ an unhandled exception is raised anywhere within an actor.</p>
 <p>To supervise an actor, start it with the <em>supervise</em> method. Using the Sheen
 class from the example above:</p>
 
-<pre class="code"><span class='rshft op'>&gt;&gt;</span> <span class='supervisor identifier id'>supervisor</span> <span class='assign token'>=</span> <span class='Sheen constant id'>Sheen</span><span class='dot token'>.</span><span class='supervise identifier id'>supervise</span> <span class='string val'>&quot;Charlie Sheen&quot;</span>
- <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='comment val'>#&lt;Celluloid::Supervisor(Sheen) &quot;Charlie Sheen&quot;&gt;</span>
+<pre class="code">&gt;&gt; supervisor = Sheen.supervise &quot;Charlie Sheen&quot;
+ =&gt; #&lt;Celluloid::Supervisor(Sheen) &quot;Charlie Sheen&quot;&gt;
 </pre>
 
 <p>This created a new Celluloid::Supervisor actor, and also created a new Sheen
@@ -217,19 +217,19 @@ than returning the newly created actor, <em>supervise</em> returns the superviso
 To retrieve the actor that the supervisor is currently using, use the
 Celluloid::Supervisor#actor method:</p>
 
-<pre class="code"><span class='rshft op'>&gt;&gt;</span> <span class='supervisor identifier id'>supervisor</span> <span class='assign token'>=</span> <span class='Sheen constant id'>Sheen</span><span class='dot token'>.</span><span class='supervise identifier id'>supervise</span> <span class='string val'>&quot;Charlie Sheen&quot;</span>
- <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='comment val'>#&lt;Celluloid::Supervisor(Sheen) &quot;Charlie Sheen&quot;&gt;</span>
-<span class='rshft op'>&gt;&gt;</span> <span class='charlie identifier id'>charlie</span> <span class='assign token'>=</span> <span class='supervisor identifier id'>supervisor</span><span class='dot token'>.</span><span class='actor identifier id'>actor</span>
- <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='comment val'>#&lt;Celluloid::Actor(Sheen:0x00000100a312d0)&gt;</span>
+<pre class="code">&gt;&gt; supervisor = Sheen.supervise &quot;Charlie Sheen&quot;
+ =&gt; #&lt;Celluloid::Supervisor(Sheen) &quot;Charlie Sheen&quot;&gt;
+&gt;&gt; charlie = supervisor.actor
+ =&gt; #&lt;Celluloid::Actor(Sheen:0x00000100a312d0)&gt;
 </pre>
 
 <p>Supervisors can also automatically put actors into the actor <em>registry</em> using
 the supervise_as method:</p>
 
-<pre class="code"><span class='rshft op'>&gt;&gt;</span> <span class='Sheen constant id'>Sheen</span><span class='dot token'>.</span><span class='supervise_as identifier id'>supervise_as</span> <span class='symbol val'>:charlie</span><span class='comma token'>,</span> <span class='string val'>&quot;Charlie Sheen&quot;</span>
- <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='comment val'>#&lt;Celluloid::Supervisor(Sheen) &quot;Charlie Sheen&quot;&gt;</span>
-<span class='rshft op'>&gt;&gt;</span> <span class='charlie identifier id'>charlie</span> <span class='assign token'>=</span> <span class='Celluloid constant id'>Celluloid</span><span class='colon2 op'>::</span><span class='Actor constant id'>Actor</span><span class='lbrack token'>[</span><span class='symbol val'>:charlie</span><span class='rbrack token'>]</span>
- <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='comment val'>#&lt;Celluloid::Actor(Sheen:0x00000100a312d0)&gt;</span>
+<pre class="code">&gt;&gt; Sheen.supervise_as :charlie, &quot;Charlie Sheen&quot;
+ =&gt; #&lt;Celluloid::Supervisor(Sheen) &quot;Charlie Sheen&quot;&gt;
+&gt;&gt; charlie = Celluloid::Actor[:charlie]
+ =&gt; #&lt;Celluloid::Actor(Sheen:0x00000100a312d0)&gt;
 </pre>
 
 <p>In this case, the supervisor will ensure that an actor of the Sheen class,
@@ -245,24 +245,24 @@ arguments are passed to initialize just like you called <em>new</em>.</p>
 <p>Whenever any unhandled exceptions occur in any of the methods of an actor,
 that actor crashes and dies. Let's start with an example:</p>
 
-<pre class="code"><span class='class class kw'>class</span> <span class='JamesDean constant id'>JamesDean</span>
-  <span class='include identifier id'>include</span> <span class='Celluloid constant id'>Celluloid</span>
-  <span class='class class kw'>class</span> <span class='CarInMyLaneError constant id'>CarInMyLaneError</span> <span class='lt op'>&lt;</span> <span class='StandardError constant id'>StandardError</span><span class='semicolon token'>;</span> <span class='end end kw'>end</span>
+<pre class="code"><span class='kw'>class</span> <span class='const'>JamesDean</span>
+  <span class='id include'>include</span> <span class='const'>Celluloid</span>
+  <span class='kw'>class</span> <span class='const'>CarInMyLaneError</span> <span class='op'>&lt;</span> <span class='const'>StandardError</span><span class='semicolon'>;</span> <span class='kw'>end</span>
 
-  <span class='def def kw'>def</span> <span class='drive_little_bastard identifier id'>drive_little_bastard</span>
-    <span class='raise identifier id'>raise</span> <span class='CarInMyLaneError constant id'>CarInMyLaneError</span><span class='comma token'>,</span> <span class='string val'>&quot;that guy's gotta stop. he'll see us&quot;</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
+  <span class='kw'>def</span> <span class='id drive_little_bastard'>drive_little_bastard</span>
+    <span class='id raise'>raise</span> <span class='const'>CarInMyLaneError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>that guy's gotta stop. he'll see us</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
 </pre>
 
 <p>Now, let's have James drive Little Bastard and see what happens:</p>
 
-<pre class="code"><span class='rshft op'>&gt;&gt;</span> <span class='james identifier id'>james</span> <span class='assign token'>=</span> <span class='JamesDean constant id'>JamesDean</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
- <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='comment val'>#&lt;Celluloid::Actor(JamesDean:0x1068)&gt;</span>
-<span class='rshft op'>&gt;&gt;</span> <span class='james identifier id'>james</span><span class='dot token'>.</span><span class='drive_little_bastard! fid id'>drive_little_bastard!</span>
- <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='nil nil kw'>nil</span>
-<span class='rshft op'>&gt;&gt;</span> <span class='james identifier id'>james</span>
- <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='comment val'>#&lt;Celluloid::Actor(JamesDean:0x1068) dead&gt;</span>
+<pre class="code">&gt;&gt; james = JamesDean.new
+ =&gt; #&lt;Celluloid::Actor(JamesDean:0x1068)&gt;
+&gt;&gt; james.drive_little_bastard!
+ =&gt; nil
+&gt;&gt; james
+ =&gt; #&lt;Celluloid::Actor(JamesDean:0x1068) dead&gt;
 </pre>
 
 <p>When we told james asynchronously to drive Little Bastard, it killed him! If
@@ -274,29 +274,29 @@ crash notifications from. In order to receive these events, we need to use the
 trap_exit method to be notified of them. Let's look at how a hypothetical
 Elizabeth Taylor object could be notified that James Dean has crashed:</p>
 
-<pre class="code"><span class='class class kw'>class</span> <span class='ElizabethTaylor constant id'>ElizabethTaylor</span>
-  <span class='include identifier id'>include</span> <span class='Celluloid constant id'>Celluloid</span>
-  <span class='trap_exit identifier id'>trap_exit</span> <span class='symbol val'>:actor_died</span>
+<pre class="code"><span class='kw'>class</span> <span class='const'>ElizabethTaylor</span>
+  <span class='id include'>include</span> <span class='const'>Celluloid</span>
+  <span class='id trap_exit'>trap_exit</span> <span class='symbol'>:actor_died</span>
 
-  <span class='def def kw'>def</span> <span class='actor_died identifier id'>actor_died</span><span class='lparen token'>(</span><span class='actor identifier id'>actor</span><span class='comma token'>,</span> <span class='reason identifier id'>reason</span><span class='rparen token'>)</span>
-    <span class='puts identifier id'>puts</span> <span class='dstring node'>&quot;Oh no! #{actor.inspect} has died because of a #{reason.class}&quot;</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
+  <span class='kw'>def</span> <span class='id actor_died'>actor_died</span><span class='lparen'>(</span><span class='id actor'>actor</span><span class='comma'>,</span> <span class='id reason'>reason</span><span class='rparen'>)</span>
+    <span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Oh no! </span><span class='embexpr_beg'>#{</span><span class='id actor'>actor</span><span class='period'>.</span><span class='id inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_content'> has died because of a </span><span class='embexpr_beg'>#{</span><span class='id reason'>reason</span><span class='period'>.</span><span class='id class'>class</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
 </pre>
 
 <p>We've now used the trap_exit method to configure a callback which is invoked
 whenever any linked actors crashed. Now we need to link Elizabeth to James so
 James' crash notifications get sent to her:</p>
 
-<pre class="code"><span class='rshft op'>&gt;&gt;</span> <span class='james identifier id'>james</span> <span class='assign token'>=</span> <span class='JamesDean constant id'>JamesDean</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
- <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='comment val'>#&lt;Celluloid::Actor(JamesDean:0x11b8)&gt;</span>
-<span class='rshft op'>&gt;&gt;</span> <span class='elizabeth identifier id'>elizabeth</span> <span class='assign token'>=</span> <span class='ElizabethTaylor constant id'>ElizabethTaylor</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
- <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='comment val'>#&lt;Celluloid::Actor(ElizabethTaylor:0x11f0)&gt;</span>
-<span class='rshft op'>&gt;&gt;</span> <span class='elizabeth identifier id'>elizabeth</span><span class='dot token'>.</span><span class='link identifier id'>link</span> <span class='james identifier id'>james</span>
- <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='comment val'>#&lt;Celluloid::Actor(JamesDean:0x11b8)&gt;</span>
-<span class='rshft op'>&gt;&gt;</span> <span class='james identifier id'>james</span><span class='dot token'>.</span><span class='drive_little_bastard! fid id'>drive_little_bastard!</span>
- <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='nil nil kw'>nil</span>
-<span class='Oh constant id'>Oh</span> <span class='no! fid id'>no!</span> <span class='comment val'>#&lt;Celluloid::Actor(JamesDean:0x11b8) dead&gt; has died because of a JamesDean::CarInMyLaneError</span>
+<pre class="code">&gt;&gt; james = JamesDean.new
+ =&gt; #&lt;Celluloid::Actor(JamesDean:0x11b8)&gt;
+&gt;&gt; elizabeth = ElizabethTaylor.new
+ =&gt; #&lt;Celluloid::Actor(ElizabethTaylor:0x11f0)&gt;
+&gt;&gt; elizabeth.link james
+ =&gt; #&lt;Celluloid::Actor(JamesDean:0x11b8)&gt;
+&gt;&gt; james.drive_little_bastard!
+ =&gt; nil
+Oh no! #&lt;Celluloid::Actor(JamesDean:0x11b8) dead&gt; has died because of a JamesDean::CarInMyLaneError
 </pre>
 
 <p>Elizabeth called the <em>link</em> method to receive crash events from James. Because
@@ -307,26 +307,26 @@ her to take action (in this case, printing the error). But what would happen
 if she weren't trapping exits? Let's break James apart into two separate
 objects, one for James himself and one for Little Bastard, his car:</p>
 
-<pre class="code"><span class='class class kw'>class</span> <span class='PorscheSpider constant id'>PorscheSpider</span>
-  <span class='include identifier id'>include</span> <span class='Celluloid constant id'>Celluloid</span>
-  <span class='class class kw'>class</span> <span class='CarInMyLaneError constant id'>CarInMyLaneError</span> <span class='lt op'>&lt;</span> <span class='StandardError constant id'>StandardError</span><span class='semicolon token'>;</span> <span class='end end kw'>end</span>
+<pre class="code"><span class='kw'>class</span> <span class='const'>PorscheSpider</span>
+  <span class='id include'>include</span> <span class='const'>Celluloid</span>
+  <span class='kw'>class</span> <span class='const'>CarInMyLaneError</span> <span class='op'>&lt;</span> <span class='const'>StandardError</span><span class='semicolon'>;</span> <span class='kw'>end</span>
 
-  <span class='def def kw'>def</span> <span class='drive_on_route_466 identifier id'>drive_on_route_466</span>
-    <span class='raise identifier id'>raise</span> <span class='CarInMyLaneError constant id'>CarInMyLaneError</span><span class='comma token'>,</span> <span class='string val'>&quot;head on collision :(&quot;</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
+  <span class='kw'>def</span> <span class='id drive_on_route_466'>drive_on_route_466</span>
+    <span class='id raise'>raise</span> <span class='const'>CarInMyLaneError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>head on collision :(</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
 
-<span class='class class kw'>class</span> <span class='JamesDean constant id'>JamesDean</span>
-  <span class='include identifier id'>include</span> <span class='Celluloid constant id'>Celluloid</span>
+<span class='kw'>class</span> <span class='const'>JamesDean</span>
+  <span class='id include'>include</span> <span class='const'>Celluloid</span>
 
-  <span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span>
-    <span class='@little_bastard ivar id'>@little_bastard</span> <span class='assign token'>=</span> <span class='PorscheSpider constant id'>PorscheSpider</span><span class='dot token'>.</span><span class='new_link identifier id'>new_link</span>
-  <span class='end end kw'>end</span>
+  <span class='kw'>def</span> <span class='id initialize'>initialize</span>
+    <span class='ivar'>@little_bastard</span> <span class='op'>=</span> <span class='const'>PorscheSpider</span><span class='period'>.</span><span class='id new_link'>new_link</span>
+  <span class='kw'>end</span>
 
-  <span class='def def kw'>def</span> <span class='drive_little_bastard identifier id'>drive_little_bastard</span>
-    <span class='@little_bastard ivar id'>@little_bastard</span><span class='dot token'>.</span><span class='drive_on_route_466 identifier id'>drive_on_route_466</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
+  <span class='kw'>def</span> <span class='id drive_little_bastard'>drive_little_bastard</span>
+    <span class='ivar'>@little_bastard</span><span class='period'>.</span><span class='id drive_on_route_466'>drive_on_route_466</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
 </pre>
 
 <p>If you take a look in JamesDean#initialize, you'll notice that to create an
@@ -338,15 +338,15 @@ into a single call.</p>
 <p>Now what happens if we repeat the same scenario with Elizabeth Taylor watching
 for James Dean's crash?</p>
 
-<pre class="code"><span class='rshft op'>&gt;&gt;</span> <span class='james identifier id'>james</span> <span class='assign token'>=</span> <span class='JamesDean constant id'>JamesDean</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
- <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='comment val'>#&lt;Celluloid::Actor(JamesDean:0x1108) @little_bastard=#&lt;Celluloid::Actor(PorscheSpider:0x10ec)&gt;&gt;</span>
-<span class='rshft op'>&gt;&gt;</span> <span class='elizabeth identifier id'>elizabeth</span> <span class='assign token'>=</span> <span class='ElizabethTaylor constant id'>ElizabethTaylor</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
- <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='comment val'>#&lt;Celluloid::Actor(ElizabethTaylor:0x1144)&gt;</span>
-<span class='rshft op'>&gt;&gt;</span> <span class='elizabeth identifier id'>elizabeth</span><span class='dot token'>.</span><span class='link identifier id'>link</span> <span class='james identifier id'>james</span>
- <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='comment val'>#&lt;Celluloid::Actor(JamesDean:0x1108) @little_bastard=#&lt;Celluloid::Actor(PorscheSpider:0x10ec)&gt;&gt;</span>
-<span class='rshft op'>&gt;&gt;</span> <span class='james identifier id'>james</span><span class='dot token'>.</span><span class='drive_little_bastard! fid id'>drive_little_bastard!</span>
- <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='nil nil kw'>nil</span>
-<span class='Oh constant id'>Oh</span> <span class='no! fid id'>no!</span> <span class='comment val'>#&lt;Celluloid::Actor(JamesDean:0x1108) dead&gt; has died because of a PorscheSpider::CarInMyLaneError</span>
+<pre class="code">&gt;&gt; james = JamesDean.new
+ =&gt; #&lt;Celluloid::Actor(JamesDean:0x1108) @little_bastard=#&lt;Celluloid::Actor(PorscheSpider:0x10ec)&gt;&gt;
+&gt;&gt; elizabeth = ElizabethTaylor.new
+ =&gt; #&lt;Celluloid::Actor(ElizabethTaylor:0x1144)&gt;
+&gt;&gt; elizabeth.link james
+ =&gt; #&lt;Celluloid::Actor(JamesDean:0x1108) @little_bastard=#&lt;Celluloid::Actor(PorscheSpider:0x10ec)&gt;&gt;
+&gt;&gt; james.drive_little_bastard!
+ =&gt; nil
+Oh no! #&lt;Celluloid::Actor(JamesDean:0x1108) dead&gt; has died because of a PorscheSpider::CarInMyLaneError
 </pre>
 
 <p>When Little Bastard crashed, it killed James as well. Little Bastard killed
@@ -375,12 +375,12 @@ there's a corresponding <em>unlink</em> method to remove links between actors.</
 <p>Celluloid lets you register actors so you can refer to them symbolically.
 You can register Actors using Celluloid::Actor[]:</p>
 
-<pre class="code"><span class='rshft op'>&gt;&gt;</span> <span class='james identifier id'>james</span> <span class='assign token'>=</span> <span class='JamesDean constant id'>JamesDean</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
- <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='comment val'>#&lt;Celluloid::Actor(JamesDean:0x80c27ce0)&gt;</span>
-<span class='rshft op'>&gt;&gt;</span> <span class='Celluloid constant id'>Celluloid</span><span class='colon2 op'>::</span><span class='Actor constant id'>Actor</span><span class='lbrack token'>[</span><span class='symbol val'>:james</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='james identifier id'>james</span>
- <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='comment val'>#&lt;Celluloid::Actor(JamesDean:0x80c27ce0)&gt;</span>
-<span class='rshft op'>&gt;&gt;</span> <span class='Celluloid constant id'>Celluloid</span><span class='colon2 op'>::</span><span class='Actor constant id'>Actor</span><span class='lbrack token'>[</span><span class='symbol val'>:james</span><span class='rbrack token'>]</span>
- <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='comment val'>#&lt;Celluloid::Actor(JamesDean:0x80c27ce0)&gt;</span>
+<pre class="code">&gt;&gt; james = JamesDean.new
+ =&gt; #&lt;Celluloid::Actor(JamesDean:0x80c27ce0)&gt;
+&gt;&gt; Celluloid::Actor[:james] = james
+ =&gt; #&lt;Celluloid::Actor(JamesDean:0x80c27ce0)&gt;
+&gt;&gt; Celluloid::Actor[:james]
+ =&gt; #&lt;Celluloid::Actor(JamesDean:0x80c27ce0)&gt;
 </pre>
 
 <p>The Celluloid::Actor constant acts as a hash, allowing you to register actors
@@ -401,24 +401,24 @@ itself waiting for a particular event, allowing other methods to run. Another
 method can then signal all methods waiting for a particular event, and even
 send them a value in the process:</p>
 
-<pre class="code"><span class='class class kw'>class</span> <span class='SignalingExample constant id'>SignalingExample</span>
-  <span class='include identifier id'>include</span> <span class='Celluloid constant id'>Celluloid</span>
-  <span class='attr_reader identifier id'>attr_reader</span> <span class='symbol val'>:signaled</span>
+<pre class="code"><span class='kw'>class</span> <span class='const'>SignalingExample</span>
+  <span class='id include'>include</span> <span class='const'>Celluloid</span>
+  <span class='id attr_reader'>attr_reader</span> <span class='symbol'>:signaled</span>
 
-  <span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span>
-    <span class='@signaled ivar id'>@signaled</span> <span class='assign token'>=</span> <span class='false false kw'>false</span>
-  <span class='end end kw'>end</span>
+  <span class='kw'>def</span> <span class='id initialize'>initialize</span>
+    <span class='ivar'>@signaled</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='kw'>end</span>
 
-  <span class='def def kw'>def</span> <span class='wait_for_signal identifier id'>wait_for_signal</span>
-    <span class='value identifier id'>value</span> <span class='assign token'>=</span> <span class='wait identifier id'>wait</span> <span class='symbol val'>:ponycopter</span>
-    <span class='@signaled ivar id'>@signaled</span> <span class='assign token'>=</span> <span class='true true kw'>true</span>
-    <span class='value identifier id'>value</span>
-  <span class='end end kw'>end</span>
+  <span class='kw'>def</span> <span class='id wait_for_signal'>wait_for_signal</span>
+    <span class='id value'>value</span> <span class='op'>=</span> <span class='id wait'>wait</span> <span class='symbol'>:ponycopter</span>
+    <span class='ivar'>@signaled</span> <span class='op'>=</span> <span class='kw'>true</span>
+    <span class='id value'>value</span>
+  <span class='kw'>end</span>
 
-  <span class='def def kw'>def</span> <span class='send_signal identifier id'>send_signal</span><span class='lparen token'>(</span><span class='value identifier id'>value</span><span class='rparen token'>)</span>
-    <span class='signal identifier id'>signal</span> <span class='symbol val'>:ponycopter</span><span class='comma token'>,</span> <span class='value identifier id'>value</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
+  <span class='kw'>def</span> <span class='id send_signal'>send_signal</span><span class='lparen'>(</span><span class='id value'>value</span><span class='rparen'>)</span>
+    <span class='id signal'>signal</span> <span class='symbol'>:ponycopter</span><span class='comma'>,</span> <span class='id value'>value</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
 </pre>
 
 <p>The wait_for_signal method in turn calls a method called "wait". Wait suspends
@@ -428,28 +428,36 @@ method with the same label.</p>
 <p>The send_signal method of this class does just that, signaling "ponycopter"
 with the given value. This value is returned from the original wait call.</p>
 
-<h2>Handling I/O</h2>
+<h2>Handling I/O with Celluloid::IO</h2>
 
 <p>Celluloid provides a separate class of actors which run alongside I/O
 operations. These actors are slower and more heavyweight and should only be
-used when writing actors that also handle I/O operations.</p>
+used when writing actors that also handle IO operations. Every IO actor will
+use 2 file descriptors (it uses a pipe for signaling), so use them sparingly
+and only when directly interacting with IO.</p>
 
 <p>To create an IO actor, include Celluloid::IO:</p>
 
-<pre class="code"><span class='class class kw'>class</span> <span class='IOActor constant id'>IOActor</span>
-  <span class='include identifier id'>include</span> <span class='Celluloid constant id'>Celluloid</span><span class='colon2 op'>::</span><span class='IO constant id'>IO</span>
+<pre class="code"><span class='kw'>class</span> <span class='const'>IOActor</span>
+  <span class='id include'>include</span> <span class='const'>Celluloid</span><span class='op'>::</span><span class='const'>IO</span>
 
-  <span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='sock identifier id'>sock</span><span class='rparen token'>)</span>
-    <span class='@sock ivar id'>@sock</span> <span class='assign token'>=</span> <span class='sock identifier id'>sock</span>
-  <span class='end end kw'>end</span>
+  <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id sock'>sock</span><span class='rparen'>)</span>
+    <span class='ivar'>@sock</span> <span class='op'>=</span> <span class='id sock'>sock</span>
+  <span class='kw'>end</span>
 
-  <span class='def def kw'>def</span> <span class='read identifier id'>read</span>
-    <span class='wait_readable identifier id'>wait_readable</span><span class='lparen token'>(</span><span class='@sock ivar id'>@sock</span><span class='rparen token'>)</span> <span class='do do kw'>do</span>
-      <span class='@sock ivar id'>@sock</span><span class='dot token'>.</span><span class='read_nonblock identifier id'>read_nonblock</span>
-    <span class='end end kw'>end</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
+  <span class='kw'>def</span> <span class='id read'>read</span>
+    <span class='id wait_readable'>wait_readable</span><span class='lparen'>(</span><span class='ivar'>@sock</span><span class='rparen'>)</span> <span class='kw'>do</span>
+      <span class='ivar'>@sock</span><span class='period'>.</span><span class='id read_nonblock'>read_nonblock</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
 </pre>
+
+<p>The Celluloid::IO#wait_readable and #wait_writeable methods suspend execution
+of the current method until the given IO object is ready to be read from or
+written to respectively. In the meantime, the current actor will continue
+processing incoming messages, allowing it to respond to method requests even
+while a method (or many methods) are waiting on IO objects.</p>
 
 <h2>Logging</h2>
 
@@ -459,7 +467,7 @@ duck typed with the standard Ruby Logger API (i.e. it implements the #error
 method). For example, if you're using Celluloid within a Rails
 application, you'll probably want to do:</p>
 
-<pre class="code"><span class='Celluloid constant id'>Celluloid</span><span class='dot token'>.</span><span class='logger identifier id'>logger</span> <span class='assign token'>=</span> <span class='Rails constant id'>Rails</span><span class='dot token'>.</span><span class='logger identifier id'>logger</span>
+<pre class="code"><span class='const'>Celluloid</span><span class='period'>.</span><span class='id logger'>logger</span> <span class='op'>=</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id logger'>logger</span>
 </pre>
 
 <p>The logger class you specify must be thread-safe, although with a logging
@@ -536,11 +544,11 @@ at all.</p>
 <p>How do we share nicely? Let's find out by first looking at a thread-unsafe
 version of a singleton method:</p>
 
-<pre class="code"><span class='class class kw'>class</span> <span class='Foo constant id'>Foo</span>
-  <span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='current identifier id'>current</span>
-    <span class='@foo ivar id'>@foo</span> <span class='opasgn op'>||=</span> <span class='Foo constant id'>Foo</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
+<pre class="code"><span class='kw'>class</span> <span class='const'>Foo</span>
+  <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id current'>current</span>
+    <span class='ivar'>@foo</span> <span class='op'>||=</span> <span class='const'>Foo</span><span class='period'>.</span><span class='id new'>new</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
 </pre>
 
 <p>Seems bad. All threads will share access to the same Foo object, and there's
@@ -555,11 +563,11 @@ and we want to keep it around instead of setting it up and tearing it down
 every time. If that's the case, the simplest thing we can do to make this
 code thread safe is to create a thread-specific memo of the object:</p>
 
-<pre class="code"><span class='class class kw'>class</span> <span class='Foo constant id'>Foo</span>
-  <span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='current identifier id'>current</span>
-    <span class='Thread constant id'>Thread</span><span class='dot token'>.</span><span class='current identifier id'>current</span><span class='lbrack token'>[</span><span class='symbol val'>:foo</span><span class='rbrack token'>]</span> <span class='opasgn op'>||=</span> <span class='Foo constant id'>Foo</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
+<pre class="code"><span class='kw'>class</span> <span class='const'>Foo</span>
+  <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id current'>current</span>
+    <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:foo</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='const'>Foo</span><span class='period'>.</span><span class='id new'>new</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
 </pre>
 
 <p>Keep in mind that this will require N Foo objects for N threads. If each
@@ -582,9 +590,9 @@ it's most likely thread safe, provided that Foo doesn't do other wonky things.</
 </div></div>
     
     <div id="footer">
-  Generated on Tue Oct 25 00:09:09 2011 by 
+  Generated on Tue Oct 25 00:23:43 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.3 (ruby-1.8.7).
+  0.7.3 (ruby-1.9.2).
 </div>
 
   </body>

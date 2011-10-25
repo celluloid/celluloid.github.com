@@ -257,12 +257,11 @@ A new instance of Reactor
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/io/reactor.rb', line 6</span>
 
-<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='waker identifier id'>waker</span><span class='rparen token'>)</span>
-  <span class='@waker ivar id'>@waker</span> <span class='assign token'>=</span> <span class='waker identifier id'>waker</span>
-  <span class='@readers ivar id'>@readers</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span>
-  <span class='@writers ivar id'>@writers</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id waker'>waker</span><span class='rparen'>)</span>
+  <span class='ivar'>@waker</span> <span class='op'>=</span> <span class='id waker'>waker</span>
+  <span class='ivar'>@readers</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='ivar'>@writers</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -316,18 +315,17 @@ reactor is awoken by the waker
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/io/reactor.rb', line 28</span>
 
-<span class='def def kw'>def</span> <span class='run_once identifier id'>run_once</span>
-  <span class='readers identifier id'>readers</span><span class='comma token'>,</span> <span class='writers identifier id'>writers</span> <span class='assign token'>=</span> <span class='select identifier id'>select</span> <span class='@readers ivar id'>@readers</span><span class='dot token'>.</span><span class='keys identifier id'>keys</span> <span class='lshft op'>&lt;&lt;</span> <span class='@waker ivar id'>@waker</span><span class='dot token'>.</span><span class='io identifier id'>io</span><span class='comma token'>,</span> <span class='@writers ivar id'>@writers</span><span class='dot token'>.</span><span class='keys identifier id'>keys</span>
-  <span class='yield yield kw'>yield</span> <span class='if if_mod kw'>if</span> <span class='readers identifier id'>readers</span><span class='dot token'>.</span><span class='include? fid id'>include?</span> <span class='@waker ivar id'>@waker</span><span class='dot token'>.</span><span class='io identifier id'>io</span>
+<span class='kw'>def</span> <span class='id run_once'>run_once</span>
+  <span class='id readers'>readers</span><span class='comma'>,</span> <span class='id writers'>writers</span> <span class='op'>=</span> <span class='id select'>select</span> <span class='ivar'>@readers</span><span class='period'>.</span><span class='id keys'>keys</span> <span class='op'>&lt;&lt;</span> <span class='ivar'>@waker</span><span class='period'>.</span><span class='id io'>io</span><span class='comma'>,</span> <span class='ivar'>@writers</span><span class='period'>.</span><span class='id keys'>keys</span>
+  <span class='kw'>yield</span> <span class='kw'>if</span> <span class='id readers'>readers</span><span class='period'>.</span><span class='id include?'>include?</span> <span class='ivar'>@waker</span><span class='period'>.</span><span class='id io'>io</span>
 
-  <span class='lbrack token'>[</span><span class='lbrack token'>[</span><span class='readers identifier id'>readers</span><span class='comma token'>,</span> <span class='@readers ivar id'>@readers</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='lbrack token'>[</span><span class='writers identifier id'>writers</span><span class='comma token'>,</span> <span class='@writers ivar id'>@writers</span><span class='rbrack token'>]</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='ios identifier id'>ios</span><span class='comma token'>,</span> <span class='registered identifier id'>registered</span><span class='bitor op'>|</span>
-    <span class='ios identifier id'>ios</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='io identifier id'>io</span><span class='bitor op'>|</span>
-      <span class='fiber identifier id'>fiber</span> <span class='assign token'>=</span> <span class='registered identifier id'>registered</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span> <span class='io identifier id'>io</span>
-      <span class='fiber identifier id'>fiber</span><span class='dot token'>.</span><span class='resume identifier id'>resume</span> <span class='if if_mod kw'>if</span> <span class='fiber identifier id'>fiber</span>
-    <span class='end end kw'>end</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='lbracket'>[</span><span class='lbracket'>[</span><span class='id readers'>readers</span><span class='comma'>,</span> <span class='ivar'>@readers</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id writers'>writers</span><span class='comma'>,</span> <span class='ivar'>@writers</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id ios'>ios</span><span class='comma'>,</span> <span class='id registered'>registered</span><span class='op'>|</span>
+    <span class='id ios'>ios</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id io'>io</span><span class='op'>|</span>
+      <span class='id fiber'>fiber</span> <span class='op'>=</span> <span class='id registered'>registered</span><span class='period'>.</span><span class='id delete'>delete</span> <span class='id io'>io</span>
+      <span class='id fiber'>fiber</span><span class='period'>.</span><span class='id resume'>resume</span> <span class='kw'>if</span> <span class='id fiber'>fiber</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -367,12 +365,11 @@ Wait for the given IO object to become readable
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/io/reactor.rb', line 13</span>
 
-<span class='def def kw'>def</span> <span class='wait_readable identifier id'>wait_readable</span><span class='lparen token'>(</span><span class='io identifier id'>io</span><span class='rparen token'>)</span>
-  <span class='monitor_io identifier id'>monitor_io</span> <span class='io identifier id'>io</span><span class='comma token'>,</span> <span class='@readers ivar id'>@readers</span>
-  <span class='Fiber constant id'>Fiber</span><span class='dot token'>.</span><span class='yield identifier id'>yield</span>
-  <span class='block_given? fid id'>block_given?</span> <span class='integer val'>? </span><span class='yield yield kw'>yield</span><span class='lparen token'>(</span><span class='io identifier id'>io</span><span class='rparen token'>)</span> <span class='colon op'>:</span> <span class='io identifier id'>io</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id wait_readable'>wait_readable</span><span class='lparen'>(</span><span class='id io'>io</span><span class='rparen'>)</span>
+  <span class='id monitor_io'>monitor_io</span> <span class='id io'>io</span><span class='comma'>,</span> <span class='ivar'>@readers</span>
+  <span class='const'>Fiber</span><span class='period'>.</span><span class='id yield'>yield</span>
+  <span class='id block_given?'>block_given?</span> <span class='op'>?</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='id io'>io</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='id io'>io</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -412,12 +409,11 @@ Wait for the given IO object to become writeable
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/io/reactor.rb', line 20</span>
 
-<span class='def def kw'>def</span> <span class='wait_writeable identifier id'>wait_writeable</span><span class='lparen token'>(</span><span class='io identifier id'>io</span><span class='rparen token'>)</span>
-  <span class='monitor_io identifier id'>monitor_io</span> <span class='io identifier id'>io</span><span class='comma token'>,</span> <span class='@writers ivar id'>@writers</span>
-  <span class='Fiber constant id'>Fiber</span><span class='dot token'>.</span><span class='yield identifier id'>yield</span>
-  <span class='block_given? fid id'>block_given?</span> <span class='integer val'>? </span><span class='yield yield kw'>yield</span><span class='lparen token'>(</span><span class='io identifier id'>io</span><span class='rparen token'>)</span> <span class='colon op'>:</span> <span class='io identifier id'>io</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id wait_writeable'>wait_writeable</span><span class='lparen'>(</span><span class='id io'>io</span><span class='rparen'>)</span>
+  <span class='id monitor_io'>monitor_io</span> <span class='id io'>io</span><span class='comma'>,</span> <span class='ivar'>@writers</span>
+  <span class='const'>Fiber</span><span class='period'>.</span><span class='id yield'>yield</span>
+  <span class='id block_given?'>block_given?</span> <span class='op'>?</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='id io'>io</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='id io'>io</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -428,9 +424,9 @@ Wait for the given IO object to become writeable
 </div>
     
     <div id="footer">
-  Generated on Tue Oct 25 00:09:15 2011 by 
+  Generated on Tue Oct 25 00:23:45 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.3 (ruby-1.8.7).
+  0.7.3 (ruby-1.9.2).
 </div>
 
   </body>

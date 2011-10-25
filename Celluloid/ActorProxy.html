@@ -413,10 +413,9 @@ A new instance of ActorProxy
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/actor_proxy.rb', line 9</span>
 
-<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='actor identifier id'>actor</span><span class='comma token'>,</span> <span class='mailbox identifier id'>mailbox</span><span class='rparen token'>)</span>
-  <span class='@actor ivar id'>@actor</span><span class='comma token'>,</span> <span class='@mailbox ivar id'>@mailbox</span> <span class='assign token'>=</span> <span class='actor identifier id'>actor</span><span class='comma token'>,</span> <span class='mailbox identifier id'>mailbox</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id actor'>actor</span><span class='comma'>,</span> <span class='id mailbox'>mailbox</span><span class='rparen'>)</span>
+  <span class='ivar'>@actor</span><span class='comma'>,</span> <span class='ivar'>@mailbox</span> <span class='op'>=</span> <span class='id actor'>actor</span><span class='comma'>,</span> <span class='id mailbox'>mailbox</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -479,27 +478,26 @@ method_missing black magic to call bang predicate methods asynchronously
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/actor_proxy.rb', line 60</span>
 
-<span class='def def kw'>def</span> <span class='method_missing identifier id'>method_missing</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='comment val'># bang methods are async calls</span>
-  <span class='if if kw'>if</span> <span class='meth identifier id'>meth</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='dot token'>.</span><span class='match identifier id'>match</span><span class='lparen token'>(</span><span class='regexp val'>/!$/</span><span class='rparen token'>)</span>
-    <span class='unbanged_meth identifier id'>unbanged_meth</span> <span class='assign token'>=</span> <span class='meth identifier id'>meth</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='dot token'>.</span><span class='sub identifier id'>sub</span><span class='lparen token'>(</span><span class='regexp val'>/!$/</span><span class='comma token'>,</span> <span class='string val'>''</span><span class='rparen token'>)</span>
-    <span class='our_mailbox identifier id'>our_mailbox</span> <span class='assign token'>=</span> <span class='Thread constant id'>Thread</span><span class='dot token'>.</span><span class='current identifier id'>current</span><span class='dot token'>.</span><span class='mailbox identifier id'>mailbox</span>
+<span class='kw'>def</span> <span class='id method_missing'>method_missing</span><span class='lparen'>(</span><span class='id meth'>meth</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='comment'># bang methods are async calls
+</span>  <span class='kw'>if</span> <span class='id meth'>meth</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='period'>.</span><span class='id match'>match</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>!$</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>
+    <span class='id unbanged_meth'>unbanged_meth</span> <span class='op'>=</span> <span class='id meth'>meth</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='period'>.</span><span class='id sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>!$</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+    <span class='id our_mailbox'>our_mailbox</span> <span class='op'>=</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='period'>.</span><span class='id mailbox'>mailbox</span>
 
-    <span class='begin begin kw'>begin</span>
-      <span class='@mailbox ivar id'>@mailbox</span> <span class='lshft op'>&lt;&lt;</span> <span class='AsyncCall constant id'>AsyncCall</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='our_mailbox identifier id'>our_mailbox</span><span class='comma token'>,</span> <span class='unbanged_meth identifier id'>unbanged_meth</span><span class='comma token'>,</span> <span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='block identifier id'>block</span><span class='rparen token'>)</span>
-    <span class='rescue rescue kw'>rescue</span> <span class='MailboxError constant id'>MailboxError</span>
-      <span class='comment val'># Silently swallow asynchronous calls to dead actors. There's no way</span>
-      <span class='comment val'># to reliably generate DeadActorErrors for async calls, so users of</span>
-      <span class='comment val'># async calls should find other ways to deal with actors dying</span>
-      <span class='comment val'># during an async call (i.e. linking/supervisors)</span>
-    <span class='end end kw'>end</span>
+    <span class='kw'>begin</span>
+      <span class='ivar'>@mailbox</span> <span class='op'>&lt;&lt;</span> <span class='const'>AsyncCall</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id our_mailbox'>our_mailbox</span><span class='comma'>,</span> <span class='id unbanged_meth'>unbanged_meth</span><span class='comma'>,</span> <span class='id args'>args</span><span class='comma'>,</span> <span class='id block'>block</span><span class='rparen'>)</span>
+    <span class='kw'>rescue</span> <span class='const'>MailboxError</span>
+      <span class='comment'># Silently swallow asynchronous calls to dead actors. There's no way
+</span>      <span class='comment'># to reliably generate DeadActorErrors for async calls, so users of
+</span>      <span class='comment'># async calls should find other ways to deal with actors dying
+</span>      <span class='comment'># during an async call (i.e. linking/supervisors)
+</span>    <span class='kw'>end</span>
 
-    <span class='return return kw'>return</span> <span class='comment val'># casts are async and return immediately</span>
-  <span class='end end kw'>end</span>
+    <span class='kw'>return</span> <span class='comment'># casts are async and return immediately
+</span>  <span class='kw'>end</span>
 
-  <span class='__call identifier id'>__call</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='id __call'>__call</span><span class='lparen'>(</span><span class='id meth'>meth</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -545,10 +543,9 @@ FIXME: not nearly enough methods are delegated here
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/actor_proxy.rb', line 7</span>
 
-<span class='def def kw'>def</span> <span class='mailbox identifier id'>mailbox</span>
-  <span class='@mailbox ivar id'>@mailbox</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id mailbox'>mailbox</span>
+  <span class='ivar'>@mailbox</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -603,10 +600,9 @@ FIXME: not nearly enough methods are delegated here
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/actor_proxy.rb', line 25</span>
 
-<span class='def def kw'>def</span> <span class='alive? fid id'>alive?</span>
-  <span class='@actor ivar id'>@actor</span><span class='dot token'>.</span><span class='alive? fid id'>alive?</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id alive?'>alive?</span>
+  <span class='ivar'>@actor</span><span class='period'>.</span><span class='id alive?'>alive?</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -644,10 +640,9 @@ Create a Celluloid::Future which calls a given method
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/actor_proxy.rb', line 39</span>
 
-<span class='def def kw'>def</span> <span class='future identifier id'>future</span><span class='lparen token'>(</span><span class='method_name identifier id'>method_name</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='Celluloid constant id'>Celluloid</span><span class='colon2 op'>::</span><span class='Future constant id'>Future</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='lbrace token'>{</span> <span class='__call identifier id'>__call</span> <span class='method_name identifier id'>method_name</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span> <span class='rbrace token'>}</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id future'>future</span><span class='lparen'>(</span><span class='id method_name'>method_name</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='const'>Celluloid</span><span class='op'>::</span><span class='const'>Future</span><span class='period'>.</span><span class='id new'>new</span> <span class='lbrace'>{</span> <span class='id __call'>__call</span> <span class='id method_name'>method_name</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -674,11 +669,10 @@ Create a Celluloid::Future which calls a given method
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/actor_proxy.rb', line 33</span>
 
-<span class='def def kw'>def</span> <span class='inspect identifier id'>inspect</span>
-  <span class='return return kw'>return</span> <span class='__call identifier id'>__call</span> <span class='symbol val'>:inspect</span> <span class='if if_mod kw'>if</span> <span class='alive? fid id'>alive?</span>
-  <span class='dstring node'>&quot;#&lt;Celluloid::Actor(#{@actor.class}:0x#{@actor.object_id.to_s(16)}) dead&gt;&quot;</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id inspect'>inspect</span>
+  <span class='kw'>return</span> <span class='id __call'>__call</span> <span class='symbol'>:inspect</span> <span class='kw'>if</span> <span class='id alive?'>alive?</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;Celluloid::Actor(</span><span class='embexpr_beg'>#{</span><span class='ivar'>@actor</span><span class='period'>.</span><span class='id class'>class</span><span class='rbrace'>}</span><span class='tstring_content'>:0x</span><span class='embexpr_beg'>#{</span><span class='ivar'>@actor</span><span class='period'>.</span><span class='id object_id'>object_id</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='lparen'>(</span><span class='int'>16</span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_content'>) dead&gt;</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -704,10 +698,9 @@ Create a Celluloid::Future which calls a given method
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/actor_proxy.rb', line 21</span>
 
-<span class='def def kw'>def</span> <span class='methods identifier id'>methods</span><span class='lparen token'>(</span><span class='include_ancestors identifier id'>include_ancestors</span> <span class='assign token'>=</span> <span class='true true kw'>true</span><span class='rparen token'>)</span>
-  <span class='__call identifier id'>__call</span> <span class='symbol val'>:methods</span><span class='comma token'>,</span> <span class='include_ancestors identifier id'>include_ancestors</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id methods'>methods</span><span class='lparen'>(</span><span class='id include_ancestors'>include_ancestors</span> <span class='op'>=</span> <span class='kw'>true</span><span class='rparen'>)</span>
+  <span class='id __call'>__call</span> <span class='symbol'>:methods</span><span class='comma'>,</span> <span class='id include_ancestors'>include_ancestors</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -755,10 +748,9 @@ Create a Celluloid::Future which calls a given method
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/actor_proxy.rb', line 17</span>
 
-<span class='def def kw'>def</span> <span class='respond_to? fid id'>respond_to?</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='rparen token'>)</span>
-  <span class='__call identifier id'>__call</span> <span class='symbol val'>:respond_to?</span><span class='comma token'>,</span> <span class='meth identifier id'>meth</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='id meth'>meth</span><span class='rparen'>)</span>
+  <span class='id __call'>__call</span> <span class='symbol'>:respond_to?</span><span class='comma'>,</span> <span class='id meth'>meth</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -784,10 +776,9 @@ Create a Celluloid::Future which calls a given method
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/actor_proxy.rb', line 13</span>
 
-<span class='def def kw'>def</span> <span class='send identifier id'>send</span><span class='lparen token'>(</span><span class='meth identifier id'>meth</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='__call identifier id'>__call</span> <span class='symbol val'>:send</span><span class='comma token'>,</span> <span class='meth identifier id'>meth</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id send'>send</span><span class='lparen'>(</span><span class='id meth'>meth</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id __call'>__call</span> <span class='symbol'>:send</span><span class='comma'>,</span> <span class='id meth'>meth</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -849,21 +840,20 @@ Terminate the associated actor
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/actor_proxy.rb', line 44</span>
 
-<span class='def def kw'>def</span> <span class='terminate identifier id'>terminate</span>
-  <span class='raise identifier id'>raise</span> <span class='DeadActorError constant id'>DeadActorError</span><span class='comma token'>,</span> <span class='string val'>&quot;actor already terminated&quot;</span> <span class='unless unless_mod kw'>unless</span> <span class='alive? fid id'>alive?</span>
+<span class='kw'>def</span> <span class='id terminate'>terminate</span>
+  <span class='id raise'>raise</span> <span class='const'>DeadActorError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>actor already terminated</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id alive?'>alive?</span>
 
-  <span class='begin begin kw'>begin</span>
-    <span class='send identifier id'>send</span> <span class='symbol val'>:terminate</span>
-  <span class='rescue rescue kw'>rescue</span> <span class='DeadActorError constant id'>DeadActorError</span>
-    <span class='comment val'># In certain cases this is thrown during termination. This is likely</span>
-    <span class='comment val'># a bug in Celluloid's internals, but it shouldn't affect the caller.</span>
-    <span class='comment val'># FIXME: track this down and fix it, or at the very least log it</span>
-  <span class='end end kw'>end</span>
+  <span class='kw'>begin</span>
+    <span class='id send'>send</span> <span class='symbol'>:terminate</span>
+  <span class='kw'>rescue</span> <span class='const'>DeadActorError</span>
+    <span class='comment'># In certain cases this is thrown during termination. This is likely
+</span>    <span class='comment'># a bug in Celluloid's internals, but it shouldn't affect the caller.
+</span>    <span class='comment'># FIXME: track this down and fix it, or at the very least log it
+</span>  <span class='kw'>end</span>
 
-  <span class='comment val'># Always return nil until a dependable exit value can be obtained</span>
-  <span class='nil nil kw'>nil</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='comment'># Always return nil until a dependable exit value can be obtained
+</span>  <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -889,10 +879,9 @@ Terminate the associated actor
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/actor_proxy.rb', line 29</span>
 
-<span class='def def kw'>def</span> <span class='to_s identifier id'>to_s</span>
-  <span class='__call identifier id'>__call</span> <span class='symbol val'>:to_s</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id to_s'>to_s</span>
+  <span class='id __call'>__call</span> <span class='symbol'>:to_s</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -903,9 +892,9 @@ Terminate the associated actor
 </div>
     
     <div id="footer">
-  Generated on Tue Oct 25 00:09:15 2011 by 
+  Generated on Tue Oct 25 00:23:45 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.3 (ruby-1.8.7).
+  0.7.3 (ruby-1.9.2).
 </div>
 
   </body>

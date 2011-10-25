@@ -260,11 +260,10 @@ A new instance of ExitEvent
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/events.rb', line 9</span>
 
-<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='actor identifier id'>actor</span><span class='comma token'>,</span> <span class='reason identifier id'>reason</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
-  <span class='@actor ivar id'>@actor</span><span class='comma token'>,</span> <span class='@reason ivar id'>@reason</span> <span class='assign token'>=</span> <span class='actor identifier id'>actor</span><span class='comma token'>,</span> <span class='reason identifier id'>reason</span>
-  <span class='super super kw'>super</span> <span class='reason identifier id'>reason</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id actor'>actor</span><span class='comma'>,</span> <span class='id reason'>reason</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='ivar'>@actor</span><span class='comma'>,</span> <span class='ivar'>@reason</span> <span class='op'>=</span> <span class='id actor'>actor</span><span class='comma'>,</span> <span class='id reason'>reason</span>
+  <span class='kw'>super</span> <span class='id reason'>reason</span><span class='period'>.</span><span class='id to_s'>to_s</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -310,10 +309,9 @@ Returns the value of attribute actor
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/events.rb', line 7</span>
 
-<span class='def def kw'>def</span> <span class='actor identifier id'>actor</span>
-  <span class='@actor ivar id'>@actor</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id actor'>actor</span>
+  <span class='ivar'>@actor</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -354,10 +352,9 @@ Returns the value of attribute reason
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/events.rb', line 7</span>
 
-<span class='def def kw'>def</span> <span class='reason identifier id'>reason</span>
-  <span class='@reason ivar id'>@reason</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id reason'>reason</span>
+  <span class='ivar'>@reason</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -369,9 +366,9 @@ Returns the value of attribute reason
 </div>
     
     <div id="footer">
-  Generated on Tue Oct 25 00:09:13 2011 by 
+  Generated on Tue Oct 25 00:23:44 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.3 (ruby-1.8.7).
+  0.7.3 (ruby-1.9.2).
 </div>
 
   </body>

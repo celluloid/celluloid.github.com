@@ -230,10 +230,9 @@ A new instance of Signals
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/signals.rb', line 4</span>
 
-<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span>
-  <span class='@waiting ivar id'>@waiting</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id initialize'>initialize</span>
+  <span class='ivar'>@waiting</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -283,14 +282,13 @@ if any calls were signaled, or false otherwise
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/signals.rb', line 17</span>
 
-<span class='def def kw'>def</span> <span class='send identifier id'>send</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='comma token'>,</span> <span class='value identifier id'>value</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
-  <span class='fibers identifier id'>fibers</span> <span class='assign token'>=</span> <span class='@waiting ivar id'>@waiting</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span> <span class='name identifier id'>name</span>
-  <span class='return return kw'>return</span> <span class='unless unless_mod kw'>unless</span> <span class='fibers identifier id'>fibers</span>
+<span class='kw'>def</span> <span class='id send'>send</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span> <span class='id value'>value</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id fibers'>fibers</span> <span class='op'>=</span> <span class='ivar'>@waiting</span><span class='period'>.</span><span class='id delete'>delete</span> <span class='id name'>name</span>
+  <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id fibers'>fibers</span>
   
-  <span class='fibers identifier id'>fibers</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='fiber identifier id'>fiber</span><span class='bitor op'>|</span> <span class='fiber identifier id'>fiber</span><span class='dot token'>.</span><span class='resume identifier id'>resume</span> <span class='value identifier id'>value</span> <span class='rbrace token'>}</span>
-  <span class='true true kw'>true</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='id fibers'>fibers</span><span class='period'>.</span><span class='id each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id fiber'>fiber</span><span class='op'>|</span> <span class='id fiber'>fiber</span><span class='period'>.</span><span class='id resume'>resume</span> <span class='id value'>value</span> <span class='rbrace'>}</span>
+  <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -330,12 +328,11 @@ Wait for the given signal name and return the associated value
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/signals.rb', line 9</span>
 
-<span class='def def kw'>def</span> <span class='wait identifier id'>wait</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
-  <span class='fibers identifier id'>fibers</span> <span class='assign token'>=</span> <span class='@waiting ivar id'>@waiting</span><span class='lbrack token'>[</span><span class='name identifier id'>name</span><span class='rbrack token'>]</span> <span class='opasgn op'>||=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
-  <span class='fibers identifier id'>fibers</span> <span class='lshft op'>&lt;&lt;</span> <span class='Fiber constant id'>Fiber</span><span class='dot token'>.</span><span class='current identifier id'>current</span>
-  <span class='Fiber constant id'>Fiber</span><span class='dot token'>.</span><span class='yield identifier id'>yield</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id wait'>wait</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+  <span class='id fibers'>fibers</span> <span class='op'>=</span> <span class='ivar'>@waiting</span><span class='lbracket'>[</span><span class='id name'>name</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='id fibers'>fibers</span> <span class='op'>&lt;&lt;</span> <span class='const'>Fiber</span><span class='period'>.</span><span class='id current'>current</span>
+  <span class='const'>Fiber</span><span class='period'>.</span><span class='id yield'>yield</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -346,9 +343,9 @@ Wait for the given signal name and return the associated value
 </div>
     
     <div id="footer">
-  Generated on Tue Oct 25 00:09:13 2011 by 
+  Generated on Tue Oct 25 00:23:44 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.3 (ruby-1.8.7).
+  0.7.3 (ruby-1.9.2).
 </div>
 
   </body>

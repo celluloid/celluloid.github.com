@@ -334,13 +334,12 @@ A new instance of Mailbox
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/io/mailbox.rb', line 9</span>
 
-<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span>
-  <span class='@messages ivar id'>@messages</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
-  <span class='@lock ivar id'>@lock</span>  <span class='assign token'>=</span> <span class='Mutex constant id'>Mutex</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
-  <span class='@waker ivar id'>@waker</span> <span class='assign token'>=</span> <span class='Waker constant id'>Waker</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
-  <span class='@reactor ivar id'>@reactor</span> <span class='assign token'>=</span> <span class='Reactor constant id'>Reactor</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='@waker ivar id'>@waker</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id initialize'>initialize</span>
+  <span class='ivar'>@messages</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='ivar'>@lock</span>  <span class='op'>=</span> <span class='const'>Mutex</span><span class='period'>.</span><span class='id new'>new</span>
+  <span class='ivar'>@waker</span> <span class='op'>=</span> <span class='const'>Waker</span><span class='period'>.</span><span class='id new'>new</span>
+  <span class='ivar'>@reactor</span> <span class='op'>=</span> <span class='const'>Reactor</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='ivar'>@waker</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -386,10 +385,9 @@ Returns the value of attribute reactor
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/io/mailbox.rb', line 7</span>
 
-<span class='def def kw'>def</span> <span class='reactor identifier id'>reactor</span>
-  <span class='@reactor ivar id'>@reactor</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id reactor'>reactor</span>
+  <span class='ivar'>@reactor</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -420,19 +418,6 @@ Add a message to the Mailbox
 </div>
 <div class="tags">
   
-<h3>Raises:</h3>
-<ul class="raise">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="../MailboxError.html" title="Celluloid::MailboxError (class)">MailboxError</a></span></tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
 
 </div><table class="source_code">
   <tr>
@@ -453,16 +438,15 @@ Add a message to the Mailbox
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/io/mailbox.rb', line 17</span>
 
-<span class='def def kw'>def</span> <span class='lshft op'>&lt;&lt;</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='rparen token'>)</span>
-  <span class='@lock ivar id'>@lock</span><span class='dot token'>.</span><span class='synchronize identifier id'>synchronize</span> <span class='do do kw'>do</span>
-    <span class='@messages ivar id'>@messages</span> <span class='lshft op'>&lt;&lt;</span> <span class='message identifier id'>message</span>
-    <span class='@waker ivar id'>@waker</span><span class='dot token'>.</span><span class='signal identifier id'>signal</span>
-  <span class='end end kw'>end</span>
-  <span class='nil nil kw'>nil</span>
-<span class='rescue rescue kw'>rescue</span> <span class='DeadWakerError constant id'>DeadWakerError</span>
-  <span class='raise identifier id'>raise</span> <span class='MailboxError constant id'>MailboxError</span><span class='comma token'>,</span> <span class='string val'>&quot;dead recipient&quot;</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='op'>&lt;&lt;</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span>
+  <span class='ivar'>@lock</span><span class='period'>.</span><span class='id synchronize'>synchronize</span> <span class='kw'>do</span>
+    <span class='ivar'>@messages</span> <span class='op'>&lt;&lt;</span> <span class='id message'>message</span>
+    <span class='ivar'>@waker</span><span class='period'>.</span><span class='id signal'>signal</span>
+  <span class='kw'>end</span>
+  <span class='kw'>nil</span>
+<span class='kw'>rescue</span> <span class='const'>DeadWakerError</span>
+  <span class='id raise'>raise</span> <span class='const'>MailboxError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>dead recipient</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -486,19 +470,6 @@ Receive a message from the Mailbox
 </div>
 <div class="tags">
   
-<h3>Raises:</h3>
-<ul class="raise">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="../MailboxShutdown.html" title="Celluloid::MailboxShutdown (class)">MailboxShutdown</a></span></tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
 
 </div><table class="source_code">
   <tr>
@@ -525,22 +496,21 @@ Receive a message from the Mailbox
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/io/mailbox.rb', line 42</span>
 
-<span class='def def kw'>def</span> <span class='receive identifier id'>receive</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='message identifier id'>message</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span>
+<span class='kw'>def</span> <span class='id receive'>receive</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id message'>message</span> <span class='op'>=</span> <span class='kw'>nil</span>
 
-  <span class='begin begin kw'>begin</span>
-    <span class='@reactor ivar id'>@reactor</span><span class='dot token'>.</span><span class='run_once identifier id'>run_once</span> <span class='do do kw'>do</span>
-      <span class='@waker ivar id'>@waker</span><span class='dot token'>.</span><span class='wait identifier id'>wait</span>
-      <span class='message identifier id'>message</span> <span class='assign token'>=</span> <span class='next_message identifier id'>next_message</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-    <span class='end end kw'>end</span>
-  <span class='end end kw'>end</span> <span class='until until_mod kw'>until</span> <span class='message identifier id'>message</span>
+  <span class='kw'>begin</span>
+    <span class='ivar'>@reactor</span><span class='period'>.</span><span class='id run_once'>run_once</span> <span class='kw'>do</span>
+      <span class='ivar'>@waker</span><span class='period'>.</span><span class='id wait'>wait</span>
+      <span class='id message'>message</span> <span class='op'>=</span> <span class='id next_message'>next_message</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span> <span class='kw'>until</span> <span class='id message'>message</span>
 
-  <span class='message identifier id'>message</span>
-<span class='rescue rescue kw'>rescue</span> <span class='DeadWakerError constant id'>DeadWakerError</span>
-  <span class='shutdown identifier id'>shutdown</span> <span class='comment val'># force shutdown of the mailbox</span>
-  <span class='raise identifier id'>raise</span> <span class='MailboxShutdown constant id'>MailboxShutdown</span><span class='comma token'>,</span> <span class='string val'>&quot;mailbox shutdown called during receive&quot;</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='id message'>message</span>
+<span class='kw'>rescue</span> <span class='const'>DeadWakerError</span>
+  <span class='id shutdown'>shutdown</span> <span class='comment'># force shutdown of the mailbox
+</span>  <span class='id raise'>raise</span> <span class='const'>MailboxShutdown</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>mailbox shutdown called during receive</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -579,11 +549,10 @@ Cleanup any IO objects this Mailbox may be using
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/io/mailbox.rb', line 59</span>
 
-<span class='def def kw'>def</span> <span class='shutdown identifier id'>shutdown</span>
-  <span class='@waker ivar id'>@waker</span><span class='dot token'>.</span><span class='cleanup identifier id'>cleanup</span>
-  <span class='super super kw'>super</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id shutdown'>shutdown</span>
+  <span class='ivar'>@waker</span><span class='period'>.</span><span class='id cleanup'>cleanup</span>
+  <span class='kw'>super</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -630,19 +599,18 @@ Add a high-priority system event to the Mailbox
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/io/mailbox.rb', line 28</span>
 
-<span class='def def kw'>def</span> <span class='system_event identifier id'>system_event</span><span class='lparen token'>(</span><span class='event identifier id'>event</span><span class='rparen token'>)</span>
-  <span class='@lock ivar id'>@lock</span><span class='dot token'>.</span><span class='synchronize identifier id'>synchronize</span> <span class='do do kw'>do</span>
-    <span class='@messages ivar id'>@messages</span><span class='dot token'>.</span><span class='unshift identifier id'>unshift</span> <span class='event identifier id'>event</span>
+<span class='kw'>def</span> <span class='id system_event'>system_event</span><span class='lparen'>(</span><span class='id event'>event</span><span class='rparen'>)</span>
+  <span class='ivar'>@lock</span><span class='period'>.</span><span class='id synchronize'>synchronize</span> <span class='kw'>do</span>
+    <span class='ivar'>@messages</span><span class='period'>.</span><span class='id unshift'>unshift</span> <span class='id event'>event</span>
 
-    <span class='begin begin kw'>begin</span>
-      <span class='@waker ivar id'>@waker</span><span class='dot token'>.</span><span class='signal identifier id'>signal</span>
-    <span class='rescue rescue kw'>rescue</span> <span class='DeadWakerError constant id'>DeadWakerError</span>
-      <span class='comment val'># Silently fail if messages are sent to dead actors</span>
-    <span class='end end kw'>end</span>
-  <span class='end end kw'>end</span>
-  <span class='nil nil kw'>nil</span>
-<span class='end end kw'>end</span>
-</pre>
+    <span class='kw'>begin</span>
+      <span class='ivar'>@waker</span><span class='period'>.</span><span class='id signal'>signal</span>
+    <span class='kw'>rescue</span> <span class='const'>DeadWakerError</span>
+      <span class='comment'># Silently fail if messages are sent to dead actors
+</span>    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -653,9 +621,9 @@ Add a high-priority system event to the Mailbox
 </div>
     
     <div id="footer">
-  Generated on Tue Oct 25 00:09:15 2011 by 
+  Generated on Tue Oct 25 00:23:45 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.3 (ruby-1.8.7).
+  0.7.3 (ruby-1.9.2).
 </div>
 
   </body>

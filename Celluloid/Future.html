@@ -220,14 +220,13 @@ A new instance of Future
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/future.rb', line 13</span>
 
-<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='@lock ivar id'>@lock</span> <span class='assign token'>=</span> <span class='Mutex constant id'>Mutex</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
-  <span class='@value_obtained ivar id'>@value_obtained</span> <span class='assign token'>=</span> <span class='false false kw'>false</span>
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='ivar'>@lock</span> <span class='op'>=</span> <span class='const'>Mutex</span><span class='period'>.</span><span class='id new'>new</span>
+  <span class='ivar'>@value_obtained</span> <span class='op'>=</span> <span class='kw'>false</span>
   
-  <span class='@runner ivar id'>@runner</span> <span class='assign token'>=</span> <span class='Runner constant id'>Runner</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='@runner ivar id'>@runner</span><span class='dot token'>.</span><span class='run! fid id'>run!</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='ivar'>@runner</span> <span class='op'>=</span> <span class='const'>Runner</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='ivar'>@runner</span><span class='period'>.</span><span class='id run!'>run!</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -280,18 +279,17 @@ Obtain the value for this Future
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/future.rb', line 22</span>
 
-<span class='def def kw'>def</span> <span class='value identifier id'>value</span>
-  <span class='@lock ivar id'>@lock</span><span class='dot token'>.</span><span class='synchronize identifier id'>synchronize</span> <span class='do do kw'>do</span>
-    <span class='unless unless kw'>unless</span> <span class='@value_obtained ivar id'>@value_obtained</span>
-      <span class='@value ivar id'>@value</span> <span class='assign token'>=</span> <span class='@runner ivar id'>@runner</span><span class='dot token'>.</span><span class='value identifier id'>value</span>
-      <span class='@runner ivar id'>@runner</span><span class='dot token'>.</span><span class='terminate identifier id'>terminate</span>
-      <span class='@value_obtained ivar id'>@value_obtained</span> <span class='assign token'>=</span> <span class='true true kw'>true</span>
-    <span class='end end kw'>end</span>
+<span class='kw'>def</span> <span class='id value'>value</span>
+  <span class='ivar'>@lock</span><span class='period'>.</span><span class='id synchronize'>synchronize</span> <span class='kw'>do</span>
+    <span class='kw'>unless</span> <span class='ivar'>@value_obtained</span>
+      <span class='ivar'>@value</span> <span class='op'>=</span> <span class='ivar'>@runner</span><span class='period'>.</span><span class='id value'>value</span>
+      <span class='ivar'>@runner</span><span class='period'>.</span><span class='id terminate'>terminate</span>
+      <span class='ivar'>@value_obtained</span> <span class='op'>=</span> <span class='kw'>true</span>
+    <span class='kw'>end</span>
     
-    <span class='@value ivar id'>@value</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+    <span class='ivar'>@value</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -302,9 +300,9 @@ Obtain the value for this Future
 </div>
     
     <div id="footer">
-  Generated on Tue Oct 25 00:09:13 2011 by 
+  Generated on Tue Oct 25 00:23:44 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.3 (ruby-1.8.7).
+  0.7.3 (ruby-1.9.2).
 </div>
 
   </body>

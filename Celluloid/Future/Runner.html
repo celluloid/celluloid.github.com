@@ -250,10 +250,9 @@ A new instance of Runner
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/future.rb', line 41</span>
 
-<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='@args ivar id'>@args</span><span class='comma token'>,</span> <span class='@block ivar id'>@block</span> <span class='assign token'>=</span> <span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='block identifier id'>block</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='ivar'>@args</span><span class='comma'>,</span> <span class='ivar'>@block</span> <span class='op'>=</span> <span class='id args'>args</span><span class='comma'>,</span> <span class='id block'>block</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -301,15 +300,14 @@ A new instance of Runner
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/future.rb', line 45</span>
 
-<span class='def def kw'>def</span> <span class='run identifier id'>run</span>
-  <span class='@value ivar id'>@value</span> <span class='assign token'>=</span> <span class='@block ivar id'>@block</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='@args ivar id'>@args</span><span class='rparen token'>)</span>
-<span class='rescue rescue kw'>rescue</span> <span class='Exception constant id'>Exception</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='error identifier id'>error</span>
-  <span class='@error ivar id'>@error</span> <span class='assign token'>=</span> <span class='error identifier id'>error</span>
-<span class='ensure ensure kw'>ensure</span>
-  <span class='@called ivar id'>@called</span> <span class='assign token'>=</span> <span class='true true kw'>true</span>
-  <span class='signal identifier id'>signal</span> <span class='symbol val'>:finished</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id run'>run</span>
+  <span class='ivar'>@value</span> <span class='op'>=</span> <span class='ivar'>@block</span><span class='period'>.</span><span class='id call'>call</span><span class='lparen'>(</span><span class='op'>*</span><span class='ivar'>@args</span><span class='rparen'>)</span>
+<span class='kw'>rescue</span> <span class='const'>Exception</span> <span class='op'>=&gt;</span> <span class='id error'>error</span>
+  <span class='ivar'>@error</span> <span class='op'>=</span> <span class='id error'>error</span>
+<span class='kw'>ensure</span>
+  <span class='ivar'>@called</span> <span class='op'>=</span> <span class='kw'>true</span>
+  <span class='id signal'>signal</span> <span class='symbol'>:finished</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -337,12 +335,11 @@ A new instance of Runner
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/future.rb', line 54</span>
 
-<span class='def def kw'>def</span> <span class='value identifier id'>value</span>
-  <span class='wait identifier id'>wait</span> <span class='symbol val'>:finished</span> <span class='unless unless_mod kw'>unless</span> <span class='@called ivar id'>@called</span>
-  <span class='abort identifier id'>abort</span> <span class='@error ivar id'>@error</span> <span class='if if_mod kw'>if</span> <span class='@error ivar id'>@error</span>
-  <span class='@value ivar id'>@value</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id value'>value</span>
+  <span class='id wait'>wait</span> <span class='symbol'>:finished</span> <span class='kw'>unless</span> <span class='ivar'>@called</span>
+  <span class='id abort'>abort</span> <span class='ivar'>@error</span> <span class='kw'>if</span> <span class='ivar'>@error</span>
+  <span class='ivar'>@value</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -353,9 +350,9 @@ A new instance of Runner
 </div>
     
     <div id="footer">
-  Generated on Tue Oct 25 00:09:13 2011 by 
+  Generated on Tue Oct 25 00:23:44 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.3 (ruby-1.8.7).
+  0.7.3 (ruby-1.9.2).
 </div>
 
   </body>
