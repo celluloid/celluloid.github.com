@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>Class: Celluloid::Mailbox</title>
+
+  <link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+  <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body id="top" class="class">
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li><a href="../lib/celluloid/mailbox_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/celluloid/mailbox.rb">lib/celluloid/mailbox.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link"><a href="../Object.html">Object</a></p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-c-new">::new</a></li>
+          
+          <li><a href="#method-i-3C-3C">#<<</a></li>
+          
+          <li><a href="#method-i-each">#each</a></li>
+          
+          <li><a href="#method-i-inspect">#inspect</a></li>
+          
+          <li><a href="#method-i-receive">#receive</a></li>
+          
+          <li><a href="#method-i-shutdown">#shutdown</a></li>
+          
+          <li><a href="#method-i-system_event">#system_event</a></li>
+          
+          <li><a href="#method-i-to_a">#to_a</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+      <!-- Included Modules -->
+      <div id="includes-section" class="section">
+        <h3 class="section-header">Included Modules</h3>
+        <ul class="link-list">
+        
+        
+          <li><span class="include">Enumerable</span></li>
+        
+        
+        </ul>
+      </div>
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Files</h3>
+        <ul>
+        
+          <li class="file"><a href="../LICENSE_txt.html">LICENSE.txt</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="../images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li><a href="../Celluloid.html">Celluloid</a></li>
+        
+          <li><a href="../Celluloid/AbortError.html">Celluloid::AbortError</a></li>
+        
+          <li><a href="../Celluloid/Actor.html">Celluloid::Actor</a></li>
+        
+          <li><a href="../Celluloid/Actor/ClassMethods.html">Celluloid::Actor::ClassMethods</a></li>
+        
+          <li><a href="../Celluloid/Actor/InstanceMethods.html">Celluloid::Actor::InstanceMethods</a></li>
+        
+          <li><a href="../Celluloid/Actor/InternalMethods.html">Celluloid::Actor::InternalMethods</a></li>
+        
+          <li><a href="../Celluloid/ActorProxy.html">Celluloid::ActorProxy</a></li>
+        
+          <li><a href="../Celluloid/AsyncCall.html">Celluloid::AsyncCall</a></li>
+        
+          <li><a href="../Celluloid/Call.html">Celluloid::Call</a></li>
+        
+          <li><a href="../Celluloid/DeadActorError.html">Celluloid::DeadActorError</a></li>
+        
+          <li><a href="../Celluloid/ErrorResponse.html">Celluloid::ErrorResponse</a></li>
+        
+          <li><a href="../Celluloid/ExitEvent.html">Celluloid::ExitEvent</a></li>
+        
+          <li><a href="../Celluloid/Future.html">Celluloid::Future</a></li>
+        
+          <li><a href="../Celluloid/Future/Runner.html">Celluloid::Future::Runner</a></li>
+        
+          <li><a href="../Celluloid/Linking.html">Celluloid::Linking</a></li>
+        
+          <li><a href="../Celluloid/Links.html">Celluloid::Links</a></li>
+        
+          <li><a href="../Celluloid/Mailbox.html">Celluloid::Mailbox</a></li>
+        
+          <li><a href="../Celluloid/MailboxError.html">Celluloid::MailboxError</a></li>
+        
+          <li><a href="../Celluloid/NotActorError.html">Celluloid::NotActorError</a></li>
+        
+          <li><a href="../Celluloid/Registry.html">Celluloid::Registry</a></li>
+        
+          <li><a href="../Celluloid/Response.html">Celluloid::Response</a></li>
+        
+          <li><a href="../Celluloid/Signals.html">Celluloid::Signals</a></li>
+        
+          <li><a href="../Celluloid/SuccessResponse.html">Celluloid::SuccessResponse</a></li>
+        
+          <li><a href="../Celluloid/Supervisor.html">Celluloid::Supervisor</a></li>
+        
+          <li><a href="../Celluloid/SyncCall.html">Celluloid::SyncCall</a></li>
+        
+          <li><a href="../Celluloid/SystemEvent.html">Celluloid::SystemEvent</a></li>
+        
+          <li><a href="../Object.html">Object</a></li>
+        
+          <li><a href="../Thread.html">Thread</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div id="documentation">
+    <h1 class="class">Celluloid::Mailbox</h1>
+
+    <div id="description" class="description">
+      
+<p>Actors communicate with asynchronous messages. Messages are buffered in
+Mailboxes until Actors can act upon them.</p>
+
+    </div><!-- description -->
+
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-class-method-details" class="method-section section">
+        <h3 class="section-header">Public Class Methods</h3>
+
+      
+        <div id="new-method" class="method-detail ">
+          <a name="method-c-new"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">new</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="new-source">
+<pre>
+<span class="ruby-comment"># File lib/celluloid/mailbox.rb, line 11</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>
+  <span class="ruby-ivar">@messages</span> = []
+  <span class="ruby-ivar">@lock</span>  = <span class="ruby-constant">Mutex</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@condition</span> = <span class="ruby-constant">ConditionVariable</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@dead</span> = <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- new-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- new-method -->
+
+      
+      </div><!-- public-class-method-details -->
+    
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="3C-3C-method" class="method-detail ">
+          <a name="method-i-3C-3C"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">&lt;&lt;</span><span
+              class="method-args">(message)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Add a message to the <a href="Mailbox.html">Mailbox</a></p>
+            
+
+            
+            <div class="method-source-code" id="3C-3C-source">
+<pre>
+<span class="ruby-comment"># File lib/celluloid/mailbox.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-operator">&lt;&lt;</span>(<span class="ruby-identifier">message</span>)
+  <span class="ruby-ivar">@lock</span>.<span class="ruby-identifier">synchronize</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">MailboxError</span>, <span class="ruby-string">&quot;dead recipient&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@dead</span>
+    
+    <span class="ruby-ivar">@messages</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">message</span>
+    <span class="ruby-ivar">@condition</span>.<span class="ruby-identifier">signal</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- 3C-3C-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- 3C-3C-method -->
+
+      
+        <div id="each-method" class="method-detail ">
+          <a name="method-i-each"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">each</span><span
+              class="method-args">(&block)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Iterate through the mailbox</p>
+            
+
+            
+            <div class="method-source-code" id="each-source">
+<pre>
+<span class="ruby-comment"># File lib/celluloid/mailbox.rb, line 82</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">each</span>(&amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">each</span>(&amp;<span class="ruby-identifier">block</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- each-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- each-method -->
+
+      
+        <div id="inspect-method" class="method-detail ">
+          <a name="method-i-inspect"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">inspect</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Inspect the contents of the <a href="Mailbox.html">Mailbox</a></p>
+            
+
+            
+            <div class="method-source-code" id="inspect-source">
+<pre>
+<span class="ruby-comment"># File lib/celluloid/mailbox.rb, line 87</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect</span>
+  <span class="ruby-node">&quot;#&lt;Celluloid::Mailbox:#{object_id} [#{map { |m| m.inspect }.join(', ')}]&gt;&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- inspect-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- inspect-method -->
+
+      
+        <div id="receive-method" class="method-detail ">
+          <a name="method-i-receive"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">receive</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Receive a message from the <a href="Mailbox.html">Mailbox</a></p>
+            
+
+            
+            <div class="method-source-code" id="receive-source">
+<pre>
+<span class="ruby-comment"># File lib/celluloid/mailbox.rb, line 41</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">receive</span>
+  <span class="ruby-identifier">message</span> = <span class="ruby-keyword">nil</span>
+  
+  <span class="ruby-ivar">@lock</span>.<span class="ruby-identifier">synchronize</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">MailboxError</span>, <span class="ruby-string">&quot;attempted to receive from a dead mailbox&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@dead</span>
+    
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
+        <span class="ruby-identifier">index</span> = <span class="ruby-ivar">@messages</span>.<span class="ruby-identifier">index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">msg</span><span class="ruby-operator">|</span>
+          <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">msg</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Celluloid</span><span class="ruby-operator">::</span><span class="ruby-constant">SystemEvent</span>)
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-identifier">message</span> = <span class="ruby-ivar">@messages</span>.<span class="ruby-identifier">slice!</span>(<span class="ruby-identifier">index</span>, <span class="ruby-value">1</span>).<span class="ruby-identifier">first</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">index</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">message</span> = <span class="ruby-ivar">@messages</span>.<span class="ruby-identifier">shift</span>
+      <span class="ruby-keyword">end</span>
+      
+      <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">message</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Celluloid</span><span class="ruby-operator">::</span><span class="ruby-constant">SystemEvent</span>)
+      
+      <span class="ruby-ivar">@condition</span>.<span class="ruby-identifier">wait</span>(<span class="ruby-ivar">@lock</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">message</span>
+    <span class="ruby-keyword">end</span> <span class="ruby-keyword">until</span> <span class="ruby-identifier">message</span>
+  <span class="ruby-keyword">end</span>
+    
+  <span class="ruby-identifier">message</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- receive-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- receive-method -->
+
+      
+        <div id="shutdown-method" class="method-detail ">
+          <a name="method-i-shutdown"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">shutdown</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Shut down this mailbox and clean up its contents</p>
+            
+
+            
+            <div class="method-source-code" id="shutdown-source">
+<pre>
+<span class="ruby-comment"># File lib/celluloid/mailbox.rb, line 68</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">shutdown</span>
+  <span class="ruby-ivar">@lock</span>.<span class="ruby-identifier">synchronize</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-ivar">@messages</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">msg</span><span class="ruby-operator">|</span> <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">cleanup</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:cleanup</span> }
+    <span class="ruby-ivar">@messages</span>.<span class="ruby-identifier">clear</span>
+    <span class="ruby-ivar">@dead</span> = <span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- shutdown-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- shutdown-method -->
+
+      
+        <div id="system_event-method" class="method-detail ">
+          <a name="method-i-system_event"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">system_event</span><span
+              class="method-args">(event)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Add a high-priority system event to the <a href="Mailbox.html">Mailbox</a></p>
+            
+
+            
+            <div class="method-source-code" id="system_event-source">
+<pre>
+<span class="ruby-comment"># File lib/celluloid/mailbox.rb, line 30</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">system_event</span>(<span class="ruby-identifier">event</span>)
+  <span class="ruby-ivar">@lock</span>.<span class="ruby-identifier">synchronize</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@dead</span> <span class="ruby-comment"># Silently fail if messages are sent to dead actors</span>
+      <span class="ruby-ivar">@messages</span>.<span class="ruby-identifier">unshift</span> <span class="ruby-identifier">event</span>
+      <span class="ruby-ivar">@condition</span>.<span class="ruby-identifier">signal</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- system_event-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- system_event-method -->
+
+      
+        <div id="to_a-method" class="method-detail ">
+          <a name="method-i-to_a"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">to_a</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Cast to an array</p>
+            
+
+            
+            <div class="method-source-code" id="to_a-source">
+<pre>
+<span class="ruby-comment"># File lib/celluloid/mailbox.rb, line 77</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_a</span>
+  <span class="ruby-ivar">@lock</span>.<span class="ruby-identifier">synchronize</span> { <span class="ruby-ivar">@messages</span>.<span class="ruby-identifier">dup</span> }
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- to_a-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- to_a-method -->
+
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+
+  </div><!-- documentation -->
+
+  <div id="validator-badges">
+    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
+  </div>
+
+</body>
+</html>
+

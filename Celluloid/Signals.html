@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>Class: Celluloid::Signals</title>
+
+  <link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+  <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body id="top" class="class">
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li><a href="../lib/celluloid/signals_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/celluloid/signals.rb">lib/celluloid/signals.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link"><a href="../Object.html">Object</a></p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-c-new">::new</a></li>
+          
+          <li><a href="#method-i-send">#send</a></li>
+          
+          <li><a href="#method-i-wait">#wait</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Files</h3>
+        <ul>
+        
+          <li class="file"><a href="../LICENSE_txt.html">LICENSE.txt</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="../images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li><a href="../Celluloid.html">Celluloid</a></li>
+        
+          <li><a href="../Celluloid/AbortError.html">Celluloid::AbortError</a></li>
+        
+          <li><a href="../Celluloid/Actor.html">Celluloid::Actor</a></li>
+        
+          <li><a href="../Celluloid/Actor/ClassMethods.html">Celluloid::Actor::ClassMethods</a></li>
+        
+          <li><a href="../Celluloid/Actor/InstanceMethods.html">Celluloid::Actor::InstanceMethods</a></li>
+        
+          <li><a href="../Celluloid/Actor/InternalMethods.html">Celluloid::Actor::InternalMethods</a></li>
+        
+          <li><a href="../Celluloid/ActorProxy.html">Celluloid::ActorProxy</a></li>
+        
+          <li><a href="../Celluloid/AsyncCall.html">Celluloid::AsyncCall</a></li>
+        
+          <li><a href="../Celluloid/Call.html">Celluloid::Call</a></li>
+        
+          <li><a href="../Celluloid/DeadActorError.html">Celluloid::DeadActorError</a></li>
+        
+          <li><a href="../Celluloid/ErrorResponse.html">Celluloid::ErrorResponse</a></li>
+        
+          <li><a href="../Celluloid/ExitEvent.html">Celluloid::ExitEvent</a></li>
+        
+          <li><a href="../Celluloid/Future.html">Celluloid::Future</a></li>
+        
+          <li><a href="../Celluloid/Future/Runner.html">Celluloid::Future::Runner</a></li>
+        
+          <li><a href="../Celluloid/Linking.html">Celluloid::Linking</a></li>
+        
+          <li><a href="../Celluloid/Links.html">Celluloid::Links</a></li>
+        
+          <li><a href="../Celluloid/Mailbox.html">Celluloid::Mailbox</a></li>
+        
+          <li><a href="../Celluloid/MailboxError.html">Celluloid::MailboxError</a></li>
+        
+          <li><a href="../Celluloid/NotActorError.html">Celluloid::NotActorError</a></li>
+        
+          <li><a href="../Celluloid/Registry.html">Celluloid::Registry</a></li>
+        
+          <li><a href="../Celluloid/Response.html">Celluloid::Response</a></li>
+        
+          <li><a href="../Celluloid/Signals.html">Celluloid::Signals</a></li>
+        
+          <li><a href="../Celluloid/SuccessResponse.html">Celluloid::SuccessResponse</a></li>
+        
+          <li><a href="../Celluloid/Supervisor.html">Celluloid::Supervisor</a></li>
+        
+          <li><a href="../Celluloid/SyncCall.html">Celluloid::SyncCall</a></li>
+        
+          <li><a href="../Celluloid/SystemEvent.html">Celluloid::SystemEvent</a></li>
+        
+          <li><a href="../Object.html">Object</a></li>
+        
+          <li><a href="../Thread.html">Thread</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div id="documentation">
+    <h1 class="class">Celluloid::Signals</h1>
+
+    <div id="description" class="description">
+      
+<p>Event signaling between methods of the same object</p>
+
+    </div><!-- description -->
+
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-class-method-details" class="method-section section">
+        <h3 class="section-header">Public Class Methods</h3>
+
+      
+        <div id="new-method" class="method-detail ">
+          <a name="method-c-new"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">new</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="new-source">
+<pre>
+<span class="ruby-comment"># File lib/celluloid/signals.rb, line 4</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>
+  <span class="ruby-ivar">@waiting</span> = {}
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- new-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- new-method -->
+
+      
+      </div><!-- public-class-method-details -->
+    
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="send-method" class="method-detail ">
+          <a name="method-i-send"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">send</span><span
+              class="method-args">(name, value = nil)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Send a signal to all method calls waiting for the given name Returns true
+if any calls were signaled, or false otherwise</p>
+            
+
+            
+            <div class="method-source-code" id="send-source">
+<pre>
+<span class="ruby-comment"># File lib/celluloid/signals.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">send</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">fibers</span> = <span class="ruby-ivar">@waiting</span>.<span class="ruby-identifier">delete</span> <span class="ruby-identifier">name</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">fibers</span>
+  
+  <span class="ruby-identifier">fibers</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">fiber</span><span class="ruby-operator">|</span> <span class="ruby-identifier">fiber</span>.<span class="ruby-identifier">resume</span> <span class="ruby-identifier">value</span> }
+  <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- send-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- send-method -->
+
+      
+        <div id="wait-method" class="method-detail ">
+          <a name="method-i-wait"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">wait</span><span
+              class="method-args">(name)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Wait for the given signal name and return the associated value</p>
+            
+
+            
+            <div class="method-source-code" id="wait-source">
+<pre>
+<span class="ruby-comment"># File lib/celluloid/signals.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">wait</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-identifier">fibers</span> = <span class="ruby-ivar">@waiting</span>[<span class="ruby-identifier">name</span>] <span class="ruby-operator">||=</span> []
+  <span class="ruby-identifier">fibers</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Fiber</span>.<span class="ruby-identifier">current</span>
+  <span class="ruby-constant">Fiber</span>.<span class="ruby-identifier">yield</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- wait-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- wait-method -->
+
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+
+  </div><!-- documentation -->
+
+  <div id="validator-badges">
+    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
+  </div>
+
+</body>
+</html>
+

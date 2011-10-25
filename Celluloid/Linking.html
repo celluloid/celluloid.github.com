@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>Module: Celluloid::Linking</title>
+
+  <link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+  <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body id="top" class="module">
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li><a href="../lib/celluloid/linking_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/celluloid/linking.rb">lib/celluloid/linking.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-i-link">#link</a></li>
+          
+          <li><a href="#method-i-linked_to-3F">#linked_to?</a></li>
+          
+          <li><a href="#method-i-notify_link">#notify_link</a></li>
+          
+          <li><a href="#method-i-notify_unlink">#notify_unlink</a></li>
+          
+          <li><a href="#method-i-unlink">#unlink</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Files</h3>
+        <ul>
+        
+          <li class="file"><a href="../LICENSE_txt.html">LICENSE.txt</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="../images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li><a href="../Celluloid.html">Celluloid</a></li>
+        
+          <li><a href="../Celluloid/AbortError.html">Celluloid::AbortError</a></li>
+        
+          <li><a href="../Celluloid/Actor.html">Celluloid::Actor</a></li>
+        
+          <li><a href="../Celluloid/Actor/ClassMethods.html">Celluloid::Actor::ClassMethods</a></li>
+        
+          <li><a href="../Celluloid/Actor/InstanceMethods.html">Celluloid::Actor::InstanceMethods</a></li>
+        
+          <li><a href="../Celluloid/Actor/InternalMethods.html">Celluloid::Actor::InternalMethods</a></li>
+        
+          <li><a href="../Celluloid/ActorProxy.html">Celluloid::ActorProxy</a></li>
+        
+          <li><a href="../Celluloid/AsyncCall.html">Celluloid::AsyncCall</a></li>
+        
+          <li><a href="../Celluloid/Call.html">Celluloid::Call</a></li>
+        
+          <li><a href="../Celluloid/DeadActorError.html">Celluloid::DeadActorError</a></li>
+        
+          <li><a href="../Celluloid/ErrorResponse.html">Celluloid::ErrorResponse</a></li>
+        
+          <li><a href="../Celluloid/ExitEvent.html">Celluloid::ExitEvent</a></li>
+        
+          <li><a href="../Celluloid/Future.html">Celluloid::Future</a></li>
+        
+          <li><a href="../Celluloid/Future/Runner.html">Celluloid::Future::Runner</a></li>
+        
+          <li><a href="../Celluloid/Linking.html">Celluloid::Linking</a></li>
+        
+          <li><a href="../Celluloid/Links.html">Celluloid::Links</a></li>
+        
+          <li><a href="../Celluloid/Mailbox.html">Celluloid::Mailbox</a></li>
+        
+          <li><a href="../Celluloid/MailboxError.html">Celluloid::MailboxError</a></li>
+        
+          <li><a href="../Celluloid/NotActorError.html">Celluloid::NotActorError</a></li>
+        
+          <li><a href="../Celluloid/Registry.html">Celluloid::Registry</a></li>
+        
+          <li><a href="../Celluloid/Response.html">Celluloid::Response</a></li>
+        
+          <li><a href="../Celluloid/Signals.html">Celluloid::Signals</a></li>
+        
+          <li><a href="../Celluloid/SuccessResponse.html">Celluloid::SuccessResponse</a></li>
+        
+          <li><a href="../Celluloid/Supervisor.html">Celluloid::Supervisor</a></li>
+        
+          <li><a href="../Celluloid/SyncCall.html">Celluloid::SyncCall</a></li>
+        
+          <li><a href="../Celluloid/SystemEvent.html">Celluloid::SystemEvent</a></li>
+        
+          <li><a href="../Object.html">Object</a></li>
+        
+          <li><a href="../Thread.html">Thread</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div id="documentation">
+    <h1 class="module">Celluloid::Linking</h1>
+
+    <div id="description" class="description">
+      
+<p>Support for linking actors together so they can crash or react to errors</p>
+
+    </div><!-- description -->
+
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="link-method" class="method-detail ">
+          <a name="method-i-link"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">link</span><span
+              class="method-args">(actor)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Link this actor to another, allowing it to crash or react to errors</p>
+            
+
+            
+            <div class="method-source-code" id="link-source">
+<pre>
+<span class="ruby-comment"># File lib/celluloid/linking.rb, line 61</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">link</span>(<span class="ruby-identifier">actor</span>)
+  <span class="ruby-identifier">actor</span>.<span class="ruby-identifier">notify_link</span>(<span class="ruby-ivar">@_proxy</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">notify_link</span>(<span class="ruby-identifier">actor</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- link-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- link-method -->
+
+      
+        <div id="linked_to-3F-method" class="method-detail ">
+          <a name="method-i-linked_to-3F"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">linked_to?</span><span
+              class="method-args">(actor)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Is this actor linked to another?</p>
+            
+
+            
+            <div class="method-source-code" id="linked_to-3F-source">
+<pre>
+<span class="ruby-comment"># File lib/celluloid/linking.rb, line 81</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">linked_to?</span>(<span class="ruby-identifier">actor</span>)
+  <span class="ruby-ivar">@_links</span>.<span class="ruby-identifier">include?</span> <span class="ruby-identifier">actor</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- linked_to-3F-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- linked_to-3F-method -->
+
+      
+        <div id="notify_link-method" class="method-detail ">
+          <a name="method-i-notify_link"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">notify_link</span><span
+              class="method-args">(actor)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="notify_link-source">
+<pre>
+<span class="ruby-comment"># File lib/celluloid/linking.rb, line 72</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">notify_link</span>(<span class="ruby-identifier">actor</span>)
+  <span class="ruby-ivar">@_links</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">actor</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- notify_link-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- notify_link-method -->
+
+      
+        <div id="notify_unlink-method" class="method-detail ">
+          <a name="method-i-notify_unlink"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">notify_unlink</span><span
+              class="method-args">(actor)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="notify_unlink-source">
+<pre>
+<span class="ruby-comment"># File lib/celluloid/linking.rb, line 76</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">notify_unlink</span>(<span class="ruby-identifier">actor</span>)
+  <span class="ruby-ivar">@_links</span>.<span class="ruby-identifier">delete</span> <span class="ruby-identifier">actor</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- notify_unlink-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- notify_unlink-method -->
+
+      
+        <div id="unlink-method" class="method-detail ">
+          <a name="method-i-unlink"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">unlink</span><span
+              class="method-args">(actor)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Remove links to another actor</p>
+            
+
+            
+            <div class="method-source-code" id="unlink-source">
+<pre>
+<span class="ruby-comment"># File lib/celluloid/linking.rb, line 67</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">unlink</span>(<span class="ruby-identifier">actor</span>)
+  <span class="ruby-identifier">actor</span>.<span class="ruby-identifier">notify_unlink</span>(<span class="ruby-ivar">@_proxy</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">notify_unlink</span>(<span class="ruby-identifier">actor</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- unlink-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- unlink-method -->
+
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+
+  </div><!-- documentation -->
+
+  <div id="validator-badges">
+    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
+  </div>
+
+</body>
+</html>
+
