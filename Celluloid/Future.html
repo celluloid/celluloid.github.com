@@ -1,306 +1,311 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
-
-  <title>Class: Celluloid::Future</title>
-
-  <link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
-
-  <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../js/darkfish.js" type="text/javascript" charset="utf-8"></script>
-
-</head>
-<body id="top" class="class">
-
-  <div id="metadata">
-    <div id="home-metadata">
-      <div id="home-section" class="section">
-        <h3 class="section-header">
-          <a href="../index.html">Home</a>
-          <a href="../index.html#classes">Classes</a>
-          <a href="../index.html#methods">Methods</a>
-        </h3>
-      </div>
-    </div>
-
-    <div id="file-metadata">
-      <div id="file-list-section" class="section">
-        <h3 class="section-header">In Files</h3>
-        <div class="section-body">
-          <ul>
-          
-            <li><a href="../lib/celluloid/future_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-              class="thickbox" title="lib/celluloid/future.rb">lib/celluloid/future.rb</a></li>
-          
-          </ul>
-        </div>
-      </div>
-
-      
-    </div>
-
-    <div id="class-metadata">
-      
-      <!-- Parent Class -->
-      <div id="parent-class-section" class="section">
-        <h3 class="section-header">Parent</h3>
-        
-        <p class="link"><a href="../Object.html">Object</a></p>
-        
-      </div>
-      
-
-      
-
-      
-      <!-- Namespace Contents -->
-      <div id="namespace-list-section" class="section">
-        <h3 class="section-header">Namespace</h3>
-        <ul class="link-list">
-          
-          <li><span class="type">CLASS</span> <a href="Future/Runner.html">Celluloid::Future::Runner</a></li>
-          
-        </ul>
-      </div>
-      
-
-      
-      <!-- Method Quickref -->
-      <div id="method-list-section" class="section">
-        <h3 class="section-header">Methods</h3>
-        <ul class="link-list">
-          
-          <li><a href="#method-c-new">::new</a></li>
-          
-          <li><a href="#method-i-value">#value</a></li>
-          
-        </ul>
-      </div>
-      
-
-      
-    </div>
-
-    <div id="project-metadata">
-      
-      
-      <div id="fileindex-section" class="section project-section">
-        <h3 class="section-header">Files</h3>
-        <ul>
-        
-          <li class="file"><a href="../LICENSE_txt.html">LICENSE.txt</a></li>
-        
-        </ul>
-      </div>
-      
-
-      <div id="classindex-section" class="section project-section">
-        <h3 class="section-header">Class/Module Index
-          <span class="search-toggle"><img src="../images/find.png"
-            height="16" width="16" alt="[+]"
-            title="show/hide quicksearch" /></span></h3>
-        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
-        <fieldset>
-          <legend>Quicksearch</legend>
-          <input type="text" name="quicksearch" value=""
-            class="quicksearch-field" />
-        </fieldset>
-        </form>
-
-        <ul class="link-list">
-        
-          <li><a href="../Celluloid.html">Celluloid</a></li>
-        
-          <li><a href="../Celluloid/AbortError.html">Celluloid::AbortError</a></li>
-        
-          <li><a href="../Celluloid/Actor.html">Celluloid::Actor</a></li>
-        
-          <li><a href="../Celluloid/Actor/ClassMethods.html">Celluloid::Actor::ClassMethods</a></li>
-        
-          <li><a href="../Celluloid/Actor/InstanceMethods.html">Celluloid::Actor::InstanceMethods</a></li>
-        
-          <li><a href="../Celluloid/Actor/InternalMethods.html">Celluloid::Actor::InternalMethods</a></li>
-        
-          <li><a href="../Celluloid/ActorProxy.html">Celluloid::ActorProxy</a></li>
-        
-          <li><a href="../Celluloid/AsyncCall.html">Celluloid::AsyncCall</a></li>
-        
-          <li><a href="../Celluloid/Call.html">Celluloid::Call</a></li>
-        
-          <li><a href="../Celluloid/DeadActorError.html">Celluloid::DeadActorError</a></li>
-        
-          <li><a href="../Celluloid/ErrorResponse.html">Celluloid::ErrorResponse</a></li>
-        
-          <li><a href="../Celluloid/ExitEvent.html">Celluloid::ExitEvent</a></li>
-        
-          <li><a href="../Celluloid/Future.html">Celluloid::Future</a></li>
-        
-          <li><a href="../Celluloid/Future/Runner.html">Celluloid::Future::Runner</a></li>
-        
-          <li><a href="../Celluloid/Linking.html">Celluloid::Linking</a></li>
-        
-          <li><a href="../Celluloid/Links.html">Celluloid::Links</a></li>
-        
-          <li><a href="../Celluloid/Mailbox.html">Celluloid::Mailbox</a></li>
-        
-          <li><a href="../Celluloid/MailboxError.html">Celluloid::MailboxError</a></li>
-        
-          <li><a href="../Celluloid/NotActorError.html">Celluloid::NotActorError</a></li>
-        
-          <li><a href="../Celluloid/Registry.html">Celluloid::Registry</a></li>
-        
-          <li><a href="../Celluloid/Response.html">Celluloid::Response</a></li>
-        
-          <li><a href="../Celluloid/Signals.html">Celluloid::Signals</a></li>
-        
-          <li><a href="../Celluloid/SuccessResponse.html">Celluloid::SuccessResponse</a></li>
-        
-          <li><a href="../Celluloid/Supervisor.html">Celluloid::Supervisor</a></li>
-        
-          <li><a href="../Celluloid/SyncCall.html">Celluloid::SyncCall</a></li>
-        
-          <li><a href="../Celluloid/SystemEvent.html">Celluloid::SystemEvent</a></li>
-        
-          <li><a href="../Object.html">Object</a></li>
-        
-          <li><a href="../Thread.html">Thread</a></li>
-        
-        </ul>
-        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
-      </div>
-
-      
-    </div>
-  </div>
-
-  <div id="documentation">
-    <h1 class="class">Celluloid::Future</h1>
-
-    <div id="description" class="description">
-      
-<p><a href="Future.html">Celluloid::Future</a> objects allow methods and
-blocks to run in the background, their values requested later</p>
-
-    </div><!-- description -->
-
-    
-    <div id="5Buntitled-5D" class="documentation-section">
-      
-
-      
-
-      
-
-      
-
-      <!-- Methods -->
-      
-      <div id="public-class-method-details" class="method-section section">
-        <h3 class="section-header">Public Class Methods</h3>
-
-      
-        <div id="new-method" class="method-detail ">
-          <a name="method-c-new"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">new</span><span
-              class="method-args">(*args, &block)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="new-source">
-<pre>
-<span class="ruby-comment"># File lib/celluloid/future.rb, line 13</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
-  <span class="ruby-ivar">@lock</span> = <span class="ruby-constant">Mutex</span>.<span class="ruby-identifier">new</span>
-  <span class="ruby-ivar">@value_obtained</span> = <span class="ruby-keyword">false</span>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Celluloid::Future
   
-  <span class="ruby-ivar">@runner</span> = <span class="ruby-constant">Runner</span>.<span class="ruby-identifier">new</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
-  <span class="ruby-ivar">@runner</span>.<span class="ruby-identifier">run!</span>
-<span class="ruby-keyword">end</span></pre>
-            </div><!-- new-source -->
-            
-          </div>
+    &mdash; Documentation by YARD 0.7.3
+  
+</title>
 
-          
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
 
-          
-        </div><!-- new-method -->
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
-      
-      </div><!-- public-class-method-details -->
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
     
-      <div id="public-instance-method-details" class="method-section section">
-        <h3 class="section-header">Public Instance Methods</h3>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (F)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../Celluloid.html" title="Celluloid (module)">Celluloid</a></span></span>
+     &raquo; 
+    <span class="title">Future</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
 
-      
-        <div id="value-method" class="method-detail ">
-          <a name="method-i-value"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">value</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            <p>Obtain the value for this <a href="Future.html">Future</a></p>
-            
-
-            
-            <div class="method-source-code" id="value-source">
-<pre>
-<span class="ruby-comment"># File lib/celluloid/future.rb, line 22</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">value</span>
-  <span class="ruby-ivar">@lock</span>.<span class="ruby-identifier">synchronize</span> <span class="ruby-keyword">do</span>
-    <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@value_obtained</span>
-      <span class="ruby-ivar">@value</span> = <span class="ruby-ivar">@runner</span>.<span class="ruby-identifier">value</span>
-      <span class="ruby-ivar">@runner</span>.<span class="ruby-identifier">terminate</span>
-      <span class="ruby-ivar">@value_obtained</span> = <span class="ruby-keyword">true</span>
-    <span class="ruby-keyword">end</span>
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
     
-    <span class="ruby-ivar">@value</span>
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
-            </div><!-- value-source -->
-            
-          </div>
-
-          
-
-          
-        </div><!-- value-method -->
-
-      
-      </div><!-- public-instance-method-details -->
+    <iframe id="search_frame"></iframe>
     
-    </div><!-- 5Buntitled-5D -->
+    <div id="content"><h1>Class: Celluloid::Future
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Celluloid::Future</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/celluloid/future.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Celluloid::Future objects allow methods and blocks to run in the
+background, their values requested later
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
   
 
-  </div><!-- documentation -->
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+   
+    
+   
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Future/Runner.html" title="Celluloid::Future::Runner (class)">Runner</a></span>
+    
+  
+</p>
 
-  <div id="validator-badges">
-    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
-    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
-      Rdoc Generator</a> 2</small>.</p>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Future) <strong>initialize</strong>(*args, &amp;block) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+A new instance of Future.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#value-instance_method" title="#value (instance method)">- (Object) <strong>value</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Obtain the value for this Future.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Celluloid::Future (class)">Future</a></span></tt>) <strong>initialize</strong>(*args, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+A new instance of Future
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+13
+14
+15
+16
+17
+18
+19</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/future.rb', line 13</span>
+
+<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='@lock ivar id'>@lock</span> <span class='assign token'>=</span> <span class='Mutex constant id'>Mutex</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
+  <span class='@value_obtained ivar id'>@value_obtained</span> <span class='assign token'>=</span> <span class='false false kw'>false</span>
+  
+  <span class='@runner ivar id'>@runner</span> <span class='assign token'>=</span> <span class='Runner constant id'>Runner</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='@runner ivar id'>@runner</span><span class='dot token'>.</span><span class='run! fid id'>run!</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="value-instance_method">
+  
+    - (<tt>Object</tt>) <strong>value</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Obtain the value for this Future
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/future.rb', line 22</span>
+
+<span class='def def kw'>def</span> <span class='value identifier id'>value</span>
+  <span class='@lock ivar id'>@lock</span><span class='dot token'>.</span><span class='synchronize identifier id'>synchronize</span> <span class='do do kw'>do</span>
+    <span class='unless unless kw'>unless</span> <span class='@value_obtained ivar id'>@value_obtained</span>
+      <span class='@value ivar id'>@value</span> <span class='assign token'>=</span> <span class='@runner ivar id'>@runner</span><span class='dot token'>.</span><span class='value identifier id'>value</span>
+      <span class='@runner ivar id'>@runner</span><span class='dot token'>.</span><span class='terminate identifier id'>terminate</span>
+      <span class='@value_obtained ivar id'>@value_obtained</span> <span class='assign token'>=</span> <span class='true true kw'>true</span>
+    <span class='end end kw'>end</span>
+    
+    <span class='@value ivar id'>@value</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
-</body>
+</div>
+    
+    <div id="footer">
+  Generated on Tue Oct 25 00:09:13 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.3 (ruby-1.8.7).
+</div>
+
+  </body>
 </html>
-

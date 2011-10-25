@@ -1,0 +1,342 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Celluloid::IO
+  
+    &mdash; Documentation by YARD 0.7.3
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (I)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../Celluloid.html" title="Celluloid (module)">Celluloid</a></span></span>
+     &raquo; 
+    <span class="title">IO</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Celluloid::IO
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1">Included in:</dt>
+    <dd class="r1"><span class='object_link'><a href="TCPServer.html" title="Celluloid::TCPServer (class)">TCPServer</a></span></dd>
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/celluloid/io.rb<span class="defines">,<br />
+  lib/celluloid/io/actor.rb,<br /> lib/celluloid/io/waker.rb,<br /> lib/celluloid/io/mailbox.rb,<br /> lib/celluloid/io/reactor.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Actors which can run alongside other I/O operations
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+   
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="IO/ClassMethods.html" title="Celluloid::IO::ClassMethods (module)">ClassMethods</a></span>
+    
+   
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="IO/Actor.html" title="Celluloid::IO::Actor (class)">Actor</a></span>, <span class='object_link'><a href="IO/DeadWakerError.html" title="Celluloid::IO::DeadWakerError (class)">DeadWakerError</a></span>, <span class='object_link'><a href="IO/Mailbox.html" title="Celluloid::IO::Mailbox (class)">Mailbox</a></span>, <span class='object_link'><a href="IO/Reactor.html" title="Celluloid::IO::Reactor (class)">Reactor</a></span>, <span class='object_link'><a href="IO/Waker.html" title="Celluloid::IO::Waker (class)">Waker</a></span>
+    
+  
+</p>
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#included-class_method" title="included (class method)">+ (Object) <strong>included</strong>(klass) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#wait_readable-instance_method" title="#wait_readable (instance method)">- (Object) <strong>wait_readable</strong>(io, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Wait for the given IO object to become readable.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#wait_writeable-instance_method" title="#wait_writeable (instance method)">- (Object) <strong>wait_writeable</strong>(io, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Wait for the given IO object to become writeable.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="included-class_method">
+  
+    + (<tt>Object</tt>) <strong>included</strong>(klass) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+9
+10
+11
+12</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/io.rb', line 9</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='included identifier id'>included</span><span class='lparen token'>(</span><span class='klass identifier id'>klass</span><span class='rparen token'>)</span>
+  <span class='klass identifier id'>klass</span><span class='dot token'>.</span><span class='send identifier id'>send</span> <span class='symbol val'>:include</span><span class='comma token'>,</span> <span class='colon3 op'>::</span><span class='Celluloid constant id'>Celluloid</span>
+  <span class='klass identifier id'>klass</span><span class='dot token'>.</span><span class='send identifier id'>send</span> <span class='symbol val'>:extend</span><span class='comma token'>,</span>  <span class='IO constant id'>IO</span><span class='colon2 op'>::</span><span class='ClassMethods constant id'>ClassMethods</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="wait_readable-instance_method">
+  
+    - (<tt>Object</tt>) <strong>wait_readable</strong>(io, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Wait for the given IO object to become readable
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+40
+41
+42
+43</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/io.rb', line 40</span>
+
+<span class='def def kw'>def</span> <span class='wait_readable identifier id'>wait_readable</span><span class='lparen token'>(</span><span class='io identifier id'>io</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='comment val'># Law of demeter be damned!</span>
+  <span class='current_actor identifier id'>current_actor</span><span class='dot token'>.</span><span class='mailbox identifier id'>mailbox</span><span class='dot token'>.</span><span class='reactor identifier id'>reactor</span><span class='dot token'>.</span><span class='wait_readable identifier id'>wait_readable</span><span class='lparen token'>(</span><span class='io identifier id'>io</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="wait_writeable-instance_method">
+  
+    - (<tt>Object</tt>) <strong>wait_writeable</strong>(io, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Wait for the given IO object to become writeable
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+46
+47
+48</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/io.rb', line 46</span>
+
+<span class='def def kw'>def</span> <span class='wait_writeable identifier id'>wait_writeable</span><span class='lparen token'>(</span><span class='io identifier id'>io</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='current_actor identifier id'>current_actor</span><span class='dot token'>.</span><span class='mailbox identifier id'>mailbox</span><span class='dot token'>.</span><span class='reactor identifier id'>reactor</span><span class='dot token'>.</span><span class='wait_writeable identifier id'>wait_writeable</span><span class='lparen token'>(</span><span class='io identifier id'>io</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Oct 25 00:09:11 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.3 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

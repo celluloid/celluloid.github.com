@@ -1,301 +1,322 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
-
-  <title>Class: Celluloid::SyncCall</title>
-
-  <link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
-
-  <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../js/darkfish.js" type="text/javascript" charset="utf-8"></script>
-
-</head>
-<body id="top" class="class">
-
-  <div id="metadata">
-    <div id="home-metadata">
-      <div id="home-section" class="section">
-        <h3 class="section-header">
-          <a href="../index.html">Home</a>
-          <a href="../index.html#classes">Classes</a>
-          <a href="../index.html#methods">Methods</a>
-        </h3>
-      </div>
-    </div>
-
-    <div id="file-metadata">
-      <div id="file-list-section" class="section">
-        <h3 class="section-header">In Files</h3>
-        <div class="section-body">
-          <ul>
-          
-            <li><a href="../lib/celluloid/calls_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-              class="thickbox" title="lib/celluloid/calls.rb">lib/celluloid/calls.rb</a></li>
-          
-          </ul>
-        </div>
-      </div>
-
-      
-    </div>
-
-    <div id="class-metadata">
-      
-      <!-- Parent Class -->
-      <div id="parent-class-section" class="section">
-        <h3 class="section-header">Parent</h3>
-        
-        <p class="link"><a href="Call.html">Celluloid::Call</a></p>
-        
-      </div>
-      
-
-      
-
-      
-
-      
-      <!-- Method Quickref -->
-      <div id="method-list-section" class="section">
-        <h3 class="section-header">Methods</h3>
-        <ul class="link-list">
-          
-          <li><a href="#method-i-cleanup">#cleanup</a></li>
-          
-          <li><a href="#method-i-dispatch">#dispatch</a></li>
-          
-        </ul>
-      </div>
-      
-
-      
-    </div>
-
-    <div id="project-metadata">
-      
-      
-      <div id="fileindex-section" class="section project-section">
-        <h3 class="section-header">Files</h3>
-        <ul>
-        
-          <li class="file"><a href="../LICENSE_txt.html">LICENSE.txt</a></li>
-        
-        </ul>
-      </div>
-      
-
-      <div id="classindex-section" class="section project-section">
-        <h3 class="section-header">Class/Module Index
-          <span class="search-toggle"><img src="../images/find.png"
-            height="16" width="16" alt="[+]"
-            title="show/hide quicksearch" /></span></h3>
-        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
-        <fieldset>
-          <legend>Quicksearch</legend>
-          <input type="text" name="quicksearch" value=""
-            class="quicksearch-field" />
-        </fieldset>
-        </form>
-
-        <ul class="link-list">
-        
-          <li><a href="../Celluloid.html">Celluloid</a></li>
-        
-          <li><a href="../Celluloid/AbortError.html">Celluloid::AbortError</a></li>
-        
-          <li><a href="../Celluloid/Actor.html">Celluloid::Actor</a></li>
-        
-          <li><a href="../Celluloid/Actor/ClassMethods.html">Celluloid::Actor::ClassMethods</a></li>
-        
-          <li><a href="../Celluloid/Actor/InstanceMethods.html">Celluloid::Actor::InstanceMethods</a></li>
-        
-          <li><a href="../Celluloid/Actor/InternalMethods.html">Celluloid::Actor::InternalMethods</a></li>
-        
-          <li><a href="../Celluloid/ActorProxy.html">Celluloid::ActorProxy</a></li>
-        
-          <li><a href="../Celluloid/AsyncCall.html">Celluloid::AsyncCall</a></li>
-        
-          <li><a href="../Celluloid/Call.html">Celluloid::Call</a></li>
-        
-          <li><a href="../Celluloid/DeadActorError.html">Celluloid::DeadActorError</a></li>
-        
-          <li><a href="../Celluloid/ErrorResponse.html">Celluloid::ErrorResponse</a></li>
-        
-          <li><a href="../Celluloid/ExitEvent.html">Celluloid::ExitEvent</a></li>
-        
-          <li><a href="../Celluloid/Future.html">Celluloid::Future</a></li>
-        
-          <li><a href="../Celluloid/Future/Runner.html">Celluloid::Future::Runner</a></li>
-        
-          <li><a href="../Celluloid/Linking.html">Celluloid::Linking</a></li>
-        
-          <li><a href="../Celluloid/Links.html">Celluloid::Links</a></li>
-        
-          <li><a href="../Celluloid/Mailbox.html">Celluloid::Mailbox</a></li>
-        
-          <li><a href="../Celluloid/MailboxError.html">Celluloid::MailboxError</a></li>
-        
-          <li><a href="../Celluloid/NotActorError.html">Celluloid::NotActorError</a></li>
-        
-          <li><a href="../Celluloid/Registry.html">Celluloid::Registry</a></li>
-        
-          <li><a href="../Celluloid/Response.html">Celluloid::Response</a></li>
-        
-          <li><a href="../Celluloid/Signals.html">Celluloid::Signals</a></li>
-        
-          <li><a href="../Celluloid/SuccessResponse.html">Celluloid::SuccessResponse</a></li>
-        
-          <li><a href="../Celluloid/Supervisor.html">Celluloid::Supervisor</a></li>
-        
-          <li><a href="../Celluloid/SyncCall.html">Celluloid::SyncCall</a></li>
-        
-          <li><a href="../Celluloid/SystemEvent.html">Celluloid::SystemEvent</a></li>
-        
-          <li><a href="../Object.html">Object</a></li>
-        
-          <li><a href="../Thread.html">Thread</a></li>
-        
-        </ul>
-        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
-      </div>
-
-      
-    </div>
-  </div>
-
-  <div id="documentation">
-    <h1 class="class">Celluloid::SyncCall</h1>
-
-    <div id="description" class="description">
-      
-<p>Synchronous calls wait for a response</p>
-
-    </div><!-- description -->
-
-    
-    <div id="5Buntitled-5D" class="documentation-section">
-      
-
-      
-
-      
-
-      
-
-      <!-- Methods -->
-      
-      <div id="public-instance-method-details" class="method-section section">
-        <h3 class="section-header">Public Instance Methods</h3>
-
-      
-        <div id="cleanup-method" class="method-detail ">
-          <a name="method-i-cleanup"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">cleanup</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="cleanup-source">
-<pre>
-<span class="ruby-comment"># File lib/celluloid/calls.rb, line 40</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">cleanup</span>
-  <span class="ruby-identifier">exception</span> = <span class="ruby-constant">DeadActorError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;attempted to call a dead actor&quot;</span>)
-  <span class="ruby-ivar">@caller</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">ErrorResponse</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-identifier">exception</span>)
-<span class="ruby-keyword">end</span></pre>
-            </div><!-- cleanup-source -->
-            
-          </div>
-
-          
-
-          
-        </div><!-- cleanup-method -->
-
-      
-        <div id="dispatch-method" class="method-detail ">
-          <a name="method-i-dispatch"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">dispatch</span><span
-              class="method-args">(obj)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="dispatch-source">
-<pre>
-<span class="ruby-comment"># File lib/celluloid/calls.rb, line 13</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">dispatch</span>(<span class="ruby-identifier">obj</span>)
-  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-ivar">@method</span>
-    <span class="ruby-identifier">exception</span> = <span class="ruby-constant">NoMethodError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;undefined method `#{@method}' for #{obj.inspect}&quot;</span>)
-    <span class="ruby-ivar">@caller</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">ErrorResponse</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-identifier">exception</span>)
-    <span class="ruby-keyword">return</span>
-  <span class="ruby-keyword">end</span>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Celluloid::SyncCall
   
-  <span class="ruby-keyword">begin</span>
-    <span class="ruby-identifier">result</span> = <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">send</span> <span class="ruby-ivar">@method</span>, *<span class="ruby-ivar">@arguments</span>, &amp;<span class="ruby-ivar">@block</span>
-  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">AbortError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exception</span>
-    <span class="ruby-comment"># Aborting indicates a protocol error on the part of the caller</span>
-    <span class="ruby-comment"># It should crash the caller, but the exception isn't reraised</span>
-    <span class="ruby-ivar">@caller</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">ErrorResponse</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-identifier">exception</span>.<span class="ruby-identifier">cause</span>)
-    <span class="ruby-keyword">return</span>
-  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exception</span>
-    <span class="ruby-comment"># Exceptions that occur during synchronous calls are reraised in the</span>
-    <span class="ruby-comment"># context of the caller</span>
-    <span class="ruby-ivar">@caller</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">ErrorResponse</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-identifier">exception</span>)
+    &mdash; Documentation by YARD 0.7.3
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
     
-    <span class="ruby-comment"># They should also crash the actor where they occurred</span>
-    <span class="ruby-identifier">raise</span> <span class="ruby-identifier">exception</span>
-  <span class="ruby-keyword">end</span>
-      
-  <span class="ruby-ivar">@caller</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">SuccessResponse</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-identifier">result</span>)
-  <span class="ruby-keyword">true</span>
-<span class="ruby-keyword">end</span></pre>
-            </div><!-- dispatch-source -->
-            
-          </div>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (S)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../Celluloid.html" title="Celluloid (module)">Celluloid</a></span></span>
+     &raquo; 
+    <span class="title">SyncCall</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
 
-          
-
-          
-        </div><!-- dispatch-method -->
-
-      
-      </div><!-- public-instance-method-details -->
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
     
-    </div><!-- 5Buntitled-5D -->
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Celluloid::SyncCall
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="Call.html" title="Celluloid::Call (class)">Call</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="Call.html" title="Celluloid::Call (class)">Call</a></span></li>
+          
+            <li class="next">Celluloid::SyncCall</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/celluloid/calls.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Synchronous calls wait for a response
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
   
 
-  </div><!-- documentation -->
+</div>
 
-  <div id="validator-badges">
-    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
-    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
-      Rdoc Generator</a> 2</small>.</p>
+  
+  
+  
+  
+
+
+  
+  
+  
+  <h2>Instance Attribute Summary</h2>
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="Call.html" title="Celluloid::Call (class)">Call</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Call.html#arguments-instance_method" title="Celluloid::Call#arguments (method)">arguments</a></span>, <span class='object_link'><a href="Call.html#block-instance_method" title="Celluloid::Call#block (method)">block</a></span>, <span class='object_link'><a href="Call.html#caller-instance_method" title="Celluloid::Call#caller (method)">caller</a></span>, <span class='object_link'><a href="Call.html#method-instance_method" title="Celluloid::Call#method (method)">method</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cleanup-instance_method" title="#cleanup (instance method)">- (Object) <strong>cleanup</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dispatch-instance_method" title="#dispatch (instance method)">- (Object) <strong>dispatch</strong>(obj) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Call.html" title="Celluloid::Call (class)">Call</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Call.html#check_signature-instance_method" title="Celluloid::Call#check_signature (method)">#check_signature</a></span>, <span class='object_link'><a href="Call.html#initialize-instance_method" title="Celluloid::Call#initialize (method)">#initialize</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <p class="notice">This class inherits a constructor from <span class='object_link'><a href="Call.html#initialize-instance_method" title="Celluloid::Call#initialize (method)">Celluloid::Call</a></span></p>
+  
+</div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="cleanup-instance_method">
+  
+    - (<tt>Object</tt>) <strong>cleanup</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+60
+61
+62
+63</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/calls.rb', line 60</span>
+
+<span class='def def kw'>def</span> <span class='cleanup identifier id'>cleanup</span>
+  <span class='exception identifier id'>exception</span> <span class='assign token'>=</span> <span class='DeadActorError constant id'>DeadActorError</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='string val'>&quot;attempted to call a dead actor&quot;</span><span class='rparen token'>)</span>
+  <span class='respond identifier id'>respond</span> <span class='ErrorResponse constant id'>ErrorResponse</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='exception identifier id'>exception</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="dispatch-instance_method">
+  
+    - (<tt>Object</tt>) <strong>dispatch</strong>(obj) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/calls.rb', line 31</span>
+
+<span class='def def kw'>def</span> <span class='dispatch identifier id'>dispatch</span><span class='lparen token'>(</span><span class='obj identifier id'>obj</span><span class='rparen token'>)</span>
+  <span class='begin begin kw'>begin</span>
+    <span class='check_signature identifier id'>check_signature</span><span class='lparen token'>(</span><span class='obj identifier id'>obj</span><span class='rparen token'>)</span>
+  <span class='rescue rescue kw'>rescue</span> <span class='Exception constant id'>Exception</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='ex identifier id'>ex</span>
+    <span class='respond identifier id'>respond</span> <span class='ErrorResponse constant id'>ErrorResponse</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='AbortError constant id'>AbortError</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='ex identifier id'>ex</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+    <span class='return return kw'>return</span>
+  <span class='end end kw'>end</span>
+  
+  <span class='begin begin kw'>begin</span>
+    <span class='result identifier id'>result</span> <span class='assign token'>=</span> <span class='obj identifier id'>obj</span><span class='dot token'>.</span><span class='send identifier id'>send</span> <span class='@method ivar id'>@method</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='@arguments ivar id'>@arguments</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='@block ivar id'>@block</span>
+  <span class='rescue rescue kw'>rescue</span> <span class='Exception constant id'>Exception</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='exception identifier id'>exception</span>
+    <span class='comment val'># Exceptions that occur during synchronous calls are reraised in the</span>
+    <span class='comment val'># context of the caller</span>
+    <span class='respond identifier id'>respond</span> <span class='ErrorResponse constant id'>ErrorResponse</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='exception identifier id'>exception</span><span class='rparen token'>)</span>
+    
+    <span class='if if kw'>if</span> <span class='exception identifier id'>exception</span><span class='dot token'>.</span><span class='is_a? fid id'>is_a?</span> <span class='AbortError constant id'>AbortError</span>
+      <span class='comment val'># Aborting indicates a protocol error on the part of the caller</span>
+      <span class='comment val'># It should crash the caller, but the exception isn't reraised</span>
+      <span class='return return kw'>return</span>
+    <span class='else else kw'>else</span>
+      <span class='comment val'># Otherwise, it's a bug in this actor and should be reraised</span>
+      <span class='raise identifier id'>raise</span> <span class='exception identifier id'>exception</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+  
+  <span class='respond identifier id'>respond</span> <span class='SuccessResponse constant id'>SuccessResponse</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='result identifier id'>result</span><span class='rparen token'>)</span>      
+  <span class='true true kw'>true</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
-</body>
+</div>
+    
+    <div id="footer">
+  Generated on Tue Oct 25 00:09:12 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.3 (ruby-1.8.7).
+</div>
+
+  </body>
 </html>
-

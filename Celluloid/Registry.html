@@ -1,279 +1,297 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
-
-  <title>Module: Celluloid::Registry</title>
-
-  <link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
-
-  <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../js/darkfish.js" type="text/javascript" charset="utf-8"></script>
-
-</head>
-<body id="top" class="module">
-
-  <div id="metadata">
-    <div id="home-metadata">
-      <div id="home-section" class="section">
-        <h3 class="section-header">
-          <a href="../index.html">Home</a>
-          <a href="../index.html#classes">Classes</a>
-          <a href="../index.html#methods">Methods</a>
-        </h3>
-      </div>
-    </div>
-
-    <div id="file-metadata">
-      <div id="file-list-section" class="section">
-        <h3 class="section-header">In Files</h3>
-        <div class="section-body">
-          <ul>
-          
-            <li><a href="../lib/celluloid/registry_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-              class="thickbox" title="lib/celluloid/registry.rb">lib/celluloid/registry.rb</a></li>
-          
-          </ul>
-        </div>
-      </div>
-
-      
-    </div>
-
-    <div id="class-metadata">
-      
-
-      
-
-      
-
-      
-      <!-- Method Quickref -->
-      <div id="method-list-section" class="section">
-        <h3 class="section-header">Methods</h3>
-        <ul class="link-list">
-          
-          <li><a href="#method-i-5B-5D">#[]</a></li>
-          
-          <li><a href="#method-i-5B-5D-3D">#[]=</a></li>
-          
-        </ul>
-      </div>
-      
-
-      
-    </div>
-
-    <div id="project-metadata">
-      
-      
-      <div id="fileindex-section" class="section project-section">
-        <h3 class="section-header">Files</h3>
-        <ul>
-        
-          <li class="file"><a href="../LICENSE_txt.html">LICENSE.txt</a></li>
-        
-        </ul>
-      </div>
-      
-
-      <div id="classindex-section" class="section project-section">
-        <h3 class="section-header">Class/Module Index
-          <span class="search-toggle"><img src="../images/find.png"
-            height="16" width="16" alt="[+]"
-            title="show/hide quicksearch" /></span></h3>
-        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
-        <fieldset>
-          <legend>Quicksearch</legend>
-          <input type="text" name="quicksearch" value=""
-            class="quicksearch-field" />
-        </fieldset>
-        </form>
-
-        <ul class="link-list">
-        
-          <li><a href="../Celluloid.html">Celluloid</a></li>
-        
-          <li><a href="../Celluloid/AbortError.html">Celluloid::AbortError</a></li>
-        
-          <li><a href="../Celluloid/Actor.html">Celluloid::Actor</a></li>
-        
-          <li><a href="../Celluloid/Actor/ClassMethods.html">Celluloid::Actor::ClassMethods</a></li>
-        
-          <li><a href="../Celluloid/Actor/InstanceMethods.html">Celluloid::Actor::InstanceMethods</a></li>
-        
-          <li><a href="../Celluloid/Actor/InternalMethods.html">Celluloid::Actor::InternalMethods</a></li>
-        
-          <li><a href="../Celluloid/ActorProxy.html">Celluloid::ActorProxy</a></li>
-        
-          <li><a href="../Celluloid/AsyncCall.html">Celluloid::AsyncCall</a></li>
-        
-          <li><a href="../Celluloid/Call.html">Celluloid::Call</a></li>
-        
-          <li><a href="../Celluloid/DeadActorError.html">Celluloid::DeadActorError</a></li>
-        
-          <li><a href="../Celluloid/ErrorResponse.html">Celluloid::ErrorResponse</a></li>
-        
-          <li><a href="../Celluloid/ExitEvent.html">Celluloid::ExitEvent</a></li>
-        
-          <li><a href="../Celluloid/Future.html">Celluloid::Future</a></li>
-        
-          <li><a href="../Celluloid/Future/Runner.html">Celluloid::Future::Runner</a></li>
-        
-          <li><a href="../Celluloid/Linking.html">Celluloid::Linking</a></li>
-        
-          <li><a href="../Celluloid/Links.html">Celluloid::Links</a></li>
-        
-          <li><a href="../Celluloid/Mailbox.html">Celluloid::Mailbox</a></li>
-        
-          <li><a href="../Celluloid/MailboxError.html">Celluloid::MailboxError</a></li>
-        
-          <li><a href="../Celluloid/NotActorError.html">Celluloid::NotActorError</a></li>
-        
-          <li><a href="../Celluloid/Registry.html">Celluloid::Registry</a></li>
-        
-          <li><a href="../Celluloid/Response.html">Celluloid::Response</a></li>
-        
-          <li><a href="../Celluloid/Signals.html">Celluloid::Signals</a></li>
-        
-          <li><a href="../Celluloid/SuccessResponse.html">Celluloid::SuccessResponse</a></li>
-        
-          <li><a href="../Celluloid/Supervisor.html">Celluloid::Supervisor</a></li>
-        
-          <li><a href="../Celluloid/SyncCall.html">Celluloid::SyncCall</a></li>
-        
-          <li><a href="../Celluloid/SystemEvent.html">Celluloid::SystemEvent</a></li>
-        
-          <li><a href="../Object.html">Object</a></li>
-        
-          <li><a href="../Thread.html">Thread</a></li>
-        
-        </ul>
-        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
-      </div>
-
-      
-    </div>
-  </div>
-
-  <div id="documentation">
-    <h1 class="module">Celluloid::Registry</h1>
-
-    <div id="description" class="description">
-      
-<p>The <a href="Registry.html">Registry</a> allows us to refer to specific
-actors by human-meaningful names</p>
-
-    </div><!-- description -->
-
-    
-    <div id="5Buntitled-5D" class="documentation-section">
-      
-
-      
-
-      
-
-      
-
-      <!-- Methods -->
-      
-      <div id="public-instance-method-details" class="method-section section">
-        <h3 class="section-header">Public Instance Methods</h3>
-
-      
-        <div id="5B-5D-method" class="method-detail ">
-          <a name="method-i-5B-5D"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">[]</span><span
-              class="method-args">(name)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            <p>Retrieve an actor by name</p>
-            
-
-            
-            <div class="method-source-code" id="5B-5D-source">
-<pre>
-<span class="ruby-comment"># File lib/celluloid/registry.rb, line 22</span>
-<span class="ruby-keyword">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">name</span>)
-  <span class="ruby-identifier">@@registry_lock</span>.<span class="ruby-identifier">synchronize</span> <span class="ruby-keyword">do</span>
-    <span class="ruby-identifier">@@registry</span>[<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_sym</span>]
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
-            </div><!-- 5B-5D-source -->
-            
-          </div>
-
-          
-
-          
-        </div><!-- 5B-5D-method -->
-
-      
-        <div id="5B-5D-3D-method" class="method-detail ">
-          <a name="method-i-5B-5D-3D"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">[]=</span><span
-              class="method-args">(name, actor)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            <p>Register an <a href="Actor.html">Actor</a></p>
-            
-
-            
-            <div class="method-source-code" id="5B-5D-3D-source">
-<pre>
-<span class="ruby-comment"># File lib/celluloid/registry.rb, line 10</span>
-<span class="ruby-keyword">def</span> <span class="ruby-operator">[]=</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">actor</span>)
-  <span class="ruby-identifier">actor_singleton</span> = <span class="ruby-keyword">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">actor</span>; <span class="ruby-keyword">self</span>; <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">actor_singleton</span>.<span class="ruby-identifier">ancestors</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-constant">Celluloid</span><span class="ruby-operator">::</span><span class="ruby-constant">ActorProxy</span>)
-    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&quot;not an actor&quot;</span>
-  <span class="ruby-keyword">end</span>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Celluloid::Registry
   
-  <span class="ruby-identifier">@@registry_lock</span>.<span class="ruby-identifier">synchronize</span> <span class="ruby-keyword">do</span>
-    <span class="ruby-identifier">@@registry</span>[<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_sym</span>] = <span class="ruby-identifier">actor</span>
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
-            </div><!-- 5B-5D-3D-source -->
-            
-          </div>
+    &mdash; Documentation by YARD 0.7.3
+  
+</title>
 
-          
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
 
-          
-        </div><!-- 5B-5D-3D-method -->
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
-      
-      </div><!-- public-instance-method-details -->
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
     
-    </div><!-- 5Buntitled-5D -->
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (R)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../Celluloid.html" title="Celluloid (module)">Celluloid</a></span></span>
+     &raquo; 
+    <span class="title">Registry</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Celluloid::Registry
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1">Included in:</dt>
+    <dd class="r1"><span class='object_link'><a href="Actor.html" title="Celluloid::Actor (class)">Actor</a></span></dd>
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/celluloid/registry.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+The Registry allows us to refer to specific actors by human-meaningful
+names
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
   
 
-  </div><!-- documentation -->
+</div>
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="registry-classvariable" class="">@@registry =
+          
+        </dt>
+        <dd><pre class="code"><span class='lbrace token'>{</span><span class='rbrace token'>}</span>
+</pre></dd>
+      
+        <dt id="registry_lock-classvariable" class="">@@registry_lock =
+          
+        </dt>
+        <dd><pre class="code"><span class='Mutex constant id'>Mutex</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
+</pre></dd>
+      
+    </dl>
+  
 
-  <div id="validator-badges">
-    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
-    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
-      Rdoc Generator</a> 2</small>.</p>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#%5B%5D-instance_method" title="#[] (instance method)">- (Object) <strong>[]</strong>(name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Retrieve an actor by name.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#%5B%5D%3D-instance_method" title="#[]= (instance method)">- (Object) <strong>[]=</strong>(name, actor) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Register an Actor.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="[]-instance_method">
+  
+    - (<tt>Object</tt>) <strong>[]</strong>(name) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Retrieve an actor by name
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22
+23
+24
+25
+26</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/registry.rb', line 22</span>
+
+<span class='def def kw'>def</span> <span class='aref op'>[]</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
+  <span class='@@registry_lock ivar id'>@@registry_lock</span><span class='dot token'>.</span><span class='synchronize identifier id'>synchronize</span> <span class='do do kw'>do</span>
+    <span class='@@registry ivar id'>@@registry</span><span class='lbrack token'>[</span><span class='name identifier id'>name</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span><span class='rbrack token'>]</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="[]=-instance_method">
+  
+    - (<tt>Object</tt>) <strong>[]=</strong>(name, actor) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Register an Actor
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/registry.rb', line 10</span>
+
+<span class='def def kw'>def</span> <span class='aset op'>[]=</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='comma token'>,</span> <span class='actor identifier id'>actor</span><span class='rparen token'>)</span>
+  <span class='actor_singleton identifier id'>actor_singleton</span> <span class='assign token'>=</span> <span class='class class kw'>class</span> <span class='lshft op'>&lt;&lt;</span> <span class='actor identifier id'>actor</span><span class='semicolon token'>;</span> <span class='self self kw'>self</span><span class='semicolon token'>;</span> <span class='end end kw'>end</span>
+  <span class='unless unless kw'>unless</span> <span class='actor_singleton identifier id'>actor_singleton</span><span class='dot token'>.</span><span class='ancestors identifier id'>ancestors</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='Celluloid constant id'>Celluloid</span><span class='colon2 op'>::</span><span class='ActorProxy constant id'>ActorProxy</span><span class='rparen token'>)</span>
+    <span class='raise identifier id'>raise</span> <span class='ArgumentError constant id'>ArgumentError</span><span class='comma token'>,</span> <span class='string val'>&quot;not an actor&quot;</span>
+  <span class='end end kw'>end</span>
+  
+  <span class='@@registry_lock ivar id'>@@registry_lock</span><span class='dot token'>.</span><span class='synchronize identifier id'>synchronize</span> <span class='do do kw'>do</span>
+    <span class='@@registry ivar id'>@@registry</span><span class='lbrack token'>[</span><span class='name identifier id'>name</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='actor identifier id'>actor</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
-</body>
+</div>
+    
+    <div id="footer">
+  Generated on Tue Oct 25 00:09:14 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.3 (ruby-1.8.7).
+</div>
+
+  </body>
 </html>
-

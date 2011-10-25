@@ -1,0 +1,556 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Celluloid::ClassMethods
+  
+    &mdash; Documentation by YARD 0.7.3
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (C)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../Celluloid.html" title="Celluloid (module)">Celluloid</a></span></span>
+     &raquo; 
+    <span class="title">ClassMethods</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Celluloid::ClassMethods
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/celluloid.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Class methods added to classes which include Celluloid
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#exit_handler-instance_method" title="#exit_handler (instance method)">- (Object) <strong>exit_handler</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Obtain the exit handler method for this class.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#new-instance_method" title="#new (instance method)">- (Object) <strong>new</strong>(*args, &amp;block) </a>
+    
+
+    
+      (also: #spawn)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Create a new actor.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#new_link-instance_method" title="#new_link (instance method)">- (Object) <strong>new_link</strong>(*args, &amp;block) </a>
+    
+
+    
+      (also: #spawn_link)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Create a new actor and link to the current one.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#supervise-instance_method" title="#supervise (instance method)">- (Object) <strong>supervise</strong>(*args, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Create a supervisor which ensures an instance of an actor will restart an
+actor if it fails.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#supervise_as-instance_method" title="#supervise_as (instance method)">- (Object) <strong>supervise_as</strong>(name, *args, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Create a supervisor which ensures an instance of an actor will restart an
+actor if it fails, and keep the actor registered under a given name.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#trap_exit-instance_method" title="#trap_exit (instance method)">- (Object) <strong>trap_exit</strong>(callback) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Trap errors from actors we&#8217;re linked to when they exit.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="exit_handler-instance_method">
+  
+    - (<tt>Object</tt>) <strong>exit_handler</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Obtain the exit handler method for this class
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+68</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 68</span>
+
+<span class='def def kw'>def</span> <span class='exit_handler identifier id'>exit_handler</span><span class='semicolon token'>;</span> <span class='@exit_handler ivar id'>@exit_handler</span> <span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="new-instance_method">
+  
+    - (<tt>Object</tt>) <strong>new</strong>(*args, &amp;block) 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='spawn-instance_method'>spawn</span></span>
+    </span>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Create a new actor
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+31
+32
+33
+34
+35</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 31</span>
+
+<span class='def def kw'>def</span> <span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='proxy identifier id'>proxy</span> <span class='assign token'>=</span> <span class='Celluloid constant id'>Celluloid</span><span class='colon2 op'>::</span><span class='Actor constant id'>Actor</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='allocate identifier id'>allocate</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='proxy identifier id'>proxy</span>
+  <span class='proxy identifier id'>proxy</span><span class='dot token'>.</span><span class='send identifier id'>send</span><span class='lparen token'>(</span><span class='symbol val'>:initialize</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='proxy identifier id'>proxy</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="new_link-instance_method">
+  
+    - (<tt>Object</tt>) <strong>new_link</strong>(*args, &amp;block) 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='spawn_link-instance_method'>spawn_link</span></span>
+    </span>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Create a new actor and link to the current one
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="NotActorError.html" title="Celluloid::NotActorError (class)">NotActorError</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41
+42
+43
+44
+45
+46
+47</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 39</span>
+
+<span class='def def kw'>def</span> <span class='new_link identifier id'>new_link</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='current_actor identifier id'>current_actor</span> <span class='assign token'>=</span> <span class='Thread constant id'>Thread</span><span class='dot token'>.</span><span class='current identifier id'>current</span><span class='lbrack token'>[</span><span class='symbol val'>:actor</span><span class='rbrack token'>]</span>
+  <span class='raise identifier id'>raise</span> <span class='NotActorError constant id'>NotActorError</span><span class='comma token'>,</span> <span class='string val'>&quot;can't link outside actor context&quot;</span> <span class='unless unless_mod kw'>unless</span> <span class='current_actor identifier id'>current_actor</span>
+
+  <span class='proxy identifier id'>proxy</span> <span class='assign token'>=</span> <span class='Celluloid constant id'>Celluloid</span><span class='colon2 op'>::</span><span class='Actor constant id'>Actor</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='allocate identifier id'>allocate</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='proxy identifier id'>proxy</span>
+  <span class='current_actor identifier id'>current_actor</span><span class='dot token'>.</span><span class='link identifier id'>link</span> <span class='proxy identifier id'>proxy</span>
+  <span class='proxy identifier id'>proxy</span><span class='dot token'>.</span><span class='send identifier id'>send</span><span class='lparen token'>(</span><span class='symbol val'>:initialize</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='proxy identifier id'>proxy</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="supervise-instance_method">
+  
+    - (<tt>Object</tt>) <strong>supervise</strong>(*args, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Create a supervisor which ensures an instance of an actor will restart an
+actor if it fails
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+52
+53
+54</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 52</span>
+
+<span class='def def kw'>def</span> <span class='supervise identifier id'>supervise</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='Celluloid constant id'>Celluloid</span><span class='colon2 op'>::</span><span class='Supervisor constant id'>Supervisor</span><span class='dot token'>.</span><span class='supervise identifier id'>supervise</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="supervise_as-instance_method">
+  
+    - (<tt>Object</tt>) <strong>supervise_as</strong>(name, *args, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Create a supervisor which ensures an instance of an actor will restart an
+actor if it fails, and keep the actor registered under a given name
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+58
+59
+60</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 58</span>
+
+<span class='def def kw'>def</span> <span class='supervise_as identifier id'>supervise_as</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='Celluloid constant id'>Celluloid</span><span class='colon2 op'>::</span><span class='Supervisor constant id'>Supervisor</span><span class='dot token'>.</span><span class='supervise_as identifier id'>supervise_as</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='comma token'>,</span> <span class='self self kw'>self</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="trap_exit-instance_method">
+  
+    - (<tt>Object</tt>) <strong>trap_exit</strong>(callback) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Trap errors from actors we&#8217;re linked to when they exit
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+63
+64
+65</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 63</span>
+
+<span class='def def kw'>def</span> <span class='trap_exit identifier id'>trap_exit</span><span class='lparen token'>(</span><span class='callback identifier id'>callback</span><span class='rparen token'>)</span>
+  <span class='@exit_handler ivar id'>@exit_handler</span> <span class='assign token'>=</span> <span class='callback identifier id'>callback</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Oct 25 00:09:10 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.3 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

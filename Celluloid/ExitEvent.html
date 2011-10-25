@@ -1,280 +1,378 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Exception: Celluloid::ExitEvent
+  
+    &mdash; Documentation by YARD 0.7.3
+  
+</title>
 
-  <title>Class: Celluloid::ExitEvent</title>
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
 
-  <link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
-  <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
 
-</head>
-<body id="top" class="class">
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
 
-  <div id="metadata">
-    <div id="home-metadata">
-      <div id="home-section" class="section">
-        <h3 class="section-header">
-          <a href="../index.html">Home</a>
-          <a href="../index.html#classes">Classes</a>
-          <a href="../index.html#methods">Methods</a>
-        </h3>
-      </div>
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (E)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../Celluloid.html" title="Celluloid (module)">Celluloid</a></span></span>
+     &raquo; 
+    <span class="title">ExitEvent</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
     </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Exception: Celluloid::ExitEvent
+  
+  
+  
+</h1>
 
-    <div id="file-metadata">
-      <div id="file-list-section" class="section">
-        <h3 class="section-header">In Files</h3>
-        <div class="section-body">
-          <ul>
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="SystemEvent.html" title="Celluloid::SystemEvent (class)">SystemEvent</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
           
-            <li><a href="../lib/celluloid/events_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-              class="thickbox" title="lib/celluloid/events.rb">lib/celluloid/events.rb</a></li>
+            <li class="next">Exception</li>
           
-          </ul>
-        </div>
-      </div>
-
-      
-    </div>
-
-    <div id="class-metadata">
-      
-      <!-- Parent Class -->
-      <div id="parent-class-section" class="section">
-        <h3 class="section-header">Parent</h3>
-        
-        <p class="link"><a href="SystemEvent.html">Celluloid::SystemEvent</a></p>
-        
-      </div>
-      
-
-      
-
-      
-
-      
-      <!-- Method Quickref -->
-      <div id="method-list-section" class="section">
-        <h3 class="section-header">Methods</h3>
-        <ul class="link-list">
+            <li class="next"><span class='object_link'><a href="SystemEvent.html" title="Celluloid::SystemEvent (class)">SystemEvent</a></span></li>
           
-          <li><a href="#method-c-new">::new</a></li>
+            <li class="next">Celluloid::ExitEvent</li>
           
         </ul>
-      </div>
+        <a href="#" class="inheritanceTree">show all</a>
       
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/celluloid/events.rb</dd>
+  
+</dl>
+<div class="clear"></div>
 
-      
-    </div>
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+An actor has exited for the given reason
+</p>
 
-    <div id="project-metadata">
-      
-      
-      <div id="fileindex-section" class="section project-section">
-        <h3 class="section-header">Files</h3>
-        <ul>
-        
-          <li class="file"><a href="../LICENSE_txt.html">LICENSE.txt</a></li>
-        
-        </ul>
-      </div>
-      
 
-      <div id="classindex-section" class="section project-section">
-        <h3 class="section-header">Class/Module Index
-          <span class="search-toggle"><img src="../images/find.png"
-            height="16" width="16" alt="[+]"
-            title="show/hide quicksearch" /></span></h3>
-        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
-        <fieldset>
-          <legend>Quicksearch</legend>
-          <input type="text" name="quicksearch" value=""
-            class="quicksearch-field" />
-        </fieldset>
-        </form>
-
-        <ul class="link-list">
-        
-          <li><a href="../Celluloid.html">Celluloid</a></li>
-        
-          <li><a href="../Celluloid/AbortError.html">Celluloid::AbortError</a></li>
-        
-          <li><a href="../Celluloid/Actor.html">Celluloid::Actor</a></li>
-        
-          <li><a href="../Celluloid/Actor/ClassMethods.html">Celluloid::Actor::ClassMethods</a></li>
-        
-          <li><a href="../Celluloid/Actor/InstanceMethods.html">Celluloid::Actor::InstanceMethods</a></li>
-        
-          <li><a href="../Celluloid/Actor/InternalMethods.html">Celluloid::Actor::InternalMethods</a></li>
-        
-          <li><a href="../Celluloid/ActorProxy.html">Celluloid::ActorProxy</a></li>
-        
-          <li><a href="../Celluloid/AsyncCall.html">Celluloid::AsyncCall</a></li>
-        
-          <li><a href="../Celluloid/Call.html">Celluloid::Call</a></li>
-        
-          <li><a href="../Celluloid/DeadActorError.html">Celluloid::DeadActorError</a></li>
-        
-          <li><a href="../Celluloid/ErrorResponse.html">Celluloid::ErrorResponse</a></li>
-        
-          <li><a href="../Celluloid/ExitEvent.html">Celluloid::ExitEvent</a></li>
-        
-          <li><a href="../Celluloid/Future.html">Celluloid::Future</a></li>
-        
-          <li><a href="../Celluloid/Future/Runner.html">Celluloid::Future::Runner</a></li>
-        
-          <li><a href="../Celluloid/Linking.html">Celluloid::Linking</a></li>
-        
-          <li><a href="../Celluloid/Links.html">Celluloid::Links</a></li>
-        
-          <li><a href="../Celluloid/Mailbox.html">Celluloid::Mailbox</a></li>
-        
-          <li><a href="../Celluloid/MailboxError.html">Celluloid::MailboxError</a></li>
-        
-          <li><a href="../Celluloid/NotActorError.html">Celluloid::NotActorError</a></li>
-        
-          <li><a href="../Celluloid/Registry.html">Celluloid::Registry</a></li>
-        
-          <li><a href="../Celluloid/Response.html">Celluloid::Response</a></li>
-        
-          <li><a href="../Celluloid/Signals.html">Celluloid::Signals</a></li>
-        
-          <li><a href="../Celluloid/SuccessResponse.html">Celluloid::SuccessResponse</a></li>
-        
-          <li><a href="../Celluloid/Supervisor.html">Celluloid::Supervisor</a></li>
-        
-          <li><a href="../Celluloid/SyncCall.html">Celluloid::SyncCall</a></li>
-        
-          <li><a href="../Celluloid/SystemEvent.html">Celluloid::SystemEvent</a></li>
-        
-          <li><a href="../Object.html">Object</a></li>
-        
-          <li><a href="../Thread.html">Thread</a></li>
-        
-        </ul>
-        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
-      </div>
-
-      
-    </div>
   </div>
-
-  <div id="documentation">
-    <h1 class="class">Celluloid::ExitEvent</h1>
-
-    <div id="description" class="description">
-      
-<p>An actor has exited for the given reason</p>
-
-    </div><!-- description -->
-
-    
-    <div id="5Buntitled-5D" class="documentation-section">
-      
-
-      
-
-      
-
-      
-      <!-- Attributes -->
-      <div id="attribute-method-details" class="method-section section">
-        <h3 class="section-header">Attributes</h3>
-
-        
-        <div id="actor-attribute-method" class="method-detail">
-          <a name="actor"></a>
-          
-          <div class="method-heading attribute-method-heading">
-            <span class="method-name">actor</span><span
-              class="attribute-access-type">[R]</span>
-          </div>
-
-          <div class="method-description">
-          
-          
-          
-          </div>
-        </div>
-        
-        <div id="reason-attribute-method" class="method-detail">
-          <a name="reason"></a>
-          
-          <div class="method-heading attribute-method-heading">
-            <span class="method-name">reason</span><span
-              class="attribute-access-type">[R]</span>
-          </div>
-
-          <div class="method-description">
-          
-          
-          
-          </div>
-        </div>
-        
-      </div><!-- attribute-method-details -->
-      
-
-      <!-- Methods -->
-      
-      <div id="public-class-method-details" class="method-section section">
-        <h3 class="section-header">Public Class Methods</h3>
-
-      
-        <div id="new-method" class="method-detail ">
-          <a name="method-c-new"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">new</span><span
-              class="method-args">(actor, reason = nil)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="new-source">
-<pre>
-<span class="ruby-comment"># File lib/celluloid/events.rb, line 9</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">actor</span>, <span class="ruby-identifier">reason</span> = <span class="ruby-keyword">nil</span>)
-  <span class="ruby-ivar">@actor</span>, <span class="ruby-ivar">@reason</span> = <span class="ruby-identifier">actor</span>, <span class="ruby-identifier">reason</span>
-  <span class="ruby-keyword">super</span> <span class="ruby-identifier">reason</span>.<span class="ruby-identifier">to_s</span>
-<span class="ruby-keyword">end</span></pre>
-            </div><!-- new-source -->
-            
-          </div>
-
-          
-
-          
-        </div><!-- new-method -->
-
-      
-      </div><!-- public-class-method-details -->
-    
-    </div><!-- 5Buntitled-5D -->
+</div>
+<div class="tags">
   
 
-  </div><!-- documentation -->
+</div>
 
-  <div id="validator-badges">
-    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
-    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
-      Rdoc Generator</a> 2</small>.</p>
+  
+  
+  
+  
+  
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#actor-instance_method" title="#actor (instance method)">- (Object) <strong>actor</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the value of attribute actor.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#reason-instance_method" title="#reason (instance method)">- (Object) <strong>reason</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the value of attribute reason.
+</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  
+  
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (ExitEvent) <strong>initialize</strong>(actor, reason = nil) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+A new instance of ExitEvent.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Celluloid::ExitEvent (class)">ExitEvent</a></span></tt>) <strong>initialize</strong>(actor, reason = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+A new instance of ExitEvent
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+9
+10
+11
+12</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/events.rb', line 9</span>
+
+<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='actor identifier id'>actor</span><span class='comma token'>,</span> <span class='reason identifier id'>reason</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+  <span class='@actor ivar id'>@actor</span><span class='comma token'>,</span> <span class='@reason ivar id'>@reason</span> <span class='assign token'>=</span> <span class='actor identifier id'>actor</span><span class='comma token'>,</span> <span class='reason identifier id'>reason</span>
+  <span class='super super kw'>super</span> <span class='reason identifier id'>reason</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <span id="actor-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="actor-instance_method">
+  
+    - (<tt>Object</tt>) <strong>actor</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute actor
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7
+8
+9</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/events.rb', line 7</span>
+
+<span class='def def kw'>def</span> <span class='actor identifier id'>actor</span>
+  <span class='@actor ivar id'>@actor</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="reason-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="reason-instance_method">
+  
+    - (<tt>Object</tt>) <strong>reason</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute reason
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7
+8
+9</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/events.rb', line 7</span>
+
+<span class='def def kw'>def</span> <span class='reason identifier id'>reason</span>
+  <span class='@reason ivar id'>@reason</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
-</body>
-</html>
 
+</div>
+    
+    <div id="footer">
+  Generated on Tue Oct 25 00:09:13 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.3 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>
