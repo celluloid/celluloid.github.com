@@ -104,11 +104,10 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>
-Actors are Celluloid&#8217;s concurrency primitive. They&#8217;re
-implemented as normal Ruby objects wrapped in threads which communicate
-with asynchronous messages.
-</p>
+    
+<p>Actors are Celluloid's concurrency primitive. They're implemented as normal
+Ruby objects wrapped in threads which communicate with asynchronous
+messages.</p>
 
 
   </div>
@@ -116,11 +115,7 @@ with asynchronous messages.
 <div class="tags">
   
 
-</div><div id="subclasses">
-  <h2>Direct Known Subclasses</h2>
-  <p class="children"><span class='object_link'><a href="IO/Actor.html" title="Celluloid::IO::Actor (class)">IO::Actor</a></span></p>
-</div>
-<h2>Defined Under Namespace</h2>
+</div><h2>Defined Under Namespace</h2>
 <p class="children">
    
     
@@ -162,9 +157,8 @@ with asynchronous messages.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Returns the value of attribute links.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute links.</p>
 </div></span>
   
 </li>
@@ -189,9 +183,8 @@ Returns the value of attribute links.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Returns the value of attribute mailbox.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute mailbox.</p>
 </div></span>
   
 </li>
@@ -216,9 +209,8 @@ Returns the value of attribute mailbox.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Returns the value of attribute proxy.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute proxy.</p>
 </div></span>
   
 </li>
@@ -235,6 +227,61 @@ Returns the value of attribute proxy.
   
   
 
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#async-class_method" title="async (class method)">+ (Object) <strong>async</strong>(mailbox, meth, *args, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Invoke a method asynchronously on an actor via its mailbox.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#call-class_method" title="call (class method)">+ (Object) <strong>call</strong>(mailbox, meth, *args, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Invoke a method on the given actor via its mailbox.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
   
     <h2>
       Instance Method Summary
@@ -259,9 +306,100 @@ Returns the value of attribute proxy.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Is this actor alive?.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Is this actor alive?.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cleanup-instance_method" title="#cleanup (instance method)">- (Object) <strong>cleanup</strong>(exit_event) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Handle cleaning up this actor after it exits.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#handle_crash-instance_method" title="#handle_crash (instance method)">- (Object) <strong>handle_crash</strong>(exception) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Handle any exceptions that occur within a running actor.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#handle_exit_event-instance_method" title="#handle_exit_event (instance method)">- (Object) <strong>handle_exit_event</strong>(exit_event) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Handle exit events received by this actor.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#handle_message-instance_method" title="#handle_message (instance method)">- (Object) <strong>handle_message</strong>(message) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Handle an incoming message.</p>
 </div></span>
   
 </li>
@@ -285,9 +423,8 @@ Is this actor alive?.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Wrap the given subject object with an Actor.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Wrap the given subject with an Actor.</p>
 </div></span>
   
 </li>
@@ -296,7 +433,7 @@ Wrap the given subject object with an Actor.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize_mailbox-instance_method" title="#initialize_mailbox (instance method)">- (Object) <strong>initialize_mailbox</strong> </a>
+      <a href="#log_error-instance_method" title="#log_error (instance method)">- (Object) <strong>log_error</strong>(ex, message = &quot;#{@subject.class} crashed!&quot;) </a>
     
 
     
@@ -309,9 +446,8 @@ Wrap the given subject object with an Actor.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Create the mailbox for this actor.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Log errors when an actor crashes.</p>
 </div></span>
   
 </li>
@@ -320,7 +456,7 @@ Create the mailbox for this actor.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize_thread_locals-instance_method" title="#initialize_thread_locals (instance method)">- (Object) <strong>initialize_thread_locals</strong> </a>
+      <a href="#receive-instance_method" title="#receive (instance method)">- (Object) <strong>receive</strong>(&amp;block) </a>
     
 
     
@@ -333,9 +469,8 @@ Create the mailbox for this actor.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Configure thread locals for the running thread.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Receive an asynchronous message.</p>
 </div></span>
   
 </li>
@@ -357,9 +492,31 @@ Configure thread locals for the running thread.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Run the actor loop.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Run the actor loop.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#run_fiber-instance_method" title="#run_fiber (instance method)">- (Object) <strong>run_fiber</strong>(fiber, value = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Run a method, handling when its Fiber is suspended.</p>
 </div></span>
   
 </li>
@@ -381,9 +538,8 @@ Run the actor loop.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Send a signal with the given name to all waiting methods.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Send a signal with the given name to all waiting methods.</p>
 </div></span>
   
 </li>
@@ -405,9 +561,8 @@ Send a signal with the given name to all waiting methods.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Terminate this actor.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Terminate this actor.</p>
 </div></span>
   
 </li>
@@ -429,9 +584,8 @@ Terminate this actor.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Wait for the given signal.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Wait for the given signal.</p>
 </div></span>
   
 </li>
@@ -472,9 +626,8 @@ Wait for the given signal.
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Wrap the given subject object with an Actor
-</p>
+    
+<p>Wrap the given subject with an Actor</p>
 
 
   </div>
@@ -488,35 +641,55 @@ Wrap the given subject object with an Actor
       <pre class="lines">
 
 
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59</pre>
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 67</span>
 
 <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id subject'>subject</span><span class='rparen'>)</span>
-  <span class='ivar'>@subject</span>  <span class='op'>=</span> <span class='id subject'>subject</span>
-  <span class='ivar'>@mailbox</span> <span class='op'>=</span> <span class='id initialize_mailbox'>initialize_mailbox</span>
-  <span class='ivar'>@links</span>   <span class='op'>=</span> <span class='const'>Links</span><span class='period'>.</span><span class='id new'>new</span>
-  <span class='ivar'>@signals</span> <span class='op'>=</span> <span class='const'>Signals</span><span class='period'>.</span><span class='id new'>new</span>
-  <span class='ivar'>@proxy</span>   <span class='op'>=</span> <span class='const'>ActorProxy</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='ivar'>@mailbox</span><span class='rparen'>)</span>
-  <span class='ivar'>@running</span> <span class='op'>=</span> <span class='kw'>true</span>
+  <span class='ivar'>@subject</span> <span class='op'>=</span> <span class='id subject'>subject</span>
 
-  <span class='ivar'>@thread</span> <span class='op'>=</span> <span class='const'>Pool</span><span class='period'>.</span><span class='id get'>get</span>
-  <span class='ivar'>@thread</span><span class='lbracket'>[</span><span class='symbol'>:queue</span><span class='rbracket'>]</span> <span class='op'>&lt;&lt;</span> <span class='id proc'>proc</span> <span class='kw'>do</span>
-    <span class='id initialize_thread_locals'>initialize_thread_locals</span>
+  <span class='kw'>if</span> <span class='id subject'>subject</span><span class='period'>.</span><span class='id respond_to?'>respond_to?</span> <span class='symbol'>:mailbox_factory</span>
+    <span class='ivar'>@mailbox</span> <span class='op'>=</span> <span class='id subject'>subject</span><span class='period'>.</span><span class='id mailbox_factory'>mailbox_factory</span>
+  <span class='kw'>else</span>
+    <span class='ivar'>@mailbox</span> <span class='op'>=</span> <span class='const'>Celluloid</span><span class='op'>::</span><span class='const'>Mailbox</span><span class='period'>.</span><span class='id new'>new</span>
+  <span class='kw'>end</span>
+
+  <span class='ivar'>@links</span>     <span class='op'>=</span> <span class='const'>Links</span><span class='period'>.</span><span class='id new'>new</span>
+  <span class='ivar'>@signals</span>   <span class='op'>=</span> <span class='const'>Signals</span><span class='period'>.</span><span class='id new'>new</span>
+  <span class='ivar'>@receivers</span> <span class='op'>=</span> <span class='const'>Receivers</span><span class='period'>.</span><span class='id new'>new</span>
+  <span class='ivar'>@proxy</span>     <span class='op'>=</span> <span class='const'>ActorProxy</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='ivar'>@mailbox</span><span class='rparen'>)</span>
+  <span class='ivar'>@running</span>   <span class='op'>=</span> <span class='kw'>true</span>
+  <span class='ivar'>@pending_calls</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+
+  <span class='ivar'>@thread</span> <span class='op'>=</span> <span class='const'>Pool</span><span class='period'>.</span><span class='id get'>get</span> <span class='kw'>do</span>
+    <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:actor</span><span class='rbracket'>]</span>       <span class='op'>=</span> <span class='kw'>self</span>
+    <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:actor_proxy</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@proxy</span>
+    <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:mailbox</span><span class='rbracket'>]</span>     <span class='op'>=</span> <span class='ivar'>@mailbox</span>
+
     <span class='id run'>run</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
@@ -542,9 +715,8 @@ Wrap the given subject object with an Actor
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Returns the value of attribute links
-</p>
+    
+<p>Returns the value of attribute links</p>
 
 
   </div>
@@ -558,12 +730,12 @@ Returns the value of attribute links
       <pre class="lines">
 
 
-41
-42
-43</pre>
+26
+27
+28</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 26</span>
 
 <span class='kw'>def</span> <span class='id links'>links</span>
   <span class='ivar'>@links</span>
@@ -585,9 +757,8 @@ Returns the value of attribute links
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Returns the value of attribute mailbox
-</p>
+    
+<p>Returns the value of attribute mailbox</p>
 
 
   </div>
@@ -601,12 +772,12 @@ Returns the value of attribute mailbox
       <pre class="lines">
 
 
-42
-43
-44</pre>
+27
+28
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 42</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 27</span>
 
 <span class='kw'>def</span> <span class='id mailbox'>mailbox</span>
   <span class='ivar'>@mailbox</span>
@@ -628,9 +799,8 @@ Returns the value of attribute mailbox
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Returns the value of attribute proxy
-</p>
+    
+<p>Returns the value of attribute proxy</p>
 
 
   </div>
@@ -644,12 +814,12 @@ Returns the value of attribute proxy
       <pre class="lines">
 
 
-40
-41
-42</pre>
+25
+26
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 25</span>
 
 <span class='kw'>def</span> <span class='id proxy'>proxy</span>
   <span class='ivar'>@proxy</span>
@@ -661,6 +831,144 @@ Returns the value of attribute proxy
     
   </div>
 
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="async-class_method">
+  
+    + (<tt>Object</tt>) <strong>async</strong>(mailbox, meth, *args, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Invoke a method asynchronously on an actor via its mailbox</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 54</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id async'>async</span><span class='lparen'>(</span><span class='id mailbox'>mailbox</span><span class='comma'>,</span> <span class='id meth'>meth</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id our_mailbox'>our_mailbox</span> <span class='op'>=</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='period'>.</span><span class='id mailbox'>mailbox</span>
+  <span class='kw'>begin</span>
+    <span class='id mailbox'>mailbox</span> <span class='op'>&lt;&lt;</span> <span class='const'>AsyncCall</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id our_mailbox'>our_mailbox</span><span class='comma'>,</span> <span class='id meth'>meth</span><span class='comma'>,</span> <span class='id args'>args</span><span class='comma'>,</span> <span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>rescue</span> <span class='const'>MailboxError</span>
+    <span class='comment'># Silently swallow asynchronous calls to dead actors. There's no way
+</span>    <span class='comment'># to reliably generate DeadActorErrors for async calls, so users of
+</span>    <span class='comment'># async calls should find other ways to deal with actors dying
+</span>    <span class='comment'># during an async call (i.e. linking/supervisors)
+</span>  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="call-class_method">
+  
+    + (<tt>Object</tt>) <strong>call</strong>(mailbox, meth, *args, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Invoke a method on the given actor via its mailbox</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 30</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id call'>call</span><span class='lparen'>(</span><span class='id mailbox'>mailbox</span><span class='comma'>,</span> <span class='id meth'>meth</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id our_mailbox'>our_mailbox</span> <span class='op'>=</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='period'>.</span><span class='id mailbox'>mailbox</span>
+  <span class='id call'>call</span> <span class='op'>=</span> <span class='const'>SyncCall</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id our_mailbox'>our_mailbox</span><span class='comma'>,</span> <span class='id meth'>meth</span><span class='comma'>,</span> <span class='id args'>args</span><span class='comma'>,</span> <span class='id block'>block</span><span class='rparen'>)</span>
+
+  <span class='kw'>begin</span>
+    <span class='id mailbox'>mailbox</span> <span class='op'>&lt;&lt;</span> <span class='id call'>call</span>
+  <span class='kw'>rescue</span> <span class='const'>MailboxError</span>
+    <span class='id raise'>raise</span> <span class='const'>DeadActorError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>attempted to call a dead actor</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='const'>Celluloid</span><span class='period'>.</span><span class='id actor?'>actor?</span>
+    <span class='comment'># Yield to the actor scheduler, which resumes us when we get a response
+</span>    <span class='id response'>response</span> <span class='op'>=</span> <span class='const'>Fiber</span><span class='period'>.</span><span class='id yield'>yield</span><span class='lparen'>(</span><span class='id call'>call</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='comment'># Otherwise we're inside a normal thread, so block
+</span>    <span class='id response'>response</span> <span class='op'>=</span> <span class='id our_mailbox'>our_mailbox</span><span class='period'>.</span><span class='id receive'>receive</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id msg'>msg</span><span class='op'>|</span>
+      <span class='id msg'>msg</span><span class='period'>.</span><span class='id is_a?'>is_a?</span> <span class='const'>Response</span> <span class='kw'>and</span> <span class='id msg'>msg</span><span class='period'>.</span><span class='id call_id'>call_id</span> <span class='op'>==</span> <span class='id call'>call</span><span class='period'>.</span><span class='id id'>id</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='id response'>response</span><span class='period'>.</span><span class='id value'>value</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
@@ -675,9 +983,8 @@ Returns the value of attribute proxy
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Is this actor alive?
-</p>
+    
+<p>Is this actor alive?</p>
 
 
   </div>
@@ -704,12 +1011,12 @@ Is this actor alive?
       <pre class="lines">
 
 
-88
-89
-90</pre>
+93
+94
+95</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 88</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 93</span>
 
 <span class='kw'>def</span> <span class='id alive?'>alive?</span>
   <span class='ivar'>@running</span>
@@ -720,21 +1027,16 @@ Is this actor alive?
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="initialize_mailbox-instance_method">
+  <p class="signature " id="cleanup-instance_method">
   
-    - (<tt>Object</tt>) <strong>initialize_mailbox</strong> 
+    - (<tt>Object</tt>) <strong>cleanup</strong>(exit_event) 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Create the mailbox for this actor
-</p>
-<p>
-This implemententation is intended to be overridden in special-case
-subclasses of Celluloid::Actor which use a custom mailbox
-</p>
+    
+<p>Handle cleaning up this actor after it exits</p>
 
 
   </div>
@@ -748,15 +1050,29 @@ subclasses of Celluloid::Actor which use a custom mailbox
       <pre class="lines">
 
 
-65
-66
-67</pre>
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 65</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 197</span>
 
-<span class='kw'>def</span> <span class='id initialize_mailbox'>initialize_mailbox</span>
-  <span class='const'>Mailbox</span><span class='period'>.</span><span class='id new'>new</span>
+<span class='kw'>def</span> <span class='id cleanup'>cleanup</span><span class='lparen'>(</span><span class='id exit_event'>exit_event</span><span class='rparen'>)</span>
+  <span class='ivar'>@mailbox</span><span class='period'>.</span><span class='id shutdown'>shutdown</span>
+  <span class='ivar'>@links</span><span class='period'>.</span><span class='id send_event'>send_event</span> <span class='id exit_event'>exit_event</span>
+
+  <span class='kw'>begin</span>
+    <span class='ivar'>@subject</span><span class='period'>.</span><span class='id finalize'>finalize</span> <span class='kw'>if</span> <span class='ivar'>@subject</span><span class='period'>.</span><span class='id respond_to?'>respond_to?</span> <span class='symbol'>:finalize</span>
+  <span class='kw'>rescue</span> <span class='const'>Exception</span> <span class='op'>=&gt;</span> <span class='id finalizer_exception'>finalizer_exception</span>
+    <span class='id log_error'>log_error</span><span class='lparen'>(</span><span class='id finalizer_exception'>finalizer_exception</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@subject</span><span class='period'>.</span><span class='id class'>class</span><span class='rbrace'>}</span><span class='tstring_content'>#finalize crashed!</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -764,17 +1080,16 @@ subclasses of Celluloid::Actor which use a custom mailbox
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="initialize_thread_locals-instance_method">
+  <p class="signature " id="handle_crash-instance_method">
   
-    - (<tt>Object</tt>) <strong>initialize_thread_locals</strong> 
+    - (<tt>Object</tt>) <strong>handle_crash</strong>(exception) 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Configure thread locals for the running thread
-</p>
+    
+<p>Handle any exceptions that occur within a running actor</p>
 
 
   </div>
@@ -788,19 +1103,227 @@ Configure thread locals for the running thread
       <pre class="lines">
 
 
-70
-71
-72
-73
-74</pre>
+189
+190
+191
+192
+193
+194</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 70</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 189</span>
 
-<span class='kw'>def</span> <span class='id initialize_thread_locals'>initialize_thread_locals</span>
-  <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:actor</span><span class='rbracket'>]</span>       <span class='op'>=</span> <span class='kw'>self</span>
-  <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:actor_proxy</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@proxy</span>
-  <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:mailbox</span><span class='rbracket'>]</span>     <span class='op'>=</span> <span class='ivar'>@mailbox</span>
+<span class='kw'>def</span> <span class='id handle_crash'>handle_crash</span><span class='lparen'>(</span><span class='id exception'>exception</span><span class='rparen'>)</span>
+  <span class='id log_error'>log_error</span><span class='lparen'>(</span><span class='id exception'>exception</span><span class='rparen'>)</span>
+  <span class='id cleanup'>cleanup</span> <span class='const'>ExitEvent</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='ivar'>@proxy</span><span class='comma'>,</span> <span class='id exception'>exception</span><span class='rparen'>)</span>
+<span class='kw'>rescue</span> <span class='const'>Exception</span> <span class='op'>=&gt;</span> <span class='id handler_exception'>handler_exception</span>
+  <span class='id log_error'>log_error</span><span class='lparen'>(</span><span class='id handler_exception'>handler_exception</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ERROR HANDLER CRASHED!</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="handle_exit_event-instance_method">
+  
+    - (<tt>Object</tt>) <strong>handle_exit_event</strong>(exit_event) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Handle exit events received by this actor</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 177</span>
+
+<span class='kw'>def</span> <span class='id handle_exit_event'>handle_exit_event</span><span class='lparen'>(</span><span class='id exit_event'>exit_event</span><span class='rparen'>)</span>
+  <span class='id exit_handler'>exit_handler</span> <span class='op'>=</span> <span class='ivar'>@subject</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id exit_handler'>exit_handler</span>
+  <span class='kw'>if</span> <span class='id exit_handler'>exit_handler</span>
+    <span class='kw'>return</span> <span class='ivar'>@subject</span><span class='period'>.</span><span class='id send'>send</span><span class='lparen'>(</span><span class='id exit_handler'>exit_handler</span><span class='comma'>,</span> <span class='id exit_event'>exit_event</span><span class='period'>.</span><span class='id actor'>actor</span><span class='comma'>,</span> <span class='id exit_event'>exit_event</span><span class='period'>.</span><span class='id reason'>reason</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># Reraise exceptions from linked actors
+</span>  <span class='comment'># If no reason is given, actor terminated cleanly
+</span>  <span class='id raise'>raise</span> <span class='id exit_event'>exit_event</span><span class='period'>.</span><span class='id reason'>reason</span> <span class='kw'>if</span> <span class='id exit_event'>exit_event</span><span class='period'>.</span><span class='id reason'>reason</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="handle_message-instance_method">
+  
+    - (<tt>Object</tt>) <strong>handle_message</strong>(message) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Handle an incoming message</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 156</span>
+
+<span class='kw'>def</span> <span class='id handle_message'>handle_message</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id message'>message</span>
+  <span class='kw'>when</span> <span class='const'>Call</span>
+    <span class='id fiber'>fiber</span> <span class='op'>=</span> <span class='const'>Celluloid</span><span class='period'>.</span><span class='id fiber'>fiber</span> <span class='lbrace'>{</span> <span class='id message'>message</span><span class='period'>.</span><span class='id dispatch'>dispatch</span><span class='lparen'>(</span><span class='ivar'>@subject</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>nil</span> <span class='rbrace'>}</span>
+    <span class='id run_fiber'>run_fiber</span> <span class='id fiber'>fiber</span>
+  <span class='kw'>when</span> <span class='const'>Response</span>
+    <span class='id fiber'>fiber</span> <span class='op'>=</span> <span class='ivar'>@pending_calls</span><span class='period'>.</span><span class='id delete'>delete</span><span class='lparen'>(</span><span class='id message'>message</span><span class='period'>.</span><span class='id call_id'>call_id</span><span class='rparen'>)</span>
+
+    <span class='kw'>if</span> <span class='id fiber'>fiber</span>
+      <span class='id run_fiber'>run_fiber</span> <span class='id fiber'>fiber</span><span class='comma'>,</span> <span class='id message'>message</span>
+    <span class='kw'>else</span>
+      <span class='id warning'>warning</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>spurious response to call </span><span class='embexpr_beg'>#{</span><span class='id message'>message</span><span class='period'>.</span><span class='id call_id'>call_id</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+      <span class='const'>Celluloid</span><span class='period'>.</span><span class='id logger'>logger</span><span class='period'>.</span><span class='id debug'>debug</span> <span class='kw'>if</span> <span class='const'>Celluloid</span><span class='period'>.</span><span class='id logger'>logger</span>
+    <span class='kw'>end</span>
+  <span class='kw'>else</span>
+    <span class='ivar'>@receivers</span><span class='period'>.</span><span class='id handle_message'>handle_message</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id message'>message</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="log_error-instance_method">
+  
+    - (<tt>Object</tt>) <strong>log_error</strong>(ex, message = &quot;#{@subject.class} crashed!&quot;) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Log errors when an actor crashes</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+209
+210
+211
+212
+213</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 209</span>
+
+<span class='kw'>def</span> <span class='id log_error'>log_error</span><span class='lparen'>(</span><span class='id ex'>ex</span><span class='comma'>,</span> <span class='id message'>message</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@subject</span><span class='period'>.</span><span class='id class'>class</span><span class='rbrace'>}</span><span class='tstring_content'> crashed!</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id message'>message</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='embexpr_beg'>#{</span><span class='id ex'>ex</span><span class='period'>.</span><span class='id class'>class</span><span class='rbrace'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id ex'>ex</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='rbrace'>}</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id message'>message</span> <span class='op'>&lt;&lt;</span> <span class='id ex'>ex</span><span class='period'>.</span><span class='id backtrace'>backtrace</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='const'>Celluloid</span><span class='period'>.</span><span class='id logger'>logger</span><span class='period'>.</span><span class='id error'>error</span> <span class='id message'>message</span> <span class='kw'>if</span> <span class='const'>Celluloid</span><span class='period'>.</span><span class='id logger'>logger</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="receive-instance_method">
+  
+    - (<tt>Object</tt>) <strong>receive</strong>(&amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Receive an asynchronous message</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+114
+115
+116</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 114</span>
+
+<span class='kw'>def</span> <span class='id receive'>receive</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='ivar'>@receivers</span><span class='period'>.</span><span class='id receive'>receive</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -816,9 +1339,8 @@ Configure thread locals for the running thread
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Run the actor loop
-</p>
+    
+<p>Run the actor loop</p>
 
 
   </div>
@@ -832,27 +1354,108 @@ Run the actor loop
       <pre class="lines">
 
 
-77
-78
-79
-80
-81
-82
-83
-84
-85</pre>
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 77</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 119</span>
 
 <span class='kw'>def</span> <span class='id run'>run</span>
-  <span class='id process_messages'>process_messages</span>
+  <span class='kw'>while</span> <span class='ivar'>@running</span>
+    <span class='kw'>begin</span>
+      <span class='id message'>message</span> <span class='op'>=</span> <span class='ivar'>@mailbox</span><span class='period'>.</span><span class='id receive'>receive</span>
+    <span class='kw'>rescue</span> <span class='const'>ExitEvent</span> <span class='op'>=&gt;</span> <span class='id exit_event'>exit_event</span>
+      <span class='id fiber'>fiber</span> <span class='op'>=</span> <span class='const'>Celluloid</span><span class='period'>.</span><span class='id fiber'>fiber</span> <span class='lbrace'>{</span> <span class='id handle_exit_event'>handle_exit_event</span> <span class='id exit_event'>exit_event</span><span class='semicolon'>;</span> <span class='kw'>nil</span> <span class='rbrace'>}</span>
+      <span class='id run_fiber'>run_fiber</span> <span class='id fiber'>fiber</span>
+      <span class='kw'>retry</span>
+    <span class='kw'>end</span>
+
+    <span class='id handle_message'>handle_message</span> <span class='id message'>message</span>
+  <span class='kw'>end</span>
+
   <span class='id cleanup'>cleanup</span> <span class='const'>ExitEvent</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='ivar'>@proxy</span><span class='rparen'>)</span>
+<span class='kw'>rescue</span> <span class='const'>MailboxShutdown</span>
+  <span class='comment'># If the mailbox detects shutdown, exit the actor
+</span>  <span class='ivar'>@running</span> <span class='op'>=</span> <span class='kw'>false</span>
 <span class='kw'>rescue</span> <span class='const'>Exception</span> <span class='op'>=&gt;</span> <span class='id ex'>ex</span>
   <span class='ivar'>@running</span> <span class='op'>=</span> <span class='kw'>false</span>
   <span class='id handle_crash'>handle_crash</span><span class='lparen'>(</span><span class='id ex'>ex</span><span class='rparen'>)</span>
 <span class='kw'>ensure</span>
   <span class='const'>Pool</span><span class='period'>.</span><span class='id put'>put</span> <span class='ivar'>@thread</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="run_fiber-instance_method">
+  
+    - (<tt>Object</tt>) <strong>run_fiber</strong>(fiber, value = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Run a method, handling when its Fiber is suspended</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 144</span>
+
+<span class='kw'>def</span> <span class='id run_fiber'>run_fiber</span><span class='lparen'>(</span><span class='id fiber'>fiber</span><span class='comma'>,</span> <span class='id value'>value</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id result'>result</span> <span class='op'>=</span> <span class='id fiber'>fiber</span><span class='period'>.</span><span class='id resume'>resume</span> <span class='id value'>value</span>
+  <span class='kw'>if</span> <span class='id result'>result</span><span class='period'>.</span><span class='id is_a?'>is_a?</span> <span class='const'>Celluloid</span><span class='op'>::</span><span class='const'>Call</span>
+    <span class='ivar'>@pending_calls</span><span class='lbracket'>[</span><span class='id result'>result</span><span class='period'>.</span><span class='id id'>id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id fiber'>fiber</span> <span class='kw'>if</span> <span class='id fiber'>fiber</span><span class='period'>.</span><span class='id alive?'>alive?</span>
+  <span class='kw'>elsif</span> <span class='id result'>result</span>
+    <span class='id warning'>warning</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>non-call returned from fiber: </span><span class='embexpr_beg'>#{</span><span class='id result'>result</span><span class='period'>.</span><span class='id class'>class</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='const'>Celluloid</span><span class='period'>.</span><span class='id logger'>logger</span><span class='period'>.</span><span class='id debug'>debug</span> <span class='id warning'>warning</span> <span class='kw'>if</span> <span class='const'>Celluloid</span><span class='period'>.</span><span class='id logger'>logger</span>
+  <span class='kw'>end</span>
+  <span class='kw'>nil</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -868,91 +1471,8 @@ Run the actor loop
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Send a signal with the given name to all waiting methods
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-99
-100
-101</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 99</span>
-
-<span class='kw'>def</span> <span class='id signal'>signal</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span> <span class='id value'>value</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='ivar'>@signals</span><span class='period'>.</span><span class='id send'>send</span> <span class='id name'>name</span><span class='comma'>,</span> <span class='id value'>value</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
     
-      <div class="method_details ">
-  <p class="signature " id="terminate-instance_method">
-  
-    - (<tt>Object</tt>) <strong>terminate</strong> 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-Terminate this actor
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-93
-94
-95
-96</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 93</span>
-
-<span class='kw'>def</span> <span class='id terminate'>terminate</span>
-  <span class='ivar'>@running</span> <span class='op'>=</span> <span class='kw'>false</span>
-  <span class='kw'>nil</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="wait-instance_method">
-  
-    - (<tt>Object</tt>) <strong>wait</strong>(name) 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-Wait for the given signal
-</p>
+<p>Send a signal with the given name to all waiting methods</p>
 
 
   </div>
@@ -973,6 +1493,86 @@ Wait for the given signal
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 104</span>
 
+<span class='kw'>def</span> <span class='id signal'>signal</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span> <span class='id value'>value</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='ivar'>@signals</span><span class='period'>.</span><span class='id send'>send</span> <span class='id name'>name</span><span class='comma'>,</span> <span class='id value'>value</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="terminate-instance_method">
+  
+    - (<tt>Object</tt>) <strong>terminate</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Terminate this actor</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+98
+99
+100
+101</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 98</span>
+
+<span class='kw'>def</span> <span class='id terminate'>terminate</span>
+  <span class='ivar'>@running</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="wait-instance_method">
+  
+    - (<tt>Object</tt>) <strong>wait</strong>(name) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Wait for the given signal</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+109
+110
+111</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 109</span>
+
 <span class='kw'>def</span> <span class='id wait'>wait</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
   <span class='ivar'>@signals</span><span class='period'>.</span><span class='id wait'>wait</span> <span class='id name'>name</span>
 <span class='kw'>end</span></pre>
@@ -986,9 +1586,9 @@ Wait for the given signal
 </div>
     
     <div id="footer">
-  Generated on Tue Oct 25 00:23:44 2011 by 
+  Generated on Fri Nov 18 17:00:18 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.3 (ruby-1.9.2).
+  0.7.3 (ruby-1.9.3).
 </div>
 
   </body>

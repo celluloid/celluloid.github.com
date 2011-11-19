@@ -79,9 +79,8 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>
-Class methods added to classes which include Celluloid
-</p>
+    
+<p>Class methods added to classes which include Celluloid</p>
 
 
   </div>
@@ -90,6 +89,37 @@ Class methods added to classes which include Celluloid
   
 
 </div>
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#exit_handler-instance_method" title="#exit_handler (instance method)">- (Object) <strong>exit_handler</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Obtain the exit handler for this actor.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
 
 
 
@@ -101,30 +131,6 @@ Class methods added to classes which include Celluloid
     </h2>
 
     <ul class="summary">
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#exit_handler-instance_method" title="#exit_handler (instance method)">- (Object) <strong>exit_handler</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-Obtain the exit handler method for this class.
-</p>
-</div></span>
-  
-</li>
-
       
         <li class="public ">
   <span class="summary_signature">
@@ -144,9 +150,8 @@ Obtain the exit handler method for this class.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Create a new actor.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Create a new actor.</p>
 </div></span>
   
 </li>
@@ -170,9 +175,8 @@ Create a new actor.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Create a new actor and link to the current one.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Create a new actor and link to the current one.</p>
 </div></span>
   
 </li>
@@ -194,10 +198,9 @@ Create a new actor and link to the current one.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Create a supervisor which ensures an instance of an actor will restart an
-actor if it fails.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Create a supervisor which ensures an instance of an actor will restart an
+actor if it fails.</p>
 </div></span>
   
 </li>
@@ -219,10 +222,9 @@ actor if it fails.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Create a supervisor which ensures an instance of an actor will restart an
-actor if it fails, and keep the actor registered under a given name.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Create a supervisor which ensures an instance of an actor will restart an
+actor if it fails, and keep the actor registered under a given name.</p>
 </div></span>
   
 </li>
@@ -244,9 +246,31 @@ actor if it fails, and keep the actor registered under a given name.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Trap errors from actors we&#8217;re linked to when they exit.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Trap errors from actors we're linked to when they exit.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#use_mailbox-instance_method" title="#use_mailbox (instance method)">- (Object) <strong>use_mailbox</strong>(klass = nil, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Configure a custom mailbox factory.</p>
 </div></span>
   
 </li>
@@ -256,23 +280,23 @@ Trap errors from actors we&#8217;re linked to when they exit.
   
 
 
-
-  <div id="instance_method_details" class="method_details_list">
-    <h2>Instance Method Details</h2>
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
     
-    
+      
+      <span id=""></span>
+      <span id="exit_handler-instance_method"></span>
       <div class="method_details first">
   <p class="signature first" id="exit_handler-instance_method">
   
-    - (<tt>Object</tt>) <strong>exit_handler</strong> 
+    - (<tt>Object</tt>) <strong>exit_handler</strong>  <span class="extras">(readonly)</span>
   
 
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Obtain the exit handler method for this class
-</p>
+    
+<p>Obtain the exit handler for this actor</p>
 
 
   </div>
@@ -286,19 +310,30 @@ Obtain the exit handler method for this class
       <pre class="lines">
 
 
-68</pre>
+105
+106
+107</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 68</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 105</span>
 
-<span class='kw'>def</span> <span class='id exit_handler'>exit_handler</span><span class='semicolon'>;</span> <span class='ivar'>@exit_handler</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
+<span class='kw'>def</span> <span class='id exit_handler'>exit_handler</span>
+  <span class='ivar'>@exit_handler</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
-      <div class="method_details ">
-  <p class="signature " id="new-instance_method">
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="new-instance_method">
   
     - (<tt>Object</tt>) <strong>new</strong>(*args, &amp;block) 
   
@@ -310,9 +345,8 @@ Obtain the exit handler method for this class
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Create a new actor
-</p>
+    
+<p>Create a new actor</p>
 
 
   </div>
@@ -326,14 +360,14 @@ Create a new actor
       <pre class="lines">
 
 
-31
-32
-33
-34
-35</pre>
+68
+69
+70
+71
+72</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 31</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 68</span>
 
 <span class='kw'>def</span> <span class='id new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='id proxy'>proxy</span> <span class='op'>=</span> <span class='const'>Celluloid</span><span class='op'>::</span><span class='const'>Actor</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id allocate'>allocate</span><span class='rparen'>)</span><span class='period'>.</span><span class='id proxy'>proxy</span>
@@ -358,9 +392,8 @@ Create a new actor
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Create a new actor and link to the current one
-</p>
+    
+<p>Create a new actor and link to the current one</p>
 
 
   </div>
@@ -387,18 +420,18 @@ Create a new actor and link to the current one
       <pre class="lines">
 
 
-39
-40
-41
-42
-43
-44
-45
-46
-47</pre>
+76
+77
+78
+79
+80
+81
+82
+83
+84</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 39</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 76</span>
 
 <span class='kw'>def</span> <span class='id new_link'>new_link</span><span class='lparen'>(</span><span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='id current_actor'>current_actor</span> <span class='op'>=</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:actor</span><span class='rbracket'>]</span>
@@ -423,10 +456,9 @@ Create a new actor and link to the current one
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Create a supervisor which ensures an instance of an actor will restart an
-actor if it fails
-</p>
+    
+<p>Create a supervisor which ensures an instance of an actor will restart an
+actor if it fails</p>
 
 
   </div>
@@ -440,12 +472,12 @@ actor if it fails
       <pre class="lines">
 
 
-52
-53
-54</pre>
+89
+90
+91</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 52</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 89</span>
 
 <span class='kw'>def</span> <span class='id supervise'>supervise</span><span class='lparen'>(</span><span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='const'>Celluloid</span><span class='op'>::</span><span class='const'>Supervisor</span><span class='period'>.</span><span class='id supervise'>supervise</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
@@ -464,10 +496,9 @@ actor if it fails
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Create a supervisor which ensures an instance of an actor will restart an
-actor if it fails, and keep the actor registered under a given name
-</p>
+    
+<p>Create a supervisor which ensures an instance of an actor will restart an
+actor if it fails, and keep the actor registered under a given name</p>
 
 
   </div>
@@ -481,12 +512,12 @@ actor if it fails, and keep the actor registered under a given name
       <pre class="lines">
 
 
-58
-59
-60</pre>
+95
+96
+97</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 58</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 95</span>
 
 <span class='kw'>def</span> <span class='id supervise_as'>supervise_as</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='const'>Celluloid</span><span class='op'>::</span><span class='const'>Supervisor</span><span class='period'>.</span><span class='id supervise_as'>supervise_as</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span> <span class='kw'>self</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
@@ -505,9 +536,8 @@ actor if it fails, and keep the actor registered under a given name
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Trap errors from actors we&#8217;re linked to when they exit
-</p>
+    
+<p>Trap errors from actors we're linked to when they exit</p>
 
 
   </div>
@@ -521,15 +551,62 @@ Trap errors from actors we&#8217;re linked to when they exit
       <pre class="lines">
 
 
-63
-64
-65</pre>
+100
+101
+102</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 63</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 100</span>
 
 <span class='kw'>def</span> <span class='id trap_exit'>trap_exit</span><span class='lparen'>(</span><span class='id callback'>callback</span><span class='rparen'>)</span>
   <span class='ivar'>@exit_handler</span> <span class='op'>=</span> <span class='id callback'>callback</span><span class='period'>.</span><span class='id to_sym'>to_sym</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="use_mailbox-instance_method">
+  
+    - (<tt>Object</tt>) <strong>use_mailbox</strong>(klass = nil, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Configure a custom mailbox factory</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+108
+109
+110
+111
+112
+113
+114</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 108</span>
+
+<span class='kw'>def</span> <span class='id use_mailbox'>use_mailbox</span><span class='lparen'>(</span><span class='id klass'>klass</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id block'>block</span>
+    <span class='id define_method'>define_method</span><span class='lparen'>(</span><span class='symbol'>:mailbox_factory</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id define_method'>define_method</span><span class='lparen'>(</span><span class='symbol'>:mailbox_factory</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='id klass'>klass</span><span class='period'>.</span><span class='id new'>new</span> <span class='rbrace'>}</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -541,9 +618,9 @@ Trap errors from actors we&#8217;re linked to when they exit
 </div>
     
     <div id="footer">
-  Generated on Tue Oct 25 00:23:44 2011 by 
+  Generated on Fri Nov 18 17:00:17 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.3 (ruby-1.9.2).
+  0.7.3 (ruby-1.9.3).
 </div>
 
   </body>

@@ -98,10 +98,9 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>
-Actors communicate with asynchronous messages. Messages are buffered in
-Mailboxes until Actors can act upon them.
-</p>
+    
+<p>Actors communicate with asynchronous messages. Messages are buffered in
+Mailboxes until Actors can act upon them.</p>
 
 
   </div>
@@ -144,9 +143,31 @@ Mailboxes until Actors can act upon them.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Add a message to the Mailbox.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Add a message to the Mailbox.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#alive%3F-instance_method" title="#alive? (instance method)">- (Boolean) <strong>alive?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Is the mailbox alive?.</p>
 </div></span>
   
 </li>
@@ -168,9 +189,8 @@ Add a message to the Mailbox.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Iterate through the mailbox.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Iterate through the mailbox.</p>
 </div></span>
   
 </li>
@@ -194,9 +214,8 @@ Iterate through the mailbox.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-A new instance of Mailbox.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>A new instance of Mailbox.</p>
 </div></span>
   
 </li>
@@ -218,9 +237,8 @@ A new instance of Mailbox.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Inspect the contents of the Mailbox.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Inspect the contents of the Mailbox.</p>
 </div></span>
   
 </li>
@@ -242,9 +260,8 @@ Inspect the contents of the Mailbox.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Retrieve the next message in the mailbox.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Retrieve the next message in the mailbox.</p>
 </div></span>
   
 </li>
@@ -266,9 +283,8 @@ Retrieve the next message in the mailbox.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Receive a message from the Mailbox.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Receive a message from the Mailbox.</p>
 </div></span>
   
 </li>
@@ -290,9 +306,8 @@ Receive a message from the Mailbox.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Shut down this mailbox and clean up its contents.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Shut down this mailbox and clean up its contents.</p>
 </div></span>
   
 </li>
@@ -314,9 +329,8 @@ Shut down this mailbox and clean up its contents.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Add a high-priority system event to the Mailbox.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Add a high-priority system event to the Mailbox.</p>
 </div></span>
   
 </li>
@@ -338,9 +352,8 @@ Add a high-priority system event to the Mailbox.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Cast to an array.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Cast to an array.</p>
 </div></span>
   
 </li>
@@ -362,9 +375,8 @@ Cast to an array.
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-A new instance of Mailbox
-</p>
+    
+<p>A new instance of Mailbox</p>
 
 
   </div>
@@ -415,9 +427,8 @@ A new instance of Mailbox
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Add a message to the Mailbox
-</p>
+    
+<p>Add a message to the Mailbox</p>
 
 
   </div>
@@ -459,6 +470,58 @@ Add a message to the Mailbox
 </div>
     
       <div class="method_details ">
+  <p class="signature " id="alive?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>alive?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Is the mailbox alive?</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+90
+91
+92</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/mailbox.rb', line 90</span>
+
+<span class='kw'>def</span> <span class='id alive?'>alive?</span>
+  <span class='op'>!</span><span class='ivar'>@dead</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
   <p class="signature " id="each-instance_method">
   
     - (<tt>Object</tt>) <strong>each</strong>(&amp;block) 
@@ -467,49 +530,8 @@ Add a message to the Mailbox
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Iterate through the mailbox
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-95
-96
-97</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/mailbox.rb', line 95</span>
-
-<span class='kw'>def</span> <span class='id each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
-  <span class='id to_a'>to_a</span><span class='period'>.</span><span class='id each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
     
-      <div class="method_details ">
-  <p class="signature " id="inspect-instance_method">
-  
-    - (<tt>Object</tt>) <strong>inspect</strong> 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-Inspect the contents of the Mailbox
-</p>
+<p>Iterate through the mailbox</p>
 
 
   </div>
@@ -530,8 +552,47 @@ Inspect the contents of the Mailbox
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/mailbox.rb', line 100</span>
 
+<span class='kw'>def</span> <span class='id each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id to_a'>to_a</span><span class='period'>.</span><span class='id each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="inspect-instance_method">
+  
+    - (<tt>Object</tt>) <strong>inspect</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Inspect the contents of the Mailbox</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+105
+106
+107</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/mailbox.rb', line 105</span>
+
 <span class='kw'>def</span> <span class='id inspect'>inspect</span>
-  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;Celluloid::Mailbox:</span><span class='embexpr_beg'>#{</span><span class='id object_id'>object_id</span><span class='rbrace'>}</span><span class='tstring_content'> [</span><span class='embexpr_beg'>#{</span><span class='id map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id m'>m</span><span class='op'>|</span> <span class='id m'>m</span><span class='period'>.</span><span class='id inspect'>inspect</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>, </span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_content'>]&gt;</span><span class='tstring_end'>&quot;</span></span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='rbrace'>}</span><span class='tstring_content'>:</span><span class='embexpr_beg'>#{</span><span class='id object_id'>object_id</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='lparen'>(</span><span class='int'>16</span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_content'> @messages=[</span><span class='embexpr_beg'>#{</span><span class='id map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id m'>m</span><span class='op'>|</span> <span class='id m'>m</span><span class='period'>.</span><span class='id inspect'>inspect</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>, </span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_content'>]&gt;</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -547,9 +608,8 @@ Inspect the contents of the Mailbox
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Retrieve the next message in the mailbox
-</p>
+    
+<p>Retrieve the next message in the mailbox</p>
 
 
   </div>
@@ -613,9 +673,8 @@ Retrieve the next message in the mailbox
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Receive a message from the Mailbox
-</p>
+    
+<p>Receive a message from the Mailbox</p>
 
 
   </div>
@@ -675,9 +734,8 @@ Receive a message from the Mailbox
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Shut down this mailbox and clean up its contents
-</p>
+    
+<p>Shut down this mailbox and clean up its contents</p>
 
 
   </div>
@@ -733,9 +791,8 @@ Shut down this mailbox and clean up its contents
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Add a high-priority system event to the Mailbox
-</p>
+    
+<p>Add a high-priority system event to the Mailbox</p>
 
 
   </div>
@@ -785,9 +842,8 @@ Add a high-priority system event to the Mailbox
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Cast to an array
-</p>
+    
+<p>Cast to an array</p>
 
 
   </div>
@@ -801,12 +857,12 @@ Cast to an array
       <pre class="lines">
 
 
-90
-91
-92</pre>
+95
+96
+97</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/mailbox.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/mailbox.rb', line 95</span>
 
 <span class='kw'>def</span> <span class='id to_a'>to_a</span>
   <span class='ivar'>@lock</span><span class='period'>.</span><span class='id synchronize'>synchronize</span> <span class='lbrace'>{</span> <span class='ivar'>@messages</span><span class='period'>.</span><span class='id dup'>dup</span> <span class='rbrace'>}</span>
@@ -821,9 +877,9 @@ Cast to an array
 </div>
     
     <div id="footer">
-  Generated on Tue Oct 25 00:23:44 2011 by 
+  Generated on Fri Nov 18 17:00:18 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.3 (ruby-1.9.2).
+  0.7.3 (ruby-1.9.3).
 </div>
 
   </body>

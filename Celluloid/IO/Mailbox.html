@@ -96,9 +96,8 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>
-An alternative implementation of Celluloid::Mailbox using Wakers
-</p>
+    
+<p>An alternative implementation of Celluloid::Mailbox using Wakers</p>
 
 
   </div>
@@ -135,9 +134,34 @@ An alternative implementation of Celluloid::Mailbox using Wakers
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Returns the value of attribute reactor.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute reactor.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#waker-instance_method" title="#waker (instance method)">- (Object) <strong>waker</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute waker.</p>
 </div></span>
   
 </li>
@@ -176,9 +200,8 @@ Returns the value of attribute reactor.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Add a message to the Mailbox.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Add a message to the Mailbox.</p>
 </div></span>
   
 </li>
@@ -202,9 +225,8 @@ Add a message to the Mailbox.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-A new instance of Mailbox.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>A new instance of Mailbox.</p>
 </div></span>
   
 </li>
@@ -226,9 +248,8 @@ A new instance of Mailbox.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Receive a message from the Mailbox.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Receive a message from the Mailbox.</p>
 </div></span>
   
 </li>
@@ -250,9 +271,8 @@ Receive a message from the Mailbox.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Cleanup any IO objects this Mailbox may be using.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Cleanup any IO objects this Mailbox may be using.</p>
 </div></span>
   
 </li>
@@ -274,9 +294,8 @@ Cleanup any IO objects this Mailbox may be using.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Add a high-priority system event to the Mailbox.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Add a high-priority system event to the Mailbox.</p>
 </div></span>
   
 </li>
@@ -294,7 +313,7 @@ Add a high-priority system event to the Mailbox.
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../Mailbox.html" title="Celluloid::Mailbox (class)">Mailbox</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../Mailbox.html#each-instance_method" title="Celluloid::Mailbox#each (method)">#each</a></span>, <span class='object_link'><a href="../Mailbox.html#inspect-instance_method" title="Celluloid::Mailbox#inspect (method)">#inspect</a></span>, <span class='object_link'><a href="../Mailbox.html#next_message-instance_method" title="Celluloid::Mailbox#next_message (method)">#next_message</a></span>, <span class='object_link'><a href="../Mailbox.html#to_a-instance_method" title="Celluloid::Mailbox#to_a (method)">#to_a</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="../Mailbox.html#alive%3F-instance_method" title="Celluloid::Mailbox#alive? (method)">#alive?</a></span>, <span class='object_link'><a href="../Mailbox.html#each-instance_method" title="Celluloid::Mailbox#each (method)">#each</a></span>, <span class='object_link'><a href="../Mailbox.html#inspect-instance_method" title="Celluloid::Mailbox#inspect (method)">#inspect</a></span>, <span class='object_link'><a href="../Mailbox.html#next_message-instance_method" title="Celluloid::Mailbox#next_message (method)">#next_message</a></span>, <span class='object_link'><a href="../Mailbox.html#to_a-instance_method" title="Celluloid::Mailbox#to_a (method)">#to_a</a></span></p>
 
   <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
@@ -308,9 +327,8 @@ Add a high-priority system event to the Mailbox.
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-A new instance of Mailbox
-</p>
+    
+<p>A new instance of Mailbox</p>
 
 
   </div>
@@ -362,9 +380,8 @@ A new instance of Mailbox
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Returns the value of attribute reactor
-</p>
+    
+<p>Returns the value of attribute reactor</p>
 
 
   </div>
@@ -393,6 +410,48 @@ Returns the value of attribute reactor
 </table>
 </div>
     
+      
+      <span id=""></span>
+      <span id="waker-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="waker-instance_method">
+  
+    - (<tt>Object</tt>) <strong>waker</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute waker</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7
+8
+9</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/io/mailbox.rb', line 7</span>
+
+<span class='kw'>def</span> <span class='id waker'>waker</span>
+  <span class='ivar'>@waker</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 
@@ -409,9 +468,8 @@ Returns the value of attribute reactor
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Add a message to the Mailbox
-</p>
+    
+<p>Add a message to the Mailbox</p>
 
 
   </div>
@@ -461,9 +519,8 @@ Add a message to the Mailbox
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Receive a message from the Mailbox
-</p>
+    
+<p>Receive a message from the Mailbox</p>
 
 
   </div>
@@ -507,7 +564,7 @@ Receive a message from the Mailbox
   <span class='kw'>end</span> <span class='kw'>until</span> <span class='id message'>message</span>
 
   <span class='id message'>message</span>
-<span class='kw'>rescue</span> <span class='const'>DeadWakerError</span>
+<span class='kw'>rescue</span> <span class='const'>IOError</span><span class='comma'>,</span> <span class='const'>DeadWakerError</span>
   <span class='id shutdown'>shutdown</span> <span class='comment'># force shutdown of the mailbox
 </span>  <span class='id raise'>raise</span> <span class='const'>MailboxShutdown</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>mailbox shutdown called during receive</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
@@ -525,9 +582,8 @@ Receive a message from the Mailbox
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Cleanup any IO objects this Mailbox may be using
-</p>
+    
+<p>Cleanup any IO objects this Mailbox may be using</p>
 
 
   </div>
@@ -567,9 +623,8 @@ Cleanup any IO objects this Mailbox may be using
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Add a high-priority system event to the Mailbox
-</p>
+    
+<p>Add a high-priority system event to the Mailbox</p>
 
 
   </div>
@@ -621,9 +676,9 @@ Add a high-priority system event to the Mailbox
 </div>
     
     <div id="footer">
-  Generated on Tue Oct 25 00:23:45 2011 by 
+  Generated on Fri Nov 18 17:00:18 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.3 (ruby-1.9.2).
+  0.7.3 (ruby-1.9.3).
 </div>
 
   </body>

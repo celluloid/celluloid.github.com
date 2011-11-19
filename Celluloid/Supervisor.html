@@ -98,10 +98,9 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>
-Supervisors are actors that watch over other actors and restart them if
-they crash
-</p>
+    
+<p>Supervisors are actors that watch over other actors and restart them if
+they crash</p>
 
 
   </div>
@@ -143,9 +142,8 @@ they crash
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Retrieve the actor this supervisor is supervising.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Retrieve the actor this supervisor is supervising.</p>
 </div></span>
   
 </li>
@@ -236,9 +234,8 @@ Retrieve the actor this supervisor is supervising.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-A new instance of Supervisor.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>A new instance of Supervisor.</p>
 </div></span>
   
 </li>
@@ -281,9 +278,8 @@ A new instance of Supervisor.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-When actors die, regardless of the reason, restart them.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>When actors die, regardless of the reason, restart them.</p>
 </div></span>
   
 </li>
@@ -292,7 +288,7 @@ When actors die, regardless of the reason, restart them.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#start_actor-instance_method" title="#start_actor (instance method)">- (Object) <strong>start_actor</strong> </a>
+      <a href="#start_actor-instance_method" title="#start_actor (instance method)">- (Object) <strong>start_actor</strong>(start_attempts = 2, sleep_interval = 30) </a>
     
 
     
@@ -322,7 +318,7 @@ When actors die, regardless of the reason, restart them.
   
   
   <h3 class="inherited">Methods included from <span class='object_link'><a href="../Celluloid.html" title="Celluloid (module)">Celluloid</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../Celluloid.html#Future-class_method" title="Celluloid.Future (method)">Future</a></span>, <span class='object_link'><a href="../Celluloid.html#abort-instance_method" title="Celluloid#abort (method)">#abort</a></span>, <span class='object_link'><a href="../Celluloid.html#actor%3F-class_method" title="Celluloid.actor? (method)">actor?</a></span>, <span class='object_link'><a href="../Celluloid.html#alive%3F-instance_method" title="Celluloid#alive? (method)">#alive?</a></span>, <span class='object_link'><a href="../Celluloid.html#async-instance_method" title="Celluloid#async (method)">#async</a></span>, <span class='object_link'><a href="../Celluloid.html#current_actor-class_method" title="Celluloid.current_actor (method)">current_actor</a></span>, <span class='object_link'><a href="../Celluloid.html#current_actor-instance_method" title="Celluloid#current_actor (method)">#current_actor</a></span>, <span class='object_link'><a href="../Celluloid.html#included-class_method" title="Celluloid.included (method)">included</a></span>, <span class='object_link'><a href="../Celluloid.html#method_missing-instance_method" title="Celluloid#method_missing (method)">#method_missing</a></span>, <span class='object_link'><a href="../Celluloid.html#signal-instance_method" title="Celluloid#signal (method)">#signal</a></span>, <span class='object_link'><a href="../Celluloid.html#terminate-instance_method" title="Celluloid#terminate (method)">#terminate</a></span>, <span class='object_link'><a href="../Celluloid.html#version-class_method" title="Celluloid.version (method)">version</a></span>, <span class='object_link'><a href="../Celluloid.html#wait-instance_method" title="Celluloid#wait (method)">#wait</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="../Celluloid.html#Future-class_method" title="Celluloid.Future (method)">Future</a></span>, <span class='object_link'><a href="../Celluloid.html#abort-instance_method" title="Celluloid#abort (method)">#abort</a></span>, <span class='object_link'><a href="../Celluloid.html#actor%3F-class_method" title="Celluloid.actor? (method)">actor?</a></span>, <span class='object_link'><a href="../Celluloid.html#alive%3F-instance_method" title="Celluloid#alive? (method)">#alive?</a></span>, <span class='object_link'><a href="../Celluloid.html#async-instance_method" title="Celluloid#async (method)">#async</a></span>, <span class='object_link'><a href="../Celluloid.html#current_actor-class_method" title="Celluloid.current_actor (method)">current_actor</a></span>, <span class='object_link'><a href="../Celluloid.html#current_actor-instance_method" title="Celluloid#current_actor (method)">#current_actor</a></span>, <span class='object_link'><a href="../Celluloid.html#fiber-class_method" title="Celluloid.fiber (method)">fiber</a></span>, <span class='object_link'><a href="../Celluloid.html#included-class_method" title="Celluloid.included (method)">included</a></span>, <span class='object_link'><a href="../Celluloid.html#method_missing-instance_method" title="Celluloid#method_missing (method)">#method_missing</a></span>, <span class='object_link'><a href="../Celluloid.html#receive-class_method" title="Celluloid.receive (method)">receive</a></span>, <span class='object_link'><a href="../Celluloid.html#receive-instance_method" title="Celluloid#receive (method)">#receive</a></span>, <span class='object_link'><a href="../Celluloid.html#resume_fiber-class_method" title="Celluloid.resume_fiber (method)">resume_fiber</a></span>, <span class='object_link'><a href="../Celluloid.html#signal-instance_method" title="Celluloid#signal (method)">#signal</a></span>, <span class='object_link'><a href="../Celluloid.html#terminate-instance_method" title="Celluloid#terminate (method)">#terminate</a></span>, <span class='object_link'><a href="../Celluloid.html#version-class_method" title="Celluloid.version (method)">version</a></span>, <span class='object_link'><a href="../Celluloid.html#wait-instance_method" title="Celluloid#wait (method)">#wait</a></span>, <span class='object_link'><a href="../Celluloid.html#wrapped_object-instance_method" title="Celluloid#wrapped_object (method)">#wrapped_object</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
@@ -335,9 +331,8 @@ When actors die, regardless of the reason, restart them.
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-A new instance of Supervisor
-</p>
+    
+<p>A new instance of Supervisor</p>
 
 
   </div>
@@ -395,9 +390,8 @@ A new instance of Supervisor
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Retrieve the actor this supervisor is supervising
-</p>
+    
+<p>Retrieve the actor this supervisor is supervising</p>
 
 
   </div>
@@ -508,17 +502,17 @@ Retrieve the actor this supervisor is supervising
       <pre class="lines">
 
 
-34
-35
-36
-37
-38</pre>
+47
+48
+49
+50
+51</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/supervisor.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/supervisor.rb', line 47</span>
 
 <span class='kw'>def</span> <span class='id inspect'>inspect</span>
-  <span class='id str'>str</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;Celluloid::Supervisor(</span><span class='embexpr_beg'>#{</span><span class='ivar'>@klass</span><span class='rbrace'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id str'>str</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='rbrace'>}</span><span class='tstring_content'>(</span><span class='embexpr_beg'>#{</span><span class='ivar'>@klass</span><span class='rbrace'>}</span><span class='tstring_content'>):0x</span><span class='embexpr_beg'>#{</span><span class='id object_id'>object_id</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='lparen'>(</span><span class='int'>16</span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='id str'>str</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span> <span class='op'>&lt;&lt;</span> <span class='ivar'>@args</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id arg'>arg</span><span class='op'>|</span> <span class='id arg'>arg</span><span class='period'>.</span><span class='id inspect'>inspect</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'> </span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='ivar'>@args</span><span class='period'>.</span><span class='id empty?'>empty?</span>
   <span class='id str'>str</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&gt;</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
@@ -536,9 +530,8 @@ Retrieve the actor this supervisor is supervising
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-When actors die, regardless of the reason, restart them
-</p>
+    
+<p>When actors die, regardless of the reason, restart them</p>
 
 
   </div>
@@ -552,12 +545,12 @@ When actors die, regardless of the reason, restart them
       <pre class="lines">
 
 
-30
-31
-32</pre>
+43
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/supervisor.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/supervisor.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id restart_actor'>restart_actor</span><span class='lparen'>(</span><span class='id actor'>actor</span><span class='comma'>,</span> <span class='id reason'>reason</span><span class='rparen'>)</span>
   <span class='id start_actor'>start_actor</span>
@@ -570,7 +563,7 @@ When actors die, regardless of the reason, restart them
       <div class="method_details ">
   <p class="signature " id="start_actor-instance_method">
   
-    - (<tt>Object</tt>) <strong>start_actor</strong> 
+    - (<tt>Object</tt>) <strong>start_actor</strong>(start_attempts = 2, sleep_interval = 30) 
   
 
   
@@ -583,13 +576,39 @@ When actors die, regardless of the reason, restart them
 24
 25
 26
-27</pre>
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/supervisor.rb', line 24</span>
 
-<span class='kw'>def</span> <span class='id start_actor'>start_actor</span>
-  <span class='ivar'>@actor</span> <span class='op'>=</span> <span class='ivar'>@klass</span><span class='period'>.</span><span class='id new_link'>new_link</span><span class='lparen'>(</span><span class='op'>*</span><span class='ivar'>@args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='ivar'>@block</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id start_actor'>start_actor</span><span class='lparen'>(</span><span class='id start_attempts'>start_attempts</span> <span class='op'>=</span> <span class='int'>2</span><span class='comma'>,</span> <span class='id sleep_interval'>sleep_interval</span> <span class='op'>=</span> <span class='int'>30</span><span class='rparen'>)</span>
+  <span class='id failures'>failures</span> <span class='op'>=</span> <span class='int'>0</span>
+
+  <span class='kw'>begin</span>
+    <span class='ivar'>@actor</span> <span class='op'>=</span> <span class='ivar'>@klass</span><span class='period'>.</span><span class='id new_link'>new_link</span><span class='lparen'>(</span><span class='op'>*</span><span class='ivar'>@args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='ivar'>@block</span><span class='rparen'>)</span>
+  <span class='kw'>rescue</span>
+    <span class='id failures'>failures</span> <span class='op'>+=</span> <span class='int'>1</span>
+    <span class='kw'>if</span> <span class='id failures'>failures</span> <span class='op'>&gt;=</span> <span class='id start_attempts'>start_attempts</span>
+      <span class='id failures'>failures</span> <span class='op'>=</span> <span class='int'>0</span>
+      <span class='const'>Celluloid</span><span class='period'>.</span><span class='id logger'>logger</span><span class='period'>.</span><span class='id warn'>warn</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@klass</span><span class='rbrace'>}</span><span class='tstring_content'> is crashing on initialize repeatedly, sleeping for </span><span class='embexpr_beg'>#{</span><span class='id sleep_interval'>sleep_interval</span><span class='rbrace'>}</span><span class='tstring_content'> seconds</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id sleep'>sleep</span> <span class='id sleep_interval'>sleep_interval</span>
+    <span class='kw'>end</span>
+    <span class='kw'>retry</span>
+  <span class='kw'>end</span>
+
   <span class='const'>Celluloid</span><span class='op'>::</span><span class='const'>Actor</span><span class='lbracket'>[</span><span class='ivar'>@name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@actor</span> <span class='kw'>if</span> <span class='ivar'>@name</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -602,9 +621,9 @@ When actors die, regardless of the reason, restart them
 </div>
     
     <div id="footer">
-  Generated on Tue Oct 25 00:23:45 2011 by 
+  Generated on Fri Nov 18 17:00:18 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.3 (ruby-1.9.2).
+  0.7.3 (ruby-1.9.3).
 </div>
 
   </body>

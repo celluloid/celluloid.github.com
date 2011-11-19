@@ -96,9 +96,8 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>
-Synchronous calls wait for a response
-</p>
+    
+<p>Synchronous calls wait for a response</p>
 
 
   </div>
@@ -120,7 +119,7 @@ Synchronous calls wait for a response
   <h2>Instance Attribute Summary</h2>
   
   <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="Call.html" title="Celluloid::Call (class)">Call</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Call.html#arguments-instance_method" title="Celluloid::Call#arguments (method)">arguments</a></span>, <span class='object_link'><a href="Call.html#block-instance_method" title="Celluloid::Call#block (method)">block</a></span>, <span class='object_link'><a href="Call.html#caller-instance_method" title="Celluloid::Call#caller (method)">caller</a></span>, <span class='object_link'><a href="Call.html#method-instance_method" title="Celluloid::Call#method (method)">method</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="Call.html#arguments-instance_method" title="Celluloid::Call#arguments (method)">arguments</a></span>, <span class='object_link'><a href="Call.html#block-instance_method" title="Celluloid::Call#block (method)">block</a></span>, <span class='object_link'><a href="Call.html#caller-instance_method" title="Celluloid::Call#caller (method)">caller</a></span>, <span class='object_link'><a href="Call.html#id-instance_method" title="Celluloid::Call#id (method)">id</a></span>, <span class='object_link'><a href="Call.html#method-instance_method" title="Celluloid::Call#method (method)">method</a></span></p>
 
 
   
@@ -221,7 +220,7 @@ Synchronous calls wait for a response
 
 <span class='kw'>def</span> <span class='id cleanup'>cleanup</span>
   <span class='id exception'>exception</span> <span class='op'>=</span> <span class='const'>DeadActorError</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>attempted to call a dead actor</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-  <span class='id respond'>respond</span> <span class='const'>ErrorResponse</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id exception'>exception</span><span class='rparen'>)</span>
+  <span class='id respond'>respond</span> <span class='const'>ErrorResponse</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='ivar'>@id</span><span class='comma'>,</span> <span class='id exception'>exception</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -241,7 +240,6 @@ Synchronous calls wait for a response
       <pre class="lines">
 
 
-31
 32
 33
 34
@@ -271,23 +269,23 @@ Synchronous calls wait for a response
 58</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/calls.rb', line 31</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/calls.rb', line 32</span>
 
 <span class='kw'>def</span> <span class='id dispatch'>dispatch</span><span class='lparen'>(</span><span class='id obj'>obj</span><span class='rparen'>)</span>
   <span class='kw'>begin</span>
     <span class='id check_signature'>check_signature</span><span class='lparen'>(</span><span class='id obj'>obj</span><span class='rparen'>)</span>
   <span class='kw'>rescue</span> <span class='const'>Exception</span> <span class='op'>=&gt;</span> <span class='id ex'>ex</span>
-    <span class='id respond'>respond</span> <span class='const'>ErrorResponse</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='const'>AbortError</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id ex'>ex</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='id respond'>respond</span> <span class='const'>ErrorResponse</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='ivar'>@id</span><span class='comma'>,</span> <span class='const'>AbortError</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id ex'>ex</span><span class='rparen'>)</span><span class='rparen'>)</span>
     <span class='kw'>return</span>
   <span class='kw'>end</span>
-  
+
   <span class='kw'>begin</span>
     <span class='id result'>result</span> <span class='op'>=</span> <span class='id obj'>obj</span><span class='period'>.</span><span class='id send'>send</span> <span class='ivar'>@method</span><span class='comma'>,</span> <span class='op'>*</span><span class='ivar'>@arguments</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='ivar'>@block</span>
   <span class='kw'>rescue</span> <span class='const'>Exception</span> <span class='op'>=&gt;</span> <span class='id exception'>exception</span>
     <span class='comment'># Exceptions that occur during synchronous calls are reraised in the
 </span>    <span class='comment'># context of the caller
-</span>    <span class='id respond'>respond</span> <span class='const'>ErrorResponse</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id exception'>exception</span><span class='rparen'>)</span>
-    
+</span>    <span class='id respond'>respond</span> <span class='const'>ErrorResponse</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='ivar'>@id</span><span class='comma'>,</span> <span class='id exception'>exception</span><span class='rparen'>)</span>
+
     <span class='kw'>if</span> <span class='id exception'>exception</span><span class='period'>.</span><span class='id is_a?'>is_a?</span> <span class='const'>AbortError</span>
       <span class='comment'># Aborting indicates a protocol error on the part of the caller
 </span>      <span class='comment'># It should crash the caller, but the exception isn't reraised
@@ -297,9 +295,8 @@ Synchronous calls wait for a response
 </span>      <span class='id raise'>raise</span> <span class='id exception'>exception</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
-  
-  <span class='id respond'>respond</span> <span class='const'>SuccessResponse</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id result'>result</span><span class='rparen'>)</span>      
-  <span class='kw'>true</span>
+
+  <span class='id respond'>respond</span> <span class='const'>SuccessResponse</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='ivar'>@id</span><span class='comma'>,</span> <span class='id result'>result</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -311,9 +308,9 @@ Synchronous calls wait for a response
 </div>
     
     <div id="footer">
-  Generated on Tue Oct 25 00:23:44 2011 by 
+  Generated on Fri Nov 18 17:00:18 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.3 (ruby-1.9.2).
+  0.7.3 (ruby-1.9.3).
 </div>
 
   </body>

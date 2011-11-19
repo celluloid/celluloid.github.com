@@ -94,10 +94,9 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>
-React to external I/O events. This is kinda sorta supposed to resemble the
-Reactor design pattern.
-</p>
+    
+<p>React to external I/O events. This is kinda sorta supposed to resemble the
+Reactor design pattern.</p>
 
 
   </div>
@@ -136,9 +135,8 @@ Reactor design pattern.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-A new instance of Reactor.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>A new instance of Reactor.</p>
 </div></span>
   
 </li>
@@ -160,10 +158,9 @@ A new instance of Reactor.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Run the reactor, waiting for events, and calling the given block if the
-reactor is awoken by the waker.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Run the reactor, waiting for events, and calling the given block if the
+reactor is awoken by the waker.</p>
 </div></span>
   
 </li>
@@ -185,9 +182,8 @@ reactor is awoken by the waker.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Wait for the given IO object to become readable.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Wait for the given IO object to become readable.</p>
 </div></span>
   
 </li>
@@ -209,9 +205,8 @@ Wait for the given IO object to become readable.
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-Wait for the given IO object to become writeable.
-</p>
+    <span class="summary_desc"><div class='inline'>
+<p>Wait for the given IO object to become writeable.</p>
 </div></span>
   
 </li>
@@ -232,9 +227,8 @@ Wait for the given IO object to become writeable.
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-A new instance of Reactor
-</p>
+    
+<p>A new instance of Reactor</p>
 
 
   </div>
@@ -283,10 +277,9 @@ A new instance of Reactor
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Run the reactor, waiting for events, and calling the given block if the
-reactor is awoken by the waker
-</p>
+    
+<p>Run the reactor, waiting for events, and calling the given block if the
+reactor is awoken by the waker</p>
 
 
   </div>
@@ -322,7 +315,7 @@ reactor is awoken by the waker
   <span class='lbracket'>[</span><span class='lbracket'>[</span><span class='id readers'>readers</span><span class='comma'>,</span> <span class='ivar'>@readers</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id writers'>writers</span><span class='comma'>,</span> <span class='ivar'>@writers</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id ios'>ios</span><span class='comma'>,</span> <span class='id registered'>registered</span><span class='op'>|</span>
     <span class='id ios'>ios</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id io'>io</span><span class='op'>|</span>
       <span class='id fiber'>fiber</span> <span class='op'>=</span> <span class='id registered'>registered</span><span class='period'>.</span><span class='id delete'>delete</span> <span class='id io'>io</span>
-      <span class='id fiber'>fiber</span><span class='period'>.</span><span class='id resume'>resume</span> <span class='kw'>if</span> <span class='id fiber'>fiber</span>
+      <span class='const'>Celluloid</span><span class='period'>.</span><span class='id resume_fiber'>resume_fiber</span><span class='lparen'>(</span><span class='id fiber'>fiber</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id fiber'>fiber</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
@@ -340,9 +333,8 @@ reactor is awoken by the waker
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Wait for the given IO object to become readable
-</p>
+    
+<p>Wait for the given IO object to become readable</p>
 
 
   </div>
@@ -384,9 +376,8 @@ Wait for the given IO object to become readable
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>
-Wait for the given IO object to become writeable
-</p>
+    
+<p>Wait for the given IO object to become writeable</p>
 
 
   </div>
@@ -424,9 +415,9 @@ Wait for the given IO object to become writeable
 </div>
     
     <div id="footer">
-  Generated on Tue Oct 25 00:23:45 2011 by 
+  Generated on Fri Nov 18 17:00:18 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.3 (ruby-1.9.2).
+  0.7.3 (ruby-1.9.3).
 </div>
 
   </body>

@@ -393,6 +393,39 @@ working, freshly-restarted version.</p>
 <p>The main use of the registry is for interfacing with actors that are
 automatically restarted by supervisors when they crash.</p>
 
+<h2>Applications</h2>
+
+<p>Celluloid provides a DSL for describing all of the actors in a given
+application. This lets you start a group of actors in one swoop and
+also provides an additional level of supervision: applications supervise
+the supervisors of all the actors in your system, an approach known
+as supervision trees.</p>
+
+<p>Define Celluloid::Applications with the following syntax:</p>
+
+<p>   class MyApplication &lt; Celluloid::Application</p>
+
+<pre class="code"> <span class='id supervise'>supervise</span> <span class='const'>MyActor</span><span class='comma'>,</span> <span class='symbol'>:as</span> <span class='op'>=&gt;</span> <span class='symbol'>:my_actor</span>
+ <span class='id supervise'>supervise</span> <span class='const'>AnotherActor</span><span class='comma'>,</span> <span class='symbol'>:as</span> <span class='op'>=&gt;</span> <span class='symbol'>:another_actor</span>
+</pre>
+
+<p>   end</p>
+
+<p>This will start the MyActor and AnotherActor actors under a supervisor and
+automatically register them as Celluloid::Actor[:my_actor] and
+Celluloid::Actor[:another_actor].</p>
+
+<p>To launch your application, do:</p>
+
+<pre class="code"><span class='const'>MyApplication</span><span class='period'>.</span><span class='id run'>run</span>
+</pre>
+
+<p>This launches your application in the foreground. To launch in in the
+background, do:</p>
+
+<pre class="code"><span class='const'>MyApplication</span><span class='period'>.</span><span class='id run!'>run!</span>
+</pre>
+
 <h2>Signaling</h2>
 
 <p>Signaling is an advanced technique similar to condition variables in typical
@@ -421,12 +454,43 @@ send them a value in the process:</p>
 <span class='kw'>end</span>
 </pre>
 
-<p>The wait_for_signal method in turn calls a method called "wait". Wait suspends
+<p>The #wait_for_signal method in turn calls a method called "wait". Wait suspends
 the running method until another method of the same object calls the "signal"
 method with the same label.</p>
 
-<p>The send_signal method of this class does just that, signaling "ponycopter"
+<p>The #send_signal method of this class does just that, signaling "ponycopter"
 with the given value. This value is returned from the original wait call.</p>
+
+<h2>Protocol Interaction</h2>
+
+<p>The asynchronous message protocol Celluloid uses can be used directly to add
+new behavior to actors.</p>
+
+<p>To send a raw asynchronous message to an actor, use:</p>
+
+<pre class="code"><span class='id actor'>actor</span><span class='period'>.</span><span class='id mailbox'>mailbox</span> <span class='op'>&lt;&lt;</span> <span class='const'>MyMessage</span><span class='period'>.</span><span class='id new'>new</span>
+</pre>
+
+<p>Methods can wait on incoming MyMessage objects using the #receive method:</p>
+
+<pre class="code"><span class='kw'>class</span> <span class='const'>MyActor</span>
+  <span class='kw'>def</span> <span class='id initialize'>initialize</span>
+    <span class='id wait_for_my_messages!'>wait_for_my_messages!</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>def</span> <span class='id wait_for_my_messages'>wait_for_my_messages</span>
+    <span class='id loop'>loop</span> <span class='kw'>do</span>
+      <span class='id message'>message</span> <span class='op'>=</span> <span class='id receive'>receive</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id msg'>msg</span><span class='op'>|</span> <span class='id msg'>msg</span><span class='period'>.</span><span class='id is_a?'>is_a?</span> <span class='const'>MyMessage</span> <span class='rbrace'>}</span>
+      <span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Got a MyMessage: </span><span class='embexpr_beg'>#{</span><span class='id message'>message</span><span class='period'>.</span><span class='id inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</pre>
+
+<p>The #receive method takes a block, and yields any incoming messages which are
+received by the current actor to the block, waiting for the block to return
+true. Calls to #receive sleep until a message is received which makes the
+block return true, at which point the matching message is returned.</p>
 
 <h2>Handling I/O with Celluloid::IO</h2>
 
@@ -516,6 +580,9 @@ to cooperatively work alongside how Celluloid behaves, in most cases you'll
 be writing a check you can't afford. So please ask yourself: why are you
 using Fibers, and why can't it be solved by a block? If you've got a really
 good reason and you're feeling lucky, knock yourself out.</p></li>
+<li><p>If you need to mock the behaviour of an Actor, you should mock its subject
+rather than the proxy itself (#actor_subject). This ensures that any time
+the subject calls methods on self, they will also be appropriately mocked.</p></li>
 </ol>
 
 
@@ -590,9 +657,9 @@ it's most likely thread safe, provided that Foo doesn't do other wonky things.</
 </div></div>
     
     <div id="footer">
-  Generated on Tue Oct 25 00:23:43 2011 by 
+  Generated on Fri Nov 18 17:00:17 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.3 (ruby-1.9.2).
+  0.7.3 (ruby-1.9.3).
 </div>
 
   </body>
