@@ -403,13 +403,11 @@ as supervision trees.</p>
 
 <p>Define Celluloid::Applications with the following syntax:</p>
 
-<p>   class MyApplication &lt; Celluloid::Application</p>
-
-<pre class="code"> <span class='id supervise'>supervise</span> <span class='const'>MyActor</span><span class='comma'>,</span> <span class='symbol'>:as</span> <span class='op'>=&gt;</span> <span class='symbol'>:my_actor</span>
- <span class='id supervise'>supervise</span> <span class='const'>AnotherActor</span><span class='comma'>,</span> <span class='symbol'>:as</span> <span class='op'>=&gt;</span> <span class='symbol'>:another_actor</span>
+<pre class="code"><span class='kw'>class</span> <span class='const'>MyApplication</span> <span class='op'>&lt;</span> <span class='const'>Celluloid</span><span class='op'>::</span><span class='const'>Application</span>
+  <span class='id supervise'>supervise</span> <span class='const'>MyActor</span><span class='comma'>,</span> <span class='symbol'>:as</span> <span class='op'>=&gt;</span> <span class='symbol'>:my_actor</span>
+  <span class='id supervise'>supervise</span> <span class='const'>AnotherActor</span><span class='comma'>,</span> <span class='symbol'>:as</span> <span class='op'>=&gt;</span> <span class='symbol'>:another_actor</span>
+<span class='kw'>end</span>
 </pre>
-
-<p>   end</p>
 
 <p>This will start the MyActor and AnotherActor actors under a supervisor and
 automatically register them as Celluloid::Actor[:my_actor] and
@@ -657,7 +655,7 @@ it's most likely thread safe, provided that Foo doesn't do other wonky things.</
 </div></div>
     
     <div id="footer">
-  Generated on Fri Nov 18 17:00:17 2011 by 
+  Generated on Fri Nov 18 17:05:18 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.3 (ruby-1.9.3).
 </div>
