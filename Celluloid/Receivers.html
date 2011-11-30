@@ -297,7 +297,7 @@
 
   <span class='kw'>if</span> <span class='id handler'>handler</span>
     <span class='id fiber'>fiber</span><span class='comma'>,</span> <span class='id _'>_</span> <span class='op'>=</span> <span class='ivar'>@handlers</span><span class='period'>.</span><span class='id delete_at'>delete_at</span> <span class='id handler'>handler</span>
-    <span class='const'>Celluloid</span><span class='period'>.</span><span class='id resume_fiber'>resume_fiber</span> <span class='id fiber'>fiber</span><span class='comma'>,</span> <span class='id message'>message</span>
+    <span class='id fiber'>fiber</span><span class='period'>.</span><span class='id resume'>resume</span> <span class='id message'>message</span>
     <span class='kw'>true</span>
   <span class='kw'>else</span>
     <span class='kw'>false</span>
@@ -371,7 +371,7 @@
 </div>
     
     <div id="footer">
-  Generated on Fri Nov 18 17:00:18 2011 by 
+  Generated on Tue Nov 29 19:57:53 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.3 (ruby-1.9.3).
 </div>

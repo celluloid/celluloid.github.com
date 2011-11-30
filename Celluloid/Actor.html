@@ -87,15 +87,11 @@
     
   
     
-      <dt class="r1">Includes:</dt>
-      <dd class="r1"><span class='object_link'><a href="Linking.html" title="Celluloid::Linking (module)">Linking</a></span></dd>
-      
-    
   
   
   
-    <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/celluloid/actor.rb<span class="defines">,<br />
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/celluloid/actor.rb<span class="defines">,<br />
   lib/celluloid/actor_pool.rb</span>
 </dd>
   
@@ -127,10 +123,6 @@ messages.</p>
 </p>
 
 
-  
-  
-  
-  
   
   
   
@@ -220,9 +212,6 @@ messages.</p>
 
 
 
-  
-  
-  
   
   
   
@@ -433,29 +422,6 @@ messages.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#log_error-instance_method" title="#log_error (instance method)">- (Object) <strong>log_error</strong>(ex, message = &quot;#{@subject.class} crashed!&quot;) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>Log errors when an actor crashes.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
       <a href="#receive-instance_method" title="#receive (instance method)">- (Object) <strong>receive</strong>(&amp;block) </a>
     
 
@@ -479,6 +445,29 @@ messages.</p>
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#register_fiber-instance_method" title="#register_fiber (instance method)">- (Object) <strong>register_fiber</strong>(call, fiber) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Register a fiber waiting for the response to a Celluloid::Call.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#run-instance_method" title="#run (instance method)">- (Object) <strong>run</strong> </a>
     
 
@@ -494,29 +483,6 @@ messages.</p>
   
     <span class="summary_desc"><div class='inline'>
 <p>Run the actor loop.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#run_fiber-instance_method" title="#run_fiber (instance method)">- (Object) <strong>run_fiber</strong>(fiber, value = nil) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>Run a method, handling when its Fiber is suspended.</p>
 </div></span>
   
 </li>
@@ -603,17 +569,7 @@ messages.</p>
   
   
   <h3 class="inherited">Methods included from <span class='object_link'><a href="Registry.html" title="Celluloid::Registry (module)">Registry</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Registry.html#%5B%5D-instance_method" title="Celluloid::Registry#[] (method)">[]</a></span>, <span class='object_link'><a href="Registry.html#%5B%5D%3D-instance_method" title="Celluloid::Registry#[]= (method)">[]=</a></span></p>
-
-  
-  
-  
-  
-  
-  
-  
-  <h3 class="inherited">Methods included from <span class='object_link'><a href="Linking.html" title="Celluloid::Linking (module)">Linking</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Linking.html#link-instance_method" title="Celluloid::Linking#link (method)">#link</a></span>, <span class='object_link'><a href="Linking.html#linked_to%3F-instance_method" title="Celluloid::Linking#linked_to? (method)">#linked_to?</a></span>, <span class='object_link'><a href="Linking.html#notify_link-instance_method" title="Celluloid::Linking#notify_link (method)">#notify_link</a></span>, <span class='object_link'><a href="Linking.html#notify_unlink-instance_method" title="Celluloid::Linking#notify_unlink (method)">#notify_unlink</a></span>, <span class='object_link'><a href="Linking.html#unlink-instance_method" title="Celluloid::Linking#unlink (method)">#unlink</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="Registry.html#%5B%5D-instance_method" title="Celluloid::Registry#[] (method)">[]</a></span>, <span class='object_link'><a href="Registry.html#%5B%5D%3D-instance_method" title="Celluloid::Registry#[]= (method)">[]=</a></span>, <span class='object_link'><a href="Registry.html#registered-instance_method" title="Celluloid::Registry#registered (method)">registered</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
@@ -641,6 +597,9 @@ messages.</p>
       <pre class="lines">
 
 
+64
+65
+66
 67
 68
 69
@@ -660,14 +619,10 @@ messages.</p>
 83
 84
 85
-86
-87
-88
-89
-90</pre>
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 67</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 64</span>
 
 <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id subject'>subject</span><span class='rparen'>)</span>
   <span class='ivar'>@subject</span> <span class='op'>=</span> <span class='id subject'>subject</span>
@@ -681,14 +636,13 @@ messages.</p>
   <span class='ivar'>@links</span>     <span class='op'>=</span> <span class='const'>Links</span><span class='period'>.</span><span class='id new'>new</span>
   <span class='ivar'>@signals</span>   <span class='op'>=</span> <span class='const'>Signals</span><span class='period'>.</span><span class='id new'>new</span>
   <span class='ivar'>@receivers</span> <span class='op'>=</span> <span class='const'>Receivers</span><span class='period'>.</span><span class='id new'>new</span>
-  <span class='ivar'>@proxy</span>     <span class='op'>=</span> <span class='const'>ActorProxy</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='ivar'>@mailbox</span><span class='rparen'>)</span>
+  <span class='ivar'>@proxy</span>     <span class='op'>=</span> <span class='const'>ActorProxy</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='ivar'>@mailbox</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='rparen'>)</span>
   <span class='ivar'>@running</span>   <span class='op'>=</span> <span class='kw'>true</span>
   <span class='ivar'>@pending_calls</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
 
   <span class='ivar'>@thread</span> <span class='op'>=</span> <span class='const'>Pool</span><span class='period'>.</span><span class='id get'>get</span> <span class='kw'>do</span>
-    <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:actor</span><span class='rbracket'>]</span>       <span class='op'>=</span> <span class='kw'>self</span>
-    <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:actor_proxy</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@proxy</span>
-    <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:mailbox</span><span class='rbracket'>]</span>     <span class='op'>=</span> <span class='ivar'>@mailbox</span>
+    <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:actor</span><span class='rbracket'>]</span>   <span class='op'>=</span> <span class='kw'>self</span>
+    <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:mailbox</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@mailbox</span>
 
     <span class='id run'>run</span>
   <span class='kw'>end</span>
@@ -730,12 +684,12 @@ messages.</p>
       <pre class="lines">
 
 
+25
 26
-27
-28</pre>
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 25</span>
 
 <span class='kw'>def</span> <span class='id links'>links</span>
   <span class='ivar'>@links</span>
@@ -772,12 +726,12 @@ messages.</p>
       <pre class="lines">
 
 
+26
 27
-28
-29</pre>
+28</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 26</span>
 
 <span class='kw'>def</span> <span class='id mailbox'>mailbox</span>
   <span class='ivar'>@mailbox</span>
@@ -814,12 +768,12 @@ messages.</p>
       <pre class="lines">
 
 
+24
 25
-26
-27</pre>
+26</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 24</span>
 
 <span class='kw'>def</span> <span class='id proxy'>proxy</span>
   <span class='ivar'>@proxy</span>
@@ -860,6 +814,8 @@ messages.</p>
       <pre class="lines">
 
 
+52
+53
 54
 55
 56
@@ -867,18 +823,14 @@ messages.</p>
 58
 59
 60
-61
-62
-63
-64</pre>
+61</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 54</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 52</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id async'>async</span><span class='lparen'>(</span><span class='id mailbox'>mailbox</span><span class='comma'>,</span> <span class='id meth'>meth</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
-  <span class='id our_mailbox'>our_mailbox</span> <span class='op'>=</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='period'>.</span><span class='id mailbox'>mailbox</span>
   <span class='kw'>begin</span>
-    <span class='id mailbox'>mailbox</span> <span class='op'>&lt;&lt;</span> <span class='const'>AsyncCall</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id our_mailbox'>our_mailbox</span><span class='comma'>,</span> <span class='id meth'>meth</span><span class='comma'>,</span> <span class='id args'>args</span><span class='comma'>,</span> <span class='id block'>block</span><span class='rparen'>)</span>
+    <span class='id mailbox'>mailbox</span> <span class='op'>&lt;&lt;</span> <span class='const'>AsyncCall</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='const'>Thread</span><span class='period'>.</span><span class='id mailbox'>mailbox</span><span class='comma'>,</span> <span class='id meth'>meth</span><span class='comma'>,</span> <span class='id args'>args</span><span class='comma'>,</span> <span class='id block'>block</span><span class='rparen'>)</span>
   <span class='kw'>rescue</span> <span class='const'>MailboxError</span>
     <span class='comment'># Silently swallow asynchronous calls to dead actors. There's no way
 </span>    <span class='comment'># to reliably generate DeadActorErrors for async calls, so users of
@@ -915,6 +867,7 @@ messages.</p>
       <pre class="lines">
 
 
+29
 30
 31
 32
@@ -934,16 +887,13 @@ messages.</p>
 46
 47
 48
-49
-50
-51</pre>
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id call'>call</span><span class='lparen'>(</span><span class='id mailbox'>mailbox</span><span class='comma'>,</span> <span class='id meth'>meth</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
-  <span class='id our_mailbox'>our_mailbox</span> <span class='op'>=</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='period'>.</span><span class='id mailbox'>mailbox</span>
-  <span class='id call'>call</span> <span class='op'>=</span> <span class='const'>SyncCall</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id our_mailbox'>our_mailbox</span><span class='comma'>,</span> <span class='id meth'>meth</span><span class='comma'>,</span> <span class='id args'>args</span><span class='comma'>,</span> <span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id call'>call</span> <span class='op'>=</span> <span class='const'>SyncCall</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='const'>Thread</span><span class='period'>.</span><span class='id mailbox'>mailbox</span><span class='comma'>,</span> <span class='id meth'>meth</span><span class='comma'>,</span> <span class='id args'>args</span><span class='comma'>,</span> <span class='id block'>block</span><span class='rparen'>)</span>
 
   <span class='kw'>begin</span>
     <span class='id mailbox'>mailbox</span> <span class='op'>&lt;&lt;</span> <span class='id call'>call</span>
@@ -956,8 +906,8 @@ messages.</p>
 </span>    <span class='id response'>response</span> <span class='op'>=</span> <span class='const'>Fiber</span><span class='period'>.</span><span class='id yield'>yield</span><span class='lparen'>(</span><span class='id call'>call</span><span class='rparen'>)</span>
   <span class='kw'>else</span>
     <span class='comment'># Otherwise we're inside a normal thread, so block
-</span>    <span class='id response'>response</span> <span class='op'>=</span> <span class='id our_mailbox'>our_mailbox</span><span class='period'>.</span><span class='id receive'>receive</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id msg'>msg</span><span class='op'>|</span>
-      <span class='id msg'>msg</span><span class='period'>.</span><span class='id is_a?'>is_a?</span> <span class='const'>Response</span> <span class='kw'>and</span> <span class='id msg'>msg</span><span class='period'>.</span><span class='id call_id'>call_id</span> <span class='op'>==</span> <span class='id call'>call</span><span class='period'>.</span><span class='id id'>id</span>
+</span>    <span class='id response'>response</span> <span class='op'>=</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id mailbox'>mailbox</span><span class='period'>.</span><span class='id receive'>receive</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id msg'>msg</span><span class='op'>|</span>
+      <span class='id msg'>msg</span><span class='period'>.</span><span class='id respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:call_id</span><span class='rparen'>)</span> <span class='kw'>and</span> <span class='id msg'>msg</span><span class='period'>.</span><span class='id call_id'>call_id</span> <span class='op'>==</span> <span class='id call'>call</span><span class='period'>.</span><span class='id id'>id</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 
@@ -1011,12 +961,12 @@ messages.</p>
       <pre class="lines">
 
 
-93
-94
-95</pre>
+89
+90
+91</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 93</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 89</span>
 
 <span class='kw'>def</span> <span class='id alive?'>alive?</span>
   <span class='ivar'>@running</span>
@@ -1050,19 +1000,19 @@ messages.</p>
       <pre class="lines">
 
 
-197
-198
-199
-200
-201
-202
-203
-204
-205
-206</pre>
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 197</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 184</span>
 
 <span class='kw'>def</span> <span class='id cleanup'>cleanup</span><span class='lparen'>(</span><span class='id exit_event'>exit_event</span><span class='rparen'>)</span>
   <span class='ivar'>@mailbox</span><span class='period'>.</span><span class='id shutdown'>shutdown</span>
@@ -1070,8 +1020,8 @@ messages.</p>
 
   <span class='kw'>begin</span>
     <span class='ivar'>@subject</span><span class='period'>.</span><span class='id finalize'>finalize</span> <span class='kw'>if</span> <span class='ivar'>@subject</span><span class='period'>.</span><span class='id respond_to?'>respond_to?</span> <span class='symbol'>:finalize</span>
-  <span class='kw'>rescue</span> <span class='const'>Exception</span> <span class='op'>=&gt;</span> <span class='id finalizer_exception'>finalizer_exception</span>
-    <span class='id log_error'>log_error</span><span class='lparen'>(</span><span class='id finalizer_exception'>finalizer_exception</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@subject</span><span class='period'>.</span><span class='id class'>class</span><span class='rbrace'>}</span><span class='tstring_content'>#finalize crashed!</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>rescue</span> <span class='const'>Exception</span> <span class='op'>=&gt;</span> <span class='id ex'>ex</span>
+    <span class='const'>Celluloid</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id crash'>crash</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@subject</span><span class='period'>.</span><span class='id class'>class</span><span class='rbrace'>}</span><span class='tstring_content'>#finalize crashed!</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id ex'>ex</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1103,21 +1053,21 @@ messages.</p>
       <pre class="lines">
 
 
-189
-190
-191
-192
-193
-194</pre>
+176
+177
+178
+179
+180
+181</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 189</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 176</span>
 
 <span class='kw'>def</span> <span class='id handle_crash'>handle_crash</span><span class='lparen'>(</span><span class='id exception'>exception</span><span class='rparen'>)</span>
-  <span class='id log_error'>log_error</span><span class='lparen'>(</span><span class='id exception'>exception</span><span class='rparen'>)</span>
+  <span class='const'>Celluloid</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id crash'>crash</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@subject</span><span class='period'>.</span><span class='id class'>class</span><span class='rbrace'>}</span><span class='tstring_content'> crashed!</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id exception'>exception</span><span class='rparen'>)</span>
   <span class='id cleanup'>cleanup</span> <span class='const'>ExitEvent</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='ivar'>@proxy</span><span class='comma'>,</span> <span class='id exception'>exception</span><span class='rparen'>)</span>
-<span class='kw'>rescue</span> <span class='const'>Exception</span> <span class='op'>=&gt;</span> <span class='id handler_exception'>handler_exception</span>
-  <span class='id log_error'>log_error</span><span class='lparen'>(</span><span class='id handler_exception'>handler_exception</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ERROR HANDLER CRASHED!</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='kw'>rescue</span> <span class='const'>Exception</span> <span class='op'>=&gt;</span> <span class='id ex'>ex</span>
+  <span class='const'>Celluloid</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id crash'>crash</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@subject</span><span class='period'>.</span><span class='id class'>class</span><span class='rbrace'>}</span><span class='tstring_content'>: ERROR HANDLER CRASHED!</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id ex'>ex</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1148,19 +1098,19 @@ messages.</p>
       <pre class="lines">
 
 
-177
-178
-179
-180
-181
-182
-183
-184
-185
-186</pre>
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 177</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 164</span>
 
 <span class='kw'>def</span> <span class='id handle_exit_event'>handle_exit_event</span><span class='lparen'>(</span><span class='id exit_event'>exit_event</span><span class='rparen'>)</span>
   <span class='id exit_handler'>exit_handler</span> <span class='op'>=</span> <span class='ivar'>@subject</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id exit_handler'>exit_handler</span>
@@ -1201,90 +1151,43 @@ messages.</p>
       <pre class="lines">
 
 
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
 156
 157
 158
 159
 160
-161
-162
-163
-164
-165
-166
-167
-168
-169
-170
-171
-172
-173
-174</pre>
+161</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 156</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 145</span>
 
 <span class='kw'>def</span> <span class='id handle_message'>handle_message</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id message'>message</span>
   <span class='kw'>when</span> <span class='const'>Call</span>
-    <span class='id fiber'>fiber</span> <span class='op'>=</span> <span class='const'>Celluloid</span><span class='period'>.</span><span class='id fiber'>fiber</span> <span class='lbrace'>{</span> <span class='id message'>message</span><span class='period'>.</span><span class='id dispatch'>dispatch</span><span class='lparen'>(</span><span class='ivar'>@subject</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>nil</span> <span class='rbrace'>}</span>
-    <span class='id run_fiber'>run_fiber</span> <span class='id fiber'>fiber</span>
+    <span class='const'>Celluloid</span><span class='op'>::</span><span class='const'>Fiber</span><span class='period'>.</span><span class='id new'>new</span> <span class='lbrace'>{</span> <span class='id message'>message</span><span class='period'>.</span><span class='id dispatch'>dispatch</span><span class='lparen'>(</span><span class='ivar'>@subject</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>nil</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id resume'>resume</span>
   <span class='kw'>when</span> <span class='const'>Response</span>
     <span class='id fiber'>fiber</span> <span class='op'>=</span> <span class='ivar'>@pending_calls</span><span class='period'>.</span><span class='id delete'>delete</span><span class='lparen'>(</span><span class='id message'>message</span><span class='period'>.</span><span class='id call_id'>call_id</span><span class='rparen'>)</span>
 
     <span class='kw'>if</span> <span class='id fiber'>fiber</span>
-      <span class='id run_fiber'>run_fiber</span> <span class='id fiber'>fiber</span><span class='comma'>,</span> <span class='id message'>message</span>
+      <span class='id fiber'>fiber</span><span class='period'>.</span><span class='id resume'>resume</span> <span class='id message'>message</span>
     <span class='kw'>else</span>
-      <span class='id warning'>warning</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>spurious response to call </span><span class='embexpr_beg'>#{</span><span class='id message'>message</span><span class='period'>.</span><span class='id call_id'>call_id</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
-      <span class='const'>Celluloid</span><span class='period'>.</span><span class='id logger'>logger</span><span class='period'>.</span><span class='id debug'>debug</span> <span class='kw'>if</span> <span class='const'>Celluloid</span><span class='period'>.</span><span class='id logger'>logger</span>
+      <span class='const'>Celluloid</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>spurious response to call </span><span class='embexpr_beg'>#{</span><span class='id message'>message</span><span class='period'>.</span><span class='id call_id'>call_id</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='kw'>end</span>
   <span class='kw'>else</span>
     <span class='ivar'>@receivers</span><span class='period'>.</span><span class='id handle_message'>handle_message</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
   <span class='id message'>message</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="log_error-instance_method">
-  
-    - (<tt>Object</tt>) <strong>log_error</strong>(ex, message = &quot;#{@subject.class} crashed!&quot;) 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    
-<p>Log errors when an actor crashes</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-209
-210
-211
-212
-213</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 209</span>
-
-<span class='kw'>def</span> <span class='id log_error'>log_error</span><span class='lparen'>(</span><span class='id ex'>ex</span><span class='comma'>,</span> <span class='id message'>message</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@subject</span><span class='period'>.</span><span class='id class'>class</span><span class='rbrace'>}</span><span class='tstring_content'> crashed!</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-  <span class='id message'>message</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='embexpr_beg'>#{</span><span class='id ex'>ex</span><span class='period'>.</span><span class='id class'>class</span><span class='rbrace'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id ex'>ex</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='rbrace'>}</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
-  <span class='id message'>message</span> <span class='op'>&lt;&lt;</span> <span class='id ex'>ex</span><span class='period'>.</span><span class='id backtrace'>backtrace</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-  <span class='const'>Celluloid</span><span class='period'>.</span><span class='id logger'>logger</span><span class='period'>.</span><span class='id error'>error</span> <span class='id message'>message</span> <span class='kw'>if</span> <span class='const'>Celluloid</span><span class='period'>.</span><span class='id logger'>logger</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1315,15 +1218,69 @@ messages.</p>
       <pre class="lines">
 
 
-114
-115
-116</pre>
+110
+111
+112</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 114</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 110</span>
 
 <span class='kw'>def</span> <span class='id receive'>receive</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='ivar'>@receivers</span><span class='period'>.</span><span class='id receive'>receive</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="register_fiber-instance_method">
+  
+    - (<tt>Object</tt>) <strong>register_fiber</strong>(call, fiber) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Register a fiber waiting for the response to a Celluloid::Call</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+139
+140
+141
+142</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 139</span>
+
+<span class='kw'>def</span> <span class='id register_fiber'>register_fiber</span><span class='lparen'>(</span><span class='id call'>call</span><span class='comma'>,</span> <span class='id fiber'>fiber</span><span class='rparen'>)</span>
+  <span class='id raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>attempted to register a dead fiber</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id fiber'>fiber</span><span class='period'>.</span><span class='id alive?'>alive?</span>
+  <span class='ivar'>@pending_calls</span><span class='lbracket'>[</span><span class='id call'>call</span><span class='period'>.</span><span class='id id'>id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id fiber'>fiber</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1354,6 +1311,10 @@ messages.</p>
       <pre class="lines">
 
 
+115
+116
+117
+118
 119
 120
 121
@@ -1371,23 +1332,17 @@ messages.</p>
 133
 134
 135
-136
-137
-138
-139
-140
-141</pre>
+136</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 119</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 115</span>
 
 <span class='kw'>def</span> <span class='id run'>run</span>
   <span class='kw'>while</span> <span class='ivar'>@running</span>
     <span class='kw'>begin</span>
       <span class='id message'>message</span> <span class='op'>=</span> <span class='ivar'>@mailbox</span><span class='period'>.</span><span class='id receive'>receive</span>
     <span class='kw'>rescue</span> <span class='const'>ExitEvent</span> <span class='op'>=&gt;</span> <span class='id exit_event'>exit_event</span>
-      <span class='id fiber'>fiber</span> <span class='op'>=</span> <span class='const'>Celluloid</span><span class='period'>.</span><span class='id fiber'>fiber</span> <span class='lbrace'>{</span> <span class='id handle_exit_event'>handle_exit_event</span> <span class='id exit_event'>exit_event</span><span class='semicolon'>;</span> <span class='kw'>nil</span> <span class='rbrace'>}</span>
-      <span class='id run_fiber'>run_fiber</span> <span class='id fiber'>fiber</span>
+      <span class='const'>Celluloid</span><span class='op'>::</span><span class='const'>Fiber</span><span class='period'>.</span><span class='id new'>new</span> <span class='lbrace'>{</span> <span class='id handle_exit_event'>handle_exit_event</span> <span class='id exit_event'>exit_event</span><span class='semicolon'>;</span> <span class='kw'>nil</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id resume'>resume</span>
       <span class='kw'>retry</span>
     <span class='kw'>end</span>
 
@@ -1403,59 +1358,6 @@ messages.</p>
   <span class='id handle_crash'>handle_crash</span><span class='lparen'>(</span><span class='id ex'>ex</span><span class='rparen'>)</span>
 <span class='kw'>ensure</span>
   <span class='const'>Pool</span><span class='period'>.</span><span class='id put'>put</span> <span class='ivar'>@thread</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="run_fiber-instance_method">
-  
-    - (<tt>Object</tt>) <strong>run_fiber</strong>(fiber, value = nil) 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    
-<p>Run a method, handling when its Fiber is suspended</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-144
-145
-146
-147
-148
-149
-150
-151
-152
-153</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 144</span>
-
-<span class='kw'>def</span> <span class='id run_fiber'>run_fiber</span><span class='lparen'>(</span><span class='id fiber'>fiber</span><span class='comma'>,</span> <span class='id value'>value</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='id result'>result</span> <span class='op'>=</span> <span class='id fiber'>fiber</span><span class='period'>.</span><span class='id resume'>resume</span> <span class='id value'>value</span>
-  <span class='kw'>if</span> <span class='id result'>result</span><span class='period'>.</span><span class='id is_a?'>is_a?</span> <span class='const'>Celluloid</span><span class='op'>::</span><span class='const'>Call</span>
-    <span class='ivar'>@pending_calls</span><span class='lbracket'>[</span><span class='id result'>result</span><span class='period'>.</span><span class='id id'>id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id fiber'>fiber</span> <span class='kw'>if</span> <span class='id fiber'>fiber</span><span class='period'>.</span><span class='id alive?'>alive?</span>
-  <span class='kw'>elsif</span> <span class='id result'>result</span>
-    <span class='id warning'>warning</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>non-call returned from fiber: </span><span class='embexpr_beg'>#{</span><span class='id result'>result</span><span class='period'>.</span><span class='id class'>class</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
-    <span class='const'>Celluloid</span><span class='period'>.</span><span class='id logger'>logger</span><span class='period'>.</span><span class='id debug'>debug</span> <span class='id warning'>warning</span> <span class='kw'>if</span> <span class='const'>Celluloid</span><span class='period'>.</span><span class='id logger'>logger</span>
-  <span class='kw'>end</span>
-  <span class='kw'>nil</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1486,12 +1388,12 @@ messages.</p>
       <pre class="lines">
 
 
-104
-105
-106</pre>
+100
+101
+102</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 104</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 100</span>
 
 <span class='kw'>def</span> <span class='id signal'>signal</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span> <span class='id value'>value</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='ivar'>@signals</span><span class='period'>.</span><span class='id send'>send</span> <span class='id name'>name</span><span class='comma'>,</span> <span class='id value'>value</span>
@@ -1525,13 +1427,13 @@ messages.</p>
       <pre class="lines">
 
 
-98
-99
-100
-101</pre>
+94
+95
+96
+97</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 98</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 94</span>
 
 <span class='kw'>def</span> <span class='id terminate'>terminate</span>
   <span class='ivar'>@running</span> <span class='op'>=</span> <span class='kw'>false</span>
@@ -1566,12 +1468,12 @@ messages.</p>
       <pre class="lines">
 
 
-109
-110
-111</pre>
+105
+106
+107</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 109</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor.rb', line 105</span>
 
 <span class='kw'>def</span> <span class='id wait'>wait</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
   <span class='ivar'>@signals</span><span class='period'>.</span><span class='id wait'>wait</span> <span class='id name'>name</span>
@@ -1586,7 +1488,7 @@ messages.</p>
 </div>
     
     <div id="footer">
-  Generated on Fri Nov 18 17:00:18 2011 by 
+  Generated on Tue Nov 29 19:57:53 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.3 (ruby-1.9.3).
 </div>

@@ -271,9 +271,7 @@ if any calls were signaled, or false otherwise</p>
 20
 21
 22
-23
-24
-25</pre>
+23</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/signals.rb', line 17</span>
@@ -282,10 +280,8 @@ if any calls were signaled, or false otherwise</p>
   <span class='id fibers'>fibers</span> <span class='op'>=</span> <span class='ivar'>@waiting</span><span class='period'>.</span><span class='id delete'>delete</span> <span class='id name'>name</span>
   <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id fibers'>fibers</span>
   
-  <span class='id fibers'>fibers</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id fiber'>fiber</span><span class='op'>|</span>
-    <span class='const'>Celluloid</span><span class='period'>.</span><span class='id resume_fiber'>resume_fiber</span> <span class='id fiber'>fiber</span><span class='comma'>,</span> <span class='id value'>value</span>
-  <span class='kw'>end</span>
-  <span class='kw'>true</span>
+  <span class='id fibers'>fibers</span><span class='period'>.</span><span class='id each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id fiber'>fiber</span><span class='op'>|</span> <span class='id fiber'>fiber</span><span class='period'>.</span><span class='id resume'>resume</span> <span class='id value'>value</span> <span class='rbrace'>}</span>
+  <span class='id value'>value</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -340,7 +336,7 @@ if any calls were signaled, or false otherwise</p>
 </div>
     
     <div id="footer">
-  Generated on Fri Nov 18 17:00:18 2011 by 
+  Generated on Tue Nov 29 19:57:53 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.3 (ruby-1.9.3).
 </div>

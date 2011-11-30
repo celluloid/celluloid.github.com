@@ -554,9 +554,11 @@ manage to leak out of the system, all hell will break loose.</p>
 <ol>
 <li><p><strong><em>NEVER RETURN SELF</em></strong> (or pass self as an argument to other actors): in
 cases where you want to pass an actor around to other actors or threads,
-use Celluloid.current_actor. If you grab the latest master of Celluloid
-off of Github, you can just use the #current_actor method when you are
-inside of an actor itself.</p></li>
+use Celluloid.current_actor, or if you're within an actor itself, you can
+just call the #current_actor method. If you really need to get ahold of
+"self" in order to add instance-specific behavior, e.g for metaprogramming
+purposes or adding stubs during tests, call MyActor#wrapped_object to
+obtain the actual object an actor is wrapping.</p></li>
 <li><p>Don't mutate the state of objects you've sent in calls to other actors:
 This means you must think about data in one of two different ways: either
 you "fire and forget" the data, leaving it for other actors to do with
@@ -655,7 +657,7 @@ it's most likely thread safe, provided that Foo doesn't do other wonky things.</
 </div></div>
     
     <div id="footer">
-  Generated on Fri Nov 18 17:05:18 2011 by 
+  Generated on Tue Nov 29 19:57:52 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.3 (ruby-1.9.3).
 </div>
