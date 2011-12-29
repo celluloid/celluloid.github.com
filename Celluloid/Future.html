@@ -6,7 +6,7 @@
 <title>
   Class: Celluloid::Future
   
-    &mdash; Documentation by YARD 0.7.3
+    &mdash; Documentation by YARD 0.7.4
   
 </title>
 
@@ -146,7 +146,8 @@ background, their values requested later</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>A new instance of Future.</p>
+<p>Create a new Celluloid::Future object, allowing a block to be computed in
+the background and its return value obtained later.</p>
 </div></span>
   
 </li>
@@ -158,6 +159,8 @@ background, their values requested later</p>
       <a href="#value-instance_method" title="#value (instance method)">- (Object) <strong>value</strong> </a>
     
 
+    
+      (also: #call)
     
   </span>
   
@@ -191,7 +194,8 @@ background, their values requested later</p>
 </p><div class="docstring">
   <div class="discussion">
     
-<p>A new instance of Future</p>
+<p>Create a new Celluloid::Future object, allowing a block to be computed in
+the background and its return value obtained later</p>
 
 
   </div>
@@ -205,23 +209,23 @@ background, their values requested later</p>
       <pre class="lines">
 
 
+9
+10
+11
+12
 13
 14
-15
-16
-17
-18
-19</pre>
+15</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/future.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/future.rb', line 9</span>
 
-<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
-  <span class='ivar'>@lock</span> <span class='op'>=</span> <span class='const'>Mutex</span><span class='period'>.</span><span class='id new'>new</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='ivar'>@lock</span> <span class='op'>=</span> <span class='const'>Mutex</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
   <span class='ivar'>@value_obtained</span> <span class='op'>=</span> <span class='kw'>false</span>
-  
-  <span class='ivar'>@runner</span> <span class='op'>=</span> <span class='const'>Runner</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
-  <span class='ivar'>@runner</span><span class='period'>.</span><span class='id run!'>run!</span>
+
+  <span class='ivar'>@runner</span> <span class='op'>=</span> <span class='const'>Runner</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='ivar'>@runner</span><span class='period'>.</span><span class='id identifier rubyid_run!'>run!</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -242,6 +246,10 @@ background, their values requested later</p>
   
 
   
+    <span class="aliases">Also known as:
+    <span class="names"><span id='call-instance_method'>call</span></span>
+    </span>
+  
 </p><div class="docstring">
   <div class="discussion">
     
@@ -259,29 +267,29 @@ background, their values requested later</p>
       <pre class="lines">
 
 
+18
+19
+20
+21
 22
 23
 24
 25
 26
 27
-28
-29
-30
-31
-32</pre>
+28</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/future.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/future.rb', line 18</span>
 
-<span class='kw'>def</span> <span class='id value'>value</span>
-  <span class='ivar'>@lock</span><span class='period'>.</span><span class='id synchronize'>synchronize</span> <span class='kw'>do</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_value'>value</span>
+  <span class='ivar'>@lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
     <span class='kw'>unless</span> <span class='ivar'>@value_obtained</span>
-      <span class='ivar'>@value</span> <span class='op'>=</span> <span class='ivar'>@runner</span><span class='period'>.</span><span class='id value'>value</span>
-      <span class='ivar'>@runner</span><span class='period'>.</span><span class='id terminate'>terminate</span>
+      <span class='ivar'>@value</span> <span class='op'>=</span> <span class='ivar'>@runner</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span>
+      <span class='ivar'>@runner</span><span class='period'>.</span><span class='id identifier rubyid_terminate'>terminate</span>
       <span class='ivar'>@value_obtained</span> <span class='op'>=</span> <span class='kw'>true</span>
     <span class='kw'>end</span>
-    
+
     <span class='ivar'>@value</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
@@ -295,9 +303,9 @@ background, their values requested later</p>
 </div>
     
     <div id="footer">
-  Generated on Tue Nov 29 19:57:53 2011 by 
+  Generated on Thu Dec 29 11:58:02 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.3 (ruby-1.9.3).
+  0.7.4 (ruby-1.9.3).
 </div>
 
   </body>

@@ -6,7 +6,7 @@
 <title>
   File: README
   
-    &mdash; Documentation by YARD 0.7.3
+    &mdash; Documentation by YARD 0.7.4
   
 </title>
 
@@ -56,65 +56,93 @@
     
     <div id="content"><div id='filecontents'><h1>Celluloid</h1>
 
-<p><a href="http://travis-ci.org/tarcieri/celluloid"><img src="http://travis-ci.org/tarcieri/celluloid.png" alt="Build Status" /></a></p>
+<p><a href="http://travis-ci.org/tarcieri/celluloid"><img src="http://travis-ci.org/tarcieri/celluloid.png" alt="Build Status"></a></p>
 
-<blockquote><p>"I thought of objects being like biological cells and/or individual
-computers on a network, only able to communicate with messages"
-<em>--Alan Kay, creator of Smalltalk, on the meaning of "object oriented programming"</em></p></blockquote>
+<blockquote>
+<p>&quot;I thought of objects being like biological cells and/or individual
+computers on a network, only able to communicate with messages&quot;
+<em>--Alan Kay, creator of Smalltalk, on the meaning of &quot;object oriented programming&quot;</em></p>
+</blockquote>
 
 <p>Celluloid provides a simple and natural way to build fault-tolerant concurrent
 programs in Ruby. With Celluloid, you can build systems out of concurrent
 objects just as easily as you build sequential programs out of regular objects.
 Recommended for any developer, including novices, Celluloid should help ease
-your worries about building multithreaded Ruby programs.</p>
+your worries about building multithreaded Ruby programs:</p>
+
+<ul>
+<li><strong>Look ma, no mutexes:</strong> Celluloid automatically synchronizes access to instance
+variables by using a special proxy object system and messaging model.</li>
+<li><strong><a href="https://github.com/tarcieri/celluloid/wiki/futures">Futures</a>:</strong>
+Ever wanted to call a method &quot;in the background&quot; and retrieve the
+value it returns later? Celluloid futures allow you to do that. When you
+ask for a method&#39;s return value it&#39;s returned if it&#39;s immediately available
+or blocks if the method is still running.</li>
+<li><strong><a href="https://github.com/tarcieri/celluloid/wiki/supervisors">Supervisors</a>:</strong>
+Celluloid can monitor your concurrent objects and
+automatically restart them when they crash. You can also link concurrent
+objects together into groups that will crash and restart as a group,
+ensuring that after a crash all interdependent objects are in a clean and
+consistent state.</li>
+</ul>
 
 <p>Under the hood, Celluloid wraps regular objects in threads that talk to each
-other using messages. These concurrent objects are called "actors". When a
+other using messages. These concurrent objects are called &quot;actors&quot;. When a
 caller wants another actor to execute a method, it literally sends it a
 message object telling it what method to execute. The receiver listens on its
 mailbox, gets the request, runs the method, and sends the caller the result.
 The receiver processes messages in its inbox one-at-a-time, which means that
-you don't need to worry about synchronizing access to an object's instance
+you don&#39;t need to worry about synchronizing access to an object&#39;s instance
 variables.</p>
 
 <p>In addition to that, Celluloid also gives you the ability to call methods
 <em>asynchronously</em>, so the receiver to do things in the background for you
 without the caller having to sit around waiting for the result.</p>
 
+<p>You can also build distributed systems with Celluloid using its
+<a href="https://github.com/tarcieri/dcell">sister project DCell</a>.</p>
+
+<p><a href="https://github.com/tarcieri/celluloid/wiki">Please see the Celluloid Wiki</a>
+for more detailed documentation and usage notes.</p>
+
 <p>Like Celluloid? <a href="http://groups.google.com/group/celluloid-ruby">Join the Google Group</a></p>
 
 <h2>Supported Platforms</h2>
 
-<p>Celluloid works on Ruby 1.9.2, JRuby 1.6 (in 1.9 mode), and Rubinius 2.0. JRuby
-or Rubinius are the preferred platforms as they support true concurrent threads.</p>
+<p>Celluloid works on Ruby 1.9.2+, JRuby 1.6 (in 1.9 mode), and Rubinius 2.0. JRuby
+or Rubinius are the preferred platforms as they support true hardware-level
+parallelism when running Ruby code, whereas MRI/YARV is constrained by a global
+interpreter lock (GIL).</p>
 
-<p>To use JRuby in 1.9 mode, you'll need to pass the "--1.9" command line option
-to the JRuby executable, or set the "JRUBY_OPTS=--1.9" environment variable.</p>
+<p>To use JRuby in 1.9 mode, you&#39;ll need to pass the &quot;--1.9&quot; command line option
+to the JRuby executable, or set the &quot;JRUBY_OPTS=--1.9&quot; environment variable.</p>
 
 <p>Celluloid works on Rubinius in either 1.8 or 1.9 mode.</p>
 
-<h2>Basic Usage</h2>
+<h2>Usage</h2>
 
 <p>To use Celluloid, define a normal Ruby class that includes Celluloid:</p>
 
-<pre class="code"><span class='kw'>class</span> <span class='const'>Sheen</span>
-  <span class='id include'>include</span> <span class='const'>Celluloid</span>
+<pre class="code"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>celluloid</span><span class='tstring_end'>'</span></span>
 
-  <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
-    <span class='ivar'>@name</span> <span class='op'>=</span> <span class='id name'>name</span>
+<span class='kw'>class</span> <span class='const'>Sheen</span>
+  <span class='id identifier rubyid_include'>include</span> <span class='const'>Celluloid</span>
+
+  <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+    <span class='ivar'>@name</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span>
   <span class='kw'>end</span>
 
-  <span class='kw'>def</span> <span class='id set_status'>set_status</span><span class='lparen'>(</span><span class='id status'>status</span><span class='rparen'>)</span>
-    <span class='ivar'>@status</span> <span class='op'>=</span> <span class='id status'>status</span>
+  <span class='kw'>def</span> <span class='id identifier rubyid_set_status'>set_status</span><span class='lparen'>(</span><span class='id identifier rubyid_status'>status</span><span class='rparen'>)</span>
+    <span class='ivar'>@status</span> <span class='op'>=</span> <span class='id identifier rubyid_status'>status</span>
   <span class='kw'>end</span>
 
-  <span class='kw'>def</span> <span class='id report'>report</span>
+  <span class='kw'>def</span> <span class='id identifier rubyid_report'>report</span>
     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@name</span><span class='rbrace'>}</span><span class='tstring_content'> is </span><span class='embexpr_beg'>#{</span><span class='ivar'>@status</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
 <span class='kw'>end</span>
 </pre>
 
-<p>Now when you create new instances of this class, they're actually concurrent
+<p>Now when you create new instances of this class, they&#39;re actually concurrent
 objects, each running in their own thread:</p>
 
 <pre class="code">&gt;&gt; charlie = Sheen.new &quot;Charlie Sheen&quot;
@@ -130,25 +158,25 @@ objects, each running in their own thread:</p>
 </pre>
 
 <p>You can call methods on this concurrent object just like you would any other
-Ruby object. The Sheen#set_status method works exactly like you'd expect,
+Ruby object. The Sheen#set_status method works exactly like you&#39;d expect,
 returning the last expression evaluated.</p>
 
-<p>However, Celluloid's secret sauce kicks in when you call banged predicate
+<p>However, Celluloid&#39;s secret sauce kicks in when you call banged predicate
 methods (i.e. methods ending in !). Even though the Sheen class has no
 set_status! method, you can still call it. Why is this? Because bang methods
-have a special meaning in Celluloid. (Note: this also means you can't define
+have a special meaning in Celluloid. (Note: this also means you can&#39;t define
 bang methods on Celluloid classes and expect them to be callable from other
 objects)</p>
 
 <p>Adding a bang to the end of a method instructs Celluloid that you would like
 for the given method to be called <em>asynchronously</em>. This means that rather
 than the caller waiting for a response, the caller sends a message to the
-concurrent object that you'd like the given method invoked, and then the
+concurrent object that you&#39;d like the given method invoked, and then the
 caller proceeds without waiting for a response. The concurrent object
 receiving the message will then process the method call in the background.</p>
 
 <p>Adding a bang to a method name is a convention in Ruby used to indicate that
-the method is in some way "dangerous", and in Celluloid this is no exception.
+the method is in some way &quot;dangerous&quot;, and in Celluloid this is no exception.
 You have no guarantees that just because you made an asynchronous call it was
 ever actually invoked. Asynchronous calls will never raise an exception, even
 if an exception occurs when the receiver is processing it. Worse, unhandled
@@ -156,510 +184,30 @@ exceptions will crash the receiver, and making an asynchronous call to a
 crashed object will not raise an error.</p>
 
 <p>However, you can still handle errors created by asynchronous calls using
-two features of Celluloid called <em>supervisors</em> and <em>linking</em>. See the
-corresponding sections below for more information.</p>
-
-<h2>Futures</h2>
-
-<p>Futures allow you to request a computation and get the result later. There are
-two types of futures supported by Celluloid: method futures and block futures.
-Method futures work by invoking the <em>future</em> method on an actor. This method
-is analogous to the typical <em>send</em> method in that it takes a method name,
-followed by an arbitrary number of arguments, and a block. Let's invoke the
-report method from the charlie object used in the above example using a future:</p>
-
-<pre class="code">&gt;&gt; future = charlie.future :report
- =&gt; #&lt;Celluloid::Future:0x000001009759b8&gt;
-&gt;&gt; future.value
- =&gt; &quot;Charlie Sheen is winning!&quot;
-</pre>
-
-<p>The call to charlie.future immediately returns a Celluloid::Future object,
-regardless of how long it takes to execute the "report" method. To obtain
-the result of the call to "report", we call the <em>value</em> method of the
-future object. This call will block until the value returned from the method
-call is available (i.e. the method has finished executing). If an exception
-occured during the method call, the call to future.value will reraise the
-same exception.</p>
-
-<p>Futures also allow you to background the computation of any block:</p>
-
-<pre class="code">&gt;&gt; future = Celluloid::Future.new { 2 + 2 }
- =&gt; #&lt;Celluloid::Future:0x000001008425f0&gt;
-&gt;&gt; future.value
- =&gt; 4
-</pre>
-
-<p>One thing to be aware of when using futures: always make sure to obtain the
-value of any future you make. Futures create a thread in the background which
-will continue to run until the future's value is obtained. Failing to obtain
-the value of futures you create will leak threads.</p>
-
-<h2>Supervisors</h2>
-
-<p>You may be familiar with tools like Monit or God which keep an eye on your
-applications and restart them when they crash. Celluloid supervisors work in
-a similar fashion, except instead of monitoring applications, they monitor
-individual actors and restart them when they crash. Crashes occur whenever
-an unhandled exception is raised anywhere within an actor.</p>
-
-<p>To supervise an actor, start it with the <em>supervise</em> method. Using the Sheen
-class from the example above:</p>
-
-<pre class="code">&gt;&gt; supervisor = Sheen.supervise &quot;Charlie Sheen&quot;
- =&gt; #&lt;Celluloid::Supervisor(Sheen) &quot;Charlie Sheen&quot;&gt;
-</pre>
-
-<p>This created a new Celluloid::Supervisor actor, and also created a new Sheen
-actor, giving its initialize method the argument "Charlie Sheen". The
-<em>supervise</em> method has the same method signature as <em>new</em>. However, rather
-than returning the newly created actor, <em>supervise</em> returns the supervisor.
-To retrieve the actor that the supervisor is currently using, use the
-Celluloid::Supervisor#actor method:</p>
-
-<pre class="code">&gt;&gt; supervisor = Sheen.supervise &quot;Charlie Sheen&quot;
- =&gt; #&lt;Celluloid::Supervisor(Sheen) &quot;Charlie Sheen&quot;&gt;
-&gt;&gt; charlie = supervisor.actor
- =&gt; #&lt;Celluloid::Actor(Sheen:0x00000100a312d0)&gt;
-</pre>
-
-<p>Supervisors can also automatically put actors into the actor <em>registry</em> using
-the supervise_as method:</p>
-
-<pre class="code">&gt;&gt; Sheen.supervise_as :charlie, &quot;Charlie Sheen&quot;
- =&gt; #&lt;Celluloid::Supervisor(Sheen) &quot;Charlie Sheen&quot;&gt;
-&gt;&gt; charlie = Celluloid::Actor[:charlie]
- =&gt; #&lt;Celluloid::Actor(Sheen:0x00000100a312d0)&gt;
-</pre>
-
-<p>In this case, the supervisor will ensure that an actor of the Sheen class,
-created using the given arguments, is aways available by calling
-Celluloid::Actor[:charlie]. The first argument to supervise_as is the name
-you'd like the newly created actor to be registered under. The remaining
-arguments are passed to initialize just like you called <em>new</em>.</p>
-
-<p>See the "Registry" section below for more information on the actor registry</p>
-
-<h2>Linking</h2>
-
-<p>Whenever any unhandled exceptions occur in any of the methods of an actor,
-that actor crashes and dies. Let's start with an example:</p>
-
-<pre class="code"><span class='kw'>class</span> <span class='const'>JamesDean</span>
-  <span class='id include'>include</span> <span class='const'>Celluloid</span>
-  <span class='kw'>class</span> <span class='const'>CarInMyLaneError</span> <span class='op'>&lt;</span> <span class='const'>StandardError</span><span class='semicolon'>;</span> <span class='kw'>end</span>
-
-  <span class='kw'>def</span> <span class='id drive_little_bastard'>drive_little_bastard</span>
-    <span class='id raise'>raise</span> <span class='const'>CarInMyLaneError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>that guy's gotta stop. he'll see us</span><span class='tstring_end'>&quot;</span></span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span>
-</pre>
-
-<p>Now, let's have James drive Little Bastard and see what happens:</p>
-
-<pre class="code">&gt;&gt; james = JamesDean.new
- =&gt; #&lt;Celluloid::Actor(JamesDean:0x1068)&gt;
-&gt;&gt; james.drive_little_bastard!
- =&gt; nil
-&gt;&gt; james
- =&gt; #&lt;Celluloid::Actor(JamesDean:0x1068) dead&gt;
-</pre>
-
-<p>When we told james asynchronously to drive Little Bastard, it killed him! If
-we were Elizabeth Taylor, co-star in James' latest film at the time of his
-death, we'd certainly want to know when he died. So how can we do that?</p>
-
-<p>Actors can <em>link</em> to other actors they're interested in and want to receive
-crash notifications from. In order to receive these events, we need to use the
-trap_exit method to be notified of them. Let's look at how a hypothetical
-Elizabeth Taylor object could be notified that James Dean has crashed:</p>
-
-<pre class="code"><span class='kw'>class</span> <span class='const'>ElizabethTaylor</span>
-  <span class='id include'>include</span> <span class='const'>Celluloid</span>
-  <span class='id trap_exit'>trap_exit</span> <span class='symbol'>:actor_died</span>
-
-  <span class='kw'>def</span> <span class='id actor_died'>actor_died</span><span class='lparen'>(</span><span class='id actor'>actor</span><span class='comma'>,</span> <span class='id reason'>reason</span><span class='rparen'>)</span>
-    <span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Oh no! </span><span class='embexpr_beg'>#{</span><span class='id actor'>actor</span><span class='period'>.</span><span class='id inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_content'> has died because of a </span><span class='embexpr_beg'>#{</span><span class='id reason'>reason</span><span class='period'>.</span><span class='id class'>class</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span>
-</pre>
-
-<p>We've now used the trap_exit method to configure a callback which is invoked
-whenever any linked actors crashed. Now we need to link Elizabeth to James so
-James' crash notifications get sent to her:</p>
-
-<pre class="code">&gt;&gt; james = JamesDean.new
- =&gt; #&lt;Celluloid::Actor(JamesDean:0x11b8)&gt;
-&gt;&gt; elizabeth = ElizabethTaylor.new
- =&gt; #&lt;Celluloid::Actor(ElizabethTaylor:0x11f0)&gt;
-&gt;&gt; elizabeth.link james
- =&gt; #&lt;Celluloid::Actor(JamesDean:0x11b8)&gt;
-&gt;&gt; james.drive_little_bastard!
- =&gt; nil
-Oh no! #&lt;Celluloid::Actor(JamesDean:0x11b8) dead&gt; has died because of a JamesDean::CarInMyLaneError
-</pre>
-
-<p>Elizabeth called the <em>link</em> method to receive crash events from James. Because
-Elizabeth was linked to James, when James crashed, James' exit message was
-sent to her. Because Elizabeth was trapping the exit messages she received
-using the trap_exit method, the callback she specified was invoked, allowing
-her to take action (in this case, printing the error). But what would happen
-if she weren't trapping exits? Let's break James apart into two separate
-objects, one for James himself and one for Little Bastard, his car:</p>
-
-<pre class="code"><span class='kw'>class</span> <span class='const'>PorscheSpider</span>
-  <span class='id include'>include</span> <span class='const'>Celluloid</span>
-  <span class='kw'>class</span> <span class='const'>CarInMyLaneError</span> <span class='op'>&lt;</span> <span class='const'>StandardError</span><span class='semicolon'>;</span> <span class='kw'>end</span>
-
-  <span class='kw'>def</span> <span class='id drive_on_route_466'>drive_on_route_466</span>
-    <span class='id raise'>raise</span> <span class='const'>CarInMyLaneError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>head on collision :(</span><span class='tstring_end'>&quot;</span></span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span>
-
-<span class='kw'>class</span> <span class='const'>JamesDean</span>
-  <span class='id include'>include</span> <span class='const'>Celluloid</span>
-
-  <span class='kw'>def</span> <span class='id initialize'>initialize</span>
-    <span class='ivar'>@little_bastard</span> <span class='op'>=</span> <span class='const'>PorscheSpider</span><span class='period'>.</span><span class='id new_link'>new_link</span>
-  <span class='kw'>end</span>
-
-  <span class='kw'>def</span> <span class='id drive_little_bastard'>drive_little_bastard</span>
-    <span class='ivar'>@little_bastard</span><span class='period'>.</span><span class='id drive_on_route_466'>drive_on_route_466</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span>
-</pre>
-
-<p>If you take a look in JamesDean#initialize, you'll notice that to create an
-instance of PorcheSpider, James is calling the new_link method.</p>
-
-<p>This method works similarly to <em>new</em>, except it combines <em>new</em> and <em>link</em>
-into a single call.</p>
-
-<p>Now what happens if we repeat the same scenario with Elizabeth Taylor watching
-for James Dean's crash?</p>
-
-<pre class="code">&gt;&gt; james = JamesDean.new
- =&gt; #&lt;Celluloid::Actor(JamesDean:0x1108) @little_bastard=#&lt;Celluloid::Actor(PorscheSpider:0x10ec)&gt;&gt;
-&gt;&gt; elizabeth = ElizabethTaylor.new
- =&gt; #&lt;Celluloid::Actor(ElizabethTaylor:0x1144)&gt;
-&gt;&gt; elizabeth.link james
- =&gt; #&lt;Celluloid::Actor(JamesDean:0x1108) @little_bastard=#&lt;Celluloid::Actor(PorscheSpider:0x10ec)&gt;&gt;
-&gt;&gt; james.drive_little_bastard!
- =&gt; nil
-Oh no! #&lt;Celluloid::Actor(JamesDean:0x1108) dead&gt; has died because of a PorscheSpider::CarInMyLaneError
-</pre>
-
-<p>When Little Bastard crashed, it killed James as well. Little Bastard killed
-James, and because Elizabeth was trapping James' exit events, she received the
-notification of James' death.</p>
-
-<p>Actors that are linked together propagate their error messages to all other
-actors that they're linked to. Unless those actors are trapping exit events,
-those actors too will die, like James did in this case. If you have many,
-many actors linked together in a large object graph, killing one will kill them
-all unless they are trapping exits.</p>
-
-<p>This allows you to factor your problem into several actors. If an error occurs
-in any of them, it will kill off all actors used in a particular system. In
-general, you'll probably want to have a supervisor start a single actor which
-is in charge of a particular part of your system, and have that actor
-new_link to other actors which are part of the same system. If any error
-occurs in any of these actors, all of them will be killed off and the entire
-subsystem will be restarted by the supervisor in a clean state.</p>
-
-<p>If, for any reason, you've linked to an actor and want to sever the link,
-there's a corresponding <em>unlink</em> method to remove links between actors.</p>
-
-<h2>Registry</h2>
-
-<p>Celluloid lets you register actors so you can refer to them symbolically.
-You can register Actors using Celluloid::Actor[]:</p>
-
-<pre class="code">&gt;&gt; james = JamesDean.new
- =&gt; #&lt;Celluloid::Actor(JamesDean:0x80c27ce0)&gt;
-&gt;&gt; Celluloid::Actor[:james] = james
- =&gt; #&lt;Celluloid::Actor(JamesDean:0x80c27ce0)&gt;
-&gt;&gt; Celluloid::Actor[:james]
- =&gt; #&lt;Celluloid::Actor(JamesDean:0x80c27ce0)&gt;
-</pre>
-
-<p>The Celluloid::Actor constant acts as a hash, allowing you to register actors
-under the name of your choosing, and access actors by name rather than
-reference. This is important because actors may crash. If you're attempting to
-reference an actor explicitly by storing it in a variable, you may be holding
-onto a reference to a crashed copy of that actor, rather than talking to a
-working, freshly-restarted version.</p>
-
-<p>The main use of the registry is for interfacing with actors that are
-automatically restarted by supervisors when they crash.</p>
-
-<h2>Applications</h2>
-
-<p>Celluloid provides a DSL for describing all of the actors in a given
-application. This lets you start a group of actors in one swoop and
-also provides an additional level of supervision: applications supervise
-the supervisors of all the actors in your system, an approach known
-as supervision trees.</p>
-
-<p>Define Celluloid::Applications with the following syntax:</p>
-
-<pre class="code"><span class='kw'>class</span> <span class='const'>MyApplication</span> <span class='op'>&lt;</span> <span class='const'>Celluloid</span><span class='op'>::</span><span class='const'>Application</span>
-  <span class='id supervise'>supervise</span> <span class='const'>MyActor</span><span class='comma'>,</span> <span class='symbol'>:as</span> <span class='op'>=&gt;</span> <span class='symbol'>:my_actor</span>
-  <span class='id supervise'>supervise</span> <span class='const'>AnotherActor</span><span class='comma'>,</span> <span class='symbol'>:as</span> <span class='op'>=&gt;</span> <span class='symbol'>:another_actor</span>
-<span class='kw'>end</span>
-</pre>
-
-<p>This will start the MyActor and AnotherActor actors under a supervisor and
-automatically register them as Celluloid::Actor[:my_actor] and
-Celluloid::Actor[:another_actor].</p>
-
-<p>To launch your application, do:</p>
-
-<pre class="code"><span class='const'>MyApplication</span><span class='period'>.</span><span class='id run'>run</span>
-</pre>
-
-<p>This launches your application in the foreground. To launch in in the
-background, do:</p>
-
-<pre class="code"><span class='const'>MyApplication</span><span class='period'>.</span><span class='id run!'>run!</span>
-</pre>
-
-<h2>Signaling</h2>
-
-<p>Signaling is an advanced technique similar to condition variables in typical
-multithreaded programming. One method within a concurrent object can suspend
-itself waiting for a particular event, allowing other methods to run. Another
-method can then signal all methods waiting for a particular event, and even
-send them a value in the process:</p>
-
-<pre class="code"><span class='kw'>class</span> <span class='const'>SignalingExample</span>
-  <span class='id include'>include</span> <span class='const'>Celluloid</span>
-  <span class='id attr_reader'>attr_reader</span> <span class='symbol'>:signaled</span>
-
-  <span class='kw'>def</span> <span class='id initialize'>initialize</span>
-    <span class='ivar'>@signaled</span> <span class='op'>=</span> <span class='kw'>false</span>
-  <span class='kw'>end</span>
-
-  <span class='kw'>def</span> <span class='id wait_for_signal'>wait_for_signal</span>
-    <span class='id value'>value</span> <span class='op'>=</span> <span class='id wait'>wait</span> <span class='symbol'>:ponycopter</span>
-    <span class='ivar'>@signaled</span> <span class='op'>=</span> <span class='kw'>true</span>
-    <span class='id value'>value</span>
-  <span class='kw'>end</span>
-
-  <span class='kw'>def</span> <span class='id send_signal'>send_signal</span><span class='lparen'>(</span><span class='id value'>value</span><span class='rparen'>)</span>
-    <span class='id signal'>signal</span> <span class='symbol'>:ponycopter</span><span class='comma'>,</span> <span class='id value'>value</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span>
-</pre>
-
-<p>The #wait_for_signal method in turn calls a method called "wait". Wait suspends
-the running method until another method of the same object calls the "signal"
-method with the same label.</p>
-
-<p>The #send_signal method of this class does just that, signaling "ponycopter"
-with the given value. This value is returned from the original wait call.</p>
-
-<h2>Protocol Interaction</h2>
-
-<p>The asynchronous message protocol Celluloid uses can be used directly to add
-new behavior to actors.</p>
-
-<p>To send a raw asynchronous message to an actor, use:</p>
-
-<pre class="code"><span class='id actor'>actor</span><span class='period'>.</span><span class='id mailbox'>mailbox</span> <span class='op'>&lt;&lt;</span> <span class='const'>MyMessage</span><span class='period'>.</span><span class='id new'>new</span>
-</pre>
-
-<p>Methods can wait on incoming MyMessage objects using the #receive method:</p>
-
-<pre class="code"><span class='kw'>class</span> <span class='const'>MyActor</span>
-  <span class='kw'>def</span> <span class='id initialize'>initialize</span>
-    <span class='id wait_for_my_messages!'>wait_for_my_messages!</span>
-  <span class='kw'>end</span>
-
-  <span class='kw'>def</span> <span class='id wait_for_my_messages'>wait_for_my_messages</span>
-    <span class='id loop'>loop</span> <span class='kw'>do</span>
-      <span class='id message'>message</span> <span class='op'>=</span> <span class='id receive'>receive</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id msg'>msg</span><span class='op'>|</span> <span class='id msg'>msg</span><span class='period'>.</span><span class='id is_a?'>is_a?</span> <span class='const'>MyMessage</span> <span class='rbrace'>}</span>
-      <span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Got a MyMessage: </span><span class='embexpr_beg'>#{</span><span class='id message'>message</span><span class='period'>.</span><span class='id inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
-    <span class='kw'>end</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span>
-</pre>
-
-<p>The #receive method takes a block, and yields any incoming messages which are
-received by the current actor to the block, waiting for the block to return
-true. Calls to #receive sleep until a message is received which makes the
-block return true, at which point the matching message is returned.</p>
-
-<h2>Handling I/O with Celluloid::IO</h2>
-
-<p>Celluloid provides a separate class of actors which run alongside I/O
-operations. These actors are slower and more heavyweight and should only be
-used when writing actors that also handle IO operations. Every IO actor will
-use 2 file descriptors (it uses a pipe for signaling), so use them sparingly
-and only when directly interacting with IO.</p>
-
-<p>To create an IO actor, include Celluloid::IO:</p>
-
-<pre class="code"><span class='kw'>class</span> <span class='const'>IOActor</span>
-  <span class='id include'>include</span> <span class='const'>Celluloid</span><span class='op'>::</span><span class='const'>IO</span>
-
-  <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id sock'>sock</span><span class='rparen'>)</span>
-    <span class='ivar'>@sock</span> <span class='op'>=</span> <span class='id sock'>sock</span>
-  <span class='kw'>end</span>
-
-  <span class='kw'>def</span> <span class='id read'>read</span>
-    <span class='id wait_readable'>wait_readable</span><span class='lparen'>(</span><span class='ivar'>@sock</span><span class='rparen'>)</span> <span class='kw'>do</span>
-      <span class='ivar'>@sock</span><span class='period'>.</span><span class='id read_nonblock'>read_nonblock</span>
-    <span class='kw'>end</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span>
-</pre>
-
-<p>The Celluloid::IO#wait_readable and #wait_writeable methods suspend execution
-of the current method until the given IO object is ready to be read from or
-written to respectively. In the meantime, the current actor will continue
-processing incoming messages, allowing it to respond to method requests even
-while a method (or many methods) are waiting on IO objects.</p>
-
-<h2>Logging</h2>
-
-<p>By default, Celluloid will log any errors and backtraces from any crashing
-actors to STDOUT. However, if you wish you can use any logger which is
-duck typed with the standard Ruby Logger API (i.e. it implements the #error
-method). For example, if you're using Celluloid within a Rails
-application, you'll probably want to do:</p>
-
-<pre class="code"><span class='const'>Celluloid</span><span class='period'>.</span><span class='id logger'>logger</span> <span class='op'>=</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id logger'>logger</span>
-</pre>
-
-<p>The logger class you specify must be thread-safe, although with a logging
-API about the worst you have to worry about with thread safety bugs is
-out-of-order messages in the log.</p>
-
-<h2>Implementation and Gotchas</h2>
-
-<p>Celluloid is fundamentally a messaging system which uses thread-safe proxies
-to manage all inter-object communication in the system. While the goal of
-these proxies is to make it simple for you to write concurrent programs by
-applying the uniform access principle to thread-safe inter-object messaging,
-you can't simply forget they're there.</p>
-
-<p>The thread-safety guarantees Celluloid provides around synchronizing access to
-instance variables only work so long as all access to actors go through the
-proxy objects. If the real objects that Celluloid is wrapping in an actor
-manage to leak out of the system, all hell will break loose.</p>
-
-<p>Here are a few rules you can follow to keep this from happening:</p>
-
-<ol>
-<li><p><strong><em>NEVER RETURN SELF</em></strong> (or pass self as an argument to other actors): in
-cases where you want to pass an actor around to other actors or threads,
-use Celluloid.current_actor, or if you're within an actor itself, you can
-just call the #current_actor method. If you really need to get ahold of
-"self" in order to add instance-specific behavior, e.g for metaprogramming
-purposes or adding stubs during tests, call MyActor#wrapped_object to
-obtain the actual object an actor is wrapping.</p></li>
-<li><p>Don't mutate the state of objects you've sent in calls to other actors:
-This means you must think about data in one of two different ways: either
-you "fire and forget" the data, leaving it for other actors to do with
-what they will, or you must treat it as immutable if you have any plans
-of sharing it with other actors. If you're paranoid (and when you're
-dealing with concurrency, there's nothing wrong with being paranoid),
-you can freeze objects so you can detect subsequent mutations (or rather,
-turn attempts at mutation into errors).</p></li>
-<li><p>Don't mix Ruby thread primitives and calls to other actors: if you make
-a call to another actor with a mutex held, you're doing it wrong. It's
-perfectly fine and strongly encouraged to call out to thread safe
-libraries from Celluloid actors. However, if you're using libraries that
-acquire mutexes and then execute callbacks (e.g. they take a block while
-they're holding a mutex) the guarantees that Celluloid provides will
-become weak and you may encounter deadlocks.</p></li>
-<li><p>Use Fibers at your own risk: Celluloid employs Fibers as an intrinsic part
-of how it implements actors. While it's possible for certain uses of Fibers
-to cooperatively work alongside how Celluloid behaves, in most cases you'll
-be writing a check you can't afford. So please ask yourself: why are you
-using Fibers, and why can't it be solved by a block? If you've got a really
-good reason and you're feeling lucky, knock yourself out.</p></li>
-<li><p>If you need to mock the behaviour of an Actor, you should mock its subject
-rather than the proxy itself (#actor_subject). This ensures that any time
-the subject calls methods on self, they will also be appropriately mocked.</p></li>
-</ol>
-
-
-<h2>On Thread Safety in Ruby</h2>
-
-<p>Ruby actually has a pretty good story when it comes to thread safety. The best
-strategy for thread safety is to share as little state as possible, and if
-you do share state, you should never mutate it. The worry of anyone stepping
-into a thread safe world is that you're using a bunch of legacy libraries with
-dubious thread safety. Who knows what those crazy library authors were doing?</p>
-
-<p>Relax people. You're using a language where somebody can change what the '+'
-operator does to numbers. So why aren't we afraid to add numbers? Who knows
-what those crazy library authors may have done! Instead of freaking out, we
-can learn some telltale signs of things that will cause thread safety problems
-in Ruby programs so we can identify potential problem libraries just from how
-their APIs behave.</p>
-
-<p>The #1 thread safety issue to look out for in a Ruby library is if it provides
-some sort of singleton access to a particular object through a class method,
-e.g MyClass.zomgobject, as opposed to asking you do do MyClass.new. If you
-aren't allocating the object, it isn't yours, it's somebody else's, and you
-better damn well make sure you can share nice, or you shouldn't play with it
-at all.</p>
-
-<p>How do we share nicely? Let's find out by first looking at a thread-unsafe
-version of a singleton method:</p>
-
-<pre class="code"><span class='kw'>class</span> <span class='const'>Foo</span>
-  <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id current'>current</span>
-    <span class='ivar'>@foo</span> <span class='op'>||=</span> <span class='const'>Foo</span><span class='period'>.</span><span class='id new'>new</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span>
-</pre>
-
-<p>Seems bad. All threads will share access to the same Foo object, and there's
-also a secondary bug here which means when the object is first being allocated
-and memoized as @foo. The first thread that tries to allocate it may get a
-different version than all the other threads because the memo value it set
-got clobbered by another thread because it's unsynchronized.</p>
-
-<p>What else can we do? It depends on why the library is memoizing. Perhaps the
-Foo object has some kind of setup cost, such as making a network connection,
-and we want to keep it around instead of setting it up and tearing it down
-every time. If that's the case, the simplest thing we can do to make this
-code thread safe is to create a thread-specific memo of the object:</p>
-
-<pre class="code"><span class='kw'>class</span> <span class='const'>Foo</span>
-  <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id current'>current</span>
-    <span class='const'>Thread</span><span class='period'>.</span><span class='id current'>current</span><span class='lbracket'>[</span><span class='symbol'>:foo</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='const'>Foo</span><span class='period'>.</span><span class='id new'>new</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span>
-</pre>
-
-<p>Keep in mind that this will require N Foo objects for N threads. If each
-object is wrapping a network connection, this might be a concern. That said,
-if you see this pattern employed in the singleton methods of a library,
-it's most likely thread safe, provided that Foo doesn't do other wonky things.</p>
+two features of Celluloid called <a href="https://github.com/tarcieri/celluloid/wiki/supervisors">supervisors</a>
+and <a href="https://github.com/tarcieri/celluloid/wiki/linking">linking</a></p>
+
+<p><a href="https://github.com/tarcieri/celluloid/wiki">Please see the Celluloid Wiki</a>
+for additional usage information.</p>
 
 <h2>Contributing to Celluloid</h2>
 
 <ul>
 <li>Fork Celluloid on github</li>
 <li>Make your changes and send me a pull request</li>
-<li>If I like them I'll merge them and give you commit access to my repository</li>
+<li>If I like them I&#39;ll merge them and give you commit access to my repository</li>
 </ul>
 
+<h2>License</h2>
 
-<h2>Copyright</h2>
-
-<p>Copyright (c) 2011 Tony Arcieri. See LICENSE.txt for further details.</p>
+<p>Copyright (c) 2011 Tony Arcieri. Distributed under the MIT License. See
+LICENSE.txt for further details.</p>
 </div></div>
     
     <div id="footer">
-  Generated on Tue Nov 29 19:57:52 2011 by 
+  Generated on Thu Dec 29 11:58:02 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.3 (ruby-1.9.3).
+  0.7.4 (ruby-1.9.3).
 </div>
 
   </body>

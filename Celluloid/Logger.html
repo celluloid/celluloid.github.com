@@ -6,7 +6,7 @@
 <title>
   Module: Celluloid::Logger
   
-    &mdash; Documentation by YARD 0.7.3
+    &mdash; Documentation by YARD 0.7.4
   
 </title>
 
@@ -130,7 +130,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Print a debug message.</p>
+<p>Send a debug message.</p>
 </div></span>
   
 </li>
@@ -153,7 +153,30 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Print an error message.</p>
+<p>Send an error message.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#info-instance_method" title="#info (instance method)">- (Object) <strong>info</strong>(string) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Send a info message.</p>
 </div></span>
   
 </li>
@@ -176,7 +199,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Print a warning message.</p>
+<p>Send a warning message.</p>
 </div></span>
   
 </li>
@@ -215,19 +238,19 @@
       <pre class="lines">
 
 
-21
-22
-23
-24
-25</pre>
+26
+27
+28
+29
+30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/logger.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/logger.rb', line 26</span>
 
-<span class='kw'>def</span> <span class='id crash'>crash</span><span class='lparen'>(</span><span class='id string'>string</span><span class='comma'>,</span> <span class='id exception'>exception</span><span class='rparen'>)</span>
-  <span class='id string'>string</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='embexpr_beg'>#{</span><span class='id exception'>exception</span><span class='period'>.</span><span class='id class'>class</span><span class='rbrace'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id exception'>exception</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='rbrace'>}</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
-  <span class='id string'>string</span> <span class='op'>&lt;&lt;</span> <span class='id exception'>exception</span><span class='period'>.</span><span class='id backtrace'>backtrace</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-  <span class='id error'>error</span><span class='lparen'>(</span><span class='id string'>string</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_crash'>crash</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='comma'>,</span> <span class='id identifier rubyid_exception'>exception</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_string'>string</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_exception'>exception</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='rbrace'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_exception'>exception</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rbrace'>}</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_string'>string</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_exception'>exception</span><span class='period'>.</span><span class='id identifier rubyid_backtrace'>backtrace</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_error'>error</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -244,7 +267,7 @@
 </p><div class="docstring">
   <div class="discussion">
     
-<p>Print a debug message</p>
+<p>Send a debug message</p>
 
 
   </div>
@@ -265,8 +288,8 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/logger.rb', line 6</span>
 
-<span class='kw'>def</span> <span class='id debug'>debug</span><span class='lparen'>(</span><span class='id string'>string</span><span class='rparen'>)</span>
-  <span class='const'>Celluloid</span><span class='period'>.</span><span class='id logger'>logger</span><span class='period'>.</span><span class='id debug'>debug</span><span class='lparen'>(</span><span class='id string'>string</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='const'>Celluloid</span><span class='period'>.</span><span class='id logger'>logger</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+  <span class='const'>Celluloid</span><span class='period'>.</span><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='const'>Celluloid</span><span class='period'>.</span><span class='id identifier rubyid_logger'>logger</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -283,7 +306,7 @@
 </p><div class="docstring">
   <div class="discussion">
     
-<p>Print an error message</p>
+<p>Send an error message</p>
 
 
   </div>
@@ -297,15 +320,15 @@
       <pre class="lines">
 
 
-16
-17
-18</pre>
+21
+22
+23</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/logger.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/logger.rb', line 21</span>
 
-<span class='kw'>def</span> <span class='id error'>error</span><span class='lparen'>(</span><span class='id string'>string</span><span class='rparen'>)</span>
-  <span class='const'>Celluloid</span><span class='period'>.</span><span class='id logger'>logger</span><span class='period'>.</span><span class='id error'>error</span><span class='lparen'>(</span><span class='id string'>string</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='const'>Celluloid</span><span class='period'>.</span><span class='id logger'>logger</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_error'>error</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+  <span class='const'>Celluloid</span><span class='period'>.</span><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_error'>error</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='const'>Celluloid</span><span class='period'>.</span><span class='id identifier rubyid_logger'>logger</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -313,16 +336,16 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="warn-instance_method">
+  <p class="signature " id="info-instance_method">
   
-    - (<tt>Object</tt>) <strong>warn</strong>(string) 
+    - (<tt>Object</tt>) <strong>info</strong>(string) 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
     
-<p>Print a warning message</p>
+<p>Send a info message</p>
 
 
   </div>
@@ -343,8 +366,47 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/logger.rb', line 11</span>
 
-<span class='kw'>def</span> <span class='id warn'>warn</span><span class='lparen'>(</span><span class='id string'>string</span><span class='rparen'>)</span>
-  <span class='const'>Celluloid</span><span class='period'>.</span><span class='id logger'>logger</span><span class='period'>.</span><span class='id warn'>warn</span><span class='lparen'>(</span><span class='id string'>string</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='const'>Celluloid</span><span class='period'>.</span><span class='id logger'>logger</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+  <span class='const'>Celluloid</span><span class='period'>.</span><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='const'>Celluloid</span><span class='period'>.</span><span class='id identifier rubyid_logger'>logger</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="warn-instance_method">
+  
+    - (<tt>Object</tt>) <strong>warn</strong>(string) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Send a warning message</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+16
+17
+18</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/logger.rb', line 16</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_warn'>warn</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+  <span class='const'>Celluloid</span><span class='period'>.</span><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_warn'>warn</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='const'>Celluloid</span><span class='period'>.</span><span class='id identifier rubyid_logger'>logger</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -356,9 +418,9 @@
 </div>
     
     <div id="footer">
-  Generated on Tue Nov 29 19:57:53 2011 by 
+  Generated on Thu Dec 29 11:58:03 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.3 (ruby-1.9.3).
+  0.7.4 (ruby-1.9.3).
 </div>
 
   </body>

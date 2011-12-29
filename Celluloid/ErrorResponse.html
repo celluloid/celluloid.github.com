@@ -6,7 +6,7 @@
 <title>
   Class: Celluloid::ErrorResponse
   
-    &mdash; Documentation by YARD 0.7.3
+    &mdash; Documentation by YARD 0.7.4
   
 </title>
 
@@ -202,13 +202,13 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/responses.rb', line 16</span>
 
-<span class='kw'>def</span> <span class='id value'>value</span>
-  <span class='kw'>if</span> <span class='kw'>super</span><span class='period'>.</span><span class='id is_a?'>is_a?</span> <span class='const'>AbortError</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_value'>value</span>
+  <span class='kw'>if</span> <span class='kw'>super</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>AbortError</span>
     <span class='comment'># Aborts are caused by caller error, so ensure they capture the
 </span>    <span class='comment'># caller's backtrace instead of the receiver's
-</span>    <span class='id raise'>raise</span> <span class='kw'>super</span><span class='period'>.</span><span class='id cause'>cause</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='kw'>super</span><span class='period'>.</span><span class='id cause'>cause</span><span class='period'>.</span><span class='id message'>message</span><span class='rparen'>)</span>
+</span>    <span class='id identifier rubyid_raise'>raise</span> <span class='kw'>super</span><span class='period'>.</span><span class='id identifier rubyid_cause'>cause</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='kw'>super</span><span class='period'>.</span><span class='id identifier rubyid_cause'>cause</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
   <span class='kw'>else</span>
-    <span class='id raise'>raise</span> <span class='kw'>super</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='kw'>super</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -221,9 +221,9 @@
 </div>
     
     <div id="footer">
-  Generated on Tue Nov 29 19:57:53 2011 by 
+  Generated on Thu Dec 29 11:58:03 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.3 (ruby-1.9.3).
+  0.7.4 (ruby-1.9.3).
 </div>
 
   </body>

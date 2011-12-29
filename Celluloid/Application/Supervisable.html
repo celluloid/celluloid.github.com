@@ -6,7 +6,7 @@
 <title>
   Class: Celluloid::Application::Supervisable
   
-    &mdash; Documentation by YARD 0.7.3
+    &mdash; Documentation by YARD 0.7.4
   
 </title>
 
@@ -288,14 +288,14 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/application.rb', line 63</span>
 
-<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id klass'>klass</span><span class='comma'>,</span> <span class='id options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='ivar'>@klass</span> <span class='op'>=</span> <span class='id klass'>klass</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='ivar'>@klass</span> <span class='op'>=</span> <span class='id identifier rubyid_klass'>klass</span>
 
   <span class='comment'># Stringify keys :/
-</span>  <span class='id options'>options</span> <span class='op'>=</span> <span class='id options'>options</span><span class='period'>.</span><span class='id inject'>inject</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id h'>h</span><span class='comma'>,</span><span class='lparen'>(</span><span class='id k'>k</span><span class='comma'>,</span><span class='id v'>v</span><span class='rparen'>)</span><span class='op'>|</span> <span class='id h'>h</span><span class='lbracket'>[</span><span class='id k'>k</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id v'>v</span><span class='semicolon'>;</span> <span class='id h'>h</span> <span class='rbrace'>}</span>
+</span>  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_inject'>inject</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_h'>h</span><span class='comma'>,</span><span class='lparen'>(</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span><span class='id identifier rubyid_v'>v</span><span class='rparen'>)</span><span class='op'>|</span> <span class='id identifier rubyid_h'>h</span><span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_v'>v</span><span class='semicolon'>;</span> <span class='id identifier rubyid_h'>h</span> <span class='rbrace'>}</span>
 
-  <span class='ivar'>@as</span> <span class='op'>=</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>as</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
-  <span class='ivar'>@args</span> <span class='op'>=</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>args</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='ivar'>@as</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>as</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
+  <span class='ivar'>@args</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>args</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -341,7 +341,7 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/application.rb', line 61</span>
 
-<span class='kw'>def</span> <span class='id args'>args</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_args'>args</span>
   <span class='ivar'>@args</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -383,7 +383,7 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/application.rb', line 61</span>
 
-<span class='kw'>def</span> <span class='id as'>as</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_as'>as</span>
   <span class='ivar'>@as</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -425,7 +425,7 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/application.rb', line 61</span>
 
-<span class='kw'>def</span> <span class='id klass'>klass</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_klass'>klass</span>
   <span class='ivar'>@klass</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -460,8 +460,8 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/application.rb', line 73</span>
 
-<span class='kw'>def</span> <span class='id supervise'>supervise</span>
-  <span class='const'>Supervisor</span><span class='period'>.</span><span class='id new_link'>new_link</span><span class='lparen'>(</span><span class='ivar'>@as</span><span class='comma'>,</span> <span class='ivar'>@klass</span><span class='comma'>,</span> <span class='op'>*</span><span class='ivar'>@args</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_supervise'>supervise</span>
+  <span class='const'>Supervisor</span><span class='period'>.</span><span class='id identifier rubyid_new_link'>new_link</span><span class='lparen'>(</span><span class='ivar'>@as</span><span class='comma'>,</span> <span class='ivar'>@klass</span><span class='comma'>,</span> <span class='op'>*</span><span class='ivar'>@args</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -473,9 +473,9 @@
 </div>
     
     <div id="footer">
-  Generated on Tue Nov 29 19:57:53 2011 by 
+  Generated on Thu Dec 29 11:58:03 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.3 (ruby-1.9.3).
+  0.7.4 (ruby-1.9.3).
 </div>
 
   </body>
