@@ -351,7 +351,7 @@
       <pre class="code"><span class="info file"># File 'lib/celluloid/receivers.rb', line 58</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_match'>match</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
-  <span class='ivar'>@block</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='ivar'>@block</span>
+  <span class='ivar'>@block</span> <span class='op'>?</span> <span class='ivar'>@block</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='kw'>true</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -391,7 +391,7 @@
 </div>
     
     <div id="footer">
-  Generated on Thu Dec 29 11:58:03 2011 by 
+  Generated on Mon Jan 23 22:59:54 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.4 (ruby-1.9.3).
 </div>

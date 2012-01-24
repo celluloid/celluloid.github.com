@@ -175,6 +175,29 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#run_task-instance_method" title="#run_task (instance method)">- (Object) <strong>run_task</strong>(task, value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Run the given task, reporting errors that occur.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#send-instance_method" title="#send (instance method)">- (Object) <strong>send</strong>(name, value = nil) </a>
     
 
@@ -199,7 +222,7 @@ if any calls were signaled, or false otherwise.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#wait-instance_method" title="#wait (instance method)">- (Object) <strong>wait</strong>(name) </a>
+      <a href="#wait-instance_method" title="#wait (instance method)">- (Object) <strong>wait</strong>(signal) </a>
     
 
     
@@ -213,7 +236,7 @@ if any calls were signaled, or false otherwise.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Wait for the given signal name and return the associated value.</p>
+<p>Wait for the given signal and return the associated value.</p>
 </div></span>
   
 </li>
@@ -319,7 +342,50 @@ if any calls were signaled, or false otherwise.</p>
     
     
       <div class="method_details first">
-  <p class="signature first" id="send-instance_method">
+  <p class="signature first" id="run_task-instance_method">
+  
+    - (<tt>Object</tt>) <strong>run_task</strong>(task, value) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Run the given task, reporting errors that occur</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+44
+45
+46
+47
+48</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/signals.rb', line 44</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_run_task'>run_task</span><span class='lparen'>(</span><span class='id identifier rubyid_task'>task</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_task'>task</span><span class='period'>.</span><span class='id identifier rubyid_resume'>resume</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+<span class='kw'>rescue</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_ex'>ex</span>
+  <span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_crash'>crash</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>signaling error</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_ex'>ex</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="send-instance_method">
   
     - (<tt>Object</tt>) <strong>send</strong>(name, value = nil) 
   
@@ -343,23 +409,37 @@ if any calls were signaled, or false otherwise</p>
       <pre class="lines">
 
 
-19
-20
-21
-22
-23
-24
-25</pre>
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/signals.rb', line 19</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/signals.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_tasks'>tasks</span> <span class='op'>=</span> <span class='ivar'>@waiting</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span> <span class='id identifier rubyid_name'>name</span>
-  <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id identifier rubyid_tasks'>tasks</span>
 
-  <span class='id identifier rubyid_tasks'>tasks</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_task'>task</span><span class='op'>|</span> <span class='id identifier rubyid_task'>task</span><span class='period'>.</span><span class='id identifier rubyid_resume'>resume</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_task'>task</span><span class='period'>.</span><span class='id identifier rubyid_running?'>running?</span> <span class='rbrace'>}</span>
-  <span class='id identifier rubyid_value'>value</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_tasks'>tasks</span>
+  <span class='kw'>when</span> <span class='const'>Array</span>
+    <span class='id identifier rubyid_tasks'>tasks</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_task'>task</span><span class='op'>|</span> <span class='id identifier rubyid_run_task'>run_task</span> <span class='id identifier rubyid_task'>task</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span> <span class='rbrace'>}</span>
+    <span class='kw'>true</span> <span class='kw'>if</span> <span class='id identifier rubyid_tasks'>tasks</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>&gt;</span> <span class='int'>0</span>
+  <span class='kw'>when</span> <span class='const'>NilClass</span>
+    <span class='kw'>false</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_run_task'>run_task</span> <span class='id identifier rubyid_tasks'>tasks</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span>
+    <span class='kw'>true</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -369,14 +449,14 @@ if any calls were signaled, or false otherwise</p>
       <div class="method_details ">
   <p class="signature " id="wait-instance_method">
   
-    - (<tt>Object</tt>) <strong>wait</strong>(name) 
+    - (<tt>Object</tt>) <strong>wait</strong>(signal) 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
     
-<p>Wait for the given signal name and return the associated value</p>
+<p>Wait for the given signal and return the associated value</p>
 
 
   </div>
@@ -394,15 +474,33 @@ if any calls were signaled, or false otherwise</p>
 12
 13
 14
-15</pre>
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/signals.rb', line 11</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_wait'>wait</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_tasks'>tasks</span> <span class='op'>=</span> <span class='ivar'>@waiting</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='id identifier rubyid_tasks'>tasks</span> <span class='op'>&lt;&lt;</span> <span class='const'>Task</span><span class='period'>.</span><span class='id identifier rubyid_current'>current</span>
-  <span class='const'>Task</span><span class='period'>.</span><span class='id identifier rubyid_suspend'>suspend</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_wait'>wait</span><span class='lparen'>(</span><span class='id identifier rubyid_signal'>signal</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_tasks'>tasks</span> <span class='op'>=</span> <span class='ivar'>@waiting</span><span class='lbracket'>[</span><span class='id identifier rubyid_signal'>signal</span><span class='rbracket'>]</span>
+
+  <span class='kw'>case</span> <span class='id identifier rubyid_tasks'>tasks</span>
+  <span class='kw'>when</span> <span class='const'>Array</span>
+    <span class='id identifier rubyid_tasks'>tasks</span> <span class='op'>&lt;&lt;</span> <span class='const'>Task</span><span class='period'>.</span><span class='id identifier rubyid_current'>current</span>
+  <span class='kw'>when</span> <span class='const'>NilClass</span>
+    <span class='ivar'>@waiting</span><span class='lbracket'>[</span><span class='id identifier rubyid_signal'>signal</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Task</span><span class='period'>.</span><span class='id identifier rubyid_current'>current</span>
+  <span class='kw'>else</span>
+    <span class='ivar'>@waiting</span><span class='lbracket'>[</span><span class='id identifier rubyid_signal'>signal</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='id identifier rubyid_tasks'>tasks</span><span class='comma'>,</span> <span class='const'>Task</span><span class='period'>.</span><span class='id identifier rubyid_current'>current</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+
+  <span class='const'>Task</span><span class='period'>.</span><span class='id identifier rubyid_suspend'>suspend</span> <span class='symbol'>:sigwait</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -414,7 +512,7 @@ if any calls were signaled, or false otherwise</p>
 </div>
     
     <div id="footer">
-  Generated on Thu Dec 29 11:58:03 2011 by 
+  Generated on Mon Jan 23 22:59:54 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.4 (ruby-1.9.3).
 </div>

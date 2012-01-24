@@ -117,52 +117,6 @@ state.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#new-instance_method" title="#new (instance method)">- (Object) <strong>new</strong>(*args, &amp;block) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>Ensure FSMs transition into the default state after they're initialized.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#new_link-instance_method" title="#new_link (instance method)">- (Object) <strong>new_link</strong>(*args, &amp;block) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>Ensure FSMs transition into the default state after they're initialized.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
       <a href="#state-instance_method" title="#state (instance method)">- (Object) <strong>state</strong>(*args, &amp;block) </a>
     
 
@@ -243,16 +197,16 @@ Options:</p>
       <pre class="lines">
 
 
-30
-31
-32
-33
-34
-35
-36</pre>
+17
+18
+19
+20
+21
+22
+23</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/fsm.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/fsm.rb', line 17</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_default_state'>default_state</span><span class='lparen'>(</span><span class='id identifier rubyid_new_default'>new_default</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_new_default'>new_default</span>
@@ -260,92 +214,6 @@ Options:</p>
   <span class='kw'>else</span>
     <span class='kw'>defined?</span><span class='lparen'>(</span><span class='ivar'>@default_state</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='ivar'>@default_state</span> <span class='op'>:</span> <span class='const'>DEFAULT_STATE</span>
   <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="new-instance_method">
-  
-    - (<tt>Object</tt>) <strong>new</strong>(*args, &amp;block) 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    
-<p>Ensure FSMs transition into the default state after they're initialized</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-15
-16
-17
-18
-19</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/fsm.rb', line 15</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_fsm'>fsm</span> <span class='op'>=</span> <span class='kw'>super</span>
-  <span class='id identifier rubyid_fsm'>fsm</span><span class='period'>.</span><span class='id identifier rubyid_transition'>transition</span> <span class='id identifier rubyid_default_state'>default_state</span>
-  <span class='id identifier rubyid_fsm'>fsm</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="new_link-instance_method">
-  
-    - (<tt>Object</tt>) <strong>new_link</strong>(*args, &amp;block) 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    
-<p>Ensure FSMs transition into the default state after they're initialized</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-22
-23
-24
-25
-26</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/fsm.rb', line 22</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_new_link'>new_link</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_fsm'>fsm</span> <span class='op'>=</span> <span class='kw'>super</span>
-  <span class='id identifier rubyid_fsm'>fsm</span><span class='period'>.</span><span class='id identifier rubyid_transition'>transition</span> <span class='id identifier rubyid_default_state'>default_state</span>
-  <span class='id identifier rubyid_fsm'>fsm</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -380,31 +248,35 @@ Options:</p>
       <pre class="lines">
 
 
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57</pre>
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/fsm.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/fsm.rb', line 33</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_state'>state</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>Hash</span>
-    <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_pop'>pop</span><span class='period'>.</span><span class='id identifier rubyid_inject'>inject</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_h'>h</span><span class='comma'>,</span><span class='lparen'>(</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span><span class='id identifier rubyid_v'>v</span><span class='rparen'>)</span><span class='op'>|</span> <span class='id identifier rubyid_h'>h</span><span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_v'>v</span><span class='semicolon'>;</span> <span class='id identifier rubyid_h'>h</span> <span class='rbrace'>}</span>
+    <span class='comment'># Stringify keys :/
+</span>    <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_pop'>pop</span><span class='period'>.</span><span class='id identifier rubyid_inject'>inject</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_h'>h</span><span class='comma'>,</span><span class='lparen'>(</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span><span class='id identifier rubyid_v'>v</span><span class='rparen'>)</span><span class='op'>|</span> <span class='id identifier rubyid_h'>h</span><span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_v'>v</span><span class='semicolon'>;</span> <span class='id identifier rubyid_h'>h</span> <span class='rbrace'>}</span>
   <span class='kw'>else</span>
     <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
   <span class='kw'>end</span>
 
   <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span>
     <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span>
+    <span class='id identifier rubyid_default_state'>default_state</span> <span class='id identifier rubyid_name'>name</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>default</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
     <span class='id identifier rubyid_states'>states</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>State</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>to</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
@@ -437,12 +309,12 @@ Options:</p>
       <pre class="lines">
 
 
-39
-40
-41</pre>
+26
+27
+28</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/fsm.rb', line 39</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/fsm.rb', line 26</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_states'>states</span>
   <span class='ivar'>@states</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -457,7 +329,7 @@ Options:</p>
 </div>
     
     <div id="footer">
-  Generated on Thu Dec 29 11:58:02 2011 by 
+  Generated on Mon Jan 23 22:59:54 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.4 (ruby-1.9.3).
 </div>

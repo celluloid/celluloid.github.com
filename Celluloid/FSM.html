@@ -98,7 +98,7 @@ href="http://www.erlang.org/doc/man/gen_fsm.html">www.erlang.org/doc/man/gen_fsm
     
    
     
-      <strong class="classes">Classes:</strong> <span class='object_link'><a href="FSM/State.html" title="Celluloid::FSM::State (class)">State</a></span>
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="FSM/State.html" title="Celluloid::FSM::State (class)">State</a></span>, <span class='object_link'><a href="FSM/UnattachedError.html" title="Celluloid::FSM::UnattachedError (class)">UnattachedError</a></span>
     
   
 </p>
@@ -126,6 +126,63 @@ href="http://www.erlang.org/doc/man/gen_fsm.html">www.erlang.org/doc/man/gen_fsm
     </dl>
   
 
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#actor-instance_method" title="#actor (instance method)">- (Object) <strong>actor</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute actor.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#state-instance_method" title="#state (instance method)">- (Object) <strong>state</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Obtain the current state of the FSM.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
 
 
 
@@ -173,11 +230,11 @@ href="http://www.erlang.org/doc/man/gen_fsm.html">www.erlang.org/doc/man/gen_fsm
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#current_state-instance_method" title="#current_state (instance method)">- (Object) <strong>current_state</strong> </a>
+      <a href="#attach-instance_method" title="#attach (instance method)">- (Object) <strong>attach</strong>(actor) </a>
     
 
     
-      (also: #state)
+      (also: #actor=)
     
   </span>
   
@@ -189,7 +246,30 @@ href="http://www.erlang.org/doc/man/gen_fsm.html">www.erlang.org/doc/man/gen_fsm
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Obtain the current state of the FSM.</p>
+<p>Attach this FSM to an actor.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (FSM) <strong>initialize</strong>(actor = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Be kind and call super if you must redefine initialize.</p>
 </div></span>
   
 </li>
@@ -248,6 +328,95 @@ href="http://www.erlang.org/doc/man/gen_fsm.html">www.erlang.org/doc/man/gen_fsm
   
 
 
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <span id="actor-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="actor-instance_method">
+  
+    - (<tt>Object</tt>) <strong>actor</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute actor</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+49
+50
+51</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/fsm.rb', line 49</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_actor'>actor</span>
+  <span class='ivar'>@actor</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="state-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="state-instance_method">
+  
+    - (<tt>Object</tt>) <strong>state</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Obtain the current state of the FSM</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+58
+59
+60</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/fsm.rb', line 58</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_state'>state</span>
+  <span class='ivar'>@state</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
 
   <div id="class_method_details" class="method_details_list">
     <h2>Class Method Details</h2>
@@ -277,17 +446,15 @@ href="http://www.erlang.org/doc/man/gen_fsm.html">www.erlang.org/doc/man/gen_fsm
       <pre class="lines">
 
 
-8
-9
 10
-11</pre>
+11
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/fsm.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/fsm.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_included'>included</span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='symbol'>:include</span><span class='comma'>,</span> <span class='const'>Celluloid</span>
-  <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='symbol'>:extend</span><span class='comma'>,</span>  <span class='const'>ClassMethods</span>
+  <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='symbol'>:extend</span><span class='comma'>,</span> <span class='const'>ClassMethods</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -301,20 +468,21 @@ href="http://www.erlang.org/doc/man/gen_fsm.html">www.erlang.org/doc/man/gen_fsm
     
     
       <div class="method_details first">
-  <p class="signature first" id="current_state-instance_method">
+  <p class="signature first" id="attach-instance_method">
   
-    - (<tt>Object</tt>) <strong>current_state</strong> 
+    - (<tt>Object</tt>) <strong>attach</strong>(actor) 
   
 
   
     <span class="aliases">Also known as:
-    <span class="names"><span id='state-instance_method'>state</span></span>
+    <span class="names"><span id='actor=-instance_method'>actor=</span></span>
     </span>
   
 </p><div class="docstring">
   <div class="discussion">
     
-<p>Obtain the current state of the FSM</p>
+<p>Attach this FSM to an actor. This allows FSMs to wait for and initiate
+events in the context of a particular actor</p>
 
 
   </div>
@@ -328,15 +496,56 @@ href="http://www.erlang.org/doc/man/gen_fsm.html">www.erlang.org/doc/man/gen_fsm
       <pre class="lines">
 
 
-61
 62
-63</pre>
+63
+64</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/fsm.rb', line 61</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/fsm.rb', line 62</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_current_state'>current_state</span>
-  <span class='kw'>defined?</span><span class='lparen'>(</span><span class='ivar'>@state</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='ivar'>@state</span> <span class='op'>:</span> <span class='ivar'>@state</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_default_state'>default_state</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_attach'>attach</span><span class='lparen'>(</span><span class='id identifier rubyid_actor'>actor</span><span class='rparen'>)</span>
+  <span class='ivar'>@actor</span> <span class='op'>=</span> <span class='id identifier rubyid_actor'>actor</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Celluloid::FSM (module)">FSM</a></span></tt>) <strong>initialize</strong>(actor = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Be kind and call super if you must redefine initialize</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+52
+53
+54
+55</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/fsm.rb', line 52</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_actor'>actor</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='ivar'>@state</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_default_state'>default_state</span>
+  <span class='ivar'>@actor</span> <span class='op'>=</span> <span class='id identifier rubyid_actor'>actor</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -375,7 +584,6 @@ cancel the pending state transition.</pre>
       <pre class="lines">
 
 
-73
 74
 75
 76
@@ -413,12 +621,10 @@ cancel the pending state transition.</pre>
 108
 109
 110
-111
-112
-113</pre>
+111</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/fsm.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/fsm.rb', line 74</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_transition'>transition</span><span class='lparen'>(</span><span class='id identifier rubyid_state_name'>state_name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_state_name'>state_name</span> <span class='op'>=</span> <span class='id identifier rubyid_state_name'>state_name</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span>
@@ -433,33 +639,30 @@ cancel the pending state transition.</pre>
 
   <span class='id identifier rubyid_new_state'>new_state</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_states'>states</span><span class='lbracket'>[</span><span class='id identifier rubyid_state_name'>state_name</span><span class='rbracket'>]</span>
 
-  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_new_state'>new_state</span> <span class='kw'>and</span> <span class='id identifier rubyid_state_name'>state_name</span> <span class='op'>==</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_default_state'>default_state</span>
-    <span class='comment'># FIXME This probably isn't thread safe... or wise
-</span>    <span class='id identifier rubyid_new_state'>new_state</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_states'>states</span><span class='lbracket'>[</span><span class='id identifier rubyid_state_name'>state_name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>State</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_state_name'>state_name</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-
-  <span class='kw'>if</span> <span class='id identifier rubyid_new_state'>new_state</span>
-    <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:delay</span><span class='rbracket'>]</span>
-      <span class='ivar'>@delayed_transition</span><span class='period'>.</span><span class='id identifier rubyid_cancel'>cancel</span> <span class='kw'>if</span> <span class='ivar'>@delayed_transition</span>
-
-      <span class='ivar'>@delayed_transition</span> <span class='op'>=</span> <span class='id identifier rubyid_after'>after</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:delay</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>do</span>
-        <span class='id identifier rubyid_transition!'>transition!</span> <span class='id identifier rubyid_new_state'>new_state</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>
-        <span class='id identifier rubyid_new_state'>new_state</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
-      <span class='kw'>end</span>
-
-      <span class='kw'>return</span> <span class='ivar'>@delayed_transition</span>
-    <span class='kw'>end</span>
-
-    <span class='kw'>if</span> <span class='kw'>defined?</span><span class='lparen'>(</span><span class='ivar'>@delayed_transition</span><span class='rparen'>)</span> <span class='kw'>and</span> <span class='ivar'>@delayed_transition</span>
-      <span class='ivar'>@delayed_transition</span><span class='period'>.</span><span class='id identifier rubyid_cancel'>cancel</span>
-      <span class='ivar'>@delayed_transition</span> <span class='op'>=</span> <span class='kw'>nil</span>
-    <span class='kw'>end</span>
-
-    <span class='id identifier rubyid_transition!'>transition!</span> <span class='id identifier rubyid_new_state'>new_state</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>
-    <span class='id identifier rubyid_new_state'>new_state</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
-  <span class='kw'>else</span>
+  <span class='kw'>unless</span> <span class='id identifier rubyid_new_state'>new_state</span>
+    <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_state_name'>state_name</span> <span class='op'>==</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_default_state'>default_state</span>
     <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>invalid state for </span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='rbrace'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_state_name'>state_name</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:delay</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>UnattachedError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>can't delay unless attached</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='ivar'>@actor</span>
+    <span class='ivar'>@delayed_transition</span><span class='period'>.</span><span class='id identifier rubyid_cancel'>cancel</span> <span class='kw'>if</span> <span class='ivar'>@delayed_transition</span>
+
+    <span class='ivar'>@delayed_transition</span> <span class='op'>=</span> <span class='ivar'>@actor</span><span class='period'>.</span><span class='id identifier rubyid_after'>after</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:delay</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_transition!'>transition!</span> <span class='id identifier rubyid_new_state'>new_state</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>
+      <span class='id identifier rubyid_new_state'>new_state</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>return</span> <span class='ivar'>@delayed_transition</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='kw'>defined?</span><span class='lparen'>(</span><span class='ivar'>@delayed_transition</span><span class='rparen'>)</span> <span class='kw'>and</span> <span class='ivar'>@delayed_transition</span>
+    <span class='ivar'>@delayed_transition</span><span class='period'>.</span><span class='id identifier rubyid_cancel'>cancel</span>
+    <span class='ivar'>@delayed_transition</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_transition!'>transition!</span> <span class='id identifier rubyid_new_state'>new_state</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>
+  <span class='id identifier rubyid_new_state'>new_state</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -490,12 +693,12 @@ cancel the pending state transition.</pre>
       <pre class="lines">
 
 
-116
-117
-118</pre>
+114
+115
+116</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/fsm.rb', line 116</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/fsm.rb', line 114</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_transition!'>transition!</span><span class='lparen'>(</span><span class='id identifier rubyid_state_name'>state_name</span><span class='rparen'>)</span>
   <span class='ivar'>@state</span> <span class='op'>=</span> <span class='id identifier rubyid_state_name'>state_name</span>
@@ -510,7 +713,7 @@ cancel the pending state transition.</pre>
 </div>
     
     <div id="footer">
-  Generated on Thu Dec 29 11:58:02 2011 by 
+  Generated on Mon Jan 23 22:59:54 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.4 (ruby-1.9.3).
 </div>

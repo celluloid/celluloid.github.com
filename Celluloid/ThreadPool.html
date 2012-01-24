@@ -4,24 +4,24 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
-  Class: Celluloid::Actor::Pool
+  Module: Celluloid::ThreadPool
   
     &mdash; Documentation by YARD 0.7.4
   
 </title>
 
-  <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
 
-  <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '../..';
+  relpath = '..';
   if (relpath != '') relpath += '/';
 </script>
 
-  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
 
-  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
 
 
   </head>
@@ -33,10 +33,10 @@
     <div id="header">
       <div id="menu">
   
-    <a href="../../_index.html">Index (P)</a> &raquo; 
-    <span class='title'><span class='object_link'><a href="../../Celluloid.html" title="Celluloid (module)">Celluloid</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Actor.html" title="Celluloid::Actor (class)">Actor</a></span></span>
+    <a href="../_index.html">Index (T)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../Celluloid.html" title="Celluloid (module)">Celluloid</a></span></span>
      &raquo; 
-    <span class="title">Pool</span>
+    <span class="title">ThreadPool</span>
   
   
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
@@ -56,7 +56,7 @@
     
     <iframe id="search_frame"></iframe>
     
-    <div id="content"><h1>Class: Celluloid::Actor::Pool
+    <div id="content"><h1>Module: Celluloid::ThreadPool
   
   
   
@@ -64,21 +64,6 @@
 
 <dl class="box">
   
-    <dt class="r1">Inherits:</dt>
-    <dd class="r1">
-      <span class="inheritName">Object</span>
-      
-        <ul class="fullTree">
-          <li>Object</li>
-          
-            <li class="next">Celluloid::Actor::Pool</li>
-          
-        </ul>
-        <a href="#" class="inheritanceTree">show all</a>
-      
-      </dd>
-    
-  
   
     
   
@@ -86,8 +71,8 @@
   
   
   
-    <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/celluloid/actor_pool.rb</dd>
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/celluloid/thread_pool.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -95,7 +80,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>Maintain a thread pool of actors FOR SPEED!!</p>
+<p>Maintain a thread pool FOR SPEED!!</p>
 
 
   </div>
@@ -163,7 +148,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Create a new thread with an associated queue of procs to run.</p>
+</div></span>
   
 </li>
 
@@ -184,7 +171,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Get a thread from the pool, running the given block.</p>
+</div></span>
   
 </li>
 
@@ -205,7 +194,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Return a thread to the pool.</p>
+</div></span>
   
 </li>
 
@@ -244,12 +235,12 @@
       <pre class="lines">
 
 
-12
 13
-14</pre>
+14
+15</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor_pool.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/thread_pool.rb', line 13</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_max_idle'>max_idle</span>
   <span class='ivar'>@max_idle</span>
@@ -273,16 +264,23 @@
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Create a new thread with an associated queue of procs to run</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-37
-38
-39
-40
 41
 42
 43
@@ -292,10 +290,14 @@
 47
 48
 49
-50</pre>
+50
+51
+52
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor_pool.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/thread_pool.rb', line 41</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
   <span class='id identifier rubyid_queue'>queue</span> <span class='op'>=</span> <span class='const'>Queue</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
@@ -323,14 +325,23 @@
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Get a thread from the pool, running the given block</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-14
-15
 16
 17
 18
@@ -340,10 +351,12 @@
 22
 23
 24
-25</pre>
+25
+26
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor_pool.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/thread_pool.rb', line 16</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='ivar'>@lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
@@ -369,24 +382,35 @@
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Return a thread to the pool</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-27
-28
-29
 30
 31
 32
 33
 34
-35</pre>
+35
+36
+37
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor_pool.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/thread_pool.rb', line 30</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_put'>put</span><span class='lparen'>(</span><span class='id identifier rubyid_thread'>thread</span><span class='rparen'>)</span>
   <span class='ivar'>@lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
@@ -407,7 +431,7 @@
 </div>
     
     <div id="footer">
-  Generated on Thu Dec 29 11:58:03 2011 by 
+  Generated on Mon Jan 23 22:59:55 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.4 (ruby-1.9.3).
 </div>

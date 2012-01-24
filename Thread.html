@@ -139,6 +139,29 @@
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#receive-class_method" title="receive (class method)">+ (Object) <strong>receive</strong>(&amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Receive a message either as an actor or through the local mailbox.</p>
+</div></span>
+  
+</li>
+
+      
     </ul>
   
 
@@ -172,15 +195,62 @@
       <pre class="lines">
 
 
-4
-5
-6</pre>
+6
+7
+8</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/core_ext.rb', line 4</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/core_ext.rb', line 6</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_mailbox'>mailbox</span>
   <span class='id identifier rubyid_current'>current</span><span class='lbracket'>[</span><span class='symbol'>:mailbox</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='const'>Celluloid</span><span class='op'>::</span><span class='const'>Mailbox</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="receive-class_method">
+  
+    + (<tt>Object</tt>) <strong>receive</strong>(&amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Receive a message either as an actor or through the local mailbox</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+11
+12
+13
+14
+15
+16
+17</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/core_ext.rb', line 11</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_receive'>receive</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='const'>Celluloid</span><span class='period'>.</span><span class='id identifier rubyid_actor?'>actor?</span>
+    <span class='const'>Celluloid</span><span class='period'>.</span><span class='id identifier rubyid_receive'>receive</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_mailbox'>mailbox</span><span class='period'>.</span><span class='id identifier rubyid_receive'>receive</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -192,7 +262,7 @@
 </div>
     
     <div id="footer">
-  Generated on Thu Dec 29 11:58:03 2011 by 
+  Generated on Mon Jan 23 22:59:54 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.4 (ruby-1.9.3).
 </div>

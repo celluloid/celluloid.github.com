@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
-  Class: Celluloid::Application::Supervisable
+  Class: Celluloid::Group::Supervisable
   
     &mdash; Documentation by YARD 0.7.4
   
@@ -34,7 +34,7 @@
       <div id="menu">
   
     <a href="../../_index.html">Index (S)</a> &raquo; 
-    <span class='title'><span class='object_link'><a href="../../Celluloid.html" title="Celluloid (module)">Celluloid</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Application.html" title="Celluloid::Application (class)">Application</a></span></span>
+    <span class='title'><span class='object_link'><a href="../../Celluloid.html" title="Celluloid (module)">Celluloid</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Group.html" title="Celluloid::Group (class)">Group</a></span></span>
      &raquo; 
     <span class="title">Supervisable</span>
   
@@ -56,7 +56,7 @@
     
     <iframe id="search_frame"></iframe>
     
-    <div id="content"><h1>Class: Celluloid::Application::Supervisable
+    <div id="content"><h1>Class: Celluloid::Group::Supervisable
   
   
   
@@ -71,7 +71,7 @@
         <ul class="fullTree">
           <li>Object</li>
           
-            <li class="next">Celluloid::Application::Supervisable</li>
+            <li class="next">Celluloid::Group::Supervisable</li>
           
         </ul>
         <a href="#" class="inheritanceTree">show all</a>
@@ -87,7 +87,7 @@
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/celluloid/application.rb</dd>
+    <dd class="r2 last">lib/celluloid/group.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -254,7 +254,7 @@
     <div class="method_details first">
   <p class="signature first" id="initialize-instance_method">
   
-    - (<tt><span class='object_link'><a href="" title="Celluloid::Application::Supervisable (class)">Supervisable</a></span></tt>) <strong>initialize</strong>(klass, options = {}) 
+    - (<tt><span class='object_link'><a href="" title="Celluloid::Group::Supervisable (class)">Supervisable</a></span></tt>) <strong>initialize</strong>(klass, options = {}) 
   
 
   
@@ -286,7 +286,7 @@
 71</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/application.rb', line 63</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/group.rb', line 63</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@klass</span> <span class='op'>=</span> <span class='id identifier rubyid_klass'>klass</span>
@@ -339,7 +339,7 @@
 63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/application.rb', line 61</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/group.rb', line 61</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_args'>args</span>
   <span class='ivar'>@args</span>
@@ -381,7 +381,7 @@
 63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/application.rb', line 61</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/group.rb', line 61</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_as'>as</span>
   <span class='ivar'>@as</span>
@@ -423,7 +423,7 @@
 63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/application.rb', line 61</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/group.rb', line 61</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_klass'>klass</span>
   <span class='ivar'>@klass</span>
@@ -458,7 +458,7 @@
 75</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/application.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/group.rb', line 73</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_supervise'>supervise</span>
   <span class='const'>Supervisor</span><span class='period'>.</span><span class='id identifier rubyid_new_link'>new_link</span><span class='lparen'>(</span><span class='ivar'>@as</span><span class='comma'>,</span> <span class='ivar'>@klass</span><span class='comma'>,</span> <span class='op'>*</span><span class='ivar'>@args</span><span class='rparen'>)</span>
@@ -473,7 +473,7 @@
 </div>
     
     <div id="footer">
-  Generated on Thu Dec 29 11:58:03 2011 by 
+  Generated on Mon Jan 23 22:59:54 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.4 (ruby-1.9.3).
 </div>

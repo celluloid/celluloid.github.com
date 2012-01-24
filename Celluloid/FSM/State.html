@@ -270,13 +270,13 @@
       <pre class="lines">
 
 
+122
+123
 124
-125
-126
-127</pre>
+125</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/fsm.rb', line 124</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/fsm.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_transitions'>transitions</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='ivar'>@name</span><span class='comma'>,</span> <span class='ivar'>@block</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_block'>block</span>
@@ -319,12 +319,12 @@
       <pre class="lines">
 
 
-122
-123
-124</pre>
+120
+121
+122</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/fsm.rb', line 122</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/fsm.rb', line 120</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
   <span class='ivar'>@name</span>
@@ -361,12 +361,12 @@
       <pre class="lines">
 
 
-122
-123
-124</pre>
+120
+121
+122</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/fsm.rb', line 122</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/fsm.rb', line 120</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_transitions'>transitions</span>
   <span class='ivar'>@transitions</span>
@@ -396,12 +396,12 @@
       <pre class="lines">
 
 
-129
-130
-131</pre>
+127
+128
+129</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/fsm.rb', line 129</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/fsm.rb', line 127</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_instance_eval'>instance_eval</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='ivar'>@block</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='ivar'>@block</span>
@@ -446,15 +446,15 @@
       <pre class="lines">
 
 
+131
+132
 133
 134
 135
-136
-137
-138</pre>
+136</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/fsm.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/fsm.rb', line 131</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_valid_transition?'>valid_transition?</span><span class='lparen'>(</span><span class='id identifier rubyid_new_state'>new_state</span><span class='rparen'>)</span>
   <span class='comment'># All transitions are allowed unless expressly
@@ -472,7 +472,7 @@
 </div>
     
     <div id="footer">
-  Generated on Thu Dec 29 11:58:02 2011 by 
+  Generated on Mon Jan 23 22:59:54 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.4 (ruby-1.9.3).
 </div>

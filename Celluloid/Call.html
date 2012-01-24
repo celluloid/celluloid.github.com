@@ -193,32 +193,6 @@
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#id-instance_method" title="#id (instance method)">- (Object) <strong>id</strong> </a>
-    
-
-    
-  </span>
-  
-  
-    <span class="note title readonly">readonly</span>
-    
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>Returns the value of attribute id.</p>
-</div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
       <a href="#method-instance_method" title="#method (instance method)">- (Object) <strong>method</strong> </a>
     
 
@@ -279,7 +253,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Call) <strong>initialize</strong>(caller, method, arguments, block) </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Call) <strong>initialize</strong>(caller, method, arguments = [], block = nil) </a>
     
 
     
@@ -310,7 +284,7 @@
     <div class="method_details first">
   <p class="signature first" id="initialize-instance_method">
   
-    - (<tt><span class='object_link'><a href="" title="Celluloid::Call (class)">Call</a></span></tt>) <strong>initialize</strong>(caller, method, arguments, block) 
+    - (<tt><span class='object_link'><a href="" title="Celluloid::Call (class)">Call</a></span></tt>) <strong>initialize</strong>(caller, method, arguments = [], block = nil) 
   
 
   
@@ -333,15 +307,13 @@
 
 6
 7
-8
-9</pre>
+8</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/calls.rb', line 6</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_caller'>caller</span><span class='comma'>,</span> <span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='comma'>,</span> <span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='ivar'>@id</span> <span class='op'>=</span> <span class='id identifier rubyid_object_id'>object_id</span> <span class='comment'># memoize object ID for serialization
-</span>  <span class='ivar'>@caller</span><span class='comma'>,</span> <span class='ivar'>@method</span><span class='comma'>,</span> <span class='ivar'>@arguments</span><span class='comma'>,</span> <span class='ivar'>@block</span> <span class='op'>=</span> <span class='id identifier rubyid_caller'>caller</span><span class='comma'>,</span> <span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='comma'>,</span> <span class='id identifier rubyid_block'>block</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_caller'>caller</span><span class='comma'>,</span> <span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='id identifier rubyid_arguments'>arguments</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_block'>block</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='ivar'>@caller</span><span class='comma'>,</span> <span class='ivar'>@method</span><span class='comma'>,</span> <span class='ivar'>@arguments</span><span class='comma'>,</span> <span class='ivar'>@block</span> <span class='op'>=</span> <span class='id identifier rubyid_caller'>caller</span><span class='comma'>,</span> <span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='comma'>,</span> <span class='id identifier rubyid_block'>block</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -481,48 +453,6 @@
     
       
       <span id=""></span>
-      <span id="id-instance_method"></span>
-      <div class="method_details ">
-  <p class="signature " id="id-instance_method">
-  
-    - (<tt>Object</tt>) <strong>id</strong>  <span class="extras">(readonly)</span>
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    
-<p>Returns the value of attribute id</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-4
-5
-6</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/calls.rb', line 4</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_id'>id</span>
-  <span class='ivar'>@id</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id=""></span>
       <span id="method-instance_method"></span>
       <div class="method_details ">
   <p class="signature " id="method-instance_method">
@@ -583,6 +513,7 @@
       <pre class="lines">
 
 
+10
 11
 12
 13
@@ -598,11 +529,10 @@
 23
 24
 25
-26
-27</pre>
+26</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/calls.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/calls.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_check_signature'>check_signature</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span>
   <span class='kw'>unless</span> <span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span> <span class='ivar'>@method</span>
@@ -631,7 +561,7 @@
 </div>
     
     <div id="footer">
-  Generated on Thu Dec 29 11:58:02 2011 by 
+  Generated on Mon Jan 23 22:59:54 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.4 (ruby-1.9.3).
 </div>

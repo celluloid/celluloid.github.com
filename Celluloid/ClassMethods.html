@@ -310,12 +310,12 @@ actor if it fails, and keep the actor registered under a given name.</p>
       <pre class="lines">
 
 
-95
-96
-97</pre>
+88
+89
+90</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 95</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 88</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_exit_handler'>exit_handler</span>
   <span class='ivar'>@exit_handler</span>
@@ -360,14 +360,14 @@ actor if it fails, and keep the actor registered under a given name.</p>
       <pre class="lines">
 
 
-58
-59
-60
-61
-62</pre>
+51
+52
+53
+54
+55</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 58</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_proxy'>proxy</span> <span class='op'>=</span> <span class='const'>Actor</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_allocate'>allocate</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span>
@@ -420,18 +420,18 @@ actor if it fails, and keep the actor registered under a given name.</p>
       <pre class="lines">
 
 
+59
+60
+61
+62
+63
+64
+65
 66
-67
-68
-69
-70
-71
-72
-73
-74</pre>
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 66</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 59</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new_link'>new_link</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_current_actor'>current_actor</span> <span class='op'>=</span> <span class='const'>Celluloid</span><span class='period'>.</span><span class='id identifier rubyid_current_actor'>current_actor</span>
@@ -472,12 +472,12 @@ actor if it fails</p>
       <pre class="lines">
 
 
-79
-80
-81</pre>
+72
+73
+74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 79</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 72</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_supervise'>supervise</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='const'>Supervisor</span><span class='period'>.</span><span class='id identifier rubyid_supervise'>supervise</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -512,12 +512,12 @@ actor if it fails, and keep the actor registered under a given name</p>
       <pre class="lines">
 
 
-85
-86
-87</pre>
+78
+79
+80</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 85</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 78</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_supervise_as'>supervise_as</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='const'>Supervisor</span><span class='period'>.</span><span class='id identifier rubyid_supervise_as'>supervise_as</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='kw'>self</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -551,12 +551,12 @@ actor if it fails, and keep the actor registered under a given name</p>
       <pre class="lines">
 
 
-90
-91
-92</pre>
+83
+84
+85</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 83</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_trap_exit'>trap_exit</span><span class='lparen'>(</span><span class='id identifier rubyid_callback'>callback</span><span class='rparen'>)</span>
   <span class='ivar'>@exit_handler</span> <span class='op'>=</span> <span class='id identifier rubyid_callback'>callback</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span>
@@ -590,16 +590,16 @@ actor if it fails, and keep the actor registered under a given name</p>
       <pre class="lines">
 
 
-98
-99
-100
-101
-102
-103
-104</pre>
+91
+92
+93
+94
+95
+96
+97</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 98</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 91</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_use_mailbox'>use_mailbox</span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_block'>block</span>
@@ -618,7 +618,7 @@ actor if it fails, and keep the actor registered under a given name</p>
 </div>
     
     <div id="footer">
-  Generated on Thu Dec 29 11:58:02 2011 by 
+  Generated on Mon Jan 23 22:59:54 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.4 (ruby-1.9.3).
 </div>
