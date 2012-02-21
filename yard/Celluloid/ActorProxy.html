@@ -6,7 +6,7 @@
 <title>
   Class: Celluloid::ActorProxy
   
-    &mdash; Documentation by YARD 0.7.4
+    &mdash; Documentation by YARD 0.7.5
   
 </title>
 
@@ -106,6 +106,8 @@ of their own threads.</p>
   
 
 </div>
+
+
 
   <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
   <ul class="summary">
@@ -243,6 +245,48 @@ of their own threads.</p>
   <span class="summary_signature">
     
       <a href="#inspect-instance_method" title="#inspect (instance method)">- (Object) <strong>inspect</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#is_a%3F-instance_method" title="#is_a? (instance method)">- (Boolean) <strong>is_a?</strong>(klass) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#kind_of%3F-instance_method" title="#kind_of? (instance method)">- (Boolean) <strong>kind_of?</strong>(klass) </a>
     
 
     
@@ -467,20 +511,20 @@ of their own threads.</p>
       <pre class="lines">
 
 
-64
-65
-66
-67
-68
-69
-70
-71
 72
 73
-74</pre>
+74
+75
+76
+77
+78
+79
+80
+81
+82</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor_proxy.rb', line 64</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor_proxy.rb', line 72</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_method_missing'>method_missing</span><span class='lparen'>(</span><span class='id identifier rubyid_meth'>meth</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_meth'>meth</span> <span class='op'>=</span> <span class='id identifier rubyid_meth'>meth</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
@@ -587,12 +631,12 @@ of their own threads.</p>
       <pre class="lines">
 
 
-28
-29
-30</pre>
+36
+37
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor_proxy.rb', line 28</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor_proxy.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_alive?'>alive?</span>
   <span class='ivar'>@mailbox</span><span class='period'>.</span><span class='id identifier rubyid_alive?'>alive?</span>
@@ -654,12 +698,12 @@ of their own threads.</p>
       <pre class="lines">
 
 
-43
-44
-45</pre>
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor_proxy.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor_proxy.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_future'>future</span><span class='lparen'>(</span><span class='id identifier rubyid_method_name'>method_name</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='const'>Actor</span><span class='period'>.</span><span class='id identifier rubyid_future'>future</span> <span class='ivar'>@mailbox</span><span class='comma'>,</span> <span class='id identifier rubyid_method_name'>method_name</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
@@ -682,19 +726,119 @@ of their own threads.</p>
       <pre class="lines">
 
 
-36
-37
-38
-39
-40</pre>
+44
+45
+46
+47
+48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor_proxy.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor_proxy.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='const'>Actor</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span> <span class='ivar'>@mailbox</span><span class='comma'>,</span> <span class='symbol'>:inspect</span>
 <span class='kw'>rescue</span> <span class='const'>DeadActorError</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;Celluloid::Actor(</span><span class='embexpr_beg'>#{</span><span class='ivar'>@klass</span><span class='rbrace'>}</span><span class='tstring_content'>) dead&gt;</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="is_a?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>is_a?</strong>(klass) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+20
+21
+22</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor_proxy.rb', line 20</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span><span class='rparen'>)</span>
+  <span class='const'>Actor</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span> <span class='ivar'>@mailbox</span><span class='comma'>,</span> <span class='symbol'>:is_a?</span><span class='comma'>,</span> <span class='id identifier rubyid_klass'>klass</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="kind_of?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>kind_of?</strong>(klass) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+24
+25
+26</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor_proxy.rb', line 24</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span><span class='rparen'>)</span>
+  <span class='const'>Actor</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span> <span class='ivar'>@mailbox</span><span class='comma'>,</span> <span class='symbol'>:kind_of?</span><span class='comma'>,</span> <span class='id identifier rubyid_klass'>klass</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -714,12 +858,12 @@ of their own threads.</p>
       <pre class="lines">
 
 
-24
-25
-26</pre>
+32
+33
+34</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor_proxy.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor_proxy.rb', line 32</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_methods'>methods</span><span class='lparen'>(</span><span class='id identifier rubyid_include_ancestors'>include_ancestors</span> <span class='op'>=</span> <span class='kw'>true</span><span class='rparen'>)</span>
   <span class='const'>Actor</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span> <span class='ivar'>@mailbox</span><span class='comma'>,</span> <span class='symbol'>:methods</span><span class='comma'>,</span> <span class='id identifier rubyid_include_ancestors'>include_ancestors</span>
@@ -764,12 +908,12 @@ of their own threads.</p>
       <pre class="lines">
 
 
-20
-21
-22</pre>
+28
+29
+30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor_proxy.rb', line 20</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor_proxy.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='id identifier rubyid_meth'>meth</span><span class='rparen'>)</span>
   <span class='const'>Actor</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span> <span class='ivar'>@mailbox</span><span class='comma'>,</span> <span class='symbol'>:respond_to?</span><span class='comma'>,</span> <span class='id identifier rubyid_meth'>meth</span>
@@ -844,23 +988,23 @@ of their own threads.</p>
       <pre class="lines">
 
 
-48
-49
-50
-51
-52
-53
-54
-55
 56
 57
 58
 59
 60
-61</pre>
+61
+62
+63
+64
+65
+66
+67
+68
+69</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor_proxy.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor_proxy.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_terminate'>terminate</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='const'>DeadActorError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>actor already terminated</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_alive?'>alive?</span>
@@ -894,12 +1038,12 @@ of their own threads.</p>
       <pre class="lines">
 
 
-32
-33
-34</pre>
+40
+41
+42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/actor_proxy.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/actor_proxy.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
   <span class='const'>Actor</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span> <span class='ivar'>@mailbox</span><span class='comma'>,</span> <span class='symbol'>:to_s</span>
@@ -914,9 +1058,9 @@ of their own threads.</p>
 </div>
     
     <div id="footer">
-  Generated on Mon Jan 23 22:59:55 2012 by 
+  Generated on Tue Feb 21 08:29:50 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.4 (ruby-1.9.3).
+  0.7.5 (ruby-1.9.3).
 </div>
 
   </body>

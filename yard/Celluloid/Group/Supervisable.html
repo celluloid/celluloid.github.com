@@ -6,7 +6,7 @@
 <title>
   Class: Celluloid::Group::Supervisable
   
-    &mdash; Documentation by YARD 0.7.4
+    &mdash; Documentation by YARD 0.7.5
   
 </title>
 
@@ -104,6 +104,8 @@
   
 
 </div>
+
+
 
   <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
   <ul class="summary">
@@ -275,18 +277,18 @@
       <pre class="lines">
 
 
-63
-64
-65
 66
 67
 68
 69
 70
-71</pre>
+71
+72
+73
+74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/group.rb', line 63</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/group.rb', line 66</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@klass</span> <span class='op'>=</span> <span class='id identifier rubyid_klass'>klass</span>
@@ -334,12 +336,12 @@
       <pre class="lines">
 
 
-61
-62
-63</pre>
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/group.rb', line 61</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/group.rb', line 64</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_args'>args</span>
   <span class='ivar'>@args</span>
@@ -376,12 +378,12 @@
       <pre class="lines">
 
 
-61
-62
-63</pre>
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/group.rb', line 61</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/group.rb', line 64</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_as'>as</span>
   <span class='ivar'>@as</span>
@@ -418,12 +420,12 @@
       <pre class="lines">
 
 
-61
-62
-63</pre>
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/group.rb', line 61</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/group.rb', line 64</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_klass'>klass</span>
   <span class='ivar'>@klass</span>
@@ -453,12 +455,12 @@
       <pre class="lines">
 
 
-73
-74
-75</pre>
+76
+77
+78</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/group.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/group.rb', line 76</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_supervise'>supervise</span>
   <span class='const'>Supervisor</span><span class='period'>.</span><span class='id identifier rubyid_new_link'>new_link</span><span class='lparen'>(</span><span class='ivar'>@as</span><span class='comma'>,</span> <span class='ivar'>@klass</span><span class='comma'>,</span> <span class='op'>*</span><span class='ivar'>@args</span><span class='rparen'>)</span>
@@ -473,9 +475,9 @@
 </div>
     
     <div id="footer">
-  Generated on Mon Jan 23 22:59:54 2012 by 
+  Generated on Tue Feb 21 08:29:50 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.4 (ruby-1.9.3).
+  0.7.5 (ruby-1.9.3).
 </div>
 
   </body>

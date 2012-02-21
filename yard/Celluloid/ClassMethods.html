@@ -6,7 +6,7 @@
 <title>
   Module: Celluloid::ClassMethods
   
-    &mdash; Documentation by YARD 0.7.4
+    &mdash; Documentation by YARD 0.7.5
   
 </title>
 
@@ -90,6 +90,8 @@
 
 </div>
 
+
+
   <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
   <ul class="summary">
     
@@ -131,6 +133,50 @@
     </h2>
 
     <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#%3D%3D%3D-instance_method" title="#=== (instance method)">- (Object) <strong>===</strong>(other) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#mailbox_factory-instance_method" title="#mailbox_factory (instance method)">- (Object) <strong>mailbox_factory</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Create a mailbox for this actor.</p>
+</div></span>
+  
+</li>
+
       
         <li class="public ">
   <span class="summary_signature">
@@ -310,12 +356,12 @@ actor if it fails, and keep the actor registered under a given name.</p>
       <pre class="lines">
 
 
-88
-89
-90</pre>
+124
+125
+126</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 88</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 124</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_exit_handler'>exit_handler</span>
   <span class='ivar'>@exit_handler</span>
@@ -333,7 +379,86 @@ actor if it fails, and keep the actor registered under a given name.</p>
     
     
       <div class="method_details first">
-  <p class="signature first" id="new-instance_method">
+  <p class="signature first" id="===-instance_method">
+  
+    - (<tt>Object</tt>) <strong>===</strong>(other) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+146
+147
+148</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 146</span>
+
+<span class='kw'>def</span> <span class='op'>===</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span> <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="mailbox_factory-instance_method">
+  
+    - (<tt>Object</tt>) <strong>mailbox_factory</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Create a mailbox for this actor</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+136
+137
+138
+139
+140
+141
+142
+143
+144</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 136</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_mailbox_factory'>mailbox_factory</span>
+  <span class='kw'>if</span> <span class='kw'>defined?</span><span class='lparen'>(</span><span class='ivar'>@mailbox_factory</span><span class='rparen'>)</span>
+    <span class='ivar'>@mailbox_factory</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span>
+  <span class='kw'>elsif</span> <span class='kw'>defined?</span><span class='lparen'>(</span><span class='kw'>super</span><span class='rparen'>)</span>
+    <span class='kw'>super</span>
+  <span class='kw'>else</span>
+    <span class='const'>Mailbox</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="new-instance_method">
   
     - (<tt>Object</tt>) <strong>new</strong>(*args, &amp;block) 
   
@@ -360,18 +485,18 @@ actor if it fails, and keep the actor registered under a given name.</p>
       <pre class="lines">
 
 
-51
-52
-53
-54
-55</pre>
+87
+88
+89
+90
+91</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 51</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 87</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_proxy'>proxy</span> <span class='op'>=</span> <span class='const'>Actor</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_allocate'>allocate</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span>
-  <span class='id identifier rubyid_proxy'>proxy</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:initialize</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_proxy'>proxy</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:__send__</span><span class='comma'>,</span> <span class='symbol'>:initialize</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_proxy'>proxy</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -420,18 +545,18 @@ actor if it fails, and keep the actor registered under a given name.</p>
       <pre class="lines">
 
 
-59
-60
-61
-62
-63
-64
-65
-66
-67</pre>
+95
+96
+97
+98
+99
+100
+101
+102
+103</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 59</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 95</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new_link'>new_link</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_current_actor'>current_actor</span> <span class='op'>=</span> <span class='const'>Celluloid</span><span class='period'>.</span><span class='id identifier rubyid_current_actor'>current_actor</span>
@@ -439,7 +564,7 @@ actor if it fails, and keep the actor registered under a given name.</p>
 
   <span class='id identifier rubyid_proxy'>proxy</span> <span class='op'>=</span> <span class='const'>Actor</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_allocate'>allocate</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span>
   <span class='id identifier rubyid_current_actor'>current_actor</span><span class='period'>.</span><span class='id identifier rubyid_link'>link</span> <span class='id identifier rubyid_proxy'>proxy</span>
-  <span class='id identifier rubyid_proxy'>proxy</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:initialize</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_proxy'>proxy</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:__send__</span><span class='comma'>,</span> <span class='symbol'>:initialize</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_proxy'>proxy</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -472,12 +597,12 @@ actor if it fails</p>
       <pre class="lines">
 
 
-72
-73
-74</pre>
+108
+109
+110</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 72</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 108</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_supervise'>supervise</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='const'>Supervisor</span><span class='period'>.</span><span class='id identifier rubyid_supervise'>supervise</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -512,12 +637,12 @@ actor if it fails, and keep the actor registered under a given name</p>
       <pre class="lines">
 
 
-78
-79
-80</pre>
+114
+115
+116</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 78</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 114</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_supervise_as'>supervise_as</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='const'>Supervisor</span><span class='period'>.</span><span class='id identifier rubyid_supervise_as'>supervise_as</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='kw'>self</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -551,12 +676,12 @@ actor if it fails, and keep the actor registered under a given name</p>
       <pre class="lines">
 
 
-83
-84
-85</pre>
+119
+120
+121</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 83</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 119</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_trap_exit'>trap_exit</span><span class='lparen'>(</span><span class='id identifier rubyid_callback'>callback</span><span class='rparen'>)</span>
   <span class='ivar'>@exit_handler</span> <span class='op'>=</span> <span class='id identifier rubyid_callback'>callback</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span>
@@ -590,22 +715,22 @@ actor if it fails, and keep the actor registered under a given name</p>
       <pre class="lines">
 
 
-91
-92
-93
-94
-95
-96
-97</pre>
+127
+128
+129
+130
+131
+132
+133</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 91</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid.rb', line 127</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_use_mailbox'>use_mailbox</span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_block'>block</span>
-    <span class='id identifier rubyid_define_method'>define_method</span><span class='lparen'>(</span><span class='symbol'>:mailbox_factory</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+    <span class='ivar'>@mailbox_factory</span> <span class='op'>=</span> <span class='id identifier rubyid_block'>block</span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_define_method'>define_method</span><span class='lparen'>(</span><span class='symbol'>:mailbox_factory</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='rbrace'>}</span>
+    <span class='ivar'>@mailbox_factory</span> <span class='op'>=</span> <span class='id identifier rubyid_proc'>proc</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='rbrace'>}</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -618,9 +743,9 @@ actor if it fails, and keep the actor registered under a given name</p>
 </div>
     
     <div id="footer">
-  Generated on Mon Jan 23 22:59:54 2012 by 
+  Generated on Tue Feb 21 08:29:49 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.4 (ruby-1.9.3).
+  0.7.5 (ruby-1.9.3).
 </div>
 
   </body>

@@ -6,7 +6,7 @@
 <title>
   Class: Celluloid::Mailbox
   
-    &mdash; Documentation by YARD 0.7.4
+    &mdash; Documentation by YARD 0.7.5
   
 </title>
 
@@ -110,10 +110,10 @@ Mailboxes until Actors can act upon them.</p>
 
 </div>
 
-  
 
 
-  
+
+
 
   
     <h2>
@@ -398,7 +398,7 @@ Mailboxes until Actors can act upon them.</p>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
   <span class='ivar'>@messages</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='ivar'>@lock</span>  <span class='op'>=</span> <span class='const'>Mutex</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='ivar'>@mutex</span> <span class='op'>=</span> <span class='const'>Mutex</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
   <span class='ivar'>@dead</span> <span class='op'>=</span> <span class='kw'>false</span>
   <span class='ivar'>@condition</span> <span class='op'>=</span> <span class='const'>ConditionVariable</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
 <span class='kw'>end</span></pre>
@@ -446,19 +446,23 @@ Mailboxes until Actors can act upon them.</p>
 28
 29
 30
-31</pre>
+31
+32
+33</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/mailbox.rb', line 23</span>
 
 <span class='kw'>def</span> <span class='op'>&lt;&lt;</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
-  <span class='ivar'>@lock</span><span class='period'>.</span><span class='id identifier rubyid_lock'>lock</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>MailboxError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>dead recipient</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='ivar'>@dead</span>
+  <span class='ivar'>@mutex</span><span class='period'>.</span><span class='id identifier rubyid_lock'>lock</span>
+  <span class='kw'>begin</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>MailboxError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>dead recipient</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='ivar'>@dead</span>
 
-  <span class='ivar'>@messages</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_message'>message</span>
-  <span class='ivar'>@condition</span><span class='period'>.</span><span class='id identifier rubyid_signal'>signal</span>
-  <span class='kw'>nil</span>
-<span class='kw'>ensure</span> <span class='ivar'>@lock</span><span class='period'>.</span><span class='id identifier rubyid_unlock'>unlock</span>
+    <span class='ivar'>@messages</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_message'>message</span>
+    <span class='ivar'>@condition</span><span class='period'>.</span><span class='id identifier rubyid_signal'>signal</span>
+    <span class='kw'>nil</span>
+  <span class='kw'>ensure</span> <span class='ivar'>@mutex</span><span class='period'>.</span><span class='id identifier rubyid_unlock'>unlock</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -502,12 +506,12 @@ Mailboxes until Actors can act upon them.</p>
       <pre class="lines">
 
 
-105
-106
-107</pre>
+111
+112
+113</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/mailbox.rb', line 105</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/mailbox.rb', line 111</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_alive?'>alive?</span>
   <span class='op'>!</span><span class='ivar'>@dead</span>
@@ -541,12 +545,12 @@ Mailboxes until Actors can act upon them.</p>
       <pre class="lines">
 
 
-117
-118
-119</pre>
+121
+122
+123</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/mailbox.rb', line 117</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/mailbox.rb', line 121</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_to_a'>to_a</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -580,12 +584,12 @@ Mailboxes until Actors can act upon them.</p>
       <pre class="lines">
 
 
-122
-123
-124</pre>
+126
+127
+128</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/mailbox.rb', line 122</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/mailbox.rb', line 126</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='rbrace'>}</span><span class='tstring_content'>:</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_object_id'>object_id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='lparen'>(</span><span class='int'>16</span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_content'> @messages=[</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_m'>m</span><span class='op'>|</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>, </span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_content'>]&gt;</span><span class='tstring_end'>&quot;</span></span>
@@ -619,12 +623,6 @@ Mailboxes until Actors can act upon them.</p>
       <pre class="lines">
 
 
-73
-74
-75
-76
-77
-78
 79
 80
 81
@@ -634,10 +632,16 @@ Mailboxes until Actors can act upon them.</p>
 85
 86
 87
-88</pre>
+88
+89
+90
+91
+92
+93
+94</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/mailbox.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/mailbox.rb', line 79</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_next_message'>next_message</span>
   <span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='kw'>nil</span>
@@ -684,10 +688,6 @@ Mailboxes until Actors can act upon them.</p>
       <pre class="lines">
 
 
-45
-46
-47
-48
 49
 50
 51
@@ -709,36 +709,44 @@ Mailboxes until Actors can act upon them.</p>
 67
 68
 69
-70</pre>
+70
+71
+72
+73
+74
+75
+76</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/mailbox.rb', line 45</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/mailbox.rb', line 49</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_receive'>receive</span><span class='lparen'>(</span><span class='id identifier rubyid_timeout'>timeout</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='kw'>nil</span>
 
-  <span class='ivar'>@lock</span><span class='period'>.</span><span class='id identifier rubyid_lock'>lock</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>MailboxError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>attempted to receive from a dead mailbox</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='ivar'>@dead</span>
-
+  <span class='ivar'>@mutex</span><span class='period'>.</span><span class='id identifier rubyid_lock'>lock</span>
   <span class='kw'>begin</span>
-    <span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='id identifier rubyid_next_message'>next_message</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>MailboxError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>attempted to receive from a dead mailbox</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='ivar'>@dead</span>
 
-    <span class='kw'>unless</span> <span class='id identifier rubyid_message'>message</span>
-      <span class='kw'>if</span> <span class='id identifier rubyid_timeout'>timeout</span>
-        <span class='id identifier rubyid_now'>now</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
-        <span class='id identifier rubyid_wait_until'>wait_until</span> <span class='op'>||=</span> <span class='id identifier rubyid_now'>now</span> <span class='op'>+</span> <span class='id identifier rubyid_timeout'>timeout</span>
-        <span class='id identifier rubyid_wait_interval'>wait_interval</span> <span class='op'>=</span> <span class='id identifier rubyid_wait_until'>wait_until</span> <span class='op'>-</span> <span class='id identifier rubyid_now'>now</span>
-        <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_wait_interval'>wait_interval</span> <span class='op'>&lt;</span> <span class='int'>0</span>
-      <span class='kw'>else</span>
-        <span class='id identifier rubyid_wait_interval'>wait_interval</span> <span class='op'>=</span> <span class='kw'>nil</span>
+    <span class='kw'>begin</span>
+      <span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='id identifier rubyid_next_message'>next_message</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+
+      <span class='kw'>unless</span> <span class='id identifier rubyid_message'>message</span>
+        <span class='kw'>if</span> <span class='id identifier rubyid_timeout'>timeout</span>
+          <span class='id identifier rubyid_now'>now</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
+          <span class='id identifier rubyid_wait_until'>wait_until</span> <span class='op'>||=</span> <span class='id identifier rubyid_now'>now</span> <span class='op'>+</span> <span class='id identifier rubyid_timeout'>timeout</span>
+          <span class='id identifier rubyid_wait_interval'>wait_interval</span> <span class='op'>=</span> <span class='id identifier rubyid_wait_until'>wait_until</span> <span class='op'>-</span> <span class='id identifier rubyid_now'>now</span>
+          <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_wait_interval'>wait_interval</span> <span class='op'>&lt;=</span> <span class='int'>0</span>
+        <span class='kw'>else</span>
+          <span class='id identifier rubyid_wait_interval'>wait_interval</span> <span class='op'>=</span> <span class='kw'>nil</span>
+        <span class='kw'>end</span>
+
+        <span class='ivar'>@condition</span><span class='period'>.</span><span class='id identifier rubyid_wait'>wait</span><span class='lparen'>(</span><span class='ivar'>@mutex</span><span class='comma'>,</span> <span class='id identifier rubyid_wait_interval'>wait_interval</span><span class='rparen'>)</span>
       <span class='kw'>end</span>
+    <span class='kw'>end</span> <span class='kw'>until</span> <span class='id identifier rubyid_message'>message</span>
 
-      <span class='ivar'>@condition</span><span class='period'>.</span><span class='id identifier rubyid_wait'>wait</span><span class='lparen'>(</span><span class='ivar'>@lock</span><span class='comma'>,</span> <span class='id identifier rubyid_wait_interval'>wait_interval</span><span class='rparen'>)</span>
-    <span class='kw'>end</span>
-  <span class='kw'>end</span> <span class='kw'>until</span> <span class='id identifier rubyid_message'>message</span>
-
-  <span class='id identifier rubyid_message'>message</span>
-<span class='kw'>ensure</span> <span class='ivar'>@lock</span><span class='period'>.</span><span class='id identifier rubyid_unlock'>unlock</span>
+    <span class='id identifier rubyid_message'>message</span>
+  <span class='kw'>ensure</span> <span class='ivar'>@mutex</span><span class='period'>.</span><span class='id identifier rubyid_unlock'>unlock</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -769,33 +777,33 @@ Mailboxes until Actors can act upon them.</p>
       <pre class="lines">
 
 
-91
-92
-93
-94
-95
-96
 97
 98
 99
 100
 101
-102</pre>
+102
+103
+104
+105
+106
+107
+108</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/mailbox.rb', line 91</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/mailbox.rb', line 97</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_shutdown'>shutdown</span>
-  <span class='id identifier rubyid_messages'>messages</span> <span class='op'>=</span> <span class='kw'>nil</span>
-
-  <span class='ivar'>@lock</span><span class='period'>.</span><span class='id identifier rubyid_lock'>lock</span>
-  <span class='id identifier rubyid_messages'>messages</span> <span class='op'>=</span> <span class='ivar'>@messages</span>
-  <span class='ivar'>@messages</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='ivar'>@dead</span> <span class='op'>=</span> <span class='kw'>true</span>
+  <span class='ivar'>@mutex</span><span class='period'>.</span><span class='id identifier rubyid_lock'>lock</span>
+  <span class='kw'>begin</span>
+    <span class='id identifier rubyid_messages'>messages</span> <span class='op'>=</span> <span class='ivar'>@messages</span>
+    <span class='ivar'>@messages</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+    <span class='ivar'>@dead</span> <span class='op'>=</span> <span class='kw'>true</span>
+  <span class='kw'>ensure</span> <span class='ivar'>@mutex</span><span class='period'>.</span><span class='id identifier rubyid_unlock'>unlock</span>
+  <span class='kw'>end</span>
 
   <span class='id identifier rubyid_messages'>messages</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_msg'>msg</span><span class='op'>|</span> <span class='id identifier rubyid_msg'>msg</span><span class='period'>.</span><span class='id identifier rubyid_cleanup'>cleanup</span> <span class='kw'>if</span> <span class='id identifier rubyid_msg'>msg</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span> <span class='symbol'>:cleanup</span> <span class='rbrace'>}</span>
   <span class='kw'>true</span>
-<span class='kw'>ensure</span> <span class='ivar'>@lock</span><span class='period'>.</span><span class='id identifier rubyid_unlock'>unlock</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -826,27 +834,31 @@ Mailboxes until Actors can act upon them.</p>
       <pre class="lines">
 
 
-34
-35
 36
 37
 38
 39
 40
 41
-42</pre>
+42
+43
+44
+45
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/mailbox.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/mailbox.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_system_event'>system_event</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span>
-  <span class='ivar'>@lock</span><span class='period'>.</span><span class='id identifier rubyid_lock'>lock</span>
-  <span class='kw'>unless</span> <span class='ivar'>@dead</span> <span class='comment'># Silently fail if messages are sent to dead actors
-</span>    <span class='ivar'>@messages</span><span class='period'>.</span><span class='id identifier rubyid_unshift'>unshift</span> <span class='id identifier rubyid_event'>event</span>
-    <span class='ivar'>@condition</span><span class='period'>.</span><span class='id identifier rubyid_signal'>signal</span>
+  <span class='ivar'>@mutex</span><span class='period'>.</span><span class='id identifier rubyid_lock'>lock</span>
+  <span class='kw'>begin</span>
+    <span class='kw'>unless</span> <span class='ivar'>@dead</span> <span class='comment'># Silently fail if messages are sent to dead actors
+</span>      <span class='ivar'>@messages</span><span class='period'>.</span><span class='id identifier rubyid_unshift'>unshift</span> <span class='id identifier rubyid_event'>event</span>
+      <span class='ivar'>@condition</span><span class='period'>.</span><span class='id identifier rubyid_signal'>signal</span>
+    <span class='kw'>end</span>
+    <span class='kw'>nil</span>
+  <span class='kw'>ensure</span> <span class='ivar'>@mutex</span><span class='period'>.</span><span class='id identifier rubyid_unlock'>unlock</span>
   <span class='kw'>end</span>
-  <span class='kw'>nil</span>
-<span class='kw'>ensure</span> <span class='ivar'>@lock</span><span class='period'>.</span><span class='id identifier rubyid_unlock'>unlock</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -877,19 +889,15 @@ Mailboxes until Actors can act upon them.</p>
       <pre class="lines">
 
 
-110
-111
-112
-113
-114</pre>
+116
+117
+118</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/mailbox.rb', line 110</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/mailbox.rb', line 116</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_a'>to_a</span>
-  <span class='ivar'>@lock</span><span class='period'>.</span><span class='id identifier rubyid_lock'>lock</span>
-  <span class='ivar'>@messages</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
-<span class='kw'>ensure</span> <span class='ivar'>@lock</span><span class='period'>.</span><span class='id identifier rubyid_unlock'>unlock</span>
+  <span class='ivar'>@mutex</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='lbrace'>{</span> <span class='ivar'>@messages</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -901,9 +909,9 @@ Mailboxes until Actors can act upon them.</p>
 </div>
     
     <div id="footer">
-  Generated on Mon Jan 23 22:59:54 2012 by 
+  Generated on Tue Feb 21 08:29:50 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.4 (ruby-1.9.3).
+  0.7.5 (ruby-1.9.3).
 </div>
 
   </body>

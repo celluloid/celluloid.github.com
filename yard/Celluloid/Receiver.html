@@ -6,7 +6,7 @@
 <title>
   Class: Celluloid::Receiver
   
-    &mdash; Documentation by YARD 0.7.4
+    &mdash; Documentation by YARD 0.7.5
   
 </title>
 
@@ -104,6 +104,8 @@
   
 
 </div>
+
+
 
   <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
   <ul class="summary">
@@ -246,14 +248,14 @@
       <pre class="lines">
 
 
-51
-52
-53
-54
-55</pre>
+55
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/receivers.rb', line 51</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/receivers.rb', line 55</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='ivar'>@block</span> <span class='op'>=</span> <span class='id identifier rubyid_block'>block</span>
@@ -297,12 +299,12 @@
       <pre class="lines">
 
 
-49
-50
-51</pre>
+53
+54
+55</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/receivers.rb', line 49</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/receivers.rb', line 53</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_timer'>timer</span>
   <span class='ivar'>@timer</span>
@@ -343,12 +345,12 @@
       <pre class="lines">
 
 
-58
-59
-60</pre>
+62
+63
+64</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/receivers.rb', line 58</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/receivers.rb', line 62</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_match'>match</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
   <span class='ivar'>@block</span> <span class='op'>?</span> <span class='ivar'>@block</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='kw'>true</span>
@@ -371,12 +373,12 @@
       <pre class="lines">
 
 
-62
-63
-64</pre>
+66
+67
+68</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/receivers.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/receivers.rb', line 66</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_resume'>resume</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='ivar'>@task</span><span class='period'>.</span><span class='id identifier rubyid_resume'>resume</span> <span class='id identifier rubyid_message'>message</span>
@@ -391,9 +393,9 @@
 </div>
     
     <div id="footer">
-  Generated on Mon Jan 23 22:59:54 2012 by 
+  Generated on Tue Feb 21 08:29:50 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.4 (ruby-1.9.3).
+  0.7.5 (ruby-1.9.3).
 </div>
 
   </body>

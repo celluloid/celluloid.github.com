@@ -6,7 +6,7 @@
 <title>
   Class: Celluloid::Future
   
-    &mdash; Documentation by YARD 0.7.4
+    &mdash; Documentation by YARD 0.7.5
   
 </title>
 
@@ -114,6 +114,8 @@ background, their values requested later</p>
     
   
 </p>
+
+
 
 
 
@@ -273,9 +275,7 @@ background, their values requested later</p>
 23
 24
 25
-26
-27
-28</pre>
+26</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/celluloid/future.rb', line 8</span>
@@ -293,9 +293,7 @@ background, their values requested later</p>
         <span class='ivar'>@call</span><span class='period'>.</span><span class='id identifier rubyid_dispatch'>dispatch</span><span class='lparen'>(</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
       <span class='kw'>rescue</span>
         <span class='comment'># Exceptions in blocks will get raised when the value is retrieved
-</span>      <span class='kw'>ensure</span>
-        <span class='const'>ThreadPool</span><span class='period'>.</span><span class='id identifier rubyid_put'>put</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id identifier rubyid_current'>current</span>
-      <span class='kw'>end</span>
+</span>      <span class='kw'>end</span>
     <span class='kw'>end</span>
   <span class='kw'>else</span>
     <span class='ivar'>@call</span> <span class='op'>=</span> <span class='kw'>nil</span>
@@ -337,17 +335,17 @@ background, their values requested later</p>
       <pre class="lines">
 
 
+29
+30
 31
 32
 33
 34
 35
-36
-37
-38</pre>
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/future.rb', line 31</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/future.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_receiver'>receiver</span><span class='comma'>,</span> <span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='ivar'>@mutex</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
@@ -390,6 +388,8 @@ background, their values requested later</p>
       <pre class="lines">
 
 
+74
+75
 76
 77
 78
@@ -401,12 +401,10 @@ background, their values requested later</p>
 84
 85
 86
-87
-88
-89</pre>
+87</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/future.rb', line 76</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/future.rb', line 74</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_signal'>signal</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='const'>Result</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='kw'>self</span><span class='rparen'>)</span>
@@ -455,6 +453,8 @@ background, their values requested later</p>
       <pre class="lines">
 
 
+39
+40
 41
 42
 43
@@ -484,12 +484,10 @@ background, their values requested later</p>
 67
 68
 69
-70
-71
-72</pre>
+70</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/celluloid/future.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'lib/celluloid/future.rb', line 39</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_value'>value</span>
   <span class='id identifier rubyid_ready'>ready</span> <span class='op'>=</span> <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='kw'>nil</span>
@@ -533,9 +531,9 @@ background, their values requested later</p>
 </div>
     
     <div id="footer">
-  Generated on Mon Jan 23 22:59:54 2012 by 
+  Generated on Tue Feb 21 08:29:50 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.4 (ruby-1.9.3).
+  0.7.5 (ruby-1.9.3).
 </div>
 
   </body>
