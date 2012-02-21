@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.7.4
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html" title="Index">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><div id='filecontents'><h1>Celluloid</h1>
+
+<p><a href="http://travis-ci.org/tarcieri/celluloid"><img src="http://travis-ci.org/tarcieri/celluloid.png" alt="Build Status"></a> <a href="https://gemnasium.com/tarcieri/celluloid"><img src="https://gemnasium.com/tarcieri/celluloid.png" alt="Dependency Status"></a></p>
+
+<blockquote>
+<p>&quot;I thought of objects being like biological cells and/or individual
+computers on a network, only able to communicate with messages&quot;
+<em>--Alan Kay, creator of Smalltalk, on the meaning of &quot;object oriented programming&quot;</em></p>
+</blockquote>
+
+<p>Celluloid provides a simple and natural way to build fault-tolerant concurrent
+programs in Ruby. With Celluloid, you can build systems out of concurrent
+objects just as easily as you build sequential programs out of regular objects.
+Recommended for any developer, including novices, Celluloid should help ease
+your worries about building multithreaded Ruby programs:</p>
+
+<ul>
+<li><strong>Automatic synchronization:</strong> Celluloid synchronizes access to instance
+variables by using a special proxy object system and messaging model.</li>
+<li><strong><a href="https://github.com/tarcieri/celluloid/wiki/futures">Futures</a>:</strong>
+Ever wanted to call a method &quot;in the background&quot; and retrieve the
+value it returns later? Celluloid futures allow you to do that. When you
+ask for a method&#39;s return value it&#39;s returned if it&#39;s immediately available
+or blocks if the method is still running.</li>
+<li><strong><a href="https://github.com/tarcieri/celluloid/wiki/supervisors">Supervisors</a>:</strong>
+Celluloid can monitor your concurrent objects and
+automatically restart them when they crash. You can also link concurrent
+objects together into groups that will crash and restart as a group,
+ensuring that after a crash all interdependent objects are in a clean and
+consistent state.</li>
+</ul>
+
+<p>Under the hood, Celluloid wraps regular objects in threads that talk to each
+other using messages. These concurrent objects are called &quot;actors&quot;. When a
+caller wants another actor to execute a method, it literally sends it a
+message object telling it what method to execute. The receiver listens on its
+mailbox, gets the request, runs the method, and sends the caller the result.
+The receiver processes messages in its inbox one-at-a-time, which means that
+you don&#39;t need to worry about synchronizing access to an object&#39;s instance
+variables.</p>
+
+<p>In addition to that, Celluloid also gives you the ability to call methods
+<em>asynchronously</em>, so the receiver to do things in the background for you
+without the caller having to sit around waiting for the result.</p>
+
+<p>You can also build distributed systems with Celluloid using its
+<a href="https://github.com/tarcieri/dcell">sister project DCell</a>. Evented IO similar
+to EventMachine (albeit with a synchronous API) is available through the
+<a href="https://github.com/tarcieri/celluloid-io">Celluloid::IO</a> library.</p>
+
+<p><a href="https://github.com/tarcieri/celluloid/wiki">Please see the Celluloid Wiki</a>
+for more detailed documentation and usage notes.</p>
+
+<p>Like Celluloid? <a href="http://groups.google.com/group/celluloid-ruby">Join the Google Group</a>
+or visit us on IRC at #celluloid on freenode</p>
+
+<h2>Supported Platforms</h2>
+
+<p>Celluloid works on Ruby 1.9.2+, JRuby 1.6 (in 1.9 mode), and Rubinius 2.0. JRuby
+or Rubinius are the preferred platforms as they support true hardware-level
+parallelism when running Ruby code, whereas MRI/YARV is constrained by a global
+interpreter lock (GIL).</p>
+
+<p>To use JRuby in 1.9 mode, you&#39;ll need to pass the &quot;--1.9&quot; command line option
+to the JRuby executable, or set the &quot;JRUBY_OPTS=--1.9&quot; environment variable.</p>
+
+<p>Celluloid works on Rubinius in either 1.8 or 1.9 mode.</p>
+
+<h2>Usage</h2>
+
+<p>To use Celluloid, define a normal Ruby class that includes Celluloid:</p>
+
+<p>```ruby
+require &#39;celluloid&#39;</p>
+
+<p>class Sheen
+  include Celluloid</p>
+
+<p>def initialize(name)
+    @name = name
+  end</p>
+
+<p>def set_status(status)
+    @status = status
+  end</p>
+
+<p>def report
+    &quot;#@name is #@status&quot;
+  end
+end
+```</p>
+
+<p>Now when you create new instances of this class, they&#39;re actually concurrent
+objects, each running in their own thread:</p>
+
+<p><code>ruby
+&gt;&gt; charlie = Sheen.new &quot;Charlie Sheen&quot;
+ =&gt; #&lt;Celluloid::Actor(Sheen:0x00000100a312d0) @name=&quot;Charlie Sheen&quot;&gt;
+&gt;&gt; charlie.set_status &quot;winning!&quot;
+ =&gt; &quot;winning!&quot;
+&gt;&gt; charlie.report
+ =&gt; &quot;Charlie Sheen is winning!&quot;
+&gt;&gt; charlie.set_status! &quot;asynchronously winning!&quot;
+ =&gt; nil
+&gt;&gt; charlie.report
+ =&gt; &quot;Charlie Sheen is asynchronously winning!&quot;
+</code></p>
+
+<p>You can call methods on this concurrent object just like you would any other
+Ruby object. The Sheen#set_status method works exactly like you&#39;d expect,
+returning the last expression evaluated.</p>
+
+<p>However, Celluloid&#39;s secret sauce kicks in when you call banged predicate
+methods (i.e. methods ending in !). Even though the Sheen class has no
+set_status! method, you can still call it. Why is this? Because bang methods
+have a special meaning in Celluloid. (Note: this also means you can&#39;t define
+bang methods on Celluloid classes and expect them to be callable from other
+objects)</p>
+
+<p>Adding a bang to the end of a method instructs Celluloid that you would like
+for the given method to be called <em>asynchronously</em>. This means that rather
+than the caller waiting for a response, the caller sends a message to the
+concurrent object that you&#39;d like the given method invoked, and then the
+caller proceeds without waiting for a response. The concurrent object
+receiving the message will then process the method call in the background.</p>
+
+<p>Adding a bang to a method name is a convention in Ruby used to indicate that
+the method is in some way &quot;dangerous&quot;, and in Celluloid this is no exception.
+You have no guarantees that just because you made an asynchronous call it was
+ever actually invoked. Asynchronous calls will never raise an exception, even
+if an exception occurs when the receiver is processing it. Worse, unhandled
+exceptions will crash the receiver, and making an asynchronous call to a
+crashed object will not raise an error.</p>
+
+<p>However, you can still handle errors created by asynchronous calls using
+two features of Celluloid called <a href="https://github.com/tarcieri/celluloid/wiki/supervisors">supervisors</a>
+and <a href="https://github.com/tarcieri/celluloid/wiki/linking">linking</a></p>
+
+<p><a href="https://github.com/tarcieri/celluloid/wiki">Please see the Celluloid Wiki</a>
+for additional usage information.</p>
+
+<h2>Contributing to Celluloid</h2>
+
+<ul>
+<li>Fork Celluloid on github</li>
+<li>Make your changes and send me a pull request</li>
+<li>If I like them I&#39;ll merge them and give you commit access to my repository</li>
+</ul>
+
+<h2>License</h2>
+
+<p>Copyright (c) 2012 Tony Arcieri. Distributed under the MIT License. See
+LICENSE.txt for further details.</p>
+</div></div>
+    
+    <div id="footer">
+  Generated on Mon Jan 23 22:59:53 2012 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.4 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>
