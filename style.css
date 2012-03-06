@@ -1,0 +1,28 @@
+html, body {
+	font-family: Helvetica, Verdana, Arial, sans-serif;
+	font-size: 14px;
+	background: #222222;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	font-size: 1.2em;
+}
+
+#outer {
+    border-width: 0 5px;
+    border-style: solid;
+    border-color: #111111;
+    background: white;
+    margin: 0 auto;
+    padding: 1em 1em;
+    width: 800px;
+    height: 100%;
+}
+
+.project {
+    padding: 1.5em 0;
+}
+
+.label {
+    padding-left: 140px;
+}
