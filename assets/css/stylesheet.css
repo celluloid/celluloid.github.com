@@ -1,0 +1,88 @@
+body {
+  background-color: #fff;
+  color: #222;
+}
+
+.content {
+  margin: 0 auto;
+  padding: 2px 4px;
+  width: 768px;
+  text-align: justify;
+  line-height: 1.5em;
+}
+
+.hidden.divider {
+  padding: 16px;
+}
+.hidden.huge.divider {
+  padding: 32px;
+}
+
+a.button {
+  display: inline-block;
+  padding: 12px 24px;
+  color: #222;
+  border: 1px solid #222;
+  text-decoration: none;
+}
+a.button:hover {
+  border: 1px solid #f26a3d
+}
+
+header nav {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0 16px;
+  width: 100%;
+  background-color: #eee;
+  color: #222;
+  font-size: 14pt;
+  cursor: default;
+}
+header nav div {
+  display: inline-block;
+}
+header nav .brand a {
+  display: inline-block;
+  padding: 16px;
+}
+header nav .brand a img {
+  width: 100%;
+  height: 20px;
+}
+header nav .menu {
+  margin-right: 32px;
+  float: right;
+}
+header nav .menu a {
+  display: inline-block;
+  padding: 16px 8px;
+  color: #222;
+  text-decoration: none;
+}
+header nav .menu a:hover,
+header nav .menu a.active {
+  background: #ddd;
+}
+header section.header {
+  margin: 50px 0;
+  padding: 16px 4px;
+  background-color: #ddd;
+}
+header section.header .lead {
+  margin: 50px 0 0;
+  text-align: center;
+  font-size: 24pt;
+}
+
+main {
+  min-height: 50vh;
+}
+
+footer {
+  margin: 16px 0 8px;
+  text-align: center;
+}
