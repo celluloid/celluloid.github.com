@@ -3,32 +3,6 @@ body {
   color: #222;
 }
 
-.content {
-  margin: 0 auto;
-  padding: 2px 4px;
-  width: 768px;
-  text-align: justify;
-  line-height: 1.5em;
-}
-
-.hidden.divider {
-  padding: 16px;
-}
-.hidden.huge.divider {
-  padding: 32px;
-}
-
-a.button {
-  display: inline-block;
-  padding: 12px 24px;
-  color: #222;
-  border: 1px solid #222;
-  text-decoration: none;
-}
-a.button:hover {
-  border: 1px solid #f26a3d
-}
-
 header nav {
   display: block;
   position: fixed;
@@ -50,7 +24,7 @@ header nav .brand a {
   padding: 16px;
 }
 header nav .brand a img {
-  width: 100%;
+  width: 90px;
   height: 20px;
 }
 header nav .menu {
@@ -73,7 +47,7 @@ header section.header {
   background-color: #ddd;
 }
 header section.header .lead {
-  margin: 50px 0 0;
+  margin: 50px 0 10px;
   text-align: center;
   font-size: 24pt;
 }
@@ -81,8 +55,152 @@ header section.header .lead {
 main {
   min-height: 50vh;
 }
+main a {
+  color: #222;
+  text-decoration: none;
+  border-bottom: 1px dashed #f26a3d;
+}
+main a:hover {
+  color: #f26a3d;
+}
+
+.content,
+.wide.content {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 16px;
+  padding: 2px 4px;
+  width: 768px;
+  text-align: justify;
+  line-height: 1.5em;
+}
+.wide.content {
+  width: 1200px;
+}
+.centered {
+  text-align: center;
+}
+.hidden.divider {
+  padding: 16px;
+}
+.hidden.huge.divider {
+  padding: 32px;
+}
+a.button {
+  display: inline-block;
+  padding: 12px 24px;
+  color: #222;
+  border: 1px solid #222;
+  text-decoration: none;
+}
+a.small.button {
+  padding: 6px 12px;
+}
+a.button:hover {
+  background-color: #222;
+  color: #fff;
+}
+.clear {
+  clear: both;
+}
+.columns {
+  margin: 0 auto;
+}
+.three.columns .column,
+.four.columns .column {
+  margin: 0 16px;
+  float: left;
+}
+.three.columns .column {
+  width: 30%;
+}
+.four.columns .column {
+  width: 22%;
+}
+.column img {
+  display: block;
+  margin: 8px auto;
+  margin-bottom: 16px;
+  width: 100%;
+}
+.column img.celluloid-io {
+  width: 350px;
+}
+.column img.dcell {
+  width: 200px;
+}
+.column img.reel {
+  width: 150px;
+}
+.column a img.celluloid-io,
+.column a img.dcell,
+.column a img.reel {
+  text-align: center;
+  font-size: 20pt;
+  font-weight: 750;
+}
+
+.links {
+  text-align: center;
+}
+.links a {
+  display: inline-block;
+  margin: 0 16px;
+}
 
 footer {
-  margin: 16px 0 8px;
+  margin: 48px 0 8px;
+  padding: 4px;
   text-align: center;
+}
+
+@media only screen and (max-width: 1024px) {
+  .wide.content {
+    width: 95%;
+  }
+  .column img.celluloid-io {
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .content,
+  .wide.content {
+    width: 95%;
+    padding: 2px 8px;
+  }
+
+  .three.columns .column,
+  .four.columns .column {
+    margin: 0 0 16px;
+    float: none;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  header nav {
+    font-size: 12pt;
+  }
+  header nav .brand a {
+    padding: 12px;
+  }
+  header nav .brand a img {
+    width: 90px;
+    height: 20px;
+  }
+  header nav .menu {
+    margin-right: 28px;
+    float: right;
+  }
+  header nav .menu a {
+    padding: 14px 4px;
+  }
+  header section.header {
+    margin: 20px 0;
+  }
+  .three.columns .column,
+  .four.columns .column {
+    margin: 0 0 32px;
+  }
 }
