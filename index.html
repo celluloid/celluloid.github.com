@@ -2,9 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <base href="https://celluloid.io/">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <base href="//local.dev:2016/">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>Celluloid: Actor-based Concurrent Objects for Ruby</title>
 
@@ -29,84 +29,111 @@
     <meta name="msapplication-TileImage" content="assets/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-    <link rel="stylesheet" type="text/css" href="assets/css/normalize.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/stylesheet.css">
   </head>
   <body>
     <header>
-      <nav>
-        <div class="brand">
-          <a href="">
-            <img src="assets/img/celluloid.png" alt="Celluloid">
-          </a>
-        </div>
-        <div class="menu">
-          <a href="" class="active">Home</a>
-          <a href="https://github.com/celluloid/celluloid/wiki">Wiki</a>
-          <a href="https://github.com/celluloid">Projects</a>
+      <nav class="navbar navbar-fixed-top navbar-light">
+        <a class="navbar-brand" href="">
+          <img src="assets/img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+          Celluloid
+        </a>
+        <button class="navbar-toggler hidden-lg-up float-md-right float-xs-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
+        <div class="collapse navbar-toggleable-md" id="navbarResponsive">
+          <ul class="nav navbar-nav float-xs-right">
+            <li class="nav-item active">
+              <a class="nav-link" href="">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/celluloid">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/celluloid/celluloid/wiki">Wiki</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://groups.google.com/forum/#!forum/celluloid-ruby">Google Group</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.linkedin.com/grp/home?gid=6996017">LinkedIn Group</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/tarcieri">Author</a>
+            </li>
+          </ul>
         </div>
       </nav>
-
-      <section class="header">
-        <div class="lead">
-          Painless multithreaded programming for Ruby
-        </div>
-        <div class="content">
-          Celluloid is a concurrent object oriented programming framework for Ruby which lets you build multithreaded programs out of concurrent objects just as easily as you build sequential programs out of regular objects.
-        </div>
-        <div class="hidden divider"></div>
-        <div align="center">
-          <a href="https://github.com/celluloid/celluloid" class="button">Learn More</a>
-        </div>
-        <div class="hidden divider"></div>
-      </section>
     </header>
     <main>
-      <section class="wide content">
-        <h2>Another Projects</h2>
-        <div class="three columns">
-          <div class="column">
-            <a href="https://github.com/celluloid/celluloid-io">
-              <img class="celluloid-io" src="https://github.com/celluloid/celluloid-io/raw/master/logo.png" alt="Celluloid::IO">
+      <div class="bg-white jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="celluloid display-3">
+            <a href="https://github.com/celluloid/celluloid">
+              <img src="assets/img/celluloid.png" alt="Celluloid">
             </a>
-            Evented I/O for Celluloid actors. Build fast evented programs like you would with EventMachine or Node.js using regular synchronous Ruby libraries based on TCPSocket.
-            <div class="hidden divider"></div>
-            <a class="small button" href="https://github.com/celluloid/celluloid-io">View Details</a>
-          </div>
-          <div class="column">
-            <a href="https://github.com/celluloid/dcell">
-              <img class="dcell" src="https://github.com/celluloid/dcell/raw/master/logo.png" alt="DCell">
-            </a>
-            Build distributed systems with Celluloid that talk over the 0MQ protocol. Supports asynchronous messaging in addition to traditional DRb-style RPC calls.
-            <div class="hidden divider"></div>
-            <a class="small button" href="https://github.com/celluloid/dcell">View Details</a>
-          </div>
-          <div class="column">
-            <a href="https://github.com/celluloid/reel">
-              <img class="reel" src="https://github.com/celluloid/reel/raw/master/logo.png" alt="Reel">
-            </a>
-            Web server for the Celluloid ecosystem. Supports nonblocking "evented" I/O patterns through the Celluloid::IO library and also multithreaded blocking use.
-            <div class="hidden divider"></div>
-            <a class="small button" href="https://github.com/celluloid/reel">View Details</a>
-          </div>
+          </h1>
+          <h2>Painless multithreaded programming for Ruby</h2>
+          <p class="lead">
+            Celluloid is a concurrent object oriented programming framework for Ruby which lets you build multithreaded programs out of concurrent objects just as easily as you build sequential programs out of regular objects.
+          </p>
+          <p class="lead">
+            <a class="btn btn-secondary btn-lg" href="https://github.com/celluloid/celluloid" role="button">Learn more</a>
+          </p>
         </div>
-        <div class="clear"></div>
-      </section>
-
+      </div>
       <div class="hidden divider"></div>
-
-      <section class="wide content">
-        <h2>Links</h2>
-        <div class="links">
-          <a href="https://groups.google.com/forum/#!forum/celluloid-ruby" target="_blank">Google Group</a>
-          <a href="https://www.linkedin.com/grp/home?gid=6996017" target="_blank">LinkedIn Group</a>
-          <a href="https://github.com/tarcieri" target="_blank">Author</a>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4">
+            <h3 class="celluloid-io">
+              <a href="https://github.com/celluloid/celluloid-io">
+                <img src="assets/img/celluloid-io.png" alt="Celluloid::IO">
+              </a>
+            </h3>
+            <p align="justify">
+              Evented I/O for Celluloid actors. Build fast evented programs like you would with EventMachine or Node.js using regular synchronous Ruby libraries based on TCPSocket.
+            </p>
+            <p>
+              <a class="btn btn-secondary btn-md" href="https://github.com/celluloid/celluloid-io" role="button">Learn more</a>
+            </p>
+          </div>
+          <div class="col-sm-4">
+            <h3 class="dcell">
+              <a href="https://github.com/celluloid/dcell">
+                <img src="assets/img/dcell.png" alt="DCell">
+              </a>
+            </h3>
+            <p align="justify">
+              Build distributed systems with Celluloid that talk over the 0MQ protocol. Supports asynchronous messaging in addition to traditional DRb-style RPC calls.
+            </p>
+            <p>
+              <a class="btn btn-secondary btn-md" href="https://github.com/celluloid/dcell" role="button">Learn more</a>
+            </p>
+          </div>
+          <div class="col-sm-4">
+            <h3 class="reel">
+              <a href="https://github.com/celluloid/reel">
+                <img src="assets/img/reel.png" alt="Reel">
+              </a>
+            </h3>
+            <p align="justify">
+              Web server for the Celluloid ecosystem. Supports nonblocking "evented" I/O patterns through the Celluloid::IO library and also multithreaded blocking use.
+            </p>
+            <p>
+              <a class="btn btn-secondary btn-md" href="https://github.com/celluloid/reel" role="button">Learn more</a>
+            </p>
+          </div>
         </div>
-        <div class="clear"></div>
-      </section>
+      </div>
     </main>
     <footer>
-      &copy; 2011-2016, Tony Arcieri.
+      <div class="container">
+        &copy; 2011-2016, Tony Arcieri.
+      </div>
     </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
   </body>
 </html>
