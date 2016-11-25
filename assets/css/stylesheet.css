@@ -1,0 +1,88 @@
+body {
+  background-color: #fff;
+  color: #222;
+}
+
+nav.navbar {
+  background-color: #fff;
+  box-shadow: 0 0 2px #222;
+}
+
+main {
+  margin: 4em 0;
+}
+
+.hidden.divider {
+  padding: 16px;
+}
+
+.bg-white {
+  background-color: #fff;
+  color: #222;
+}
+
+h1.celluloid {
+  margin: 0 0 4px;
+}
+h1.celluloid a {
+  color: #222;
+  text-decoration: none;
+}
+h1.celluloid img {
+  display: inline-block;
+  margin: 0 0 8px;
+  width: 400px;
+}
+
+.row div {
+  position: relative;
+}
+
+h3.celluloid-io a,
+h3.dcell a,
+h3.reel a {
+  color: #222;
+  text-decoration: none;
+}
+
+h3.celluloid-io img,
+h3.dcell img,
+h3.reel img {
+  display: block;
+  margin: 0 0 1em;
+}
+
+h3.celluloid-io img {
+  width: 100%;
+}
+h3.dcell img {
+  width: 55%;
+}
+h3.reel img {
+  width: 40%;
+}
+
+footer {
+  margin: 1em 0;
+}
+
+@media only screen and (max-width: 640px) {
+  h1.celluloid img {
+    width: 340px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  h1.celluloid img {
+    width: 300px;
+  }
+  .row div {
+    margin: 0 0 4em;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  h1.celluloid img {
+    width: 280px;
+  }
+}
